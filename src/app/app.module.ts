@@ -11,6 +11,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSidenavModule } from "@angular/material/sidenav";
 //bootstrap 10
 import {NgbPaginationModule, NgbAlertModule, NgbNav} from '@ng-bootstrap/ng-bootstrap';
 
@@ -36,7 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     MatButtonModule,
     MatButtonToggleModule,
-    NgbModule
+    NgbModule,
+    FlexLayoutModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

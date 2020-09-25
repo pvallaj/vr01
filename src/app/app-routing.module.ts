@@ -6,8 +6,8 @@ import { VideoComponent } from './seccion2/video/video.component';
 
 
 const routes: Routes = [
-  {path:'consulta', component:ConsultaComponent},
-  {path:'videos', component:VideoComponent}
+  {path:'seccion1', component:ConsultaComponent},
+  {path:'seccion2', component:VideoComponent}
 ];
 
 @NgModule({
