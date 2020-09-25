@@ -1,87 +1,31 @@
-<style>
-     :host {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 14px;
-        color: #333;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 8px 0;
-    }
-    
-    p {
-        margin: 0;
-    }
-    /* Responsive Styles */
-    
-    @media screen and (max-width: 767px) {
-        .card-container>*:not(.circle-link),
-        .terminal {
-            width: 100%;
-        }
-        .card:not(.highlight-card) {
-            height: 16px;
-            margin: 8px 0;
-        }
-        .card.highlight-card span {
-            margin-left: 72px;
-        }
-        svg#rocket-smoke {
-            right: 120px;
-            transform: rotate(-5deg);
-        }
-    }
-    
-    @media screen and (max-width: 575px) {
-        svg#rocket-smoke {
-            display: none;
-            visibility: hidden;
-        }
-    }
-</style>
-
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-    <mat-toolbar color="primary">
-        <img src="assets/logoUNAM.png" width="60">
-        <section>
-            <div class="logo d">Textos Lit</div>
-            <div class="opt1">Segunda</div>
-            <div class="opt2">Videos</div>
-            <div class="opt3">Fotos</div>
-            <div class="opt4">Libros</div>
-            <div class="opt5">Noticias</div>
-            <div class="logo I">Textos Lit</div>
-        </section>
-        <ul ngbNav #nav="ngbNav" class="nav-tabs">
-            <li ngbNavItem>
-                <a ngbNavLink>First</a>
-                <ng-template ngbNavContent>First content</ng-template>
-            </li>
-            <li ngbNavItem>
-                <a ngbNavLink>Second</a>
-                <ng-template ngbNavContent>Second content</ng-template>
-            </li>
-        </ul>
-        <span class="spacer"></span>
-        <button mat-flat-button color="primary">
-          <mat-icon>favorite</mat-icon>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" color="primary">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
         </button>
-        <button mat-flat-button color="primary">
-          <mat-icon>share</mat-icon>
-        </button>
-    </mat-toolbar>
-    <div class="spacer"></div>
-</div>
+            <div>Logo</div>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end">
+                <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
+                    <li><a routerLink="/seccion1">Textos Literarios I</a></li>
+                    <li><a routerLink="/seccion2">Textos Literarios II</a></li>
+                    <li><a routerLink="/seccion3">Fototeca</a></li>
+                    <li><a routerLink="/seccion4">Videoteca</a></li>
+                    <li><a routerLink="/seccion5">Biblioteca</a></li>
+                    <li><a routerLink="/seccion6">usuarios</a></li>
+                </ul>
 
-<div [ngbNavOutlet]="nav"></div>
+            </div>
+        </mat-toolbar>
 
-<router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+</mat-drawer-container>
