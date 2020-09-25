@@ -24,6 +24,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +90,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "texlit"
+    }
+  },
+  "defaultProject": "texlit",
+  "cli": {
+    "analytics": "6b6a7299-a990-413a-a594-937331266f5d"
+  }
 }
