@@ -1,0 +1,37 @@
+<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="first stretch" fxFill>
+    <div class="consulta">
+        <mat-form-field class="form-field">
+            <mat-label>¿ Qué desea buscar ?</mat-label>
+            <input matInput type="text" [(ngModel)]="textConsulta" (keydown.enter)="consulta()">
+            <button mat-button *ngIf="textConsulta" matSuffix mat-icon-button aria-label="Clear" (click)="textConsulta=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div class="resultado" fxFlex fxLayaout="column" fxLayoutGap="20px">
+        <div mat-subheader>Resultado de su consulta</div>
+        <!--mat-list>
+            <mat-list-item *ngFor="let sermon of listaResultado">
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <div>{{sermon.muestra}} </div>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list-->
+        <div class="lista-resultado">
+            <div *ngFor="let sermon of listaResultado; let i = index">
+                <mat-card class="tarjeta">
+                    <mat-card-header>
+                        <mat-card-title>{{i+1}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</mat-card-title>
+                        <mat-card-subtitle>{{sermon.ciudad+', '+sermon.anio}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        {{sermon.autor_particula}} {{sermon.titulo}}
+                    </mat-card-content>
+                    <button mat-button>Detalle</button>
+                </mat-card>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+
+    </div>
+</div>

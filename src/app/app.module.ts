@@ -1,31 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// MAterial
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatList, MatListModule } from "@angular/material/list";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatTableModule } from '@angular/material/table';
-import { MatDialogModule } from '@angular/material/dialog';
-import {MatPaginatorModule} from '@angular/material/paginator';
-//bootstrap 10
-import {NgbPaginationModule, NgbAlertModule, NgbNav} from '@ng-bootstrap/ng-bootstrap';
+
 
 //local
-import { MatChipsModule} from '@angular/material/chips';
+
 import { ConsultaComponent } from './seccion1/consulta/consulta.component';
-import { VideoComponent } from './seccion2/video/video.component';
+import { VideoComponent } from './videoteca/video/video.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EncabezadoComponent } from './navegacion/encabezado/encabezado.component';
 import { OpcionesComponent } from './navegacion/opciones/opciones.component';
@@ -35,8 +23,11 @@ import { MnsjDetalleComponent } from './seccion1/mnsj-detalle/mnsj-detalle.compo
 import { DetalleCatalogoComponent } from './seccion1/consulta/detalle-catalogo/detalle-catalogo.component';
 import { CatalogoComponent } from './seccion1/consulta/catalogo/catalogo.component';
 import { ListaCatalogoComponent } from './seccion1/consulta/lista-catalogo/lista-catalogo.component';
+import { ConsSermonesComponent } from './seccion2/cons-sermones/cons-sermones.component';
+import { ConsDetSermonComponent } from './seccion2/cons-det-sermon/cons-det-sermon.component';
+import { InicioComponent } from './navegacion/inicio/inicio.component';
 
-
+import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,29 +39,20 @@ import { ListaCatalogoComponent } from './seccion1/consulta/lista-catalogo/lista
     MnsjDetalleComponent,
     DetalleCatalogoComponent,
     CatalogoComponent,
-    ListaCatalogoComponent
+    ListaCatalogoComponent,
+    ConsSermonesComponent,
+    ConsDetSermonComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    //Material
-    MatSliderModule,
-    MatChipsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatButtonToggleModule,
+    MaterialModule,
+    FormsModule,
     NgbModule,
     FlexLayoutModule,
-    MatSidenavModule,
-    MatListModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatDialogModule,
-    MatPaginatorModule
   ],
   providers: [ConexionService],
   bootstrap: [AppComponent]

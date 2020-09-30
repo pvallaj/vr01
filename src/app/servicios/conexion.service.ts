@@ -18,6 +18,12 @@ export class ConexionService {
     headers.append('catalogo', cat);
     const cuerpo =  JSON.stringify({cn:{accion:'consulta',id:idElemento,catalogo:cat} });
     
-    return this.http.post('http://localhost:8000/detalleCatalogos', cuerpo,  {headers:headers });
+    return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
+  }
+  obtenerSermones(parametros){
+    let headers = new HttpHeaders();
+    const cuerpo =  JSON.stringify({cn:{accion:'consulta sermones', parametros} });
+    
+    return this.http.post(this.urlBase+'/sermones', cuerpo,  {headers:headers });
   }
 }
