@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+
+export interface Parametros {
+  nombre: string;
+  descripcion: string;
+}
 
 @Component({
   selector: 'app-cons-det-sermon',
@@ -7,9 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsDetSermonComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
-
+  
 }

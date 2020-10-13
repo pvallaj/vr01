@@ -2,21 +2,42 @@ form-field {
     width: 200px;
 }
 
-.tarjeta {
-    max-width: 300px;
+p {
+    white-space: pre-wrap
 }
 
-.marco {
+.tarjeta {
+    margin-top: 10px;
+}
+
+
+/*.marco {
     border: 1px solid white;
 }
 
 .consulta {
     border: 1px solid blue;
     height: 100px;
-}
+}*/
 
 .resultado {
-    border: 1px solid rebeccapurple;
+    /*border: 1px solid rebeccapurple;*/
     height: 700px;
     padding: 5px;
+    overflow-y: scroll;
+}
+
+.elemento {
+    margin: 5px;
+}
+
+.tituloTarjeta {
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.pieTarjeta {
+    color: grey;
+    font-weight: bold;
 }

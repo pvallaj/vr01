@@ -4,34 +4,37 @@
             <mat-label>¿ Qué desea buscar ?</mat-label>
             <input matInput type="text" [(ngModel)]="textConsulta" (keydown.enter)="consulta()">
             <button mat-button *ngIf="textConsulta" matSuffix mat-icon-button aria-label="Clear" (click)="textConsulta=''">
-              <mat-icon>close</mat-icon>
-            </button>
+                      <mat-icon>close</mat-icon>
+                    </button>
         </mat-form-field>
+        <button mat-button color="Cambiar" (click)="cambiar()">Cambiar</button>
     </div>
-    <div class="resultado" fxFlex fxLayaout="column" fxLayoutGap="20px">
+    <div class="resultado" [style.display]="despResultado">
         <div mat-subheader>Resultado de su consulta</div>
-        <!--mat-list>
-            <mat-list-item *ngFor="let sermon of listaResultado">
-                <mat-icon mat-list-icon>folder</mat-icon>
-                <div>{{sermon.muestra}} </div>
-                <mat-divider></mat-divider>
-            </mat-list-item>
-        </mat-list-->
-        <div class="lista-resultado">
-            <div *ngFor="let sermon of listaResultado; let i = index">
-                <mat-card class="tarjeta">
-                    <mat-card-header>
-                        <mat-card-title>{{i+1}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</mat-card-title>
-                        <mat-card-subtitle>{{sermon.ciudad+', '+sermon.anio}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        {{sermon.autor_particula}} {{sermon.titulo}}
-                    </mat-card-content>
-                    <button mat-button>Detalle</button>
-                </mat-card>
-                <mat-divider></mat-divider>
-            </div>
-        </div>
+        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
 
+            <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <!--mat-card-header>
+                    <mat-card-title>{{i+1}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</mat-card-title>
+                    <mat-card-subtitle>{{sermon.ciudad+', '+sermon.anio}}</mat-card-subtitle>
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="detalle()">
+                                    <mat-icon>menu</mat-icon>
+                                  </button>
+                </mat-card-header-->
+                <mat-card-content>
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <p class="tituloTarjeta">{{i+1}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</p>
+                    <p>{{sermon.autor_particula}} {{sermon.titulo}}</p>
+                    <p class="pieTarjeta">{{sermon.ciudad+', '+sermon.anio}}</p>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+    <div class="detalle" [style.display]="despDetalle">
+        <button mat-button color="Cambiar" (click)="cambiar()">Regresar</button>
+        <app-cons-det-sermon></app-cons-det-sermon>
     </div>
 </div>

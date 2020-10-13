@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ConexionService } from '../../../servicios/conexion.service';
+import { ConexionService } from '../../../servicios/Conexion.service';
 import { DetalleCatalogoComponent } from '../detalle-catalogo/detalle-catalogo.component';
 
 @Component({

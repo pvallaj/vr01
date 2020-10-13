@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 
-import { ConexionService } from '../../../servicios/conexion.service';
+import { ConexionService } from '../../../servicios/Conexion.service';
 import { MnsjDetalleComponent } from '../../mnsj-detalle/mnsj-detalle.component';
 import { MatDialog } from '@angular/material/dialog';
 

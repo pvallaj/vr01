@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ConexionService } from '../../servicios/conexion.service';
+import { ConexionService } from '../../servicios/Conexion.service';
+import { MnsjDetalleComponent } from '../../seccion1/mnsj-detalle/mnsj-detalle.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConsDetSermonComponent } from '../cons-det-sermon/cons-det-sermon.component';
 
 @Component({
   selector: 'app-cons-sermones',
@@ -8,7 +11,11 @@ import { ConexionService } from '../../servicios/conexion.service';
 })
 export class ConsSermonesComponent implements OnInit {
   public listaResultado:any[]=[];
-  constructor(private cnx:ConexionService) { }
+
+  despResultado:string='block';
+  despDetalle:string='none';
+
+  constructor(private cnx:ConexionService, public dialog: MatDialog) { }
   public textConsulta:string;
   ngOnInit(): void {
   }
@@ -37,5 +44,20 @@ export class ConsSermonesComponent implements OnInit {
       }
     )
   }
+  detalle(){
+    const dialogRef = this.dialog.open(ConsDetSermonComponent, {
+      width: '95%',
+      data: {nombre:"Hola", descripcion:"Amigo"}
+    });
+  }
 
+  cambiar(){
+    if(this.despResultado=='block'){
+      this.despResultado='none';
+      this.despDetalle='block';
+    }else{
+      this.despResultado='block';
+      this.despDetalle='none';
+    }
+  }
 }

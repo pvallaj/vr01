@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ConexionService {
   headers: HttpHeaders;
-  urlBase:string='http://localhost:8000';
+  urlBase:string='/api';
+  public componente:"";
+
   constructor(protected http: HttpClient) {
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
@@ -25,5 +28,11 @@ export class ConexionService {
     const cuerpo =  JSON.stringify({cn:{accion:'consulta sermones', parametros} });
     
     return this.http.post(this.urlBase+'/sermones', cuerpo,  {headers:headers });
+  }
+
+  ejecutar(componente:string, parametros: any) {
+    let url =  this.urlBase+"/"+componente;
+    const cuerpo =  JSON.stringify({cn: parametros});
+    return this.http.post( url,   cuerpo, {headers: this.headers});
   }
 }
