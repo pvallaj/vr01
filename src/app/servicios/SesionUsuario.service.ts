@@ -7,34 +7,44 @@ import { ConexionService	} 	from './Conexion.service';
 @Injectable()
 export class SesionUsuario{
 	
-	public usuario:string;
-    public nombreUsuario:string;
+	private _usuario:string;
+	private _role:string;
+
+    private _nombreUsuario:string;
     public acceso:string;
     public periodo:string;
     public mensajeError:string='' ;
-
-    private roles:string;
-    private estadoSesion:string='desconectado';
+    
+    private _estadoSesion:string='desconectado';
 	private token:string;
 
 	constructor(private cnx:ConexionService){
-		this.usuario='';
-	  	this.nombreUsuario='';
-	  	this.roles='';
+		this.token=localStorage.getItem('tkn');
+		if(this.token!=null){
+			this._usuario=			localStorage.getItem('usuario');
+			this._nombreUsuario=	localStorage.getItem('nombre');
+			this._role=				localStorage.getItem('role');
+		}else{
+			this._usuario='';
+			this._nombreUsuario='';
+			this._role='';
+		}
+		console.log('sus:'+this._nombreUsuario);
 	}
 
-	registrarUsuario(usr:string, paswd:string){
-		console.log('Iniciando Sesión de usuario.'+usr+'--'+paswd);
-		let ptrms=	{
-			usuario:usr,
-			contrasena:paswd
-		};
-		return this.cnx.ejecutar("registro", ptrms).pipe(
+	accesoUsuario(datos:any){
+		
+		return this.cnx.ejecutar("acceso", datos).pipe(
 			map(resp=>{
 				if(resp['ok']=='true'){
-					localStorage.setItem('tkn',resp['resultado'].token);
-					this.usuario=usr;
-					this.estadoSesion='conectado';
+					localStorage.setItem('tkn',		resp['resultado'].token);
+					localStorage.setItem('usuario',	datos.correo);
+					localStorage.setItem('nombre',	resp['resultado'].nombre);
+					localStorage.setItem('role',	resp['resultado'].role);
+					this._usuario=			datos.correo;
+					this._nombreUsuario=	resp['resultado'].nombre;
+					this._role=				resp['resultado'].role;
+					this._estadoSesion='conectado';
 				}
 			  return resp;
 			})
@@ -55,44 +65,53 @@ export class SesionUsuario{
 	}
 
 	cerrarSesion(){
+		localStorage.removeItem('tkn');
+		localStorage.removeItem('usuario');
+		localStorage.removeItem('nombre');
+		localStorage.removeItem('role');
+		this._nombreUsuario='';
+		this._role='';
+		this._usuario='';
+		this._estadoSesion='desconectado';
 		return true;
 	}
 	
-	setUsuario(usuario:string){
-	  	this.usuario=usuario;
+
+	crearUsuario(datos:any){
+		datos.role='USUARIO';
+		datos.accion='crear';
+		return this.cnx.ejecutar("usuario", datos).pipe(
+			map(resp=>{
+				if(resp['ok']=='true'){
+					this._usuario=datos.correo;
+				}
+			  return resp;
+			})
+		  )
 	}
-	getUsuario(){
-	  	return this.usuario;
+	
+	set nombreUsuario(nombreUsuario:string){
+	  	this._nombreUsuario=nombreUsuario;
 	}
-	setNombreUsuario(nombreUsuario:string){
-	  	this.nombreUsuario=nombreUsuario;
+	get nombreUsuario(){
+	 	return this._nombreUsuario;
 	}
-	getNombreUsuario(){
-	 	return this.nombreUsuario;
+
+	get role(){
+	  	return this._role;
 	}
-	setRoles(roles:string){
-	  	this.roles=roles;
-	}
-	getRoles(){
-	  	return this.roles;
-	}
-	getEstadoSesion(){
-		if(this.estadoSesion=='desconectado'){
-			this.token=localStorage.getItem('tks');
+	get estadoSesion(){
+		if(this._estadoSesion=='desconectado'){
+			this.token=localStorage.getItem('tkn');
 			if(this.token!=null){
-				this.estadoSesion='conectado';
+				this._estadoSesion='conectado';
 			}
 		}
-	  	return this.estadoSesion;
+	  	return this._estadoSesion;
 	}
 	obtUsuario(){ 
 	  	return {...this};
 	}
-	validaPermiso(rol:string){
-		if(this.roles.indexOf(rol,0)>=0)
-			return true;
-		else
-			return false;
-	}
+	
 }
 

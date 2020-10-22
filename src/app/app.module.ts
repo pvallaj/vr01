@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,9 @@ import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
 import { BibliotecaComponent } from './biblioteca/biblioteca.component';
 import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
 import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-usuario.component';
+import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
+import { MensajeComponent } from './generales/mensaje/mensaje.component';
+import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +64,10 @@ import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-us
     HtmlEnterPipe,
     BibliotecaComponent,
     LtsNoticiasComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    IniciarSesionComponent,
+    MensajeComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +75,7 @@ import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-us
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     NgbModule,
     FlexLayoutModule,
     NgxGalleryModule

@@ -1,0 +1,25 @@
+<div class="marco" fxLayout="column" fxLayoutAlign="center center">
+    <div class="titulo">
+        <h4 class="modal-title ">Solo personal autorizado. </h4>
+    </div>
+    <form #f="ngForm" autocomplete="off" class="forma" fxLayout="column" fxLayoutAlign="center">
+        <mat-form-field>
+            <mat-label>Nombre de usuario(correo electrónico)</mat-label>
+            <input matInput type="email" placeholder="Nombre de Usuario: " required [(ngModel)]="usuario" name="usuario" #usr="ngModel" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" placeholder="Ejemplo: usuario@example.com">
+            <mat-error *ngIf="usr.control.errors">
+                Correo electrónico invalido.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" placeholder="Contraseña: " required [(ngModel)]="password" #pwd="ngModel" name="password" minlength="8">
+            <mat-error *ngIf="pwd.control.errors">
+                al menos son 8 caracteres.
+            </mat-error>
+        </mat-form-field>
+        <!----->
+        <button mat-raised-button color="primary" [disabled]="!f.form.valid " (click)="registrarUsuario(f.value) ">Acceder</button>
+
+    </form>
+</div>

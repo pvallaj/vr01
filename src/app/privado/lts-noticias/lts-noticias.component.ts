@@ -14,8 +14,8 @@ export class LtsNoticiasComponent implements OnInit {
   constructor(private sus:SesionUsuario, private ru:Router) { }
 
   ngOnInit(): void {
-    if(this.sus.getEstadoSesion()=='desconectado'){
-      this.ru.navigate(['registro']);
+    if(this.sus.estadoSesion=='desconectado'){
+      this.ru.navigate(['sesion']);
     }
   }
 

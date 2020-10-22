@@ -7,6 +7,7 @@ import { InicioComponent } from './navegacion/inicio/inicio.component';
 import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
 import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-usuario.component';
 import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
+import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'fototeca',       component:FTGaleriaComponent},
   {path:'publicaciones',  component:LtsNoticiasComponent},
   {path:'registro',       component:RegistroUsuarioComponent},
+  {path:'sesion',         component:IniciarSesionComponent},
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' }, 
   { path: '**', component: InicioComponent }
 ];
