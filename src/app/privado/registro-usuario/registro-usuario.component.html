@@ -1,0 +1,59 @@
+<div class="marco" fxLayout="column" fxLayoutAlign="center center">
+    <div class="titulo">
+        <h4 class="modal-title ">Solo personal autorizado. </h4>
+    </div>
+    <form [formGroup]="frm" autocomplete="off" class="forma" fxLayout="column" fxLayoutAlign="center">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Escriba su nombre o nombres" formControlName="nombre">
+            <mat-error *ngIf="frm.get('nombre').invalid">
+                Debe proporcionar su nombre.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput placeholder="Escriba su Apellido Paterno" formControlName="paterno">
+            <mat-error *ngIf="frm.get('paterno').invalid">
+                Debe proporcionar su apellido paterno.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput placeholder="Escriba su Apellido Materno" formControlName="materno">
+            <mat-error *ngIf="frm.get('materno').invalid">
+                Debe proporcionar su apellido materno.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nombre de usuario(correo electrónico)</mat-label>
+            <input matInput type="email" placeholder="Nombre de Usuario: " formControlName="correo">
+            <mat-error *ngIf="frm.get('correo').invalid">
+                Es necesario un correo electrónico valido.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput placeholder="Número telefónico, preferiblemente celular, 10 dígitos" formControlName="telefono">
+            <mat-error *ngIf="frm.get('telefono').invalid">
+                Es necesario un número de telefóno valido.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="tipopwd" placeholder="Contraseña: " formControlName="contrasena">
+            <button mat-button matSuffix mat-icon-button (mousedown)="tipopwd='text'" (mouseup)="tipopwd='password'">
+                <mat-icon>remove_red_eye</mat-icon>
+            </button>
+            <mat-error *ngIf="frm.get('contrasena').invalid">
+                La contraseña es requerida y de al menos: 8 caracteres, una mayuscula, un numero y caracter especial ($ @ ! % * ? & # . ; _ -).
+            </mat-error>
+        </mat-form-field>
+
+        <div class="acciones" fxLayout fxLayoutAlign="space-around">
+            <button mat-raised-button color="danger" (click)="cancelar()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="guardar()" [disabled]="frm.status=='INVALID'">Guardar</button>
+        </div>
+
+    </form>
+</div>

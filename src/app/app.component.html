@@ -1,31 +1,19 @@
 <mat-drawer-container autosize>
     <mat-drawer #drawer mode="side" color="primary">
-        <p>Auto-resizing sidenav</p>
-        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
+        <app-opciones (navBarToggle)="drawer.toggle()"></app-opciones>
     </mat-drawer>
     <mat-drawer-content>
-        <mat-toolbar color="primary">
-            <button mat-icon-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-            <div>Logo</div>
-            <div fxFlex fxLayout fxLayoutAlign="flex-end">
-                <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
-                    <li><a routerLink="/seccion1">Textos Literarios I</a></li>
-                    <li><a routerLink="/seccion2">Textos Literarios II</a></li>
-                    <li><a routerLink="/seccion3">Fototeca</a></li>
-                    <li><a routerLink="/seccion4">Videoteca</a></li>
-                    <li><a routerLink="/seccion5">Biblioteca</a></li>
-                    <li><a routerLink="/seccion6">usuarios</a></li>
-                </ul>
-
-            </div>
-        </mat-toolbar>
+        <app-encabezado (navBarToggle)="drawer.toggle()"></app-encabezado>
 
         <router-outlet></router-outlet>
     </mat-drawer-content>
 
 </mat-drawer-container>
+
+<footer>
+    <div class="pie" fxFlex fxFlexLayout="row" fxLayoutAlign="space-around">
+        <div class="izquierda">2020</div>
+        <div class="centro">UNAM, ...</div>
+        <div class="derecha">Nosotros</div>
+    </div>
+</footer>

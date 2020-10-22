@@ -1,0 +1,14 @@
+<mat-table [dataSource]="listaCatalogos">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef fxFlex="50px"> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex="50px"> {{element.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef fxFlex="200px"> Catalogo </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex="200px"> {{element.descripcion}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnasLC"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasLC;" [ngClass]="{'seleccion': seleccionado.id == row.id}" (click)="seleccionar(row)"></mat-row>
+</mat-table>

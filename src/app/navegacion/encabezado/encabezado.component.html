@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="onToggleNV()" fxHide.gt-xs>
+    <mat-icon>menu</mat-icon>
+    </button>
+    <div>Logo</div>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
+            <li><a routerLink="/textos">Narrativas</a></li>
+            <li><a routerLink="/sermones">Sermones</a></li>
+            <li><a routerLink="/fototeca">Fototeca</a></li>
+            <li><a routerLink="/videoteca">Videoteca</a></li>
+            <li><a routerLink="/biblioteca">Biblioteca</a></li>
+            <li><a routerLink="/noticias">Noticias</a></li>
+            <li *ngIf="sus.role=='publicador' "><a routerLink="/publicar">Publicar Noticias</a></li>
+            <li *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Usuarios</a></li>
+            <li *ngIf="sus.estadoSesion=='conectado' ">
+                <button mat-icon-button (click)="salir()">
+                    <mat-icon>exit_to_app</mat-icon> Salir
+                </button>
+            </li>
+        </ul>
+
+    </div>
+</mat-toolbar>

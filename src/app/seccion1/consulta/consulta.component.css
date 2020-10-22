@@ -1,0 +1,33 @@
+.catalogo {
+    width: 500px;
+}
+
+.uno,
+.contenedor {
+    border: 5px solid red;
+}
+
+.seleccion {
+    background-color: darkseagreen;
+}
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.element-description {
+    padding: 16px;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}

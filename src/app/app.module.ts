@@ -1,47 +1,88 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// MAterial
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSidenavModule } from "@angular/material/sidenav";
-//bootstrap 10
-import {NgbPaginationModule, NgbAlertModule, NgbNav} from '@ng-bootstrap/ng-bootstrap';
+//galeria de imagenes
+import { NgxGalleryModule } from 'ngx-gallery-9';
+import 'hammerjs';
+//galeria de videos
+
 
 //local
-import {MatChipsModule} from '@angular/material/chips';
-import { ConsultaComponent } from './seccion1/consulta/consulta.component';
-import { VideoComponent } from './seccion2/video/video.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ConsultaComponent } from './seccion1/consulta/consulta.component';
+import { VideoComponent } from './videoteca/video/video.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EncabezadoComponent } from './navegacion/encabezado/encabezado.component';
+import { OpcionesComponent } from './navegacion/opciones/opciones.component';
+import { Seccion1Component } from './seccion1/seccion1.component';
+import { ConexionService } from './servicios/Conexion.service';
+import { MnsjDetalleComponent } from './seccion1/mnsj-detalle/mnsj-detalle.component';
+import { DetalleCatalogoComponent } from './seccion1/consulta/detalle-catalogo/detalle-catalogo.component';
+import { CatalogoComponent } from './seccion1/consulta/catalogo/catalogo.component';
+import { ListaCatalogoComponent } from './seccion1/consulta/lista-catalogo/lista-catalogo.component';
+import { ConsSermonesComponent } from './seccion2/cons-sermones/cons-sermones.component';
+import { ConsDetSermonComponent } from './seccion2/cons-det-sermon/cons-det-sermon.component';
+
+import { InicioComponent } from './navegacion/inicio/inicio.component';
+import { SeguroPipe } from './pipes/seguro.pipe';
+import { HtmlEnterPipe } from './pipes/htmlEnter.pipe';
+import { SesionUsuario } from "./servicios/SesionUsuario.service";
+
+import { MaterialModule } from './material.module';
+import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
+import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
+import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-usuario.component';
+import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
+import { MensajeComponent } from './generales/mensaje/mensaje.component';
+import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
     ConsultaComponent,
-    VideoComponent
+    VideoComponent,
+    EncabezadoComponent,
+    OpcionesComponent,
+    Seccion1Component,
+    MnsjDetalleComponent,
+    DetalleCatalogoComponent,
+    CatalogoComponent,
+    ListaCatalogoComponent,
+    ConsSermonesComponent,
+    ConsDetSermonComponent,
+    InicioComponent,
+    FTGaleriaComponent,
+    //pipes
+    SeguroPipe,
+    HtmlEnterPipe,
+    BibliotecaComponent,
+    LtsNoticiasComponent,
+    RegistroUsuarioComponent,
+    IniciarSesionComponent,
+    MensajeComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    MatChipsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatButtonToggleModule,
+    HttpClientModule,
+    MaterialModule,
+    FormsModule, ReactiveFormsModule,
     NgbModule,
     FlexLayoutModule,
-    MatSidenavModule
+    NgxGalleryModule
   ],
-  providers: [],
+  providers: [
+    ConexionService,
+    SesionUsuario],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
