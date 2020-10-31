@@ -1,7 +1,65 @@
-<mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Catálogos">
-        <app-consulta></app-consulta>
-    </mat-tab>
-    <mat-tab label="Signos Actor">Signos Actor</mat-tab>
-    <mat-tab label="Vinculos">Vinculos</mat-tab>
-</mat-tab-group>
+<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="first stretch" fxFill>
+    <form [formGroup]="frm" class="consulta">
+        <mat-form-field appearance="fill" class="autor">
+            <mat-label>Seleccione un autor</mat-label>
+            <mat-select name="autor" (selectionChange)="autorSeleccionado($event)" formControlName="autor">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let autor of listaAutores" [value]="autor.autor">
+                    {{autor.autor}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="obra">
+            <mat-label>Seleccione una obra</mat-label>
+            <mat-select name="obra" formControlName="obra">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let obra of listaObras" [value]="obra.obra">
+                    {{obra.obra}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="clasificacion">
+            <mat-label>Seleccione una clasificación</mat-label>
+            <mat-select name="clase" formControlName="categoria">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let categoria of listaCategorias" [value]="categoria.id" matTooltip="{{categoria.categoria}}">
+                    {{categoria.categoria}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button color="Cambiar" (click)="consulta()">BUSCAR</button>
+    </form>
+    <mat-card class="buscando" *ngIf="estaCargando">
+        <mat-card-content>
+            <h2 class="example-h2">Consultando base de datos</h2>
+
+            <section class="example-section">
+                <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+                </mat-progress-bar>
+            </section>
+        </mat-card-content>
+    </mat-card>
+    <div class="resultado" [style.display]="despResultado" *ngIf="!estaCargando">
+        <div mat-subheader>Información encontrada en la base de datos</div>
+        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
+
+            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
+                <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
+                    <div fxFlex fxLayout fxLayoutAlign="space-between">
+                        <p class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
+                        <button *ngIf="(i+1)==idxSeleccionado" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar()">
+                            <mat-icon>menu</mat-icon>
+                        </button>
+                    </div>
+                    <p>{{narrativa.narratio.substring(0,400)}}</p>
+                    <p class="pieTarjeta">{{narrativa.obra+', '+narrativa.ubicacion}}</p>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+    <div class="detalle" [style.display]="despDetalle">
+        <button mat-button color="Cambiar" (click)="cambiar()">Regresar</button>
+        <app-cons-det-sermon></app-cons-det-sermon>
+    </div>
+</div>

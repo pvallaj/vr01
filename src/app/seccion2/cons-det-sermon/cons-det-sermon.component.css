@@ -2,3 +2,38 @@
     padding: 15px;
     width: 75%;
 }
+
+mat-grid-list {
+    max-width: 80%;
+    background-color: lightblue;
+}
+
+.sermon {
+    padding-top: 25px;
+}
+
+.fila {
+    margin-left: 20px;
+    width: 80%;
+    border-bottom: black 1px solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: cornsilk;
+}
+
+.concepto {
+    min-width: 200px;
+    font-weight: bold;
+}
+
+.valor {
+    padding: 5px;
+}
+
+
+/* Preliminares -----------------------*/
+
+.preliminar-titulo {
+    font-weight: bold;
+    background-color: whitesmoke;
+}
