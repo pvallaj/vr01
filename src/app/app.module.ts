@@ -43,6 +43,7 @@ import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-us
 import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
 import { MensajeComponent } from './generales/mensaje/mensaje.component';
 import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
+import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-det-narrativa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.
     RegistroUsuarioComponent,
     IniciarSesionComponent,
     MensajeComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    ConsDetNarrativaComponent
   ],
   imports: [
     BrowserModule,

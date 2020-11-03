@@ -1,0 +1,26 @@
+<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado">
+    <mat-tab label="Detalle de narrativa" isActive>
+        <div class="resultado" fxLayout="column" *ngIf="narrativa!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Autor:</div>
+                <div class="valor" fxFlex="85">{{narrativa.nombre}}</div>
+            </div>
+
+        </div>
+    </mat-tab>
+    <mat-tab label="Bibliografia">
+        <div class="resultado" fxLayout="column" *ngIf="narrativa!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="30">Catalogo</div>
+                <div class="titulo" fxFlex="10">Numeración</div>
+                <div class="titulo" fxFlex="60">Nombre</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of narrativa">
+                <div class="valor" fxFlex="30">{{elemento.catalogo}}</div>
+                <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
+                <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+            </div>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
