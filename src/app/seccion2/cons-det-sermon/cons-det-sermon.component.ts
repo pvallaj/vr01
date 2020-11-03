@@ -18,7 +18,11 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   sermon:any=[];
   libro:any=[];
   preliminares:any=[];
+  catalogos:any=[];
+  grabados:any=[];
+  repositorios:any=[];
   estaCargando:boolean=false;
+  tabSeleccionado=0;
 
   constructor(private cnx:ConexionService,
     public dialog: MatDialog,) {}
@@ -29,7 +33,17 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     console.log("cambio el parametro.....");
     console.log(changes);
-    if(this.id_sermon==0) return;
+    if(this.id_sermon==0){
+      console.log("Regresando a valores iniciales");
+      this.sermon=[];
+      this.libro=[];
+      this.preliminares=[];
+      this.catalogos=[];
+      this.grabados=[];
+      this.repositorios=[];
+      this.tabSeleccionado=0;
+      return;
+    } 
     //consultando detalle del sermon
     this.cnx.sermones({id_sermon:this.id_sermon}, 'consulta detalle sermon')
     .subscribe(
@@ -39,6 +53,9 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.sermon=temp.sermon[0];
         this.libro=temp.libro[0];
         this.preliminares=temp.preliminares;
+        this.catalogos=temp.catalogos;
+        this.grabados=temp.grabados;
+        this.repositorios=temp.repositorios;
         console.log(temp);
         this.estaCargando=false;
       },

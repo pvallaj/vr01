@@ -114,11 +114,10 @@ export class ConsSermonesComponent implements OnInit {
 
   cambiar(ids){
     console.log(ids);
+    this.id_sermon_sel=ids;
     if(this.despResultado=='block'){
       this.despResultado='none';
       this.despDetalle='block';
-      this.id_sermon_sel=ids;
-
     }else{
       this.despResultado='block';
       this.despDetalle='none';
@@ -127,7 +126,6 @@ export class ConsSermonesComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.listaAutores.filter((option) => option.toLowerCase().includes(filterValue));
   }
 
