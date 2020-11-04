@@ -43,11 +43,11 @@
         <div mat-subheader>Información encontrada en la base de datos</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
 
-            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
-                <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
+            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
+                <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
                         <p class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
-                        <button *ngIf="(i+1)==idxSeleccionado" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar()">
+                        <button *ngIf="(narrativa.id_texto)==idxSeleccionado" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar()">
                             <mat-icon>menu</mat-icon>
                         </button>
                     </div>
@@ -60,6 +60,6 @@
     </div>
     <div class="detalle" [style.display]="despDetalle">
         <button mat-button color="Cambiar" (click)="cambiar()">Regresar</button>
-        <app-cons-det-narrativa></app-cons-det-narrativa>
+        <app-cons-det-narrativa [id_texto]="idxSeleccionado"></app-cons-det-narrativa>
     </div>
 </div>

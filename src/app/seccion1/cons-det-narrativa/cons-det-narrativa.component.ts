@@ -14,12 +14,12 @@ export interface Parametros {
 })
 export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
-  @Input() id_sermon:number=0;
-  narrativa:any=[];
+  @Input() id_texto:number=0;
+  bibliografia:any=[];
   
   estaCargando:boolean=false;
   tabSeleccionado:number=0;
-  
+
   constructor(private cnx:ConexionService,
     public dialog: MatDialog,) {}
 
@@ -29,19 +29,20 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     console.log("Cambio de narrativa");
     console.log(changes);
-    if(this.id_sermon==0){
+    if(this.id_texto==0){
       console.log("Regresando a valores iniciales");
-      this.narrativa=[];
+      this.bibliografia=[];
       
       return;
     } 
     //consultando detalle del sermon
-    this.cnx.sermones({id_sermon:this.id_sermon}, 'consulta detalle sermon')
+    this.cnx.narrativas({id_texto:this.id_texto}, 'consulta detalle narrativa')
     .subscribe(
       (data)=>{
         let idx=1;
         let temp=data['resultado'];
-        this.narrativa=temp.narrativa[0];
+        console.log(temp);
+        this.bibliografia=temp.bibliograficos[0];
         
       },
     (error)=>{
