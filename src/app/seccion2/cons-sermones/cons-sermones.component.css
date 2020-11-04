@@ -41,3 +41,25 @@ p {
     color: grey;
     font-weight: bold;
 }
+
+.ac {
+    width: 300px;
+}
+
+.consulta {
+    padding: 10px;
+}
+
+.seleccionado {
+    background: lightblue;
+}
+
+mat-card-content {
+    height: 100%;
+}
+
+.buscando {
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+}

@@ -1,0 +1,56 @@
+.autor {
+    padding: 5px;
+    width: 400px;
+}
+
+.obra {
+    padding: 5px;
+    width: 400px;
+}
+
+.clasificacion {
+    padding: 5px;
+    width: 400px;
+}
+
+
+/*tooltip */
+
+::ng-deep .mat-tooltip {
+    background-color: darkblue !important;
+    font-size: 14px !important;
+}
+
+
+/*resultado*/
+
+.resultado {
+    height: 700px;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+.consulta {
+    padding: 10px;
+}
+
+.tarjeta {
+    margin-top: 10px;
+}
+
+.seleccionado {
+    background: lightblue;
+}
+
+mat-card-content {
+    height: 100%;
+}
+
+
+/*--------------------*/
+
+.buscando {
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+}

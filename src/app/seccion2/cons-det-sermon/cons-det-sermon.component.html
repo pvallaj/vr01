@@ -1,21 +1,95 @@
-<p>Detalle de Sermón seleccionado</p>
-
-<mat-tab-group animationDuration="2000ms">
+<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado">
     <mat-tab label="Detalle de sermon" isActive>
-        <div class="resultado" fxFlex fxLayoutAlign="center space-around">
-            <div class="sermon" fxLayout="column">
-                <p class="r1"> DELGADO Y BUENROSTRO, ANTONIO, «Nobleza de Job execvtoriada con prvevas de sv libro deducidas para predicarse en seis sermones morales en la Iglesia de Señoras Religiosas de Nuestra Señora de Valvanera de Mexico los Viernes de Qvaresma
-                    por la tarde año 1683. Sermon Primero» en Delgado y Buenrostro , Antonio y, Historias varias canonicas moralizadas en sermones consagrados a la soberana magestad de la Emperatriz de los cielos la Uirgen Maria, madre de Dios, y Señora
-                    Nvestra del Rosario predicados en las Indias de la Nveva España // Adqvierese la nobleza por la virtud, por las letras, por el linaje, por el valor. Todas quatro raizes propagaron el tronco, que fue arbol florido, y fructuoso del mayor
-                    Monarca de Hus; del Blason heroyco de las edades, del dueño de sus pasiones; del fiel mas igual en las balanzas…, Puebla , Diego Fernández de León, 1693. </p>
-
-
-                <p>Thema: Vir erat in terra Hus nomine Iob; et erat vir ille simplex, et rectus, ac timens Deum, et recedens a malo. Job 1, 1. </p>
-                <p>Protesta de fe: </p>
+        <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Autor:</div>
+                <div class="valor" fxFlex="85">{{sermon.nombre}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Titulo del Sermon:</div>
+                <div class="valor">{{sermon.titulo}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Nombre del autor del libro:</div>
+                <div class="valor">{{libro?.autor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Titulo del libro:</div>
+                <div class="valor">{{libro?.libro_titulo}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Inicio del sermón:</div>
+                <div class="valor">{{sermon.inicio_sermon}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Ciudad:</div>
+                <div class="valor">{{libro?.libro_ciudad}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Impresor:</div>
+                <div class="valor">{{libro?.libro_impresor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Año:</div>
+                <div class="valor">{{libro?.libro_anio}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Thema:</div>
+                <div class="valor">{{sermon.thema}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Protesta de fe:</div>
+                <div class="valor">{{sermon.protesta_fe}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Grabado:</div>
+                <div class="valor">{{grabados[0]?.grabado}}</div>
             </div>
         </div>
     </mat-tab>
-    <mat-tab label="Catálogos bibliográficos">Catálogos bibliográficos</mat-tab>
-    <mat-tab label="Preliminares">Preliminares </mat-tab>
-    <mat-tab label="Repositorios">Repositorios</mat-tab>
+    <mat-tab label="Catálogos bibliográficos">
+        <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="30">Catalogo</div>
+                <div class="titulo" fxFlex="10">Numeración</div>
+                <div class="titulo" fxFlex="60">Nombre</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
+                <div class="valor" fxFlex="30">{{elemento.catalogo}}</div>
+                <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
+                <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Preliminares">
+        <div class="resultado" fxLayout="column" *ngIf="preliminares!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="10">Ord.</div>
+                <div class="titulo" fxFlex="15">Tipo</div>
+                <div class="titulo" fxFlex="45">Titulo</div>
+                <div class="titulo" fxFlex="30">Autor</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
+                <div class="valor" fxFlex="10">{{elemento.orden_dentro_sermon}}</div>
+                <div class="valor" fxFlex="15">{{elemento.preliminar_tipo}}</div>
+                <div class="valor" fxFlex="45">{{elemento.preliminar_titulo}}</div>
+                <div class="valor" fxFlex="30">{{elemento.autor}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Repositorios">
+        <div class="resultado" fxLayout="column" *ngIf="repositorios!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="30">Repositorio</div>
+                <div class="titulo" fxFlex="35">Clasificación</div>
+                <div class="titulo" fxFlex="35">Enlace</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
+                <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>
+                <div class="valor" fxFlex="35">{{elemento.clasificacion}}</div>
+                <div class="valor" fxFlex="35">{{elemento.enlace_digitalizacion}}</div>
+            </div>
+        </div>
+
+    </mat-tab>
 </mat-tab-group>

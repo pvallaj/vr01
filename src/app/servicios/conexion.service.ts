@@ -23,11 +23,18 @@ export class ConexionService {
     
     return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
   }
-  obtenerSermones(parametros){
+  sermones(parametros, accion){
     let headers = new HttpHeaders();
-    const cuerpo =  JSON.stringify({cn:{accion:'consulta sermones', parametros} });
+    const cuerpo =  JSON.stringify({cn:{accion:accion, parametros} });
     
     return this.http.post(this.urlBase+'/sermones', cuerpo,  {headers:headers });
+  }
+
+  narrativas(parametros, accion){
+    let headers = new HttpHeaders();
+    const cuerpo =  JSON.stringify({cn:{accion:accion, parametros} });
+    
+    return this.http.post(this.urlBase+'/narrativas', cuerpo,  {headers:headers });
   }
 
   ejecutar(componente:string, parametros: any) {
