@@ -21,7 +21,7 @@ import { VideoComponent } from './videoteca/video/video.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EncabezadoComponent } from './navegacion/encabezado/encabezado.component';
 import { OpcionesComponent } from './navegacion/opciones/opciones.component';
-import { Seccion1Component } from './seccion1/seccion1.component';
+import { ConsultaNarrativasComponent } from './seccion1/cons-narrativas/consultaNarrativas.component';
 import { ConexionService } from './servicios/Conexion.service';
 import { MnsjDetalleComponent } from './seccion1/mnsj-detalle/mnsj-detalle.component';
 import { DetalleCatalogoComponent } from './seccion1/consulta/detalle-catalogo/detalle-catalogo.component';
@@ -51,7 +51,6 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
     VideoComponent,
     EncabezadoComponent,
     OpcionesComponent,
-    Seccion1Component,
     MnsjDetalleComponent,
     DetalleCatalogoComponent,
     CatalogoComponent,
@@ -63,13 +62,15 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
     //pipes
     SeguroPipe,
     HtmlEnterPipe,
+    //otros
     BibliotecaComponent,
     LtsNoticiasComponent,
     RegistroUsuarioComponent,
     IniciarSesionComponent,
     MensajeComponent,
     ListaUsuariosComponent,
-    ConsDetNarrativaComponent
+    ConsDetNarrativaComponent,
+    ConsultaNarrativasComponent,
   ],
   imports: [
     BrowserModule,

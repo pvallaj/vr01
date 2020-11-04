@@ -1,4 +1,26 @@
 <mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado">
+    <mat-tab label="Narrativa" isActive>
+        <div class="resultado" fxLayout="column" *ngIf="narrativa!=null">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Autor:</div>
+                <div class="valor" fxFlex="85">{{narrativa.autor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">obra:</div>
+                <div class="valor" fxFlex="85">{{narrativa.obra}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Ubicación:</div>
+                <div class="valor" fxFlex="85">{{narrativa.ubicacion}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Narrativa:</div>
+                <div class="valor" fxFlex="85">
+                    <pre>{{narrativa.narratio}}</pre>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
     <mat-tab label="bibliografia" isActive>
         <div class="resultado" fxLayout="column" *ngIf="bibliografia!=[]">
             <div class="fila" fxLayout="row">
@@ -50,19 +72,40 @@
             {{bibliografia.autor}}, {{bibliografia.obra}}, {{bibliografia.obra}}, {{bibliografia.ed_paleo}}, {{bibliografia.director_cor}}, {{bibliografia.editor}}, {{bibliografia.editor}}, {{bibliografia.anio}} , {{bibliografia.obra_anfitrio}}
         </div>
     </mat-tab>
-    <mat-tab label="Bibliografia">
-        <!--div class="resultado" fxLayout="column" *ngIf="bibliografia!=[]">
+    <mat-tab label="Princeps">
+        <div class="resultado" fxLayout="column" *ngIf="princeps!=[]">
             <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="30">Catalogo</div>
-                <div class="titulo" fxFlex="10">Numeración</div>
-                <div class="titulo" fxFlex="60">Nombre</div>
+                <div class="titulo" fxFlex="15">Autor:</div>
+                <div class="valor" fxFlex="85">{{princeps.autor}}</div>
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of bibliografia">
-                <div class="valor" fxFlex="30">{{elemento.catalogo}}</div>
-                <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
-                <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">obra:</div>
+                <div class="valor" fxFlex="85">{{princeps.obra_tomo}}</div>
             </div>
-        </div-->
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">librero:</div>
+                <div class="valor" fxFlex="85">{{princeps.librero}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Ciudad:</div>
+                <div class="valor" fxFlex="85">{{princeps.Ciudad}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">A costa de:</div>
+                <div class="valor" fxFlex="85">{{princeps.a_costa_de}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Año:</div>
+                <div class="valor" fxFlex="85">{{princeps.anio}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Princeps:</div>
+                <div class="valor" fxFlex="85">{{princeps.princeps}}</div>
+            </div>
+        </div>
+        <div>
+            {{princeps.autor}}, {{princeps.obra_tomo}}, {{princeps.librero}}, {{princeps.ciudad}}, {{princeps.a_costa_de}}, {{princeps.anio}}, {{princeps.princeps}}
+        </div>
     </mat-tab>
 
 </mat-tab-group>

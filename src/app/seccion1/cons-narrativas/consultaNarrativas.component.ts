@@ -5,15 +5,16 @@ import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-import { ConexionService } from '../servicios/Conexion.service';
-import { MnsjDetalleComponent } from '../seccion1/mnsj-detalle/mnsj-detalle.component';
+import { ConexionService } from '../../servicios/Conexion.service';
+import { MnsjDetalleComponent } from '../mnsj-detalle/mnsj-detalle.component';
 import { MatDialog } from '@angular/material/dialog';
+
 @Component({
-  selector: 'app-seccion1',
-  templateUrl: './seccion1.component.html',
-  styleUrls: ['./seccion1.component.css']
+  selector: 'app-consulta-narrativas',
+  templateUrl: './consultaNarrativas.component.html',
+  styleUrls: ['./consultaNarrativas.component.css']
 })
-export class Seccion1Component implements OnInit {
+export class ConsultaNarrativasComponent implements OnInit {
   public listaResultado:any[]=[];
   //autocomplete
   acAutores = new FormControl();
@@ -29,30 +30,33 @@ export class Seccion1Component implements OnInit {
   frm:FormGroup;
 
   //paginación
-  pidx:number=0; //Número de página.
-  ptam:number=10; //tamaño de la pagina
+  public pidx = 0; //Número de página.
+  public ptam = 10; //tamaño de la pagina
 
   //seleccionar elemento
-  idxSeleccionado:number=0;
+  public idxSeleccionado = 0;
+  public narrativaSeleccionada = {};
+  public idNarrativaSel = 0;
 
   //Cargando datos.
-  estaCargando:boolean= false;
+  public estaCargando = false;
 
-  constructor(private cnx:ConexionService,
+  public textConsulta: string;
+
+  constructor(
+     private cnx: ConexionService,
      public dialog: MatDialog,
-     private fb:FormBuilder) { }
-  public textConsulta:string;
+     private fb: FormBuilder) { }
+  
   ngOnInit(): void {
     this.crearForma();
     
-
-
     this.cnx.narrativas(null, 'consulta catalogo base').subscribe(
       (datos)=>{
-        this.listaAutores=datos['resultado'].autores;
-        this.listaAutoresObras=datos['resultado'].obras;
-        this.listaCategorias=datos['resultado'].clasificacion;
-      console.log(datos);
+        this.listaAutores = datos['resultado'].autores;
+        this.listaAutoresObras = datos['resultado'].obras;
+        this.listaCategorias = datos['resultado'].clasificacion;
+        console.log(datos);
     },
     (error)=>{
       console.log("error al cargar a los autores");
@@ -63,13 +67,13 @@ export class Seccion1Component implements OnInit {
   autorSeleccionado(sel){
     console.log("seleccionado: ");
     console.log(sel);
-    this.listaObras=this.listaAutoresObras.filter(elm=>elm.autor==sel.value);
+    this.listaObras = this.listaAutoresObras.filter(elm => elm.autor === sel.value);
     console.log(this.listaObras);
   }
 
-  consulta(){
+  public consulta(){
     this.estaCargando=true;
-    let p={
+    let p = {
       autor: this.frm.value.autor,
       obra: this.frm.value.obra,
       desde:  this.pidx*this.ptam,
@@ -96,14 +100,17 @@ export class Seccion1Component implements OnInit {
     )
   }
   
-  
-  cambiar(){
-    if(this.despResultado=='block'){
-      this.despResultado='none';
-      this.despDetalle='block';
-    }else{
-      this.despResultado='block';
-      this.despDetalle='none';
+  public cambiar(seleccionado){
+    if (this.despResultado === 'block') {
+      this.idNarrativaSel = seleccionado.id_texto;
+      this.narrativaSeleccionada = seleccionado;
+      this.despResultado = 'none';
+      this.despDetalle = 'block';
+    } else {
+      this.idNarrativaSel = 0;
+      this.narrativaSeleccionada = null;
+      this.despResultado = 'block';
+      this.despDetalle = 'none';
     }
   }
 
@@ -111,9 +118,9 @@ export class Seccion1Component implements OnInit {
   crearForma(){
     this.frm=this.fb.group({
       //valor inicial, validaciones sincronas, validaciones asincronas
-      autor:['' ],
-      obra:['' ],
-      categoria:['']
+      autor: ['' ],
+      categoria: [''],
+      obra: ['' ]
     });
   }
   cambioAutor(){
