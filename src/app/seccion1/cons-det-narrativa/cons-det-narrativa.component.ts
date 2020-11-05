@@ -27,6 +27,14 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
   public bibliografia: any = [];
   public princeps: any = [];
+  public contexto: any = [];
+  public tipoAccion: any = [];
+  public clasificacion: any = [];
+  public motivos: any = [];
+  public tema: any = [];
+  public versificacion: any = [];
+  public soporte: any = [];
+  public signos: any = [];
 
   public estaCargando = false;
   public tabSeleccionado = 0;
@@ -43,27 +51,32 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
     console.log(changes);
     if(this.idTexto === 0 ) {
       console.log("Regresando a valores iniciales");
-      this.bibliografia=[];
+      this.bibliografia = [];
       return;
     }
 
     //consultando detalle del sermon
     this.cnx.narrativas({id_texto: this.idTexto}, 'consulta detalle narrativa')
     .subscribe(
-      (data)=>{
-        let idx=1;
-        let temp=data['resultado'];
+      (data) => {
+        const temp = data['resultado'];
         console.log(temp);
         this.bibliografia = temp.bibliograficos[0];
         this.princeps = temp.princeps[0];
+        this.contexto = temp.contexto[0];
+        this.tipoAccion = temp.tipoAccion;
+        this.clasificacion = temp.clasificacion;
+        this.motivos = temp.motivos;
+        this.tema = temp.temas;
+        this.versificacion = temp.versificacion;
+        this.soporte = temp.soporte;
+        this.signos = temp.signos;
       },
-    (error)=>{
+    (error) => {
         console.log('No se logro la conexión');
         console.error(error);
-        this.estaCargando=false;
-      }
-    )
-
-
+        this.estaCargando = false;
+      },
+    );
   }
 }

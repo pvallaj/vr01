@@ -107,5 +107,136 @@
             {{princeps.autor}}, {{princeps.obra_tomo}}, {{princeps.librero}}, {{princeps.ciudad}}, {{princeps.a_costa_de}}, {{princeps.anio}}, {{princeps.princeps}}
         </div>
     </mat-tab>
-
+   
+    <mat-tab label="Descripción Discursiva">
+        <div class="resultado" fxLayout="column" *ngIf="contexto!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Descripción Discursiva:</div>
+                <div class="valor" fxFlex="85">{{contexto.descripcion_discursiva}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Personaje Receptor:</div>
+                <div class="valor" fxFlex="85">{{contexto.receptor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Personaje Transmisor:</div>
+                <div class="valor" fxFlex="85">{{contexto.trasmisor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Personaje Emisor:</div>
+                <div class="valor" fxFlex="85">{{contexto.emisor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Espacio abierto desde el que se cuenta:</div>
+                <div class="valor" fxFlex="85">{{contexto.ed_abierto}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Espacio Cerrado desde el que se cuenta:</div>
+                <div class="valor" fxFlex="85">{{contexto.ed_cerrado}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Espacio Abierto referido:</div>
+                <div class="valor" fxFlex="85">{{contexto.er_abierto}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Espacio Cerrado referido:</div>
+                <div class="valor" fxFlex="85">{{contexto.er_cerrado}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Diurno / Nocturno:</div>
+                <div class="valor" fxFlex="85">{{contexto.diurna_nocturna}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Temporalidad dramática:</div>
+                <div class="valor" fxFlex="85">{{contexto.t_dramatico}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Momento Referido: </div>
+                <div class="valor" fxFlex="85">{{contexto.m_referido}}</div>
+            </div>
+        </div>
+        <div>
+            {{contexto.descripcion_discursiva}}, {{contexto.receptor}}, {{contexto.trasmisor}}, {{contexto.emisor}}, {{contexto.ed_abierto}}, {{contexto.ed_cerrado}}, {{contexto.er_abierto}}, {{contexto.er_cerrado}}, {{contexto.diurna_nocturna}}, {{contexto.t_dramatico}}, {{contexto.m_referido}}
+        </div>
+    </mat-tab>
+    <mat-tab label="Tipo de Acción">
+        <div class="resultado" fxLayout="column" *ngIf="tipoAccion!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">Tipo Acción</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of tipoAccion">
+                <div class="valor" fxFlex="20">{{elemento.tipo_accion}}</div>
+                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Clasificación">
+        <div class="resultado" fxLayout="column" *ngIf="tipoAccion!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">Categoria</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of clasificacion">
+                <div class="valor" fxFlex="20">{{elemento.categoria}}</div>
+                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Motivos">
+        <div class="resultado" fxLayout="column" *ngIf="motivos!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">id</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of motivos">
+                <div class="valor" fxFlex="20">{{elemento.id_motivo}}</div>
+                <div class="valor" fxFlex="80">{{elemento.motivo}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Tema">
+        <div class="resultado" fxLayout="column" *ngIf="tema!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">Palabra</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of tema">
+                <div class="valor" fxFlex="20">{{elemento.palabra}}</div>
+                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Versificación">
+        <div class="resultado" fxLayout="column" *ngIf="versificacion!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">Categoria</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of versificacion">
+                <div class="valor" fxFlex="20">{{elemento.categoria}}</div>
+                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Soporte">
+        <div class="resultado" fxLayout="column" *ngIf="soporte!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="20">id</div>
+                <div class="titulo" fxFlex="80">Descripción</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of soporte">
+                <div class="valor" fxFlex="20">{{elemento.id_soporte}}</div>
+                <div class="valor" fxFlex="80">{{elemento.tipo_material}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Signos Actorales de los personajes">
+        <div class="resultado" fxLayout="column" *ngIf="signos!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Gestos explícitos de los actores:</div>
+                <div class="valor" fxFlex="85">{{signos.gestos_dramaticos}}</div>
+            </div>
+        </div>
+    </mat-tab>
 </mat-tab-group>
