@@ -18,25 +18,33 @@ import { ConsDetSermonComponent } from '../cons-det-sermon/cons-det-sermon.compo
 export class ConsSermonesComponent implements OnInit {
   public listaResultado:any[]=[];
   //autocomplete
-  acAutores = new FormControl();
-  listaAutores:string[]=[];
-  listaAutoresOriginal:any[]=[];
-  listaFiltrada: Observable<string[]>;
+  public acAutores = new FormControl();
+  public listaAutores:string[]=[];
+  public listaAutoresOriginal:any[]=[];
+  public listaFiltrada: Observable<string[]>;
+  //------------------------------
+  public impresores = new FormControl();
+  public listaImpresores:[]; 
+  public listaPreliminares:[];
+  public listaDedicatarios:[];
+  public listaCiudades:[];
+  public listaObras:[];
+  public listaOrdenesReligiosas:[];
+  //------------------------------
+  public despResultado:string='block';
+  public despDetalle:string='none';
 
-  despResultado:string='block';
-  despDetalle:string='none';
-
-  frm:FormGroup;
+  public frm:FormGroup;
 
   //paginación
-  pidx:number=0; //Número de página.
-  ptam:number=10; //tamaño de la pagina
+  public pidx:number=0; //Número de página.
+  public ptam:number=10; //tamaño de la pagina
 
   //seleccionar elemento
-  idxSeleccionado:number=0;
-  id_sermon_sel:number=0;
+  public idxSeleccionado:number=0;
+  public id_sermon_sel:number=0;
   //Cargando datos.
-  estaCargando:boolean= false;
+  public estaCargando:boolean= false;
 
   //@ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
@@ -53,13 +61,20 @@ export class ConsSermonesComponent implements OnInit {
       );
 
 
-    this.cnx.sermones(null, 'consulta autores').subscribe(
+    this.cnx.sermones(null, 'consulta catalogos base').subscribe(
       (datos)=>{
-        this.listaAutoresOriginal=datos["resultado"];
-        datos["resultado"].forEach(autor => {
+        this.listaAutoresOriginal=datos["resultado"].autores;
+        this.listaAutoresOriginal.forEach(autor => {
           this.listaAutores.push(autor.autor);        
         });
-      console.log(this.listaAutores);
+        this.listaImpresores=datos["resultado"].impresores;
+        this.listaPreliminares=datos["resultado"].preliminares;
+        this.listaDedicatarios=datos["resultado"].dedicatarios;
+        this.listaCiudades=datos["resultado"].ciudad;
+        this.listaObras=datos["resultado"].obra;
+        this.listaOrdenesReligiosas=datos["resultado"].orden;
+
+      //console.log(this.listaAutores);
     },
     (error)=>{
       console.log("error al cargar a los autores");
@@ -95,6 +110,8 @@ export class ConsSermonesComponent implements OnInit {
         });
         this.listaResultado=temp;
         //console.log(this.listaResultado);
+        this.id_sermon_sel=-1;
+        this.idxSeleccionado=-1;
         this.estaCargando=false;
       },
     (error)=>{
@@ -132,10 +149,20 @@ export class ConsSermonesComponent implements OnInit {
   crearForma(){
     this.frm=this.fb.group({
       //valor inicial, validaciones sincronas, validaciones asincronas
-      autor:['', [ Validators.maxLength(300)]]
+      autor:['', [ Validators.maxLength(300)]],
+      titulo:['', [ Validators.maxLength(300)]],
+      anio_ini:['1612', [ Validators.min(1612), Validators.max(1699)]],
+      anio_fin:['1700', [ Validators.min(1613), Validators.max(1700)]],
+      impresor:['', ],
+      preliminares:['', ],
+      dedicatarios:['', ],
+      ciudad:['', ],
+      tituloObra:['', ],
+      orden:['', ],
     });
   }
   cambioAutor(){
     this.listaResultado=[];
   }
 }
+

@@ -11,7 +11,9 @@ export class ConexionService {
   public componente:"";
 
   constructor(protected http: HttpClient) {
-    this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.headers = new HttpHeaders({ 'content':"application/json",
+    'content-type':"application/x-www-form-urlencoded"});
+
   }
   obtenerCatalogo(cat:string){
     return this.http.get(this.urlBase+'/catalogos/'+cat);
@@ -25,16 +27,19 @@ export class ConexionService {
   }
   sermones(parametros, accion){
     let headers = new HttpHeaders();
-    const cuerpo =  JSON.stringify({cn:{accion:accion, parametros} });
+    const cuerpo =  JSON.stringify({cn:{accion,seccion:"sermones", parametros} });
     
-    return this.http.post(this.urlBase+'/sermones', cuerpo,  {headers:headers });
+    return this.http.post(this.urlBase, cuerpo,  {headers:headers });
   }
 
   narrativas(parametros, accion){
     let headers = new HttpHeaders();
-    const cuerpo =  JSON.stringify({cn:{accion:accion, parametros} });
+    const cuerpo =  JSON.stringify({cn:{
+      accion,
+      seccion:'narrativas', 
+      parametros} });
     
-    return this.http.post(this.urlBase+'/narrativas', cuerpo,  {headers:headers });
+    return this.http.post(this.urlBase, cuerpo,  {headers:headers });
   }
 
   ejecutar(componente:string, parametros: any) {

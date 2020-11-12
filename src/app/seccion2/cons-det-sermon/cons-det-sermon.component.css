@@ -26,6 +26,16 @@ mat-grid-list {
     background-color: cornsilk;
 }
 
+.buscando {
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+}
+
+.regresar {
+    margin: 20px;
+}
+
 
 /* Preliminares -----------------------*/
 

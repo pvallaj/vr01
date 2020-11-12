@@ -35,6 +35,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   public versificacion: any = [];
   public soporte: any = [];
   public signos: any = [];
+  public vinculos: any = [];
 
   public estaCargando = false;
   public tabSeleccionado = 0;
@@ -44,6 +45,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
     public dialog: MatDialog ) {}
 
   ngOnInit(): void {
+    this.tabSeleccionado=0;
   }
   
   ngOnChanges(changes) {
@@ -70,7 +72,9 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
         this.tema = temp.temas;
         this.versificacion = temp.versificacion;
         this.soporte = temp.soporte;
-        this.signos = temp.signos;
+        this.signos = temp.signos[0];
+        this.vinculos = temp.vinculos[0];
+        this.tabSeleccionado=0;
       },
     (error) => {
         console.log('No se logro la conexión');

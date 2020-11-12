@@ -1,5 +1,15 @@
-<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado">
-    <mat-tab label="Detalle de sermon" isActive>
+<mat-card class="buscando" *ngIf="estaCargando">
+    <mat-card-content>
+        <h2 class="example-h2">Consultando base de datos</h2>
+
+        <section class="example-section">
+            <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+            </mat-progress-bar>
+        </section>
+    </mat-card-content>
+</mat-card>
+<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'" *ngIf="!estaCargando">
+    <mat-tab label="Sermon" isActive>
         <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="15">Autor:</div>

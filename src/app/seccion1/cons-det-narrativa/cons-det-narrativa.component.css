@@ -21,3 +21,8 @@ mat-grid-list {
     border-bottom: black 1px solid;
     background-color: cornsilk;
 }
+
+.titulo {
+    font-weight: bold;
+    background-color: whitesmoke;
+}

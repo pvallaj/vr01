@@ -17,17 +17,24 @@ import { MatDialog } from '@angular/material/dialog';
 export class ConsultaNarrativasComponent implements OnInit {
   public listaResultado:any[]=[];
   //autocomplete
-  acAutores = new FormControl();
-  listaAutores:string[]=[];
-  listaAutoresObras:any[]=[];
-  listaObras: any[]=[];
-  listaCategorias: any[]=[];
+  public acAutores = new FormControl();
+  public listaAutores:string[]=[];
+  public listaAutoresObras:any[]=[];
+  public listaObras: any[]=[];
+  public listaClasificacion: any[]=[];
+  public listaTemas: any[]=[];
+  public listaMotivos: any[]=[];
+  public listaVersificaciones: any[]=[];
+  public listaTipoAcciones: any[]=[];
+  public listaSoporte: any[]=[];
 
+  
+  
 
-  despResultado:string='block';
-  despDetalle:string='none';
+  public despResultado:string='block';
+  public despDetalle:string='none';
 
-  frm:FormGroup;
+  public frm:FormGroup;
 
   //paginación
   public pidx = 0; //Número de página.
@@ -43,10 +50,16 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public textConsulta: string;
 
+  //----------------------------
+  public filtrosActivos = new FormControl();
+  public listaFiltros: string[] = ['Autor y Obra', 'Clasificación', 'Tema', 'Motivo', 'Tipo de Verso', 'Tipo de Accion', 'Soporte', 'Vínculo Visual', 'Vínculo Auditivos','Vínculo Acción Dramatica'];
+
   constructor(
      private cnx: ConexionService,
      public dialog: MatDialog,
-     private fb: FormBuilder) { }
+     private fb: FormBuilder) {
+      this.filtrosActivos.setValue(['Autor y Obra', 'Obra']);
+  }
   
   ngOnInit(): void {
     this.crearForma();
@@ -55,7 +68,12 @@ export class ConsultaNarrativasComponent implements OnInit {
       (datos)=>{
         this.listaAutores = datos['resultado'].autores;
         this.listaAutoresObras = datos['resultado'].obras;
-        this.listaCategorias = datos['resultado'].clasificacion;
+        this.listaClasificacion = datos['resultado'].clasificacion;
+        this.listaTemas = datos['resultado'].tema;
+        this.listaMotivos = datos['resultado'].motivos;
+        this.listaVersificaciones = datos['resultado'].versificacion;
+        this.listaTipoAcciones = datos['resultado'].tipoaccion;
+        this.listaSoporte = datos['resultado'].soporte;
         console.log(datos);
     },
     (error)=>{
@@ -120,11 +138,25 @@ export class ConsultaNarrativasComponent implements OnInit {
       //valor inicial, validaciones sincronas, validaciones asincronas
       autor: ['' ],
       categoria: [''],
-      obra: ['' ]
+      obra: ['' ],
+      tema: ['' ],
+      motivo: ['' ],
+      versificacion: ['' ],
+      tipoAccion: ['' ],
+      soporte: ['' ],
+      vinculoVisual: ['' ],
+      vinculoAuditivo: ['' ],
+      vinculoAccionDramatica: ['' ],
+     
     });
   }
   cambioAutor(){
     this.listaResultado=[];
+  }
+
+  cambioFiltros(e){
+    console.log(e);
+    console.log(this.filtrosActivos.value);
   }
 
 }

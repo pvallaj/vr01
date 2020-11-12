@@ -28,6 +28,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     public dialog: MatDialog,) {}
 
   ngOnInit(): void {
+    this.tabSeleccionado=0;
   }
   
   ngOnChanges(changes) {
@@ -41,10 +42,10 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
       this.catalogos=[];
       this.grabados=[];
       this.repositorios=[];
-      this.tabSeleccionado=0;
       return;
     } 
     //consultando detalle del sermon
+    this.estaCargando = true;
     this.cnx.sermones({id_sermon:this.id_sermon}, 'consulta detalle sermon')
     .subscribe(
       (data)=>{
@@ -58,6 +59,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.repositorios=temp.repositorios;
         console.log(temp);
         this.estaCargando=false;
+        this.tabSeleccionado=0;
       },
     (error)=>{
         console.log('No se logro la conexión');

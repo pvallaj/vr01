@@ -1,5 +1,5 @@
 <div class="marco" fxFlex fxLayout="column" fxLayoutAlign="first stretch" fxFill>
-    <form [formGroup]="frm" class="consulta">
+    <form [formGroup]="frm" class="consulta" [style.display]="despResultado" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="space-between stretch">
         <mat-form-field class="ac">
             <input type="text" placeholder="Selecciona un autor" aria-label="Number" matInput [formControl]="acAutores" [matAutocomplete]="auto" (change)="cambioAutor()">
             <mat-autocomplete #auto="matAutocomplete">
@@ -8,7 +8,81 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <button mat-button color="Cambiar" (click)="consulta()">BUSCAR</button>
+        <mat-form-field class="tituloSermon">
+            <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo">
+            <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="anio">
+            <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
+        </mat-form-field>
+        <mat-form-field class="anio">
+            <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
+        </mat-form-field>
+
+        <mat-form-field class="impresor" appearance="fill">
+            <mat-label>Impresor</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let elemento of listaImpresores" [value]="elemento.id_impresor">
+                    {{elemento.impresor_nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="preliminares" appearance="fill">
+            <mat-label>Preliminares</mat-label>
+            <mat-select>
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let elemento of listaPreliminares" [value]="elemento.id_autor">
+                    {{elemento.autor}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="dedicatarios" appearance="fill">
+            <mat-label>Dedicatarios</mat-label>
+            <mat-select>
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let elemento of listaDedicatarios" [value]="elemento.id_dedicatario">
+                    {{elemento.autor}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="ciudad" appearance="fill">
+            <mat-label>Ciudad</mat-label>
+            <mat-select>
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let elemento of listaCiudades" [value]="elemento.ciudad">
+                    {{elemento.ciudad}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="tituloObra" appearance="fill">
+            <mat-label>Titulo de la Obra</mat-label>
+            <mat-select>
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let elemento of listaObras" [value]="elemento.id_libro">
+                    {{elemento.libro_titulo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="orden" appearance="fill">
+            <mat-label>Orden Religiosa</mat-label>
+            <mat-select>
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let elemento of listaOrdenesReligiosas" [value]="elemento.autor_orden">
+                    {{elemento.autor_orden}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button class="btnBuscar" (click)="consulta()">
+            <mat-icon>search</mat-icon> BUSCAR
+        </button>
     </form>
     <mat-card class="buscando" *ngIf="estaCargando">
         <mat-card-content>
@@ -40,7 +114,9 @@
         </div>
     </div>
     <div class="detalle" [style.display]="despDetalle">
-        <button mat-button color="Cambiar" (click)="cambiar(0)">Regresar</button>
+        <button mat-button class="regresar" (click)="cambiar(0)">
+            <mat-icon>arrow_back_ios</mat-icon> Regresar
+        </button>
         <app-cons-det-sermon [id_sermon]="id_sermon_sel" #detsermon></app-cons-det-sermon>
     </div>
 </div>

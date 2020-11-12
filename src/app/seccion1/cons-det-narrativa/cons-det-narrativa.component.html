@@ -1,4 +1,4 @@
-<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado">
+<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'">
     <mat-tab label="Narrativa" isActive>
         <div class="resultado" fxLayout="column" *ngIf="narrativa!=null">
             <div class="fila" fxLayout="row">
@@ -107,7 +107,7 @@
             {{princeps.autor}}, {{princeps.obra_tomo}}, {{princeps.librero}}, {{princeps.ciudad}}, {{princeps.a_costa_de}}, {{princeps.anio}}, {{princeps.princeps}}
         </div>
     </mat-tab>
-   
+
     <mat-tab label="Descripción Discursiva">
         <div class="resultado" fxLayout="column" *ngIf="contexto!=[]">
             <div class="fila" fxLayout="row">
@@ -156,7 +156,8 @@
             </div>
         </div>
         <div>
-            {{contexto.descripcion_discursiva}}, {{contexto.receptor}}, {{contexto.trasmisor}}, {{contexto.emisor}}, {{contexto.ed_abierto}}, {{contexto.ed_cerrado}}, {{contexto.er_abierto}}, {{contexto.er_cerrado}}, {{contexto.diurna_nocturna}}, {{contexto.t_dramatico}}, {{contexto.m_referido}}
+            {{contexto.descripcion_discursiva}}, {{contexto.receptor}}, {{contexto.trasmisor}}, {{contexto.emisor}}, {{contexto.ed_abierto}}, {{contexto.ed_cerrado}}, {{contexto.er_abierto}}, {{contexto.er_cerrado}}, {{contexto.diurna_nocturna}}, {{contexto.t_dramatico}},
+            {{contexto.m_referido}}
         </div>
     </mat-tab>
     <mat-tab label="Tipo de Acción">
@@ -234,8 +235,88 @@
     <mat-tab label="Signos Actorales de los personajes">
         <div class="resultado" fxLayout="column" *ngIf="signos!=[]">
             <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Gestos explícitos de los actores:</div>
-                <div class="valor" fxFlex="85">{{signos.gestos_dramaticos}}</div>
+                <div class="titulo" fxFlex="40">Gestos explícitos de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.gestos_dramaticos}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos explícitos corporales de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.movimientos_dramaticos}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Modulaciones de Voz explícitas de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.voz_dramaticos}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos explícitos en la mirada de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.vista_dramaticos}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Gestos implícitos de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.gestos_dramaticos_no}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos corporales implícitos de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.movimientos_dramaticos_no}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Modulaciones implícitas en la voz de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.voz_dramaticos_no}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos implícitos en la mirada de los actores:</div>
+                <div class="valor" fxFlex="60">{{signos.vista_dramaticos_no}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Signos actorales de los personajes referidos en la relación">
+        <div class="resultado" fxLayout="column" *ngIf="signos!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Gestos dramáticos de los personajes referidos:</div>
+                <div class="valor" fxFlex="60">{{signos.gestos_dieg}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos corporales de los personajes referidos</div>
+                <div class="valor" fxFlex="60">{{signos.movimientos_dieg}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Modulaciones de voz de los personajes referidos:</div>
+                <div class="valor" fxFlex="60">{{signos.voz_dieg}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Movimientos en la mirada de los personajes referidos:</div>
+                <div class="valor" fxFlex="60">{{signos.vista_dieg}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Signos actorales implícitos de los personajes referidos:</div>
+                <div class="valor" fxFlex="60">{{signos.implicitos}}</div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Vinculos">
+        <div class="resultado" fxLayout="column" *ngIf="vinculos!=[]">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos visuales:</div>
+                <div class="valor" fxFlex="60">{{vinculos.visuales}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos auditivos:</div>
+                <div class="valor" fxFlex="60">{{vinculos.auditivos}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos con el presente de la acción dramática:</div>
+                <div class="valor" fxFlex="60">{{vinculos.presente}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos mediante referencias metadiscursivos:</div>
+                <div class="valor" fxFlex="60">{{vinculos.discurso}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos mediante apelativos al receptor de la relación:</div>
+                <div class="valor" fxFlex="60">{{vinculos.receptor}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="40">Vínculos mediante apelativos al espectador:</div>
+                <div class="valor" fxFlex="60">{{vinculos.espectador}}</div>
             </div>
         </div>
     </mat-tab>

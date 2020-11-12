@@ -42,9 +42,42 @@ p {
     font-weight: bold;
 }
 
+
+/* Elementos de consulta*/
+
 .ac {
     width: 300px;
 }
+
+.tituloSermon {
+    width: 300px;
+}
+
+.anio,
+.order {
+    width: 300px;
+}
+
+.impresor,
+.preliminares,
+.dedicatarios {
+    width: 300px;
+}
+
+.tituloObra {
+    width: 600px;
+}
+
+.ciudad {
+    min-width: 200px;
+}
+
+.btnBuscar {
+    width: 300px;
+}
+
+
+/* -------------------------------- */
 
 .consulta {
     padding: 10px;
