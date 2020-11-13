@@ -1,5 +1,5 @@
 <div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="center center">
-    <mat-form-field appearance="fill" fxFill >
+    <mat-form-field appearance="fill" fxFill>
         <mat-label>Seleccione los filtros a usar para buscar las narrativas</mat-label>
         <mat-select [formControl]="filtrosActivos" multiple (selectionChange)="cambioFiltros($event)">
             <mat-select-trigger>
@@ -34,7 +34,7 @@
 
         <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Clasificación')>=0">
             <mat-label>Seleccione una clasificación</mat-label>
-            <mat-select name="clase" formControlName="categoria">
+            <mat-select name="clase" formControlName="clasificacion">
                 <mat-option>Ninguno</mat-option>
                 <mat-option *ngFor="let categoria of listaClasificacion" [value]="categoria.id" matTooltip="{{categoria.categoria}}">
                     {{categoria.categoria}}
@@ -140,7 +140,7 @@
 
         </div>
     </div>
-    <div class="detalle" [style.display]="despDetalle">
+    <div fxFill [style.display]="despDetalle">
         <button mat-button color="Cambiar" (click)="cambiar(null)">Regresar</button>
         <app-cons-det-narrativa [idTexto]="idNarrativaSel" [narrativa]="narrativaSeleccionada"></app-cons-det-narrativa>
     </div>

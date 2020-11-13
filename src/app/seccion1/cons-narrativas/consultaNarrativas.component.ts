@@ -91,9 +91,14 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public consulta(){
     this.estaCargando=true;
+
+    console.log(this.frm.value);
+
     let p = {
       autor: this.frm.value.autor,
       obra: this.frm.value.obra,
+      clasificacion: this.frm.value.clasificacion,
+      tema: this.frm.value.tema,
       desde:  this.pidx*this.ptam,
       pagtam: this.ptam
     };
@@ -137,7 +142,7 @@ export class ConsultaNarrativasComponent implements OnInit {
     this.frm=this.fb.group({
       //valor inicial, validaciones sincronas, validaciones asincronas
       autor: ['' ],
-      categoria: [''],
+      clasificacion: [''],
       obra: ['' ],
       tema: ['' ],
       motivo: ['' ],
