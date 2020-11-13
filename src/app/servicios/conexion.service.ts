@@ -13,7 +13,7 @@ export class ConexionService {
   constructor(protected http: HttpClient) {
     this.headers = new HttpHeaders({ 'content':"application/json",
     'content-type':"application/x-www-form-urlencoded"});
-
+   //this.headers = new HttpHeaders({ 'content-type':"application/x-www-form-urlencoded"});
   }
   obtenerCatalogo(cat:string){
     return this.http.get(this.urlBase+'/catalogos/'+cat);
@@ -26,20 +26,22 @@ export class ConexionService {
     return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
   }
   sermones(parametros, accion){
-    let headers = new HttpHeaders();
+    console.log('Iniciando peticion POST Sermones');
+
+ 
     const cuerpo =  JSON.stringify({cn:{accion,seccion:"sermones", parametros} });
     
-    return this.http.post(this.urlBase, cuerpo,  {headers:headers });
+    return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
   narrativas(parametros, accion){
-    let headers = new HttpHeaders();
+    console.log('Iniciando peticion POST Narrativas');
     const cuerpo =  JSON.stringify({cn:{
       accion,
       seccion:'narrativas', 
       parametros} });
     
-    return this.http.post(this.urlBase, cuerpo,  {headers:headers });
+    return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
   ejecutar(componente:string, parametros: any) {

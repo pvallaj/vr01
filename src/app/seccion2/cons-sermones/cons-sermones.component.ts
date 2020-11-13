@@ -46,11 +46,22 @@ export class ConsSermonesComponent implements OnInit {
   //Cargando datos.
   public estaCargando:boolean= false;
 
+  //----------------------------
+  public filtrosActivos = new FormControl();
+  public listaFiltros: string[] = ['Autor', 'Titulo', 'Año Inicio', 'Año Fin',
+                                  'Impresor', 'Preliminares', 'Dedicatarios', 'Ciudad',
+                                   'Obra', 'Orden'];
+
   //@ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
   constructor(private cnx:ConexionService,
      public dialog: MatDialog,
-     private fb:FormBuilder) { }
+     private fb:FormBuilder) { 
+
+      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Fin',
+      'Impresor', 'Preliminares', 'Dedicatarios', 'Ciudad',
+       'Obra', 'Orden']);
+     }
   public textConsulta:string;
   ngOnInit(): void {
     this.crearForma();
@@ -163,6 +174,11 @@ export class ConsSermonesComponent implements OnInit {
   }
   cambioAutor(){
     this.listaResultado=[];
+  }
+
+  cambioFiltros(e){
+    console.log(e);
+  
   }
 }
 

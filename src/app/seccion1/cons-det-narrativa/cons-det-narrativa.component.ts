@@ -39,7 +39,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
   public estaCargando = false;
   public tabSeleccionado = 0;
-
+  
   constructor(
     private cnx: ConexionService,
     public dialog: MatDialog ) {}
