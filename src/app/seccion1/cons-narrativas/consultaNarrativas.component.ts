@@ -18,7 +18,7 @@ export class ConsultaNarrativasComponent implements OnInit {
   public listaResultado:any[]=[];
   //autocomplete
   public acAutores = new FormControl();
-  public listaAutores:string[]=[];
+  public listaAutores:any[]=[];
   public listaAutoresObras:any[]=[];
   public listaObras: any[]=[];
   public listaClasificacion: any[]=[];
@@ -28,8 +28,8 @@ export class ConsultaNarrativasComponent implements OnInit {
   public listaTipoAcciones: any[]=[];
   public listaSoporte: any[]=[];
 
-  
-  
+
+
 
   public despResultado:string='block';
   public despDetalle:string='none';
@@ -50,20 +50,31 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public textConsulta: string;
 
-  //----------------------------
+  // ----------------------------
   public filtrosActivos = new FormControl();
-  public listaFiltros: string[] = ['Autor y Obra', 'Clasificación', 'Tema', 'Motivo', 'Tipo de Verso', 'Tipo de Accion', 'Soporte', 'Vínculo Visual', 'Vínculo Auditivos','Vínculo Acción Dramatica'];
+  public listaFiltros: any[] = [
+    { filtro : 'Autor', descripcion: 'Descripción del filtro' },
+    { filtro : 'Obra', descripcion: 'Descripción del filtro'},
+    { filtro : 'Clasificación', descripcion: 'Descripción del filtro'},
+    { filtro : 'Tema', descripcion: 'Descripción del filtro'},
+    { filtro : 'Motivo', descripcion: 'Descripción del filtro'},
+    { filtro : 'Tipo de Verso', descripcion: 'Descripción del filtro'},
+    { filtro : 'Tipo de Accion', descripcion: 'Descripción del filtro'},
+    { filtro : 'Soporte', descripcion: 'Descripción del filtro'},
+    { filtro : 'Vínculo Visual', descripcion: 'Descripción del filtro'},
+    { filtro : 'Vínculo Auditivos', descripcion: 'Descripción del filtro'},
+    { filtro : 'Vínculo Acción Dramatica', descripcion: 'Descripción del filtro'}];
 
   constructor(
      private cnx: ConexionService,
      public dialog: MatDialog,
      private fb: FormBuilder) {
-      this.filtrosActivos.setValue(['Autor y Obra', 'Obra']);
+      this.filtrosActivos.setValue(['Autor', 'Obra']);
   }
-  
+
   ngOnInit(): void {
     this.crearForma();
-    
+
     this.cnx.narrativas(null, 'consulta catalogo base').subscribe(
       (datos)=>{
         this.listaAutores = datos['resultado'].autores;
@@ -74,19 +85,21 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.listaVersificaciones = datos['resultado'].versificacion;
         this.listaTipoAcciones = datos['resultado'].tipoaccion;
         this.listaSoporte = datos['resultado'].soporte;
-        console.log(datos);
+        this.listaObras = this.listaAutoresObras;
     },
     (error)=>{
       console.log("error al cargar a los autores");
       console.log(error);
     })
   }
-  
-  autorSeleccionado(sel){
+
+  public autorSeleccionado(sel){
     console.log("seleccionado: ");
-    console.log(sel);
-    this.listaObras = this.listaAutoresObras.filter(elm => elm.autor === sel.value);
-    console.log(this.listaObras);
+    if ( sel.value === undefined) {
+      this.listaObras = this.listaAutoresObras;
+    } else {
+      this.listaObras = this.listaAutoresObras.filter(elm => elm.autor === sel.value);
+    }
   }
 
   public consulta(){
@@ -95,12 +108,17 @@ export class ConsultaNarrativasComponent implements OnInit {
     console.log(this.frm.value);
 
     let p = {
-      autor: this.frm.value.autor,
-      obra: this.frm.value.obra,
-      clasificacion: this.frm.value.clasificacion,
-      tema: this.frm.value.tema,
-      desde:  this.pidx*this.ptam,
-      pagtam: this.ptam
+      autor:          this.frm.value.autor,
+      obra:           this.frm.value.obra,
+      clasificacion:  this.frm.value.clasificacion,
+      tema:           this.frm.value.tema,
+      motivo:         this.frm.value.motivo,
+      tipoVerso:      this.frm.value.tipoVerso,
+      tipoAccion:     this.frm.value.tipoAccion,
+      soporte:        this.frm.value.soporte,
+
+      desde:          this.pidx*this.ptam,
+      pagtam:         this.ptam
     };
 
     let temp:any[]=[];
@@ -122,7 +140,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       }
     )
   }
-  
+
   public cambiar(seleccionado){
     if (this.despResultado === 'block') {
       this.idNarrativaSel = seleccionado.id_texto;
@@ -146,13 +164,13 @@ export class ConsultaNarrativasComponent implements OnInit {
       obra: ['' ],
       tema: ['' ],
       motivo: ['' ],
-      versificacion: ['' ],
+      tipoVerso: ['' ],
       tipoAccion: ['' ],
       soporte: ['' ],
       vinculoVisual: ['' ],
       vinculoAuditivo: ['' ],
       vinculoAccionDramatica: ['' ],
-     
+
     });
   }
   cambioAutor(){

@@ -1,3 +1,13 @@
+.consulta {
+    margin: 10px;
+    /*border: solid black 2px;*/
+}
+.marco{
+    /*border: solid blue 1px;*/
+    margin: 1px;
+}
+
+
 .autor {
     padding: 5px;
     width: 400px;
@@ -31,10 +41,6 @@
     height: 700px;
     padding: 5px;
     overflow-y: scroll;
-}
-
-.consulta {
-    padding: 10px;
 }
 
 .tarjeta {

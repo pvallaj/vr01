@@ -20,8 +20,9 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
+
         <mat-form-field class="tituloSermon" *ngIf="filtrosActivos.value.indexOf('Titulo')>=0">
-            <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo">
+            <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo">
             <button mat-button matSuffix mat-icon-button aria-label="Clear">
                 <mat-icon>close</mat-icon>
             </button>
@@ -30,6 +31,7 @@
         <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Inicio')>=0">
             <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
         </mat-form-field>
+
         <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Final')>=0">
             <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
         </mat-form-field>

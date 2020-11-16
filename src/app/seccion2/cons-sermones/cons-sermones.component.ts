@@ -24,7 +24,7 @@ export class ConsSermonesComponent implements OnInit {
   public listaFiltrada: Observable<string[]>;
   //------------------------------
   public impresores = new FormControl();
-  public listaImpresores:[]; 
+  public listaImpresores:[];
   public listaPreliminares:[];
   public listaDedicatarios:[];
   public listaCiudades:[];
@@ -56,9 +56,9 @@ export class ConsSermonesComponent implements OnInit {
 
   constructor(private cnx:ConexionService,
      public dialog: MatDialog,
-     private fb:FormBuilder) { 
+     private fb:FormBuilder) {
 
-      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Fin',
+      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Final',
       'Impresor', 'Preliminares', 'Dedicatarios', 'Ciudad',
        'Obra', 'Orden']);
      }
@@ -76,7 +76,7 @@ export class ConsSermonesComponent implements OnInit {
       (datos)=>{
         this.listaAutoresOriginal=datos["resultado"].autores;
         this.listaAutoresOriginal.forEach(autor => {
-          this.listaAutores.push(autor.autor);        
+          this.listaAutores.push(autor.autor);
         });
         this.listaImpresores=datos["resultado"].impresores;
         this.listaPreliminares=datos["resultado"].preliminares;
@@ -92,24 +92,28 @@ export class ConsSermonesComponent implements OnInit {
       console.log(error);
     })
   }
-  
+
   consulta(){
     this.estaCargando=true;
     let p={
       autor: this.acAutores.value,
       id_autor:-1,
+
+      titulo: this.frm.value.titulo,
+      anio_ini: this.frm.value.anio_ini,
+      anio_fin: this.frm.value.anio_fin,
+
       desde:  this.pidx*this.ptam,
       pagtam: this.ptam
     };
 
     let temp:any[]=[];
-    
+
     let encontrado=this.listaAutoresOriginal.find(el=>el.autor==this.acAutores.value);
     if(encontrado){
       p.id_autor=encontrado.id_autor;
     }
 
-    console.log(p);
     this.cnx.sermones(p, 'consulta sermones')
     .subscribe(
       (data)=>{
@@ -132,7 +136,7 @@ export class ConsSermonesComponent implements OnInit {
       }
     )
   }
-  
+
   detalle(){
     const dialogRef = this.dialog.open(ConsDetSermonComponent, {
       width: '95%',
@@ -178,7 +182,7 @@ export class ConsSermonesComponent implements OnInit {
 
   cambioFiltros(e){
     console.log(e);
-  
+
   }
 }
 

@@ -104,7 +104,7 @@
             </div>
         </div>
         <div>
-            {{princeps.autor}}, {{princeps.obra_tomo}}, {{princeps.librero}}, {{princeps.ciudad}}, {{princeps.a_costa_de}}, {{princeps.anio}}, {{princeps.princeps}}
+            {{princeps?.autor}}, {{princeps?.obra_tomo}}, {{princeps?.librero}}, {{princeps?.ciudad}}, {{princeps?.a_costa_de}}, {{princeps?.anio}}, {{princeps?.princeps}}
         </div>
     </mat-tab>
 
@@ -211,12 +211,12 @@
     <mat-tab label="Versificación">
         <div class="resultado" fxLayout="column" *ngIf="versificacion!=[]">
             <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">Categoria</div>
-                <div class="titulo" fxFlex="80">Descripción</div>
+                <div class="titulo" fxFlex="20">id</div>
+                <div class="titulo" fxFlex="80">Tipo de verso</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of versificacion">
-                <div class="valor" fxFlex="20">{{elemento.categoria}}</div>
-                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+                <div class="valor" fxFlex="20">{{elemento.id_versificacion}}</div>
+                <div class="valor" fxFlex="80">{{elemento.tipo_verso}}</div>
             </div>
         </div>
     </mat-tab>
