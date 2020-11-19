@@ -19,14 +19,15 @@
                 <div class="titulo" fxFlex="15">Titulo del Sermon:</div>
                 <div class="valor">{{sermon.titulo}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Nombre del autor del libro:</div>
+            <div class="fila" fxLayout="row" *ngIf="libro?.libro_titulo">
+              <div class="titulo" fxFlex="15">Titulo del libro:</div>
+              <div class="valor">{{libro?.libro_titulo}}</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngIf="libro?.autor">
+                <div class="titulo" fxFlex="15">Autor del libro:</div>
                 <div class="valor">{{libro?.autor}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Titulo del libro:</div>
-                <div class="valor">{{libro?.libro_titulo}}</div>
-            </div>
+
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="15">Inicio del sermón:</div>
                 <div class="valor">{{sermon.inicio_sermon}}</div>
@@ -60,27 +61,23 @@
     <mat-tab label="Catálogos bibliográficos">
         <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
             <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="30">Catalogo</div>
-                <div class="titulo" fxFlex="10">Numeración</div>
-                <div class="titulo" fxFlex="60">Nombre</div>
+              <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
+              <div class="titulo" fxFlex="10">Numeración</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
-                <div class="valor" fxFlex="30">{{elemento.catalogo}}</div>
-                <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
-                <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+              <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+              <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
             </div>
         </div>
     </mat-tab>
     <mat-tab label="Preliminares">
         <div class="resultado" fxLayout="column" *ngIf="preliminares!=[]">
             <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="10">Ord.</div>
                 <div class="titulo" fxFlex="15">Tipo</div>
                 <div class="titulo" fxFlex="45">Titulo</div>
                 <div class="titulo" fxFlex="30">Autor</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
-                <div class="valor" fxFlex="10">{{elemento.orden_dentro_sermon}}</div>
                 <div class="valor" fxFlex="15">{{elemento.preliminar_tipo}}</div>
                 <div class="valor" fxFlex="45">{{elemento.preliminar_titulo}}</div>
                 <div class="valor" fxFlex="30">{{elemento.autor}}</div>

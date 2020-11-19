@@ -30,11 +30,11 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.tabSeleccionado=0;
   }
-  
+
   ngOnChanges(changes) {
     console.log("cambio el parametro.....");
     console.log(changes);
-    if(this.id_sermon==0){
+    if (this.id_sermon <= 0) {
       console.log("Regresando a valores iniciales");
       this.sermon=[];
       this.libro=[];
@@ -43,7 +43,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
       this.grabados=[];
       this.repositorios=[];
       return;
-    } 
+    }
     //consultando detalle del sermon
     this.estaCargando = true;
     this.cnx.sermones({id_sermon:this.id_sermon}, 'consulta detalle sermon')

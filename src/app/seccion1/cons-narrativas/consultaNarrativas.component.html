@@ -97,7 +97,7 @@
                 <input matInput type="text" formControlName="vinculoAuditivo">
             </mat-form-field>
         </div>
-        <div class="defconsulta" fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
+        <div  fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
             <mat-form-field appearance="fill" matTooltip="Seleccione los campos que desea usar en la busqueda de Narrativas">
                 <mat-label>Busqueda Avanzada</mat-label>
                 <mat-select [formControl]="filtrosActivos" multiple (selectionChange)="cambioFiltros($event)">

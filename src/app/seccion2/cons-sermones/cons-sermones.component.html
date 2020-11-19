@@ -1,102 +1,108 @@
-<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="first stretch" fxFill>
-    <mat-form-field appearance="fill" fxFill >
-        <mat-label>Seleccione los filtros a usar para buscar las narrativas</mat-label>
-        <mat-select [formControl]="filtrosActivos" multiple (selectionChange)="cambioFiltros($event)">
-            <mat-select-trigger>
-                {{filtrosActivos.value ? filtrosActivos.value[0] : ''}}
-                <span *ngIf="filtrosActivos.value?.length > 1">
-                  (+{{filtrosActivos.value.length - 1}} {{filtrosActivos.value?.length === 2 ? 'otro' : 'otros'}})
-                </span>
-            </mat-select-trigger>
-            <mat-option *ngFor="let filtro of listaFiltros" [value]="filtro">{{filtro}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <form [formGroup]="frm" class="consulta" [style.display]="despResultado" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="space-between stretch">
-        <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Autor')>=0">
-            <input type="text" placeholder="Selecciona un autor" aria-label="Number" matInput [formControl]="acAutores" [matAutocomplete]="auto" (change)="cambioAutor()" >
+<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
+  <form [formGroup]="frm" class="consulta" fxfill>
+        <div class="defconsulta" fxFlex="90" fxLayoutGap="10px">
+          <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Autor')>=0">
+              <input type="text" placeholder="Selecciona un autor" aria-label="Number" matInput [formControl]="acAutores" [matAutocomplete]="auto" (change)="cambioAutor()" >
+              <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let autor of listaFiltrada | async" [value]="autor">
+                      {{autor}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field class="tituloSermon" *ngIf="filtrosActivos.value.indexOf('Titulo')>=0">
+              <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+              </button>
+          </mat-form-field>
+
+          <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Inicio')>=0">
+              <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
+          </mat-form-field>
+
+          <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Final')>=0">
+              <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
+          </mat-form-field>
+
+          <mat-form-field class="impresor" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Impresor')>=0">
+              <mat-label>Impresor</mat-label>
+              <mat-select formControlName="impresor">
+                <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let elemento of listaImpresores" [value]="elemento.id_impresor">
+                      {{elemento.impresor_nombre}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+
+
+          <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Preliminares')>=0">
+            <input type="text" placeholder="Selecciona un autor de preliminar" aria-label="Number" matInput [formControl]="acPreliminares" [matAutocomplete]="auto" (change)="cambioAutorPreliminar()" >
             <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let autor of listaFiltrada | async" [value]="autor">
+                <mat-option *ngFor="let autor of listaPreliminaresFiltrada | async" [value]="autor">
                     {{autor}}
                 </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
+              </mat-autocomplete>
+          </mat-form-field>
 
-        <mat-form-field class="tituloSermon" *ngIf="filtrosActivos.value.indexOf('Titulo')>=0">
-            <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo">
-            <button mat-button matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-
-        <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Inicio')>=0">
-            <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
-        </mat-form-field>
-
-        <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Final')>=0">
-            <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
-        </mat-form-field>
-
-        <mat-form-field class="impresor" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Impresor')>=0">
-            <mat-label>Impresor</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let elemento of listaImpresores" [value]="elemento.id_impresor">
-                    {{elemento.impresor_nombre}}
+          <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Dedicatarios')>=0">
+            <input type="text" placeholder="Selecciona a un dedicatario" aria-label="Number" matInput [formControl]="acDedicatarios" [matAutocomplete]="auto" (change)="cambioAutorPreliminar()" >
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let autor of listaDedicatariosFiltrada | async" [value]="autor">
+                    {{autor}}
                 </mat-option>
-            </mat-select>
-        </mat-form-field>
+              </mat-autocomplete>
+          </mat-form-field>
 
-        <mat-form-field class="preliminares" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Preliminares')>=0">
-            <mat-label>Preliminares</mat-label>
-            <mat-select>
-                <mat-option>Ninguno</mat-option>
-                <mat-option *ngFor="let elemento of listaPreliminares" [value]="elemento.id_autor">
-                    {{elemento.autor}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+          <mat-form-field class="ciudad" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Ciudad')>=0">
+              <mat-label>Ciudad</mat-label>
+              <mat-select>
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let elemento of listaCiudades" [value]="elemento.ciudad">
+                      {{elemento.ciudad}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
 
-        <mat-form-field class="dedicatarios" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Dedicatarios')>=0">
-            <mat-label>Dedicatarios</mat-label>
-            <mat-select>
-                <mat-option>Ninguno</mat-option>
-                <mat-option *ngFor="let elemento of listaDedicatarios" [value]="elemento.id_dedicatario">
-                    {{elemento.autor}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+          <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0">
+              <mat-label>Titulo de la Obra</mat-label>
+              <mat-select>
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let elemento of listaObras" [value]="elemento.id_libro">
+                      {{elemento.libro_titulo}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
 
-        <mat-form-field class="ciudad" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Ciudad')>=0">
-            <mat-label>Ciudad</mat-label>
-            <mat-select>
-                <mat-option>Ninguno</mat-option>
-                <mat-option *ngFor="let elemento of listaCiudades" [value]="elemento.ciudad">
-                    {{elemento.ciudad}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+          <mat-form-field class="orden" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Orden')>=0">
+              <mat-label>Orden Religiosa</mat-label>
+              <mat-select>
+                  <mat-option>Ninguno</mat-option>
+                  <mat-option *ngFor="let elemento of listaOrdenesReligiosas" [value]="elemento.autor_orden">
+                      {{elemento.autor_orden}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+        <div  fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
+          <mat-form-field appearance="fill" fxFill >
+            <mat-label>Busqueda avanzada</mat-label>
+            <mat-select [formControl]="filtrosActivos" multiple (selectionChange)="cambioFiltros($event)">
+                <mat-select-trigger>
+                    {{filtrosActivos.value ? filtrosActivos.value[0] : ''}}
+                    <span *ngIf="filtrosActivos.value?.length > 1">
+                      (+{{filtrosActivos.value.length - 1}} {{filtrosActivos.value?.length === 2 ? 'otro' : 'otros'}})
+                    </span>
+                </mat-select-trigger>
 
-        <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0">
-            <mat-label>Titulo de la Obra</mat-label>
-            <mat-select>
-                <mat-option>Ninguno</mat-option>
-                <mat-option *ngFor="let elemento of listaObras" [value]="elemento.id_libro">
-                    {{elemento.libro_titulo}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="orden" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Orden')>=0">
-            <mat-label>Orden Religiosa</mat-label>
-            <mat-select>
-                <mat-option>Ninguno</mat-option>
-                <mat-option *ngFor="let elemento of listaOrdenesReligiosas" [value]="elemento.autor_orden">
-                    {{elemento.autor_orden}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button mat-raised-button class="btnBuscar" (click)="consulta()">
-            <mat-icon>search</mat-icon> BUSCAR
-        </button>
+                <mat-option *ngFor="let filtro of listaFiltros" [value]="filtro">{{filtro}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <button mat-raised-button class="btnBuscar" (click)="consulta()">
+              <mat-icon>search</mat-icon> BUSCAR
+          </button>
+        </div>
     </form>
     <mat-card class="buscando" *ngIf="estaCargando">
         <mat-card-content>
@@ -115,7 +121,7 @@
             <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
                 <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
-                        <p class="tituloTarjeta">{{i+1}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</p>
+                        <p class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}}</p>
                         <button *ngIf="(i+1)==idxSeleccionado" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar(sermon.id_sermon)">
                             <mat-icon>menu</mat-icon>
                         </button>
@@ -131,6 +137,6 @@
         <button mat-button class="regresar" (click)="cambiar(0)">
             <mat-icon>arrow_back_ios</mat-icon> Regresar
         </button>
-        <app-cons-det-sermon [id_sermon]="id_sermon_sel" #detsermon></app-cons-det-sermon>
+        <app-cons-det-sermon [id_sermon]="idSermonSel" #detsermon></app-cons-det-sermon>
     </div>
 </div>
