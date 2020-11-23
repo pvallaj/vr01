@@ -43,7 +43,7 @@ p {
 }
 
 
-/* Elementos de consulta*/
+/* Elementos de consulta
 
 .ac {
     width: 300px;
@@ -55,7 +55,7 @@ p {
 
 .anio,
 .order {
-    width: 300px;
+    width: 150px;
 }
 
 .impresor,
@@ -74,7 +74,7 @@ p {
 
 .btnBuscar {
     width: 300px;
-}
+}*/
 
 
 /* -------------------------------- */

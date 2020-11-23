@@ -62,7 +62,7 @@
         <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
             <div class="fila" fxLayout="row">
               <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
-              <div class="titulo" fxFlex="10">Numeración</div>
+              <div class="titulo" fxFlex="10">Número</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
               <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
@@ -89,7 +89,7 @@
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="30">Repositorio</div>
                 <div class="titulo" fxFlex="35">Clasificación</div>
-                <div class="titulo" fxFlex="35">Enlace</div>
+                <div class="titulo" fxFlex="35">Digitalizado en</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
                 <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>

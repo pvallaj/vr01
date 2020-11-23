@@ -70,9 +70,7 @@ export class ConsSermonesComponent implements OnInit {
      public dialog: MatDialog,
      private fb: FormBuilder) {
 
-      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Final',
-      'Impresor', 'Preliminares', 'Dedicatarios', 'Ciudad',
-       'Obra', 'Orden']);
+      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Final']);
      }
   public textConsulta: string;
   public ngOnInit(): void {
@@ -117,7 +115,6 @@ export class ConsSermonesComponent implements OnInit {
         this.listaObras = datos['resultado'].obra;
         this.listaOrdenesReligiosas = datos['resultado'].orden;
 
-
     },
     (error) => {
       console.log('error al cargar a los autores');
@@ -141,6 +138,10 @@ export class ConsSermonesComponent implements OnInit {
 
       dedicatario:    this.acDedicatarios.value,
       id_dedicatario: -1,
+
+      ciudad: this.frm.value.ciudad,
+      tituloObra: this.frm.value.tituloObra,
+      orden: this.frm.value.orden,
 
       desde:  this.pidx * this.ptam,
       pagtam: this.ptam,
@@ -226,7 +227,7 @@ export class ConsSermonesComponent implements OnInit {
       autor: ['', [ Validators.maxLength(300)]],
       titulo: ['', [ Validators.maxLength(300)]],
       anio_ini: ['1612', [ Validators.min(1612), Validators.max(1699)]],
-      anio_fin: ['1620', [ Validators.min(1613), Validators.max(1700)]],
+      anio_fin: ['1700', [ Validators.min(1613), Validators.max(1700)]],
       impresor: ['' ],
       preliminares: ['' ],
       dedicatarios: ['' ],
@@ -245,6 +246,12 @@ export class ConsSermonesComponent implements OnInit {
   public cambioFiltros(e) {
     console.log(e);
 
+  }
+  public recortaSermon(sermon: string) {
+    if (sermon.length > 150) {
+      return sermon.substring(0, sermon.indexOf(' ', 150)) + '...';
+    }
+    return sermon;
   }
 }
 

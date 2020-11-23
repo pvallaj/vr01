@@ -7,12 +7,13 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class ConexionService {
   headers: HttpHeaders;
-  urlBase:string='/api';
+  urlBase:string='http://api.appsparatodos.com.mx';
+  //urlBase:string='/api';
   public componente:"";
 
   constructor(protected http: HttpClient) {
     this.headers = new HttpHeaders({ 'content':"application/json",
-    'content-type':"application/x-www-form-urlencoded"});
+    'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
    //this.headers = new HttpHeaders({ 'content-type':"application/x-www-form-urlencoded"});
   }
   obtenerCatalogo(cat:string){
@@ -22,15 +23,12 @@ export class ConexionService {
     let headers = new HttpHeaders();
     headers.append('catalogo', cat);
     const cuerpo =  JSON.stringify({cn:{accion:'consulta',id:idElemento,catalogo:cat} });
-    
+
     return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
   }
   sermones(parametros, accion){
     console.log('Iniciando peticion POST Sermones');
-
- 
     const cuerpo =  JSON.stringify({cn:{accion,seccion:"sermones", parametros} });
-    
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
@@ -38,9 +36,9 @@ export class ConexionService {
     console.log('Iniciando peticion POST Narrativas');
     const cuerpo =  JSON.stringify({cn:{
       accion,
-      seccion:'narrativas', 
+      seccion:'narrativas',
       parametros} });
-    
+
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
