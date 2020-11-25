@@ -1,10 +1,10 @@
 <div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
 
     <form [formGroup]="frm" class="consulta" fxfill>
-        <div class="defconsulta" fxFlex="90">
-            <mat-form-field appearance="fill" class="autor" *ngIf="filtrosActivos.value.indexOf('Autor')>=0" >
+        <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Autor')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un autor</mat-label>
-                <mat-select name="autor" (selectionChange)="autorSeleccionado($event)" formControlName="autor" >
+                <mat-select name="autor" (selectionChange)="autorSeleccionado($event)" formControlName="autor">
                     <mat-option>Ninguno</mat-option>
                     <mat-option *ngFor="let autor of listaAutores" [value]="autor.autor">
                         {{autor.autor}}
@@ -12,7 +12,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="obra" *ngIf="filtrosActivos.value.indexOf('Obra')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione una obra</mat-label>
                 <mat-select name="obra" formControlName="obra">
                     <mat-option>Ninguno</mat-option>
@@ -22,7 +22,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Clasificación')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Clasificación')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione una clasificación</mat-label>
                 <mat-select name="clase" formControlName="clasificacion">
                     <mat-option>Ninguno</mat-option>
@@ -32,7 +32,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Tema')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Tema')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione una tema</mat-label>
                 <mat-select name="clase" formControlName="tema">
                     <mat-option>Ninguno</mat-option>
@@ -42,7 +42,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Motivo')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Motivo')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un motivo</mat-label>
                 <mat-select name="clase" formControlName="motivo">
                     <mat-option>Ninguno</mat-option>
@@ -52,7 +52,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Tipo de Verso')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Tipo de Verso')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un Tipo de Verso</mat-label>
                 <mat-select name="clase" formControlName="tipoVerso">
                     <mat-option>Ninguno</mat-option>
@@ -62,7 +62,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Tipo de Accion')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Tipo de Accion')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un Tipo de Acción</mat-label>
                 <mat-select name="clase" formControlName="tipoAccion">
                     <mat-option>Ninguno</mat-option>
@@ -72,7 +72,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Soporte')>=0">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Soporte')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un Tipo de Soporte</mat-label>
                 <mat-select name="clase" formControlName="soporte">
                     <mat-option>Ninguno</mat-option>
@@ -82,22 +82,16 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Vínculo Visual')>=0">
-                <mat-label>Buscan en Vínculos Visuales</mat-label>
-                <input matInput type="text" formControlName="vinculoVisual">
+            <mat-form-field *ngIf="filtrosActivos.value.indexOf('Textos o Palabras')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <mat-label>Buscan de palabras o textos</mat-label>
+                <input matInput type="text" formControlName="textos" name="textosPalabras">
+                <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                    <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
 
-            <mat-form-field class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Vínculo Auditivos')>=0">
-                <mat-label>Buscan en Vínculos Auditivos</mat-label>
-                <input matInput type="text" formControlName="vinculoAuditivo">
-            </mat-form-field>
-
-            <mat-form-field class="clasificacion" *ngIf="filtrosActivos.value.indexOf('Vínculo Acción Dramatica')>=0">
-                <mat-label>Buscan en Vínculos del presente con la acción dramatica</mat-label>
-                <input matInput type="text" formControlName="vinculoAuditivo">
-            </mat-form-field>
         </div>
-        <div  fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
+        <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
             <mat-form-field appearance="fill" matTooltip="Seleccione los campos que desea usar en la busqueda de Narrativas">
                 <mat-label>Busqueda Avanzada</mat-label>
                 <mat-select [formControl]="filtrosActivos" multiple (selectionChange)="cambioFiltros($event)">
@@ -110,7 +104,7 @@
                     <mat-option *ngFor="let f of listaFiltros" [value]="f.filtro" matTooltip="{{f.descripcion}}">{{f.filtro}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button  (click)="consulta()">
+            <button mat-raised-button (click)="consulta()">
                 <mat-icon>search</mat-icon> BUSCAR
             </button>
         </div>
@@ -137,7 +131,7 @@
                             <mat-icon>menu</mat-icon>
                         </button>
                     </div>
-                    <p>{{narrativa.narratio.substring(0,400)}}</p>
+                    <div [innerHTML]="narrativa.narratioRecortado"></div>
                     <p class="pieTarjeta">{{narrativa.obra+', '+narrativa.ubicacion}}</p>
                 </mat-card-content>
             </mat-card>

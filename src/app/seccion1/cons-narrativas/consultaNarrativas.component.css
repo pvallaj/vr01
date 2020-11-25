@@ -2,11 +2,11 @@
     margin: 10px;
     /*border: solid black 2px;*/
 }
-.marco{
+
+.marco {
     /*border: solid blue 1px;*/
     margin: 1px;
 }
-
 
 .autor {
     padding: 5px;
@@ -27,6 +27,8 @@
     width: 300px;
     height: 50px;
 }
+
+
 /*tooltip */
 
 ::ng-deep .mat-tooltip {
@@ -62,4 +64,8 @@ mat-card-content {
     width: 80%;
     padding: 10px;
     align-self: center;
+}
+
+mat-card-content div span {
+    color: red;
 }

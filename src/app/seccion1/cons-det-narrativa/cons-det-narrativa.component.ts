@@ -83,4 +83,41 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
       },
     );
   }
+
+  public crearTextoBiliografia(elmt:any){
+    //, {{}}, {{elmt.}}, {{elmt.editor}}, {{elmt.editor}}, {{elmt.anio}} , {{elmt.obra_anfitrio}}
+    
+    let res=elmt.autor+", <i> "+ elmt.obra+"</i>";
+    if(elmt.ed_paleo){
+      res=res+", ed. "+elmt.ed_paleo;
+    }
+    if(elmt.director_cor){
+      res=res+", coord. "+elmt.ed_paleo;
+    }
+    if(elmt.traductor){
+      res=res+", trad. "+elmt.ed_paleo;
+    }
+    if(elmt.editor){
+      res=res+", "+elmt.editor;
+    }
+    if(elmt.ciudad){
+      res=res+", "+elmt.ciudad;
+    }
+    if(elmt.anio){
+      res=res+", "+elmt.anio;
+    }
+    if(elmt.obra_anfitrion){
+      res=res+", en "+elmt.obra_anfitrion;
+    }
+    if(elmt.tomo){
+      res=res+", t. "+elmt.obra_anfitrion;
+    }
+    if(elmt.coleccion){
+      res=res+", col. "+elmt.coleccion;
+    }
+    if(elmt.pp){
+      res=res+", pp. "+elmt.pp;
+    }
+    return res;
+  }
 }

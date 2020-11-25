@@ -26,3 +26,60 @@ mat-grid-list {
     font-weight: bold;
     background-color: whitesmoke;
 }
+
+mat-panel-title {
+    width: 30% !important;
+    flex-grow: 0 !important;
+}
+
+
+/* -------------------------------------- */
+
+.marco1 {
+    padding: 8px 8px 20px 8px;
+    background-color: #ffffff;
+    width: 200px;
+    border: 1px solid #999999;
+}
+
+.contenido {
+    border: 1px solid #000000;
+}
+
+.blur {
+    background-color: #ccc;
+    /*shadow color*/
+    color: inherit;
+    margin-left: 4px;
+    margin-top: 4px;
+    align-self: center;
+    margin-top: 25px;
+    width: 95%;
+}
+
+.shadow,
+.content {
+    position: relative;
+    bottom: 2px;
+    right: 2px;
+}
+
+.shadow {
+    background-color: #666;
+    /*shadow color*/
+    color: inherit;
+}
+
+.content {
+    background-color: #fff;
+    /*background color of content*/
+    color: #000;
+    /*text color of content*/
+    border: 1px solid #000;
+    /*border color*/
+    padding: .5em 2ex;
+}
+
+.content IMG {
+    border: 1px solid #000000;
+}

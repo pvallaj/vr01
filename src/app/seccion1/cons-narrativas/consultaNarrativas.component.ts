@@ -61,9 +61,7 @@ export class ConsultaNarrativasComponent implements OnInit {
     { filtro : 'Tipo de Verso', descripcion: 'Descripción del filtro'},
     { filtro : 'Tipo de Accion', descripcion: 'Descripción del filtro'},
     { filtro : 'Soporte', descripcion: 'Descripción del filtro'},
-    { filtro : 'Vínculo Visual', descripcion: 'Descripción del filtro'},
-    { filtro : 'Vínculo Auditivos', descripcion: 'Descripción del filtro'},
-    { filtro : 'Vínculo Acción Dramatica', descripcion: 'Descripción del filtro'}];
+    { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de 100 palabras'}];
 
   constructor(
      private cnx: ConexionService,
@@ -116,6 +114,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       tipoVerso:      this.frm.value.tipoVerso,
       tipoAccion:     this.frm.value.tipoAccion,
       soporte:        this.frm.value.soporte,
+      textos:         this.frm.value.textos,
 
       desde:          this.pidx*this.ptam,
       pagtam:         this.ptam
@@ -130,7 +129,24 @@ export class ConsultaNarrativasComponent implements OnInit {
         let idx=1;
         temp=data['resultado'];
         this.listaResultado=data['resultado'];
-        console.log(this.listaResultado);
+        this.listaResultado.forEach(lmnt => {
+          lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio);
+        });
+        if(this.frm.value.textos){
+          console.log("busqueda por textos!!!!!");
+          let palabras=this.frm.value.textos.split('+',3);
+          let re= new RegExp(palabras[0],'gi');
+          this.listaResultado.forEach(lmnt => {
+            console.log(lmnt.narratio);
+            console.log(re);
+            console.log(palabras[0]);
+
+            lmnt.narratio=lmnt.narratio.replace(re,'<span class="xxxx">'+palabras[0]+'</span>');
+            lmnt.narratioRecortado=lmnt.narratioRecortado.replace(re,'<span>'+palabras[0]+'</span>');
+            console.log(lmnt.narratio);
+            console.log(lmnt.narratioRecortado);
+          });
+        }
         this.estaCargando=false;
       },
     (error)=>{
@@ -167,9 +183,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       tipoVerso: ['' ],
       tipoAccion: ['' ],
       soporte: ['' ],
-      vinculoVisual: ['' ],
-      vinculoAuditivo: ['' ],
-      vinculoAccionDramatica: ['' ],
+      textos: ['' ],
 
     });
   }
@@ -180,6 +194,13 @@ export class ConsultaNarrativasComponent implements OnInit {
   cambioFiltros(e){
     console.log(e);
     console.log(this.filtrosActivos.value);
+  }
+
+  public recortaNarrativa(narrativa: string):string {
+    if (narrativa.length > 300) {
+      return narrativa.substring(0, narrativa.indexOf(' ', 300)) + '...';
+    }
+    return narrativa;
   }
 
 }
