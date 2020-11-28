@@ -3,9 +3,15 @@ a {
     color: white;
 }
 
-a:hover,
-a:active {
-    color: chartreuse;
+.activo {
+    background-color: gainsboro;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.activo a {
+    color: black;
 }
 
 .elemento-nav {

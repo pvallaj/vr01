@@ -83,3 +83,15 @@ mat-panel-title {
 .content IMG {
     border: 1px solid #000000;
 }
+
+
+/**/
+
+.resaltado {
+    padding: .2em;
+    color: blue;
+    background-color: #f30303 !important;
+    text-decoration-line: underline;
+    font-style: italic;
+    border-radius: 5px;
+}

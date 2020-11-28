@@ -33,6 +33,7 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public despResultado:string='block';
   public despDetalle:string='none';
+  public desplegarDetalle=false;
 
   public frm:FormGroup;
 
@@ -67,7 +68,7 @@ export class ConsultaNarrativasComponent implements OnInit {
      private cnx: ConexionService,
      public dialog: MatDialog,
      private fb: FormBuilder) {
-      this.filtrosActivos.setValue(['Autor', 'Obra']);
+      this.filtrosActivos.setValue(['Autor', 'Obra', 'Textos o Palabras']);
   }
 
   ngOnInit(): void {
@@ -141,8 +142,9 @@ export class ConsultaNarrativasComponent implements OnInit {
             console.log(re);
             console.log(palabras[0]);
 
-            lmnt.narratio=lmnt.narratio.replace(re,'<span class="xxxx">'+palabras[0]+'</span>');
-            lmnt.narratioRecortado=lmnt.narratioRecortado.replace(re,'<span>'+palabras[0]+'</span>');
+            /*lmnt.narratio=lmnt.narratio.replace(re,'<span class="xxxx">'+palabras[0]+'</span>');
+            lmnt.narratioRecortado=lmnt.narratioRecortado.replace(re,'<span>'+palabras[0]+'</span>');*/
+            
             console.log(lmnt.narratio);
             console.log(lmnt.narratioRecortado);
           });
@@ -158,16 +160,15 @@ export class ConsultaNarrativasComponent implements OnInit {
   }
 
   public cambiar(seleccionado){
-    if (this.despResultado === 'block') {
+    
+    this.desplegarDetalle=!this.desplegarDetalle;
+
+    if (this.desplegarDetalle) {
       this.idNarrativaSel = seleccionado.id_texto;
       this.narrativaSeleccionada = seleccionado;
-      this.despResultado = 'none';
-      this.despDetalle = 'block';
     } else {
       this.idNarrativaSel = 0;
       this.narrativaSeleccionada = null;
-      this.despResultado = 'block';
-      this.despDetalle = 'none';
     }
   }
 

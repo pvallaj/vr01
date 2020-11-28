@@ -344,7 +344,8 @@
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="15">Narrativa:</div>
                 <div class="valor" fxFlex="85">
-                    <pre [innerHTML]="narrativa.narratio"></pre>
+                    <pre [innerHTML]="narrativa.narratio | resaltaTexto:textoBuscado"></pre>
+                    <!--pre [innerHTML]="resalta(narrativa.narratio, textoBuscado)"></pre-->
                 </div>
             </div>
         </div>

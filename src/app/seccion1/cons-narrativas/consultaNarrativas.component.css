@@ -4,8 +4,12 @@
 }
 
 .marco {
-    /*border: solid blue 1px;*/
     margin: 1px;
+}
+
+.detalle {
+    margin: 1px;
+    padding: 10px;
 }
 
 .autor {
@@ -64,8 +68,4 @@ mat-card-content {
     width: 80%;
     padding: 10px;
     align-self: center;
-}
-
-mat-card-content div span {
-    color: red;
 }

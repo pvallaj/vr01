@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SesionUsuario } from "../../servicios/SesionUsuario.service";
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-encabezado',

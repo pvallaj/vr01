@@ -32,7 +32,7 @@ import { ConsDetSermonComponent } from './seccion2/cons-det-sermon/cons-det-serm
 
 import { InicioComponent } from './navegacion/inicio/inicio.component';
 import { SeguroPipe } from './pipes/seguro.pipe';
-import { HtmlEnterPipe } from './pipes/htmlEnter.pipe';
+import { ResaltaTextoPipe } from './pipes/ResaltaTexto.pipe';
 import { SesionUsuario } from "./servicios/SesionUsuario.service";
 
 import { MaterialModule } from './material.module';
@@ -61,7 +61,7 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
     FTGaleriaComponent,
     //pipes
     SeguroPipe,
-    HtmlEnterPipe,
+    ResaltaTextoPipe,
     //otros
     BibliotecaComponent,
     LtsNoticiasComponent,

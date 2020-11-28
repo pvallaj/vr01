@@ -24,6 +24,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
   @Input() public idTexto = 0;
   @Input() public narrativa: Narrativa = null;
+  @Input() public textoBuscado: "";
 
   public bibliografia: any = [];
   public princeps: any = [];
@@ -119,5 +120,22 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
       res=res+", pp. "+elmt.pp;
     }
     return res;
+  }
+  public resalta(texto:string, args: string) {
+    if(!args || args==="" || !texto || texto==="") return texto;
+    
+
+    if(args.indexOf("+")>0){
+      let textos=args.split("+");
+      textos.forEach(el => {
+        var re = new RegExp(el, 'gi'); 
+        texto=texto.replace(re, '<mark class="resaltado">$&</mark>');
+      });
+      return texto;
+    }else{
+      var re = new RegExp(args, 'gi'); 
+      return texto.replace(re, '<mark class="resaltado">$&</mark>');
+    }
+    
   }
 }
