@@ -249,7 +249,7 @@ export class ConsSermonesComponent implements OnInit {
   }
   public recortaSermon(sermon: string) {
     if (sermon.length > 150) {
-      return sermon.substring(0, sermon.indexOf(' ', 150)) + '...';
+      return sermon.substring(0, (sermon.indexOf(' ', 150))>0?(sermon.indexOf(' ', 150)):sermon.length) + '...';
     }
     return sermon;
   }

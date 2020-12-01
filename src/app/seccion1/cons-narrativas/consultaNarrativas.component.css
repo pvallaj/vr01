@@ -36,8 +36,9 @@
 /*tooltip */
 
 ::ng-deep .mat-tooltip {
-    background-color: darkblue !important;
-    font-size: 14px !important;
+    background-color: lightgoldenrodyellow !important;
+    color: black !important;
+    font-size: 18px !important;
 }
 
 
@@ -51,6 +52,20 @@
 
 .tarjeta {
     margin-top: 10px;
+}
+
+.tituloTarjeta {
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: solid 1px black;
+}
+
+.pieTarjeta {
+    margin-top: 10px;
+    border-top: solid 1px black;
+    color: grey;
+    font-weight: bold;
 }
 
 .seleccionado {

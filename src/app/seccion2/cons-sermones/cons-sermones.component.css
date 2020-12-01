@@ -35,9 +35,12 @@ p {
     font-size: medium;
     font-weight: bold;
     font-style: italic;
+    border-bottom: solid 1px black;
 }
 
 .pieTarjeta {
+    margin-top: 10px;
+    border-top: solid 1px black;
     color: grey;
     font-weight: bold;
 }
@@ -95,4 +98,10 @@ mat-card-content {
     width: 80%;
     padding: 10px;
     align-self: center;
+}
+
+::ng-deep .mat-tooltip {
+    background-color: lightgoldenrodyellow !important;
+    color: black !important;
+    font-size: 18px !important;
 }

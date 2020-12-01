@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import {FormControl} from '@angular/forms';
-import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {  FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 
 import { ConexionService } from '../../servicios/Conexion.service';
-import { MnsjDetalleComponent } from '../mnsj-detalle/mnsj-detalle.component';
+
 import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-consulta-narrativas',
@@ -27,7 +27,7 @@ export class ConsultaNarrativasComponent implements OnInit {
   public listaVersificaciones: any[]=[];
   public listaTipoAcciones: any[]=[];
   public listaSoporte: any[]=[];
-
+  public listaDistancias: number[]=[0,10,20,50,100,200];
 
 
 
@@ -51,6 +51,9 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public textConsulta: string;
 
+  //-----------------------------
+  public fcAutores = new FormControl();
+  public fcObras = new FormControl();
   // ----------------------------
   public filtrosActivos = new FormControl();
   public listaFiltros: any[] = [
@@ -62,14 +65,14 @@ export class ConsultaNarrativasComponent implements OnInit {
     { filtro : 'Tipo de Verso', descripcion: 'Descripción del filtro'},
     { filtro : 'Tipo de Accion', descripcion: 'Descripción del filtro'},
     { filtro : 'Soporte', descripcion: 'Descripción del filtro'},
-    { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de 100 palabras'}];
+    { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de N palabras'}];
 
   constructor(
-     private cnx: ConexionService,
-     public dialog: MatDialog,
-     private fb: FormBuilder) {
-      this.filtrosActivos.setValue(['Autor', 'Obra', 'Textos o Palabras']);
-  }
+    private cnx: ConexionService,
+    public dialog: MatDialog,
+    private fb: FormBuilder) {
+      this.filtrosActivos.setValue(['Autor']);
+    }
 
   ngOnInit(): void {
     this.crearForma();
@@ -120,35 +123,53 @@ export class ConsultaNarrativasComponent implements OnInit {
       desde:          this.pidx*this.ptam,
       pagtam:         this.ptam
     };
+    if( this.filtrosActivos.value.indexOf('Autor')>=0  && 
+        this.filtrosActivos.value.indexOf('Obra')==-1 ){
+      if(this.fcAutores.value?.length>1){
+        let aa:string[]=this.fcAutores.value;
+        let f:string[]=[];
+        for(let i=0;i<aa.length;i++){
+          f.push("'"+aa[i]+"'");
+        }
+        p.autor=f.join(',')
+      }else{
+        if(this.fcAutores.value)
+          p.autor=this.fcAutores.value[0];
+      }
+      
+    }
+
+    if( this.filtrosActivos.value.indexOf('Obra')>=0  && 
+        this.filtrosActivos.value.indexOf('Autor')==-1 ){
+      if(this.fcObras.value?.length>1){
+        let aa:string[]=this.fcObras.value;
+        let f:string[]=[];
+        for(let i=0;i<aa.length;i++){
+          f.push("'"+aa[i]+"'");
+        }
+        p.obra=f.join(',')
+      }else{
+        if(this.fcObras.value)
+          p.obra=this.fcObras.value[0];
+      }
+      
+    }
 
     let temp:any[]=[];
     this.idxSeleccionado=0;
-
+    console.log(p);
     this.cnx.narrativas(p, 'consulta narrativas')
     .subscribe(
       (data)=>{
         let idx=1;
         temp=data['resultado'];
         this.listaResultado=data['resultado'];
+        if(this.frm.value.textos){
+          this.listaResultado=this.listaResultado.filter(lmnt =>this.filtraDistancia(lmnt.narratio));
+        }
         this.listaResultado.forEach(lmnt => {
           lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio);
         });
-        if(this.frm.value.textos){
-          console.log("busqueda por textos!!!!!");
-          let palabras=this.frm.value.textos.split('+',3);
-          let re= new RegExp(palabras[0],'gi');
-          this.listaResultado.forEach(lmnt => {
-            console.log(lmnt.narratio);
-            console.log(re);
-            console.log(palabras[0]);
-
-            /*lmnt.narratio=lmnt.narratio.replace(re,'<span class="xxxx">'+palabras[0]+'</span>');
-            lmnt.narratioRecortado=lmnt.narratioRecortado.replace(re,'<span>'+palabras[0]+'</span>');*/
-            
-            console.log(lmnt.narratio);
-            console.log(lmnt.narratioRecortado);
-          });
-        }
         this.estaCargando=false;
       },
     (error)=>{
@@ -158,7 +179,57 @@ export class ConsultaNarrativasComponent implements OnInit {
       }
     )
   }
+  private filtraDistancia(texto:string):boolean{
+    let r1=true;
+    let r2=true;
+    let palabras:string[]=this.frm.value.textos.split('+',3);
+    //console.log("Texto: "+texto);
+    //console.log("Palabras: "+palabras.length);
+    if(palabras.length>1){
+      //console.log("-----D1");
+      r1=this.estanEnDistancia(texto, palabras[0], palabras[1], this.frm.value.distancia);
+    }
+    //console.log("Palabras: "+palabras.length);
+    if(palabras.length==3){
+      //console.log("-----D2");
+      r2=this.estanEnDistancia(texto, palabras[1], palabras[2], this.frm.value.distancia);
+    }
+    //console.log(r1+"-----"+r2);
+    return r1&&r2;
+  }
+  private estanEnDistancia(texto:string="", palabra1:string="", palabra2:string="", distancia:number):boolean{
+    let up1:number=0;
+    let up2:number=0;
+    
+    if (distancia==0) return true;
+    palabra1=palabra1.toLowerCase();
+    palabra2=palabra2.toLowerCase();
+    texto=texto.toLowerCase();
 
+    up1=texto.indexOf(palabra1, up1);
+    //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
+    while (up1>0 && up1<texto.length) {
+      up2=texto.indexOf(palabra2, up2);
+      //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
+      while(up2>0 && up2<texto.length){
+        let ss:string[];
+        //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
+        if(up1<up2){
+          ss=texto.substr(up1+palabra1.length,up2-up1).split(' ');
+        }
+        else{
+          ss=texto.substr(up2+palabra2.length,up1-up2).split(' ');
+        }
+        console.log(ss.length);
+        if(ss.length<=distancia){
+          return true;
+        }
+        up2=texto.indexOf(palabra2, up2+1);
+      }
+      up1=texto.indexOf(palabra1, up1+1);
+    }
+    return false;
+  }
   public cambiar(seleccionado){
     
     this.desplegarDetalle=!this.desplegarDetalle;
@@ -185,10 +256,11 @@ export class ConsultaNarrativasComponent implements OnInit {
       tipoAccion: ['' ],
       soporte: ['' ],
       textos: ['' ],
-
+      distancia: [0 ],
     });
   }
-  cambioAutor(){
+  cambioAutor(e){
+    console.log(e);
     this.listaResultado=[];
   }
 

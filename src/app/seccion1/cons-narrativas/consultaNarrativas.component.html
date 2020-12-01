@@ -2,7 +2,8 @@
 
     <form [formGroup]="frm" class="consulta" fxfill>
         <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
-            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Autor')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Autor')>=0 && filtrosActivos.value.indexOf('Obra')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un autor</mat-label>
                 <mat-select name="autor" (selectionChange)="autorSeleccionado($event)" formControlName="autor">
                     <mat-option>Ninguno</mat-option>
@@ -12,10 +13,40 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Autor')>=0  && filtrosActivos.value.indexOf('Obra')==-1" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <mat-label>Seleccione un autor</mat-label>
+                <mat-select [formControl]="fcAutores" multiple (selectionChange)="autorSeleccionado($event)">
+                    <mat-select-trigger>
+                        {{fcAutores.value ? fcAutores.value[0] : ''}}
+                        <span *ngIf="fcAutores.value?.length > 1">
+                        (+{{fcAutores.value.length - 1}} {{fcAutores.value?.length === 2 ? 'otro' : 'otros'}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let autor of listaAutores" [value]="autor.autor">
+                        {{autor.autor}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0  && filtrosActivos.value.indexOf('Obra')>0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione una obra</mat-label>
                 <mat-select name="obra" formControlName="obra">
                     <mat-option>Ninguno</mat-option>
+                    <mat-option *ngFor="let obra of listaObras" [value]="obra.obra">
+                        {{obra.obra}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0  && filtrosActivos.value.indexOf('Autor')==-1" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <mat-label>Seleccione una o más obras</mat-label>
+                <mat-select [formControl]="fcObras" multiple>
+                    <mat-select-trigger>
+                        {{fcObras.value ? fcObras.value[0] : ''}}
+                        <span *ngIf="fcObras.value?.length > 1">
+                        (+{{fcObras.value.length - 1}} {{fcObras.value?.length === 2 ? 'otro' : 'otros'}})
+                        </span>
+                    </mat-select-trigger>
                     <mat-option *ngFor="let obra of listaObras" [value]="obra.obra">
                         {{obra.obra}}
                     </mat-option>
@@ -89,6 +120,14 @@
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Textos o Palabras')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <mat-label>Distancia entre palabras</mat-label>
+                <mat-select name="distancia" formControlName="distancia">
+                    <mat-option *ngFor="let d of listaDistancias" [value]="d">
+                        {{d}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
         </div>
         <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
@@ -126,7 +165,7 @@
             <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
                 <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
-                        <p class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
+                        <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
                         <button *ngIf="(narrativa.id_texto)==idxSeleccionado" mat-mini-fab color="primary" (click)="cambiar(narrativa)">
                             <mat-icon>menu</mat-icon>
                         </button>
