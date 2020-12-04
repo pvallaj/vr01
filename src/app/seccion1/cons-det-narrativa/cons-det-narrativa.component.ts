@@ -59,6 +59,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
     }
 
     //consultando detalle del sermon
+    this.estaCargando=true;
     this.cnx.narrativas({id_texto: this.idTexto}, 'consulta detalle narrativa')
     .subscribe(
       (data) => {
@@ -76,6 +77,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
         this.signos = temp.signos[0];
         this.vinculos = temp.vinculos[0];
         this.tabSeleccionado=0;
+        this.estaCargando=false;
       },
     (error) => {
         console.log('No se logro la conexión');
