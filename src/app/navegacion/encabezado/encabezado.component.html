@@ -3,12 +3,12 @@
     <mat-icon>menu</mat-icon>
     </button>
     <div>Logo</div>
+    <div></div>
     <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
             <li routerLinkActive="activo"><a routerLink="/textos">Narrativas</a></li>
             <li routerLinkActive="activo"><a routerLink="/sermones">Sermones</a></li>
-            <li routerLinkActive="activo"><a routerLink="/fototeca">Obra </a></li>
-            <li routerLinkActive="activo"><a routerLink="/videoteca">Videoteca</a></li>
+            <li routerLinkActive="activo"><a routerLink="/obra">Obra </a></li>
             <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
             <li routerLinkActive="activo" *ngIf="sus.role=='publicador' "><a routerLink="/publicar">Publicar Noticias</a></li>
             <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Usuarios</a></li>

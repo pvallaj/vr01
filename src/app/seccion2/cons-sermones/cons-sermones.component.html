@@ -1,7 +1,7 @@
 <div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
     <form [formGroup]="frm" class="consulta" fxfill fxLayout="row" fxLayout.lt-sm="column">
         <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
-            <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Autor')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="ac" *ngIf="filtroActivo('Autor')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input type="text" placeholder="Selecciona un autor" aria-label="Number" matInput [formControl]="acAutores" [matAutocomplete]="auto" (change)="cambioAutor()">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let autor of listaFiltrada | async" [value]="autor">
@@ -10,25 +10,25 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <mat-form-field class="tituloSermon" *ngIf="filtrosActivos.value.indexOf('Titulo')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="tituloSermon" *ngIf="filtroActivo('Titulo')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo">
                 <button mat-button matSuffix mat-icon-button aria-label="Clear">
                   <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
 
-            <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Inicio')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="anio" *ngIf="filtroActivo('Año Inicio')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
             </mat-form-field>
 
-            <mat-form-field class="anio" *ngIf="filtrosActivos.value.indexOf('Año Final')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="anio" *ngIf="filtroActivo('Año Final')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
             </mat-form-field>
 
 
 
 
-            <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Preliminares')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="ac" *ngIf="filtroActivo('Preliminares')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input type="text" placeholder="Selecciona un autor de preliminar" aria-label="Number" matInput [formControl]="acPreliminares" [matAutocomplete]="auto" (change)="cambioAutorPreliminar()">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let autor of listaPreliminaresFiltrada | async" [value]="autor">
@@ -37,7 +37,7 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <mat-form-field class="ac" *ngIf="filtrosActivos.value.indexOf('Dedicatarios')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="ac" *ngIf="filtroActivo('Dedicatarios')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input type="text" placeholder="Selecciona a un dedicatario" aria-label="Number" matInput [formControl]="acDedicatarios" [matAutocomplete]="auto" (change)="cambioAutorPreliminar()">
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let autor of listaDedicatariosFiltrada | async" [value]="autor">
@@ -46,7 +46,7 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <mat-form-field class="impresor" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Impresor')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="impresor" appearance="fill" *ngIf="filtroActivo('Impresor')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Impresor</mat-label>
                 <mat-select formControlName="impresor">
                     <mat-option>Ninguno</mat-option>
@@ -56,7 +56,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="ciudad" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Ciudad')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="ciudad" appearance="fill" *ngIf="filtroActivo('Ciudad')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Ciudad</mat-label>
                 <mat-select formControlName="ciudad">
                     <mat-option>Ninguno</mat-option>
@@ -66,7 +66,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Obra')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtroActivo('Obra')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Titulo de la Obra</mat-label>
                 <mat-select formControlName="tituloObra">
                     <mat-option>Ninguno</mat-option>
@@ -76,7 +76,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="orden" appearance="fill" *ngIf="filtrosActivos.value.indexOf('Orden')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="orden" appearance="fill" *ngIf="filtroActivo('Orden')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Orden Religiosa</mat-label>
                 <mat-select formControlName="orden">
                     <mat-option>Ninguno</mat-option>
@@ -97,7 +97,7 @@
                     </span>
                     </mat-select-trigger>
 
-                    <mat-option *ngFor="let filtro of listaFiltros" [value]="filtro">{{filtro}}</mat-option>
+                    <mat-option *ngFor="let filtro of listaFiltros" [value]="filtro.filtro">{{filtro.filtro}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <button mat-raised-button class="btnBuscar" (click)="consulta()">

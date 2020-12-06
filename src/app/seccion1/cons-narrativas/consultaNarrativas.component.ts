@@ -9,6 +9,7 @@ import { ConexionService } from '../../servicios/Conexion.service';
 import { MatDialog } from '@angular/material/dialog';
 
 
+
 @Component({
   selector: 'app-consulta-narrativas',
   templateUrl: './consultaNarrativas.component.html',
@@ -65,7 +66,8 @@ export class ConsultaNarrativasComponent implements OnInit {
     { filtro : 'Tipo de Verso', descripcion: 'Descripción del filtro'},
     { filtro : 'Tipo de Accion', descripcion: 'Descripción del filtro'},
     { filtro : 'Soporte', descripcion: 'Descripción del filtro'},
-    { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de N palabras'}];
+    { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de N palabras'},
+    { filtro : 'Signos Actorales', descripcion: 'Descripción del filtro'},];
 
   constructor(
     private cnx: ConexionService,
@@ -107,24 +109,21 @@ export class ConsultaNarrativasComponent implements OnInit {
   public consulta(){
     this.estaCargando=true;
 
-    console.log(this.frm.value);
-
     let p = {
-      autor:          this.frm.value.autor,
-      obra:           this.frm.value.obra,
-      clasificacion:  this.frm.value.clasificacion,
-      tema:           this.frm.value.tema,
-      motivo:         this.frm.value.motivo,
-      tipoVerso:      this.frm.value.tipoVerso,
-      tipoAccion:     this.frm.value.tipoAccion,
-      soporte:        this.frm.value.soporte,
-      textos:         this.frm.value.textos,
+      autor:          this.filtroActivo('Autor')?this.frm.value.autor:'',
+      obra:           this.filtroActivo('Obra')?this.frm.value.obra:'',
+      clasificacion:  this.filtroActivo('Clasificación')?this.frm.value.clasificacion:'',
+      tema:           this.filtroActivo('Tema')?this.frm.value.tema:'',
+      motivo:         this.filtroActivo('Motivo')?this.frm.value.motivo:'',
+      tipoVerso:      this.filtroActivo('Tipo de Verso')?this.frm.value.tipoVerso:'',
+      tipoAccion:     this.filtroActivo('Tipo de Accion')?this.frm.value.tipoAccion:'',
+      soporte:        this.filtroActivo('Soporte')?this.frm.value.soporte:'',
+      textos:         this.filtroActivo('Textos o Palabras')?this.frm.value.textos:'',
 
       desde:          this.pidx*this.ptam,
       pagtam:         this.ptam
     };
-    if( this.filtrosActivos.value.indexOf('Autor')>=0  && 
-        this.filtrosActivos.value.indexOf('Obra')==-1 ){
+    if( this.filtroActivo('Autor')  &&  !this.filtroActivo('Obra') ){
       if(this.fcAutores.value?.length>1){
         let aa:string[]=this.fcAutores.value;
         let f:string[]=[];
@@ -139,8 +138,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       
     }
 
-    if( this.filtrosActivos.value.indexOf('Obra')>=0  && 
-        this.filtrosActivos.value.indexOf('Autor')==-1 ){
+    if( this.filtroActivo('Obra')  && !this.filtroActivo('Autor') ){
       if(this.fcObras.value?.length>1){
         let aa:string[]=this.fcObras.value;
         let f:string[]=[];
@@ -183,18 +181,12 @@ export class ConsultaNarrativasComponent implements OnInit {
     let r1=true;
     let r2=true;
     let palabras:string[]=this.frm.value.textos.split('+',3);
-    //console.log("Texto: "+texto);
-    //console.log("Palabras: "+palabras.length);
     if(palabras.length>1){
-      //console.log("-----D1");
       r1=this.estanEnDistancia(texto, palabras[0], palabras[1], this.frm.value.distancia);
     }
-    //console.log("Palabras: "+palabras.length);
     if(palabras.length==3){
-      //console.log("-----D2");
       r2=this.estanEnDistancia(texto, palabras[1], palabras[2], this.frm.value.distancia);
     }
-    //console.log(r1+"-----"+r2);
     return r1&&r2;
   }
   private estanEnDistancia(texto:string="", palabra1:string="", palabra2:string="", distancia:number):boolean{
@@ -207,13 +199,10 @@ export class ConsultaNarrativasComponent implements OnInit {
     texto=texto.toLowerCase();
 
     up1=texto.indexOf(palabra1, up1);
-    //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
     while (up1>0 && up1<texto.length) {
       up2=texto.indexOf(palabra2, up2);
-      //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
       while(up2>0 && up2<texto.length){
         let ss:string[];
-        //console.log(palabra1+", "+palabra2+", "+up1+", "+up2 );
         if(up1<up2){
           ss=texto.substr(up1+palabra1.length,up2-up1).split(' ');
         }
@@ -248,8 +237,8 @@ export class ConsultaNarrativasComponent implements OnInit {
     this.frm=this.fb.group({
       //valor inicial, validaciones sincronas, validaciones asincronas
       autor: ['' ],
-      clasificacion: [''],
       obra: ['' ],
+      clasificacion: [''],
       tema: ['' ],
       motivo: ['' ],
       tipoVerso: ['' ],
@@ -258,16 +247,37 @@ export class ConsultaNarrativasComponent implements OnInit {
       textos: ['' ],
       distancia: [0 ],
     });
-  }
-  cambioAutor(e){
-    console.log(e);
-    this.listaResultado=[];
+    this.frm.valueChanges.subscribe((v)=>{
+      console.log(v);
+      this.listaResultado=[];
+      if(this.filtroActivo("Autor")) {
+        this.listaObras = this.listaAutoresObras;
+      };
+    });
+    this.fcAutores.valueChanges.subscribe((v)=>{
+      console.log(v);
+      this.listaResultado=[];
+    });
+    this.fcObras.valueChanges.subscribe((v)=>{
+      console.log(v);
+      this.listaResultado=[];
+    });
+    this.filtrosActivos.valueChanges.subscribe((v)=>{
+      console.log(v);
+      if(this.filtroActivo('Signos Actorales')){
+        
+        this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
+      }
+      this.listaResultado=[];
+    });
   }
 
-  cambioFiltros(e){
-    console.log(e);
-    console.log(this.filtrosActivos.value);
+  private filtroActivo(f:string):boolean{
+    if(this.filtrosActivos.value.indexOf(f)==-1) return false;
+    return true;
   }
+
+
 
   public recortaNarrativa(narrativa: string):string {
     if (narrativa.length > 300) {

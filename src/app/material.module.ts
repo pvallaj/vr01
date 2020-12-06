@@ -21,6 +21,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatTreeModule } from "@angular/material/tree";
 
 @NgModule({
   declarations: [],
@@ -45,7 +46,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
      MatProgressBarModule,
      MatProgressSpinnerModule,
      MatSelectModule,
-     MatTooltipModule
+     MatTooltipModule,
+     MatTreeModule
   ],
   exports:[
     MatSliderModule,
@@ -67,7 +69,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTreeModule    
   ]
 })
 export class MaterialModule { }

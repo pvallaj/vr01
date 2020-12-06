@@ -44,6 +44,7 @@ import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.
 import { MensajeComponent } from './generales/mensaje/mensaje.component';
 import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-det-narrativa.component';
+import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +72,7 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
     ListaUsuariosComponent,
     ConsDetNarrativaComponent,
     ConsultaNarrativasComponent,
+    OEscritaComponent,
   ],
   imports: [
     BrowserModule,

@@ -59,9 +59,17 @@ export class ConsSermonesComponent implements OnInit {
 
   // ----------------------------
   public filtrosActivos = new FormControl();
-  public listaFiltros: string[] = ['Autor', 'Titulo', 'Año Inicio', 'Año Final',
-                                  'Impresor', 'Preliminares', 'Dedicatarios', 'Ciudad',
-                                   'Obra', 'Orden'];
+  public listaFiltros: any[] = [
+                                    { filtro : 'Autor', descripcion: 'Descripción del filtro' },
+                                    { filtro : 'Titulo', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Año Inicio', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Año Final', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Impresor', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Preliminares', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Dedicatarios', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Ciudad', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Obra', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Orden', descripcion: 'Descripción del filtro'},];
 
   // @ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
@@ -125,23 +133,23 @@ export class ConsSermonesComponent implements OnInit {
   public consulta() {
     this.estaCargando = true;
     const p = {
-      autor:    this.acAutores.value,
+      autor:        this.filtroActivo('Autor')?this.acAutores.value:'',
       id_autor: -1,
 
-      titulo:   this.frm.value.titulo,
-      anio_ini: this.frm.value.anio_ini,
-      anio_fin: this.frm.value.anio_fin,
-      impresor: this.frm.value.impresor,
+      titulo:       this.filtroActivo('Titulo')?this.frm.value.titulo:'',
+      anio_ini:     this.filtroActivo('Año Inicio')?this.frm.value.anio_ini:1612,
+      anio_fin:     this.filtroActivo('Año Final')?this.frm.value.anio_fin:1700,
+      impresor:     this.filtroActivo('Impresor')?this.frm.value.impresor:'',
 
-      preliminar:    this.acPreliminares.value,
+      preliminar:   this.filtroActivo('Preliminares')?this.acPreliminares.value:'',
       id_preliminar: -1,
 
-      dedicatario:    this.acDedicatarios.value,
+      dedicatario:  this.filtroActivo('Dedicatarios')?this.acDedicatarios.value:'',
       id_dedicatario: -1,
 
-      ciudad: this.frm.value.ciudad,
-      tituloObra: this.frm.value.tituloObra,
-      orden: this.frm.value.orden,
+      ciudad:       this.filtroActivo('Ciudad')?this.frm.value.ciudad:'',
+      tituloObra:   this.filtroActivo('Obra')?this.frm.value.tituloObra:'',
+      orden:        this.filtroActivo('Orden')?this.frm.value.orden:'',
 
       desde:  this.pidx * this.ptam,
       pagtam: this.ptam,
@@ -235,7 +243,26 @@ export class ConsSermonesComponent implements OnInit {
       tituloObra: ['' ],
       orden: ['' ],
     });
+    this.frm.valueChanges.subscribe((v)=>{
+      console.log(v);
+      this.listaResultado=[];
+    });
+    
+    this.filtrosActivos.valueChanges.subscribe((v)=>{
+      console.log(v);
+      if(this.filtroActivo('Signos Actorales')){
+        
+        this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
+      }
+      this.listaResultado=[];
+    });
   }
+
+  public filtroActivo(f:string):boolean{
+    if(this.filtrosActivos.value.indexOf(f)==-1) return false;
+    return true;
+  }
+
   public cambioAutor() {
     this.listaResultado = [];
   }
@@ -248,8 +275,8 @@ export class ConsSermonesComponent implements OnInit {
 
   }
   public recortaSermon(sermon: string) {
-    if (sermon.length > 150) {
-      return sermon.substring(0, (sermon.indexOf(' ', 150))>0?(sermon.indexOf(' ', 150)):sermon.length) + '...';
+    if (sermon.length > 250) {
+      return sermon.substring(0, (sermon.indexOf(' ', 250))>0?(sermon.indexOf(' ', 250)):sermon.length) + '...';
     }
     return sermon;
   }
