@@ -9,6 +9,8 @@ import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-us
 import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
 import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
 import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
+import { BuscarComponent } from './seccion3/buscar/buscar.component';
+
 
 
 
@@ -18,6 +20,7 @@ const routes: Routes = [
   {path: 'sermones',       component: ConsSermonesComponent},
   {path: 'obra',           component: OEscritaComponent},
   {path: 'fototeca',       component: FTGaleriaComponent},
+  {path: 'buscar',         component: BuscarComponent},
   {path: 'publicaciones',  component: LtsNoticiasComponent},
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},

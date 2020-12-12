@@ -13,7 +13,8 @@ import { NgxGalleryModule } from 'ngx-gallery-9';
 import 'hammerjs';
 //galeria de videos
 
-
+//Vista de arbol
+import { TreeviewModule } from "ngx-treeview";
 //local
 
 import { ConsultaComponent } from './seccion1/consulta/consulta.component';
@@ -34,6 +35,7 @@ import { InicioComponent } from './navegacion/inicio/inicio.component';
 import { SeguroPipe } from './pipes/seguro.pipe';
 import { ResaltaTextoPipe } from './pipes/ResaltaTexto.pipe';
 import { SesionUsuario } from "./servicios/SesionUsuario.service";
+import { CanalService } from './servicios/canal.service';
 
 import { MaterialModule } from './material.module';
 import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
@@ -45,6 +47,7 @@ import { MensajeComponent } from './generales/mensaje/mensaje.component';
 import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-det-narrativa.component';
 import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
+import { BuscarComponent } from './seccion3/buscar/buscar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +76,8 @@ import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
     ConsDetNarrativaComponent,
     ConsultaNarrativasComponent,
     OEscritaComponent,
+    BuscarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -83,11 +88,13 @@ import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
     FormsModule, ReactiveFormsModule,
     NgbModule,
     FlexLayoutModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    TreeviewModule.forRoot(),
   ],
   providers: [
     ConexionService,
-    SesionUsuario],
+    SesionUsuario,
+    CanalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

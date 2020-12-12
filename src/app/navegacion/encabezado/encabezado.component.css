@@ -19,3 +19,9 @@ a {
     margin: 0;
     padding: 0;
 }
+
+.buscador {
+    margin-top: 15px;
+    margin-left: 50px;
+    min-width: 400px;
+}

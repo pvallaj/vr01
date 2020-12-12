@@ -1,0 +1,10 @@
+.estructura,
+.vprev {
+    border: solid 1px blue;
+    /*max-height: 100vh;
+    overflow: auto;*/
+}
+
+.row-item .bi {
+    cursor: pointer;
+}

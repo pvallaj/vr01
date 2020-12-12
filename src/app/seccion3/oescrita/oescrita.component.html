@@ -1,1 +1,11 @@
+<div fxFlex fxfill fxLayoutAlign="start stretch">
+    <div class="estructura" fxFlex="35">
+        <!---ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="'btn-outline-primary'" (selectedChange)="values = $event" (filterChange)="onFilterChange($event)">
+        </ngx-dropdown-treeview--->
+        <ngx-treeview [config]="config" [items]="items" (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
+        </ngx-treeview>
+    </div>
+    <div class="vprev" fxFlex="75">
 
+    </div>
+</div>

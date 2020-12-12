@@ -1,0 +1,20 @@
+<div class="resultado" *ngIf="!estaCargando" fxFill>
+    <div mat-subheader>Información encontrada en la base de datos</div>
+    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
+
+        <mat-card class="tarjeta" *ngFor="let oe of resultadoOE; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
+            <mat-card-content [ngClass]="{'seleccionado':(oe.id)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
+                <div fxFlex fxLayout fxLayoutAlign="space-between">
+                    <p fxFlex class="tituloTarjeta">{{i+1}} - {{oe.titulo}} </p>
+                    <button *ngIf="(oe.id)==idxSeleccionado" mat-mini-fab color="primary">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+                <div [innerHTML]="oe.texto" *ngIf="oe.tipo==1"></div>
+                <img fxFlex class="imgprev" *ngIf="oe.tipo==2" src="{{oe.referencia}}">
+                <p class="pieTarjeta">{{oe.descripcion}}</p>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>

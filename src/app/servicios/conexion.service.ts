@@ -27,18 +27,17 @@ export class ConexionService {
     return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
   }
   sermones(parametros, accion){
-    console.log('Iniciando peticion POST Sermones');
     const cuerpo =  JSON.stringify({cn:{accion,seccion:"sermones", parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
   narrativas(parametros, accion){
-    console.log('Iniciando peticion POST Narrativas');
-    const cuerpo =  JSON.stringify({cn:{
-      accion,
-      seccion:'narrativas',
-      parametros} });
+    const cuerpo =  JSON.stringify({cn:{accion, seccion:'narrativas', parametros} });
+    return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
+  }
 
+  novohisp(parametros, accion){
+    const cuerpo =  JSON.stringify({cn:{accion, seccion:'novohisp', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
