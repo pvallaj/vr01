@@ -1,3 +1,93 @@
+.contenedorimg {
+    position: relative;
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+}
+
 .imgprev {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.resultado {
+    /*border: 1px solid rebeccapurple;*/
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+.tituloTarjetaimg {
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: solid 1px black;
+    background-color: rgba(255, 255, 255, .5);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.contenedorimg:hover>.tituloTarjetaimg {
+    display: block;
+}
+
+.pieTarjetaimg {
+    border-top: solid 1px black;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, .5);
+    display: none;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    padding: 5px;
+    width: 100%;
+}
+
+.contenedorimg:hover>.pieTarjetaimg {
+    display: block;
+}
+
+.tarjeta {
+    margin-top: 10px;
     max-height: 250px;
+    margin-bottom: 20px;
+}
+
+.tituloTarjeta {
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: solid 1px black;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.pieTarjeta {
+    border-top: solid 1px black;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.seleccionado {
+    background: lightblue;
+}
+
+mat-card-content {
+    height: 100%;
+}
+
+.buscando {
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+}
+
+::ng-deep .mat-tooltip {
+    background-color: lightgoldenrodyellow !important;
+    color: black !important;
+    font-size: 18px !important;
 }
