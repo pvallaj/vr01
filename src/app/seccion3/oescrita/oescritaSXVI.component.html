@@ -1,4 +1,14 @@
-<div fxFlex fxfill fxLayoutAlign="start stretch">
+<mat-card class="buscando" *ngIf="estaCargando">
+    <mat-card-content>
+        <h2 class="example-h2">Buscando información ...</h2>
+        <section class="example-section">
+            <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+            </mat-progress-bar>
+        </section>
+    </mat-card-content>
+</mat-card>
+
+<div fxFlex fxfill fxLayoutAlign="start stretch" *ngIf="!estaCargando">
     <div class="estructura" fxFlex="35">
         <!---ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="'btn-outline-primary'" (selectedChange)="values = $event" (filterChange)="onFilterChange($event)">
         </ngx-dropdown-treeview--->

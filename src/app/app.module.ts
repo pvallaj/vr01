@@ -46,8 +46,9 @@ import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.
 import { MensajeComponent } from './generales/mensaje/mensaje.component';
 import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-det-narrativa.component';
-import { OEscritaComponent } from './seccion3/oescrita/oescrita.component';
+import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
+import { HerramientasComponent } from './navegacion/herramientas/herramientas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,8 +76,9 @@ import { BuscarComponent } from './seccion3/buscar/buscar.component';
     ListaUsuariosComponent,
     ConsDetNarrativaComponent,
     ConsultaNarrativasComponent,
-    OEscritaComponent,
+    OEscritaSXVIComponent,
     BuscarComponent,
+    HerramientasComponent,
     
   ],
   imports: [

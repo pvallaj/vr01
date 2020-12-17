@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class ConexionService {
   headers: HttpHeaders;
-  urlBase:string='http://api.appsparatodos.com.mx';
-  //urlBase:string='/api';
+  //urlBase:string='http://api.appsparatodos.com.mx';
+  urlBase:string='/api';
   public componente:"";
 
   constructor(protected http: HttpClient) {

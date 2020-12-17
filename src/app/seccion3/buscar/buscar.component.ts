@@ -29,7 +29,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log(this.cs.terminoConsulta);
-    this.buscarTermino(this.cs.terminoConsulta);
+    this.buscarTermino({text:this.cs.terminoConsulta});
   }
 
   private buscarTermino(terminos:any){

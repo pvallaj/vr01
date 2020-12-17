@@ -5,12 +5,13 @@ import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
   selector: 'app-oescrita',
-  templateUrl: './oescrita.component.html',
-  styleUrls: ['./oescrita.component.css'],
+  templateUrl: './oescritaSXVI.component.html',
+  styleUrls: ['./oescritaSXVI.component.css'],
 })
-export class OEscritaComponent implements OnInit {
-  items: TreeviewItem[];
-  values: number[];
+export class OEscritaSXVIComponent implements OnInit {
+  public items: TreeviewItem[];
+  public values: number[];
+  public estaCargando=false;
   public config = TreeviewConfig.create({
     hasAllCheckBox: false,
     hasFilter: false,
@@ -23,9 +24,15 @@ export class OEscritaComponent implements OnInit {
 
   ngOnInit(): void {
     //this.items=this.service.getBooks();
+    console.log('iniciando consulta de estructura');
+    this.estaCargando=true;
     this.cnx.novohisp(null, 'consulta estructura').subscribe(
       (datos) => {
         this.items=[new TreeviewItem(JSON.parse(datos['resultado'][0].valor))]; 
+        setTimeout(()=>{
+          this.estaCargando=false;
+          console.log('Se terminaron los 3 segundos');
+        }, 3000);
     },(error) => {
       console.log('error al cargar a los autores');
       console.log(error);
@@ -37,6 +44,10 @@ export class OEscritaComponent implements OnInit {
   onSelectedChange(value: any): void {
     console.log('change:', value);
     console.log(value);
+  }
+
+  private delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }
 
