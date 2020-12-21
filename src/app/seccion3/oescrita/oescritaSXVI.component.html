@@ -8,14 +8,30 @@
     </mat-card-content>
 </mat-card>
 
-<div fxFlex fxfill fxLayoutAlign="start stretch" *ngIf="!estaCargando">
-    <div class="estructura" fxFlex="35">
-        <!---ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="'btn-outline-primary'" (selectedChange)="values = $event" (filterChange)="onFilterChange($event)">
-        </ngx-dropdown-treeview--->
-        <ngx-treeview [config]="config" [items]="items" (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
-        </ngx-treeview>
-    </div>
-    <div class="vprev" fxFlex="75">
+<div class="contenedor" *ngIf="!estaCargando">
+    <as-split direction="horizontal">
+        <as-split-area [size]="40" [visible]="om_estructura" [order]="0">
+            <ngx-treeview [config]="config" [items]="items" (selectedChange)="onSelectedChange($event)" (filterChange)="onFilterChange($event)">
+            </ngx-treeview>
+        </as-split-area>
+        <as-split-area [size]="60" [order]="1">
+            <as-split direction="vertical">
+                <as-split-area [size]="70" [visible]="om_detalle" [order]="0">
+                    <app-detalle-oe [elemento]="elementoSeleccionado" [tipo]="2"></app-detalle-oe>
+                </as-split-area>
+                <as-split-area [size]="30" [visible]="om_lista" [order]="1">
+                    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
+                        <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of resultado; let i = index" (click)="elementoSeleccionado=elemento" fxFlex="0 0 calc(25% - 10px)"></app-detalle-oe>
+                    </div>
 
+                </as-split-area>
+            </as-split>
+        </as-split-area>
+    </as-split>
+    <div class="controles" fxLayout="column" fxLayoutGap="3px">
+        <button class="ctrl" mat-raised-button color="primary" (click)="ctrlVisible=!ctrlVisible">{{ctrlVisible?'Ocultar':'Opciones'}}</button>
+        <button class="ctrl" mat-raised-button color="accent" (click)="om_estructura=!om_estructura" *ngIf="ctrlVisible">{{om_estructura?'Ocultar Estructura':'Mostrar Estructura'}}</button>
+        <button class="ctrl" mat-raised-button color="accent" (click)="om_detalle=!om_detalle" *ngIf="ctrlVisible">{{om_detalle?'Ocultar Detalle':'Mostrar Detalle'}}</button>
+        <button class="ctrl" mat-raised-button color="accent" (click)="om_lista=!om_lista" *ngIf="ctrlVisible">{{om_lista?'Ocultar Lista':'Mostrar Lista'}}</button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
+<div class="marco" *ngIf="!desplegarDetalle" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
     <form [formGroup]="frm" class="consulta" fxfill fxLayout="row" fxLayout.lt-sm="column">
         <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
             <mat-form-field class="ac" *ngIf="filtroActivo('Autor')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
@@ -17,12 +17,16 @@
               </button>
             </mat-form-field>
 
-            <mat-form-field class="anio" *ngIf="filtroActivo('Año Inicio')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <input matInput type="text" placeholder="Año de publicacion sermón INICIAL" formControlName="anio_ini">
+            <mat-form-field class="anio" *ngIf="filtroActivo('Año')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <input matInput type="text" placeholder="Año de publicacion" formControlName="anio">
             </mat-form-field>
 
-            <mat-form-field class="anio" *ngIf="filtroActivo('Año Final')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <input matInput type="text" placeholder="Año de publicacion sermón, FINAL " formControlName="anio_fin">
+            <mat-form-field class="anio" *ngIf="filtroActivo('Rango de años')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <input matInput type="text" placeholder="Año de publicacion INICIAL" formControlName="anio_ini">
+            </mat-form-field>
+
+            <mat-form-field class="anio" *ngIf="filtroActivo('Rango de años')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <input matInput type="text" placeholder="Año de publicacion FINAL " formControlName="anio_fin">
             </mat-form-field>
 
 
@@ -122,7 +126,7 @@
             <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
                 <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
-                        <p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p>
+                        <p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_nombre}} {{sermon.autor_apellido}} ({{sermon.autor_orden}})</p>
                         <button *ngIf="(i+1)==idxSeleccionado" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="cambiar(sermon.id_sermon)">
                             <mat-icon>menu</mat-icon>
                         </button>
@@ -134,10 +138,10 @@
 
         </div>
     </div>
-    <div class="detalle" [style.display]="despDetalle">
-        <button mat-button class="regresar" (click)="cambiar(0)">
-            <mat-icon>arrow_back_ios</mat-icon> Regresar
-        </button>
-        <app-cons-det-sermon [id_sermon]="idSermonSel" #detsermon></app-cons-det-sermon>
-    </div>
+</div>
+<div class="detalle" *ngIf="desplegarDetalle">
+    <button mat-button class="regresar" (click)="cambiar(0)">
+        <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
+    </button>
+    <app-cons-det-sermon [id_sermon]="idSermonSel" #detsermon></app-cons-det-sermon>
 </div>

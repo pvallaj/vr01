@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { TreeviewItem, TreeviewConfig } from 'ngx-treeview';
+import { SplitComponent, SplitAreaDirective } from 'angular-split'
 
 import { ConexionService } from '../../servicios/Conexion.service';
 
@@ -9,16 +10,32 @@ import { ConexionService } from '../../servicios/Conexion.service';
   styleUrls: ['./oescritaSXVI.component.css'],
 })
 export class OEscritaSXVIComponent implements OnInit {
+  @ViewChild('split') split: SplitComponent
+  @ViewChild('area1') area1: SplitAreaDirective
+  @ViewChild('area2') area2: SplitAreaDirective
+  //Para la estructura de arbol.
   public items: TreeviewItem[];
   public values: number[];
-  public estaCargando=false;
   public config = TreeviewConfig.create({
     hasAllCheckBox: false,
     hasFilter: false,
     hasCollapseExpand: false,
     decoupleChildFromParent: false,
-    maxHeight:750
+    maxHeight:null
  });
+
+ //
+ public estaCargando=false;
+ public estaCargandoDetalle=false;
+ public idxSeleccionado=0;
+ //
+ public resultado:any[];
+ public elementoSeleccionado:any;
+ //secciones
+  public om_estructura=true;
+  public om_detalle=true;
+  public om_lista=true;
+  public ctrlVisible=false;
 
   constructor(private cnx: ConexionService) { }
 
@@ -41,11 +58,25 @@ export class OEscritaSXVIComponent implements OnInit {
   onFilterChange(value: string): void {
     console.log('filter:', value);
   }
-  onSelectedChange(value: any): void {
-    console.log('change:', value);
-    console.log(value);
+  onSelectedChange(value: string[]): void {
+    console.log('change:', value.join(', '));
+    this.estaCargandoDetalle=true;
+    this.cnx.novohisp({terminos:value.join(', ')}, 'consulta obra escrita').subscribe(
+      (datos) => {
+       this.resultado=datos['resultado'];
+       this.estaCargandoDetalle=false;
+    },(error) => {
+      console.log('error al cargar a los autores');
+      console.log(error);
+    });
   }
 
+  
+
+
+  public iniciaMovimiento(e){
+    console.log(e);
+  }
   private delay(ms: number) {
       return new Promise( resolve => setTimeout(resolve, ms) );
   }

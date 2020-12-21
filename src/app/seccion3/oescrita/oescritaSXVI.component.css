@@ -1,9 +1,23 @@
-/*.estructura,
-.vprev {
-    border: solid 1px blue;
+.estructura,
+.vprev,
+.superior,
+.inferior {
+    border: solid 1px red;
     max-height: 100vh;
     overflow: auto;
-}*/
+}
+
+.contenedor {
+    width: 100%;
+    height: 800px;
+    position: relative;
+}
+
+.controles {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
 
 .buscando {
     width: 60%;
@@ -14,4 +28,11 @@
 
 .row-item .bi {
     cursor: pointer;
+}
+
+
+/*tarjeta*/
+
+.tarjetaresumen {
+    margin: 5px 0;
 }

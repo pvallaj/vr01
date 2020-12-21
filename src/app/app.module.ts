@@ -2,12 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularSplitModule } from 'angular-split';
+//PDF
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 //galeria de imagenes
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import 'hammerjs';
@@ -49,6 +53,7 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
 import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { HerramientasComponent } from './navegacion/herramientas/herramientas.component';
+import { DetalleOEComponent } from './seccion3/detalle-oe/detalle-oe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +84,7 @@ import { HerramientasComponent } from './navegacion/herramientas/herramientas.co
     OEscritaSXVIComponent,
     BuscarComponent,
     HerramientasComponent,
+    DetalleOEComponent,
     
   ],
   imports: [
@@ -92,6 +98,9 @@ import { HerramientasComponent } from './navegacion/herramientas/herramientas.co
     FlexLayoutModule,
     NgxGalleryModule,
     TreeviewModule.forRoot(),
+    DragDropModule,
+    AngularSplitModule,
+    PdfViewerModule
   ],
   providers: [
     ConexionService,

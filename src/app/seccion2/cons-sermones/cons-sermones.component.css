@@ -10,6 +10,11 @@ p {
     margin-top: 10px;
 }
 
+.regresar {
+    margin: 20px;
+    align-self: center;
+}
+
 
 /*.marco {
     border: 1px solid white;

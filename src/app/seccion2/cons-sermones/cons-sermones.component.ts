@@ -57,19 +57,22 @@ export class ConsSermonesComponent implements OnInit {
   // Cargando datos.
   public estaCargando = false;
 
+  //Mostrar/Ocultar detalle
+  public desplegarDetalle=false;
+
   // ----------------------------
   public filtrosActivos = new FormControl();
   public listaFiltros: any[] = [
-                                    { filtro : 'Autor', descripcion: 'Descripción del filtro' },
-                                    { filtro : 'Titulo', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Año Inicio', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Año Final', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Impresor', descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Autor',        descripcion: 'Descripción del filtro' },
+                                    { filtro : 'Titulo',       descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Año',          descripcion: 'Permite especificar un año en la consulta'},
+                                    { filtro : 'Rango de años',descripcion: 'Permite espeficicar un año inicial y un año final en la consulta'},
+                                    { filtro : 'Impresor',     descripcion: 'Descripción del filtro'},
                                     { filtro : 'Preliminares', descripcion: 'Descripción del filtro'},
                                     { filtro : 'Dedicatarios', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Ciudad', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Obra', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Orden', descripcion: 'Descripción del filtro'},];
+                                    { filtro : 'Ciudad',       descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Obra',         descripcion: 'Descripción del filtro'},
+                                    { filtro : 'Orden',        descripcion: 'Descripción del filtro'},];
 
   // @ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
@@ -78,7 +81,7 @@ export class ConsSermonesComponent implements OnInit {
      public dialog: MatDialog,
      private fb: FormBuilder) {
 
-      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año Inicio', 'Año Final']);
+      this.filtrosActivos.setValue(['Autor', 'Titulo', 'Año']);
      }
   public textConsulta: string;
   public ngOnInit(): void {
@@ -137,8 +140,9 @@ export class ConsSermonesComponent implements OnInit {
       id_autor: -1,
 
       titulo:       this.filtroActivo('Titulo')?this.frm.value.titulo:'',
-      anio_ini:     this.filtroActivo('Año Inicio')?this.frm.value.anio_ini:1612,
-      anio_fin:     this.filtroActivo('Año Final')?this.frm.value.anio_fin:1700,
+      anio:         this.filtroActivo('Año')?this.frm.value.anio:0,
+      anio_ini:     this.filtroActivo('Rango de años')?this.frm.value.anio_ini:1612,
+      anio_fin:     this.filtroActivo('Rango de años')?this.frm.value.anio_fin:1700,
       impresor:     this.filtroActivo('Impresor')?this.frm.value.impresor:'',
 
       preliminar:   this.filtroActivo('Preliminares')?this.acPreliminares.value:'',
@@ -207,13 +211,7 @@ export class ConsSermonesComponent implements OnInit {
 
   public cambiar(ids) {
     this.idSermonSel = ids;
-    if (this.despResultado === 'block') {
-      this.despResultado = 'none';
-      this.despDetalle = 'block';
-    } else {
-      this.despResultado = 'block';
-      this.despDetalle = 'none';
-    }
+    this.desplegarDetalle=!this.desplegarDetalle;
   }
 
   private _filter(value: string): string[] {
@@ -232,16 +230,17 @@ export class ConsSermonesComponent implements OnInit {
   public crearForma() {
     this.frm = this.fb.group({
       // valor inicial, validaciones sincronas, validaciones asincronas
-      autor: ['', [ Validators.maxLength(300)]],
-      titulo: ['', [ Validators.maxLength(300)]],
-      anio_ini: ['1612', [ Validators.min(1612), Validators.max(1699)]],
-      anio_fin: ['1700', [ Validators.min(1613), Validators.max(1700)]],
-      impresor: ['' ],
+      autor:        ['', [ Validators.maxLength(300)]],
+      titulo:       ['', [ Validators.maxLength(300)]],
+      anio:         ['1612', [ Validators.min(1612), Validators.max(1699)]],
+      anio_ini:     ['1612', [ Validators.min(1612), Validators.max(1699)]],
+      anio_fin:     ['1700', [ Validators.min(1613), Validators.max(1700)]],
+      impresor:     ['' ],
       preliminares: ['' ],
       dedicatarios: ['' ],
-      ciudad: ['' ],
-      tituloObra: ['' ],
-      orden: ['' ],
+      ciudad:       ['' ],
+      tituloObra:   ['' ],
+      orden:        ['' ],
     });
     this.frm.valueChanges.subscribe((v)=>{
       console.log(v);
