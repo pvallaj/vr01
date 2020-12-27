@@ -8,7 +8,7 @@ import { ConexionService	} 	from './Conexion.service';
 export class SesionUsuario{
 	
 	private _usuario:string;
-	private _role:string;
+	private _role:string=null;
 
     private _nombreUsuario:string;
     public acceso:string;
@@ -25,16 +25,16 @@ export class SesionUsuario{
 			this._nombreUsuario=	localStorage.getItem('nombre');
 			this._role=				localStorage.getItem('role');
 		}else{
-			this._usuario='';
-			this._nombreUsuario='';
-			this._role='';
+			this._usuario=null;
+			this._nombreUsuario=null;
+			this._role=null;
 		}
 		console.log('sus:'+this._nombreUsuario);
 	}
 
 	accesoUsuario(datos:any){
 		
-		return this.cnx.ejecutar("acceso", datos).pipe(
+		return this.cnx.usuarios(datos, "acceso").pipe(
 			map(resp=>{
 				if(resp['ok']=='true'){
 					localStorage.setItem('tkn',		resp['resultado'].token);
@@ -80,7 +80,7 @@ export class SesionUsuario{
 	crearUsuario(datos:any){
 		datos.role='USUARIO';
 		datos.accion='crear';
-		return this.cnx.ejecutar("usuario", datos).pipe(
+		return this.cnx.usuarios(datos,'crear').pipe(
 			map(resp=>{
 				if(resp['ok']=='true'){
 					this._usuario=datos.correo;

@@ -19,6 +19,10 @@
             </mat-error>
         </mat-form-field>
         <!----->
+        <p>
+            ¿No tienes cuenta?<a routerLink="/registro"> Registrate aqui</a>
+        </p>
+
         <button mat-raised-button color="primary" [disabled]="!f.form.valid " (click)="registrarUsuario(f.value) ">Acceder</button>
 
     </form>

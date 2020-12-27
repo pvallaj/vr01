@@ -15,6 +15,7 @@ export interface Parametros {
 export class ConsDetSermonComponent implements OnInit, OnChanges {
 
   @Input() id_sermon:number=0;
+  @Input() tipo:number=0;
   sermon:any=[];
   libro:any=[];
   preliminares:any=[];

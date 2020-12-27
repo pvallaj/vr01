@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class ConexionService {
   headers: HttpHeaders;
-  urlBase:string='http://api.appsparatodos.com.mx';
-  //urlBase:string='/api';
+  //urlBase:string='http://api.appsparatodos.com.mx';
+  urlBase:string='/api';
   public componente:"";
 
   constructor(protected http: HttpClient) {
@@ -38,6 +38,11 @@ export class ConexionService {
 
   novohisp(parametros, accion){
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'novohisp', parametros} });
+    return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
+  }
+
+  usuarios(parametros, accion){
+    const cuerpo =  JSON.stringify({cn:{accion, seccion:'usuarios', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 

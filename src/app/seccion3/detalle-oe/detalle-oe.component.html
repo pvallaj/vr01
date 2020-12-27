@@ -27,19 +27,13 @@
 </mat-card>
 
 <!--Tarjeta para resumen de IMAGEN-->
-<mat-card class="TRTarjeta" *ngIf="elemento?.tipo==2  && tipo==1">
+<mat-card class="TarjetaIR" *ngIf="elemento?.tipo==2  && tipo==1">
     <mat-card-header>
         <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
         <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-        <div class="contenedorimg">
-            <!--div class="tituloTarjetaimg">
-                <p>{{elemento.capitulo}} </p>
-            </div-->
-            <img class="imgprev" src="{{elemento.referencia}}">
-            <!--p class="pieTarjetaimg">{{elemento.descripcion}}</p-->
-        </div>
+    <mat-card-content>
+        <img class="imgprev" src="{{elemento.referencia}}">
     </mat-card-content>
 </mat-card>
 
@@ -88,21 +82,21 @@
         <mat-card-title class="tituloTarjeta">{{elemento.descripcion}}</mat-card-title>
         <mat-card-subtitle>{{elemento.capitulo}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-        <div class="contenedorimg">
-            <img class="imgprev" src="/assets/img/pdf-p.png">
-        </div>
+    <mat-card-content fxLayoutAlign="center">
+        <img style="width: 100px; align-self:center" class="imgprev" src="/assets/img/pdf-p.png">
     </mat-card-content>
 </mat-card>
 
 <!--Tarjeta para detalle de DOCUMENTO-->
-<mat-card *ngIf="elemento?.tipo==4 && tipo==2" fxLayout="column" fxLayoutAlign="start stretch">
+<mat-card class="tarjeta" *ngIf="elemento?.tipo==4 && tipo==2" fxLayout="column" fxLayoutAlign="start stretch">
     <mat-card-header>
         <mat-card-title class="tituloTarjeta">{{elemento.descripcion}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.capitulo}}</mat-card-subtitle>
+        <mat-card-subtitle>{{elemento.capitulo}} <a href="{{elemento.referencia}}" download>descargar</a></mat-card-subtitle>
     </mat-card-header>
+    <mat-card-content>
+        <div class="pdfvp">
+            <pdf-viewer *ngIf="elemento?.tipo==4 && tipo==2" [src]="elemento.referencia" [render-text]="true" [show-all]="true" [fit-to-page]="true" class="pdfvp">
+            </pdf-viewer>
+        </div>
+    </mat-card-content>
 </mat-card>
-<div class="pdfvp">
-    <pdf-viewer *ngIf="elemento?.tipo==4 && tipo==2" [src]="elemento.referencia" [render-text]="true" [show-all]="true" class="pdfvp">
-    </pdf-viewer>
-</div>

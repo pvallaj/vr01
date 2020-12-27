@@ -1,14 +1,13 @@
 <mat-card class="buscando" *ngIf="estaCargando">
     <mat-card-content>
         <h2 class="example-h2">Consultando base de datos</h2>
-
         <section class="example-section">
             <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
             </mat-progress-bar>
         </section>
     </mat-card-content>
 </mat-card>
-<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'" *ngIf="!estaCargando">
+<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'" *ngIf="!estaCargando && tipo==0">
     <mat-tab label="Sermon" isActive>
         <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
             <div class="fila" fxLayout="row">
@@ -110,3 +109,102 @@
 
     </mat-tab>
 </mat-tab-group>
+
+<div class="fluido" *ngIf="!estaCargando && tipo==1">
+    <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Autor:</div>
+            <div class="valor" fxFlex="85">{{sermon.nombre}}</div>
+        </div>
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Titulo:</div>
+            <div class="valor">{{sermon.titulo}}</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngIf="libro?.libro_titulo">
+            <div class="titulo" fxFlex="15">En:</div>
+            <div class="valor">{{libro?.libro_titulo}}</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngIf="libro?.autor">
+            <div class="titulo" fxFlex="15">Autor de la obra:</div>
+            <div class="valor">{{libro?.autor}}</div>
+        </div>
+
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Inicio:</div>
+            <div class="valor">{{sermon.inicio_sermon}}</div>
+        </div>
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Ciudad:</div>
+            <div class="valor">{{libro?.libro_ciudad}}</div>
+        </div>
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Impresor:</div>
+            <div class="valor">{{libro?.libro_impresor}}</div>
+        </div>
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Año:</div>
+            <div class="valor">{{libro?.libro_anio}}</div>
+        </div>
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Thema:</div>
+            <div class="valor">{{sermon.thema}}</div>
+        </div>
+        <!--div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Protesta de fe:</div>
+                <div class="valor">{{sermon.protesta_fe}}</div>
+            </div>
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="15">Grabado:</div>
+                <div class="valor">{{grabados[0]?.grabado}}</div>
+            </div-->
+    </div>
+    <mat-divider></mat-divider>
+    <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
+            <div class="titulo" fxFlex="10">Número</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
+            <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
+            <div class="valor" fxFlex="10">{{elemento.numeracion}}</div>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div class="resultado" fxLayout="column" *ngIf="preliminares?.length>0">
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="15">Tipo</div>
+            <div class="titulo" fxFlex="45">Titulo</div>
+            <div class="titulo" fxFlex="30">Autor</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
+            <div class="valor" fxFlex="15">{{elemento.preliminar_tipo}}</div>
+            <div class="valor" fxFlex="45">{{elemento.preliminar_titulo}}</div>
+            <div class="valor" fxFlex="30">{{elemento.autor}}</div>
+        </div>
+    </div>
+    <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
+        <div class="fila" fxLayout="row" *ngIf="sermon?.protesta_fe">
+            <div class="titulo" fxFlex="15">Protesta de fe:</div>
+            <div class="valor">{{sermon.protesta_fe}}</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngIf="grabados[0]?.grabado">
+            <div class="titulo" fxFlex="15">Grabado:</div>
+            <div class="valor">{{grabados[0]?.grabado}}</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="resultado" fxLayout="column" *ngIf="repositorios!=[]">
+        <div class="fila" fxLayout="row">
+            <div class="titulo" fxFlex="30">Repositorio</div>
+            <div class="titulo" fxFlex="35">Clasificación</div>
+            <div class="titulo" fxFlex="35">Digitalizado en</div>
+        </div>
+        <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
+            <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>
+            <div class="valor" fxFlex="35">{{elemento.clasificacion}}</div>
+            <div class="valor" fxFlex="35">{{elemento.enlace_digitalizacion}}</div>
+        </div>
+    </div>
+</div>

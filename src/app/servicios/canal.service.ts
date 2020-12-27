@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class CanalService {
   private _tc:string;
-
+  public elemento:any;
   constructor() { }
   private subject = new Subject<any>();
 

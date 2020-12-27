@@ -3,15 +3,15 @@
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>Relaciones del teatro</mat-card-title>
-            <mat-card-subtitle>Narrativas</mat-card-subtitle>
+            <!--mat-card-subtitle>Narrativas</mat-card-subtitle-->
         </mat-card-header>
         <mat-card-content>
             <p>
                 Descripción de las relaciones del teatro en la nueva españa, siglos XVI al XVII
             </p>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button (click)="irARelaciones()">Ir a la herramientas de relaciones</button>
+        <mat-card-actions fxLayoutAlign="space-around">
+            <button mat-flat-button color="primary" (click)="irARelaciones()">Ir a la herramientas de relaciones</button>
         </mat-card-actions>
     </mat-card>
     <mat-card class="tarjeta" fxFlex="0 0 calc(30% - 10px)">
@@ -25,8 +25,8 @@
                 Descripción de la herramientas de consulta de sermones en la nueva españa, siglos XVI al XVII
             </p>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button (click)="irASermones()">Ir a la herramienta de sermones</button>
+        <mat-card-actions fxLayoutAlign="space-around">
+            <button mat-flat-button color="primary" (click)="irASermones()">Ir a la herramienta de sermones</button>
         </mat-card-actions>
     </mat-card>
 </div>

@@ -1,1 +1,65 @@
-<p>lista-usuarios works!</p>
+<div class="contenedor" fxflex="80" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+    <div class="controles" fxLayoutAlign="center" fxLayoutGap="15px" *ngIf="!estaProcesando">
+        <button mat-raised-button color="primary" (click)="agregarUsuario()">
+            <mat-icon>person_add</mat-icon> Agregar usuario
+        </button>
+        <button mat-raised-button color="primary" (click)="cambiarRoleUsuario()">
+            <mat-icon>safety_divider</mat-icon> Cambiar role
+        </button>
+        <button mat-raised-button color="primary" (click)="actualizarUsuario()">
+            <mat-icon>edit</mat-icon> Actualizar
+        </button>
+        <button mat-raised-button color="primary" (click)="eliminarUsuario()">
+            <mat-icon>delete</mat-icon> Borrar
+        </button>
+    </div>
+    <div class="controles" fxLayoutAlign="center" fxLayoutGap="15px" *ngIf="estaProcesando">
+        <mat-progress-spinner [color]="'accent'" [mode]="'indeterminate'" [value]="50">
+        </mat-progress-spinner>
+    </div>
+    <div class="tabla" fxLayoutAlign="center">
+        <table fxFlex="80" mat-table [dataSource]="usuarios">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.nombre}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="paterno">
+                <th mat-header-cell *matHeaderCellDef> Paterno </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.paterno}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="materno">
+                <th mat-header-cell *matHeaderCellDef> Materno </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.materno}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="correo">
+                <th mat-header-cell *matHeaderCellDef> Correo/Usuario </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.correo}} </td>
+            </ng-container>
+            <ng-container matColumnDef="telefono">
+                <th mat-header-cell *matHeaderCellDef> teléfono </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.telefono}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef> Role </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{'seleccionado':element.id==seleccionado?.id}"> {{element.role}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasVisibles"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasVisibles;" (click)="seleccionar(row)">
+            </tr>
+        </table>
+    </div>
+
+</div>

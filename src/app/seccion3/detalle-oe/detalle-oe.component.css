@@ -37,48 +37,18 @@
     border: 1px solid black;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .imgprev {
     width: 100%;
     height: 100%;
-    display: block;
 }
 
-.tituloTarjetaimg {
-    font-size: medium;
-    font-weight: bold;
-    font-style: italic;
-    border-bottom: solid 1px black;
-    background-color: rgba(0, 0, 0, .8);
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: white;
-}
-
-.contenedorimg:hover>.tituloTarjetaimg {
-    display: block;
-}
-
-.pieTarjetaimg {
-    border-top: solid 1px black;
-    color: black;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, .8);
-    display: none;
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-    padding: 5px;
-    width: 100%;
-    color: white;
-}
-
-.contenedorimg:hover>.pieTarjetaimg {
-    display: block;
+.TarjetaIR {
+    height: 400px;
+    overflow-y: scroll;
+    padding-bottom: 10px;
 }
 
 

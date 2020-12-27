@@ -1,6 +1,7 @@
 <div class="marco" fxLayout="column" fxLayoutAlign="center center">
     <div class="titulo">
-        <h4 class="modal-title ">Solo personal autorizado. </h4>
+        <h4 class="modal-title " *ngIf="canal.elemento==null">Registro de nuevo usuario</h4>
+        <h4 class="modal-title " *ngIf="canal.elemento!=null">Actualización de datos de usuario</h4>
     </div>
     <form [formGroup]="frm" autocomplete="off" class="forma" fxLayout="column" fxLayoutAlign="center">
         <mat-form-field>
@@ -51,7 +52,6 @@
         </mat-form-field>
 
         <div class="acciones" fxLayout fxLayoutAlign="space-around">
-            <button mat-raised-button color="danger" (click)="cancelar()">Cancelar</button>
             <button mat-raised-button color="primary" (click)="guardar()" [disabled]="frm.status=='INVALID'">Guardar</button>
         </div>
 
