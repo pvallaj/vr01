@@ -1,0 +1,68 @@
+<app-espera *ngIf="estaProcesando"></app-espera>
+<div class="marco" fxLayout="column" fxLayoutAlign="center streach">
+    <div class="titulo">
+        <h4 class="modal-title " *ngIf="cnl.elemento==null">Registro de Noticia</h4>
+        <h4 class="modal-title " *ngIf="cnl.elemento!=null">Actualización de datos de Noticia</h4>
+    </div>
+    <form [formGroup]="frm" autocomplete="off" class="forma" fxLayout="row" fxLayoutAlign="center">
+
+        <div class="fotoM1" fxFlex="30" id="drop_zone" (click)="archivoIMG.click()" fxLayoutAlign="center center">
+            <input formControlName="imagen" #archivoIMG hidden="true" type="file" onclick="this.value=null" (change)="archivoSeleccionado($event)" accept=".jpg,.png" />
+            <!---button class="btnArchivo" mat-mini-fab color="primary" (click)="archivoIMG.click()">
+                <mat-icon>attach_file</mat-icon> 
+            </button-->
+            <p class="textoIMG">Dé un click aqui para seleccionar una imagen de su equipo</p>
+            <img fxFlex="0 0 calc(100%-10px)" class="imagen" [src]="urlIMG" *ngIf="urlIMG">
+        </div>
+        <div class="datos" fxLayout="column" fxFlex>
+
+            <mat-form-field>
+                <mat-label>Titulo</mat-label>
+                <input matInput placeholder="Escriba el titulo de la noticia" formControlName="titulo">
+                <mat-error *ngIf="frm.get('titulo').invalid">
+                    Debe proporcionar el titulo.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Noticia</mat-label>
+                <textarea matInput placeholder="Escriba el texto de la noticia" formControlName="texto"></textarea>
+                <mat-error *ngIf="frm.get('texto').invalid">
+                    Debe proporcionar el texto para la noticia.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Referencia a paginas externas</mat-label>
+                <input matInput placeholder="http://pagina.com" formControlName="ligaExterna">
+            </mat-form-field>
+            <div class="fechasMarco" fxLayout="column">
+                <p>Especifique las fechas de INICIO y TERMINO de publicación</p>
+                <div class="fechas" fxLayoutAlign="space-around">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input formControlName="inicio" [min]="fechaMin" [max]="fechaMax" matInput [matDatepicker]="dpInicio">
+                        <mat-datepicker-toggle matSuffix [for]="dpInicio"></mat-datepicker-toggle>
+                        <mat-datepicker #dpInicio disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="frm.get('inicio').invalid">
+                            Debe proporcionar el texto para la noticia.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha de termino</mat-label>
+                        <input formControlName="termino" [min]="this.frm.value.inicio" [max]="fechaMax" matInput [matDatepicker]="dpTermino">
+                        <mat-datepicker-toggle matSuffix [for]="dpTermino"></mat-datepicker-toggle>
+                        <mat-datepicker #dpTermino disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="frm.get('termino').invalid">
+                            Debe proporcionar el texto para la noticia.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="acciones" fxLayout fxLayoutAlign="space-around">
+                <button mat-raised-button color="primary" (click)="guardar()" [disabled]="frm.status=='INVALID'">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>

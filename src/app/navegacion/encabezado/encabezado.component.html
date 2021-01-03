@@ -21,7 +21,7 @@
             <li routerLinkActive="activo"><a routerLink="/herramientas">Herramientas</a></li>
             <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
             <li routerLinkActive="activo"><a routerLink="/sesion" *ngIf="!sus.role">Usuarios</a></li>
-            <li routerLinkActive="activo" *ngIf="sus.role=='publicador' "><a routerLink="/publicar">Publicar Noticias</a></li>
+            <li routerLinkActive="activo" *ngIf="sus.role=='publicador' || sus.role=='admin' "><a routerLink="/publicar">Publicar Noticias</a></li>
             <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
             <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado' ">
                 <button mat-icon-button (click)="salir()">

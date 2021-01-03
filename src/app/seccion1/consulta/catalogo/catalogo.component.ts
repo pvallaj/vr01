@@ -42,7 +42,7 @@ export class CatalogoComponent implements OnInit {
         break;
     }
 
-    this.cn.obtenerCatalogo(fs.descripcion)
+    this.cn.sermones(fs.descripcion,'')
     .subscribe(
       (data)=>{
         this.catalogo = new MatTableDataSource<any>(data['resultado']);

@@ -1,0 +1,12 @@
+.contenedor {
+    margin-top: 50px;
+}
+
+.seleccionado {
+    background-color: red;
+    color: white !important;
+}
+
+.mat-column-acciones {
+    width: 150px;
+}

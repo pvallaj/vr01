@@ -13,6 +13,7 @@ import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.
 import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
 import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
+import { NoticiaComponent } from './privado/noticia/noticia.component';
 
 
 
@@ -25,10 +26,14 @@ const routes: Routes = [
   {path: 'oesxvi',         component: OEscritaSXVIComponent},
   {path: 'herramientas',   component: HerramientasComponent},
   {path: 'buscar',         component: BuscarComponent},
-  {path: 'publicaciones',  component: LtsNoticiasComponent},
+  //usuarios
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},
   {path: 'usuarios',       component: ListaUsuariosComponent},
+  //noticias
+  {path: 'publicar',       component: LtsNoticiasComponent},
+  {path: 'nuevaNoticia',   component: NoticiaComponent},
+
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' }, 
   { path: '**', component: InicioComponent }
 ];

@@ -47,7 +47,7 @@ export class DetalleCatalogoComponent implements OnInit, AfterViewInit {
     let h:string='';
     let limite=300;
     let temp=[];
-    this.cn.obtenerDetalleCatalogo('categoria', cat.id)
+    this.cn.sermones('categoria', cat.id)
     .subscribe(
       (data)=>{
         temp=data['resultado'];

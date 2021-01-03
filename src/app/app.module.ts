@@ -54,6 +54,10 @@ import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.componen
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { HerramientasComponent } from './navegacion/herramientas/herramientas.component';
 import { DetalleOEComponent } from './seccion3/detalle-oe/detalle-oe.component';
+import { NoticiasComponent } from './seccion3/noticias/noticias.component';
+import { EsperaComponent } from './generales/espera/espera.component';
+import { NoticiaComponent } from './privado/noticia/noticia.component';
+import { UtilS } from './servicios/Util.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +89,9 @@ import { DetalleOEComponent } from './seccion3/detalle-oe/detalle-oe.component';
     BuscarComponent,
     HerramientasComponent,
     DetalleOEComponent,
+    NoticiasComponent,
+    EsperaComponent,
+    NoticiaComponent,
     
   ],
   imports: [
@@ -105,7 +112,8 @@ import { DetalleOEComponent } from './seccion3/detalle-oe/detalle-oe.component';
   providers: [
     ConexionService,
     SesionUsuario,
-    CanalService],
+    CanalService,
+    UtilS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

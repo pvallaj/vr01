@@ -65,7 +65,8 @@ export class ListaUsuariosComponent implements OnInit {
       +this.seleccionado.correo.toUpperCase()+') \n Será eliminado de forma definitiva. ¿Desea continuar?', tipo:2}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(resultado => {
+      if(resultado==='no') return;
       this.estaProcesando = true;
       this.cnx.usuarios({id:this.seleccionado.id},'eliminar')
       .subscribe(
@@ -106,7 +107,8 @@ export class ListaUsuariosComponent implements OnInit {
       +'". ¿Desea continuar?', tipo:2}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(resultado => {
+      if(resultado==='no') return;
       this.estaProcesando = true;
       this.cnx.usuarios({id:this.seleccionado.id, role:this.seleccionado.role.toUpperCase()=='USUARIO'?'PUBLICAR':'USUARIO'},'cambiar perfil')
       .subscribe(

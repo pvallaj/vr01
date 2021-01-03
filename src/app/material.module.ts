@@ -24,8 +24,29 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core'; 
+
+import { MatDateFormats,MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
+
+export const PERSONALIZADO_DATE_FORMATS: MatDateFormats = {
+  ...MAT_NATIVE_DATE_FORMATS,
+  display: {
+    ...MAT_NATIVE_DATE_FORMATS.display,
+    dateInput: {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    } as Intl.DateTimeFormatOptions,
+  }
+};
 
 @NgModule({
+  providers: [    
+    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
+    { provide: MAT_DATE_FORMATS, useValue: PERSONALIZADO_DATE_FORMATS },
+  ],
   declarations: [],
   imports: [
      //Material
@@ -51,7 +72,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
      MatTooltipModule,
      MatTreeModule,
      MatDividerModule,
-     MatCheckboxModule
+     MatCheckboxModule,
+     MatDatepickerModule,
+     MatNativeDateModule
   ],
   exports:[
     MatSliderModule,
@@ -76,7 +99,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTooltipModule,
     MatTreeModule,
     MatDividerModule,
-    MatCheckboxModule    
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule    
   ]
 })
 export class MaterialModule { }

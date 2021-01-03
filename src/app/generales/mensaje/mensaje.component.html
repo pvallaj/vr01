@@ -3,7 +3,7 @@
     <pre [innerHTML]="datos.mensaje "></pre>
 </div>
 <div mat-dialog-actions fxLayoutAlign="space-around">
-    <button mat-button mat-dialog-close *ngIf="datos.tipo===1">CERRAR</button>
-    <button mat-button mat-dialog-close *ngIf="datos.tipo===2">CANCELAR</button>
+    <button mat-button [mat-dialog-close]="'no'" *ngIf="datos.tipo===1">CERRAR</button>
+    <button mat-button [mat-dialog-close]="'no'" *ngIf="datos.tipo===2">CANCELAR</button>
     <button mat-button [mat-dialog-close]="'si'" *ngIf="datos.tipo===2">ACEPTAR</button>
 </div>

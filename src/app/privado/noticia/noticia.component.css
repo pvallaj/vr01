@@ -1,0 +1,52 @@
+.marco {
+    width: 100%;
+    padding: 20px;
+    /*border: 1px solid red;*/
+    align-self: center;
+}
+
+.fotoM1 {
+    background: lightslategray;
+    border-radius: 10px;
+    border: 2px dotted blanchedalmond;
+    height: 300px;
+    position: relative;
+    cursor: pointer;
+}
+
+.fotoM2 {
+    background: linear-gradient(#f9f047, #0fd850);
+    border-radius: 10px;
+    height: 300px;
+    position: relative;
+}
+
+.textoIMG {
+    align-self: center;
+    z-index: 1;
+}
+
+.imagen {
+    border-radius: 10px;
+    height: 290px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 2;
+}
+
+.btnArchivo {
+    margin: 5px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 5;
+}
+
+
+/*---------------------------------------------*/
+
+.datos {
+    /*border: 2px solid green;*/
+    margin-left: 20px;
+}

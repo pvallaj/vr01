@@ -16,34 +16,35 @@ export class ConexionService {
     'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
    //this.headers = new HttpHeaders({ 'content-type':"application/x-www-form-urlencoded"});
   }
-  obtenerCatalogo(cat:string){
-    return this.http.get(this.urlBase+'/catalogos/'+cat);
-  }
-  obtenerDetalleCatalogo(cat, idElemento){
-    let headers = new HttpHeaders();
-    headers.append('catalogo', cat);
-    const cuerpo =  JSON.stringify({cn:{accion:'consulta',id:idElemento,catalogo:cat} });
 
-    return this.http.post(this.urlBase+'/detalleCatalogos', cuerpo,  {headers:headers });
-  }
-  sermones(parametros, accion){
+  public sermones(parametros, accion){
     const cuerpo =  JSON.stringify({cn:{accion,seccion:"sermones", parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
-  narrativas(parametros, accion){
+  public narrativas(parametros, accion){
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'narrativas', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
-  novohisp(parametros, accion){
+  public novohisp(parametros, accion){
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'novohisp', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }
 
-  usuarios(parametros, accion){
+  public usuarios(parametros, accion){
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'usuarios', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
+  }
+
+  public noticias(parametros, accion){
+    const cuerpo =  JSON.stringify({cn:{accion, seccion:'noticias', parametros} });
+    return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
+  }
+
+  public noticias_sa(parametros, accion){
+    let headers = new HttpHeaders({ 'content':""});
+    return this.http.post(this.urlBase, parametros,  {headers});
   }
 
   ejecutar(componente:string, parametros: any) {

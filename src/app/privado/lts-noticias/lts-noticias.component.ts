@@ -3,6 +3,9 @@ import { subscribeOn } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { SesionUsuario } from '../../servicios/SesionUsuario.service';
+import { ConexionService } from '../../servicios/Conexion.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MensajeComponent } from '../../generales/mensaje/mensaje.component';
 
 @Component({
   selector: 'app-lts-noticias',
@@ -10,13 +13,86 @@ import { SesionUsuario } from '../../servicios/SesionUsuario.service';
   styleUrls: ['./lts-noticias.component.css']
 })
 export class LtsNoticiasComponent implements OnInit {
+  public listaNoticias:any=[];
+  public estaProcesando=false;
+  public columnasVisibles=['id', 'titulo', 'inicio', 'termino','acciones'];
+  public seleccionado:any=null;
 
-  constructor(private sus:SesionUsuario, private ru:Router) { }
+  constructor(private sus:SesionUsuario, 
+    private ru:Router,
+    private cnx:ConexionService,
+    public  dialog: MatDialog) { }
 
   ngOnInit(): void {
     if(this.sus.estadoSesion=='desconectado'){
       this.ru.navigate(['sesion']);
     }
+
+    this.cnx.noticias(null, 'obtener todas las noticias').subscribe(
+      (datos) => {
+        this.listaNoticias = datos['resultado'];
+
+    },
+    (error) => {
+      console.log('error al cargar a las noticias');
+      console.log(error);
+    });
+  }
+
+  public agregar(){
+    //this.r.navigate(['registro']);
+  }
+
+  public actualizar(){
+    
+  }
+  public eliminar(e:any){
+    this.seleccionado=e;
+    if(this.seleccionado===undefined){
+      const dialogRef = this.dialog.open(MensajeComponent, {
+        data: {
+          titulo:'Eliminar Publicación', 
+          mensaje:'Debe seleccionar la publicación que desea eliminar dando un CLICK sobre el registro',
+          tipo:1}
+      });
+      return;  
+    }
+
+    const dialogRef = this.dialog.open(MensajeComponent, {
+      data: {titulo:'Eliminar Publicación',
+        mensaje:'La publicación:\n '
+      +this.seleccionado.id+' -  '
+      +this.seleccionado.titulo.toUpperCase()+
+      '\n Será eliminada de forma definitiva. ¿Desea continuar?', tipo:2}
+    });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if(resultado==='no') return;
+      this.estaProcesando = true;
+      this.cnx.noticias({id:this.seleccionado.id},'eliminar Noticia')
+      .subscribe(
+        (datos)=>{
+          const dialogRef = this.dialog.open(MensajeComponent, {
+            data: {
+              titulo:'Eliminar Publicación', 
+              mensaje:'El resgistro fue eliminado EXITOSAMENTE', 
+              tipo:1
+            }
+          });
+          this.listaNoticias=this.listaNoticias.filter(reg=>reg.id!=this.seleccionado.id);
+          this.seleccionado==null;
+          this.estaProcesando=false;
+        },
+      (error)=>{
+          console.log('No se logro la conexión');
+          console.error(error);
+          this.estaProcesando=false;
+        }
+      )
+    });
+  }
+  public seleccionar(e:any){
+    this.seleccionado=e;
   }
 
 }
