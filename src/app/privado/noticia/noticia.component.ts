@@ -31,24 +31,43 @@ export class NoticiaComponent implements OnInit {
     private ru:Router,
     private us:UtilS
     ) { 
-    this.crearForma();
+    
     this.fechaMin=new Date((new Date()).getTime()-(1000 * 60 * 60 * 24));
     this.fechaMax=new Date((new Date()).getTime()+365*(1000 * 60 * 60 * 24));
+    this.crearForma();
   }
   crearForma(){
+    let vals=null;
     const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-    let vals={
-      //valor inicial, validaciones sincronas, validaciones asincronas
-      titulo:[this.cnl.elemento?.titulo,  [Validators.required, Validators.minLength(1), Validators.maxLength(250)]],
-      texto:[this.cnl.elemento?.texto,  [Validators.required, Validators.minLength(20), Validators.maxLength(6500)]],
-      ligaExterna:  [this.cnl.elemento?.liga,  [ Validators.minLength(1), Validators.maxLength(300),Validators.pattern(reg)]],
-      imagen: [this.cnl.elemento?.imagen,  [ Validators.minLength(1), Validators.maxLength(100)]],
-      inicio: [{value:this.cnl.elemento?.inicio, disabled:false},  [Validators.required]],
-      termino: [{value:this.cnl.elemento?.termino, disabled:false},  [Validators.required]],
-      imagenFuente: [  ]
-    };
+    if(this.cnl.elemento){
+      vals={
+        //valor inicial, validaciones sincronas, validaciones asincronas
+        titulo:[this.cnl.elemento.titulo,  [Validators.required, Validators.minLength(1), Validators.maxLength(250)]],
+        texto:[this.cnl.elemento.texto,  [Validators.required, Validators.minLength(20), Validators.maxLength(6500)]],
+        ligaExterna:  [this.cnl.elemento.ligaExterna,  [ Validators.minLength(1), Validators.maxLength(300),Validators.pattern(reg)]],
+        imagen: ['',  [ Validators.minLength(1), Validators.maxLength(100)]],
+        inicio: [{value:this.us.CadenaADate(this.cnl.elemento.inicio), disabled:false},  [Validators.required]],
+        termino: [{value:this.us.CadenaADate(this.cnl.elemento.termino), disabled:false},  [Validators.required]],
+        imagenFuente: [  ]
+      };
+      if(this.cnl.elemento.imagen){
+        this.urlIMG='http://localhost:8000/img_noticias/'+this.cnl.elemento.id+'_'+this.cnl.elemento.imagen;
+        console.log(this.urlIMG);
+      }
+    }else{
+      vals={
+        //valor inicial, validaciones sincronas, validaciones asincronas
+        titulo:[ ,  [Validators.required, Validators.minLength(1), Validators.maxLength(250)]],
+        texto:[ ,  [Validators.required, Validators.minLength(20), Validators.maxLength(6500)]],
+        ligaExterna:  [,  [ Validators.minLength(1), Validators.maxLength(300),Validators.pattern(reg)]],
+        imagen: [ ,  [ Validators.minLength(1), Validators.maxLength(100)]],
+        inicio: [{value:new Date(), disabled:false},  [Validators.required]],
+        termino: [{value:new Date(), disabled:false},  [Validators.required]],
+        imagenFuente: [  ]
+      };
+    }
     this.frm=this.fb.group(vals);
-    
+    console.log(this.frm.value);
   }
   ngOnInit(): void {
   }
@@ -77,11 +96,22 @@ export class NoticiaComponent implements OnInit {
     let prms={...this.frm.value};
     prms.inicio=this.us.DateACadenaSQL(prms.inicio);
     prms.termino=this.us.DateACadenaSQL(prms.termino);
-    
+    console.log(this.cnl.elemento);
     if(this.cnl.elemento!=null){
       //para actualización del usuario
-      this.frm.value.id=this.cnl.elemento.id; 
-      this.cnx.noticias(prms,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+      prms.id=this.cnl.elemento.id; 
+      if(this.archivo){
+        let formData = new FormData();
+        prms.imagen=this.archivo.name;
+        formData.append('file', this.archivo, this.archivo.name);
+        formData.append('id','2');
+        formData.append('tz',new Date().toISOString())
+        formData.append('update','2')
+        formData.append('cn',JSON.stringify({accion:'actualizar Noticia', seccion:'noticias', parametros:prms}))
+        this.cnx.noticias_sa(formData,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+      }else{
+        this.cnx.noticias(prms,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+      }
     }else{
       //para creación del registro
       let formData = new FormData();
@@ -100,13 +130,11 @@ export class NoticiaComponent implements OnInit {
     if(r.ok==true){
       if(this.cnl.elemento!=null){
         this.dlg.open(MensajeComponent, {data:{titulo: 'Actualización de datos de noticia', mensaje: 'La noticia se actualizado exitosamente.', tipo:1}});
-        //this.ru.navigate(['usuarios']);
         this.cnl.elemento=null;
       }else{
         this.dlg.open(MensajeComponent, {data:{titulo: 'Registro de nueva noticia', mensaje: 'La noticia se creo exitosamente.', tipo:1}});
-        //this.ru.navigate(['sesion']);
       }
-      
+      this.ru.navigate(['publicar']);
     } else{
         this.dlg.open(MensajeComponent, {data:{titulo: 'Registro de noticia', mensaje: 'Error: '+r.message}});
     }
@@ -117,5 +145,7 @@ export class NoticiaComponent implements OnInit {
     this.dlg.open(MensajeComponent, {data:{titulo: 'Registro de noticia', mensaje: 'Error: '+e.message}});
     this.estaProcesando=false;
   }
-
+  cambio(){
+    console.log(this.frm.value);
+  }
 }

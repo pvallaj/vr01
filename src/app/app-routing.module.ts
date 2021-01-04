@@ -32,7 +32,8 @@ const routes: Routes = [
   {path: 'usuarios',       component: ListaUsuariosComponent},
   //noticias
   {path: 'publicar',       component: LtsNoticiasComponent},
-  {path: 'nuevaNoticia',   component: NoticiaComponent},
+  {path: 'crearNoticia',   component: NoticiaComponent},
+  {path: 'modifNoticia',   component: NoticiaComponent},
 
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' }, 
   { path: '**', component: InicioComponent }

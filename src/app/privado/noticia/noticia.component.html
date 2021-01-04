@@ -35,11 +35,11 @@
                 <input matInput placeholder="http://pagina.com" formControlName="ligaExterna">
             </mat-form-field>
             <div class="fechasMarco" fxLayout="column">
-                <p>Especifique las fechas de INICIO y TERMINO de publicación</p>
+                <p>Especifique las fechas de INICIO y TERMINO de publicación </p>
                 <div class="fechas" fxLayoutAlign="space-around">
                     <mat-form-field appearance="fill">
                         <mat-label>Fecha de inicio</mat-label>
-                        <input formControlName="inicio" [min]="fechaMin" [max]="fechaMax" matInput [matDatepicker]="dpInicio">
+                        <input formControlName="inicio" [readonly]="true" [min]="fechaMin" [max]="fechaMax" matInput [matDatepicker]="dpInicio">
                         <mat-datepicker-toggle matSuffix [for]="dpInicio"></mat-datepicker-toggle>
                         <mat-datepicker #dpInicio disabled="false"></mat-datepicker>
                         <mat-error *ngIf="frm.get('inicio').invalid">
@@ -48,8 +48,8 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>Fecha de termino</mat-label>
-                        <input formControlName="termino" [min]="this.frm.value.inicio" [max]="fechaMax" matInput [matDatepicker]="dpTermino">
+                        <mat-label>Fecha de termino </mat-label>
+                        <input formControlName="termino" [readonly]="true" [min]="frm.value.inicio" [max]="fechaMax" matInput [matDatepicker]="dpTermino">
                         <mat-datepicker-toggle matSuffix [for]="dpTermino"></mat-datepicker-toggle>
                         <mat-datepicker #dpTermino disabled="false"></mat-datepicker>
                         <mat-error *ngIf="frm.get('termino').invalid">

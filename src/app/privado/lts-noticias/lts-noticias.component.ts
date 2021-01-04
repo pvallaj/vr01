@@ -6,6 +6,7 @@ import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 import { ConexionService } from '../../servicios/Conexion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeComponent } from '../../generales/mensaje/mensaje.component';
+import { CanalService } from '../../servicios/canal.service';
 
 @Component({
   selector: 'app-lts-noticias',
@@ -21,7 +22,8 @@ export class LtsNoticiasComponent implements OnInit {
   constructor(private sus:SesionUsuario, 
     private ru:Router,
     private cnx:ConexionService,
-    public  dialog: MatDialog) { }
+    public  dialog: MatDialog,
+    public  cnl:CanalService) { }
 
   ngOnInit(): void {
     if(this.sus.estadoSesion=='desconectado'){
@@ -40,29 +42,32 @@ export class LtsNoticiasComponent implements OnInit {
   }
 
   public agregar(){
-    //this.r.navigate(['registro']);
+    this.cnl.elemento=null;
+    this.ru.navigate(['crearNoticia']);
   }
 
-  public actualizar(){
-    
+  public actualizar(e:any){
+    this.cnl.elemento=e;
+    this.ru.navigate(['modifNoticia']);
   }
   public eliminar(e:any){
     this.seleccionado=e;
+    console.log(e);
     if(this.seleccionado===undefined){
       const dialogRef = this.dialog.open(MensajeComponent, {
         data: {
-          titulo:'Eliminar Publicación', 
-          mensaje:'Debe seleccionar la publicación que desea eliminar dando un CLICK sobre el registro',
+          titulo:'Eliminar Noticia', 
+          mensaje:'Debe seleccionar la Noticia que desea eliminar dando un CLICK sobre el registro',
           tipo:1}
       });
       return;  
     }
 
     const dialogRef = this.dialog.open(MensajeComponent, {
-      data: {titulo:'Eliminar Publicación',
-        mensaje:'La publicación:\n '
+      data: {titulo:'Eliminar Noticia',
+        mensaje:'La Noticia:\n '
       +this.seleccionado.id+' -  '
-      +this.seleccionado.titulo.toUpperCase()+
+      +this.seleccionado.titulo?.toUpperCase()+
       '\n Será eliminada de forma definitiva. ¿Desea continuar?', tipo:2}
     });
 
@@ -74,13 +79,15 @@ export class LtsNoticiasComponent implements OnInit {
         (datos)=>{
           const dialogRef = this.dialog.open(MensajeComponent, {
             data: {
-              titulo:'Eliminar Publicación', 
-              mensaje:'El resgistro fue eliminado EXITOSAMENTE', 
+              titulo:datos['ok']?'Eliminar Noticia':'¡ ERROR !', 
+              mensaje:datos['message'], 
               tipo:1
             }
           });
-          this.listaNoticias=this.listaNoticias.filter(reg=>reg.id!=this.seleccionado.id);
-          this.seleccionado==null;
+          if(datos['ok']){
+            this.listaNoticias=this.listaNoticias.filter(reg=>reg.id!=this.seleccionado.id);
+            this.seleccionado==null;
+          }
           this.estaProcesando=false;
         },
       (error)=>{
