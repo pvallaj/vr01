@@ -1,0 +1,25 @@
+.espera {
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 10000 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    visibility: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: wait !important;
+    font-size: 200px !important;
+}
+
+.contenedor {
+    width: 90%;
+    height: 90%;
+    overflow: scroll;
+}
+
+.accion {
+    width: 90%;
+}

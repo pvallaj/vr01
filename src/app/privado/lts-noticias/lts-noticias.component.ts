@@ -65,10 +65,10 @@ export class LtsNoticiasComponent implements OnInit {
 
     const dialogRef = this.dialog.open(MensajeComponent, {
       data: {titulo:'Eliminar Noticia',
-        mensaje:'La Noticia:\n '
+        mensaje:'La Noticia:\n\n  '
       +this.seleccionado.id+' -  '
       +this.seleccionado.titulo?.toUpperCase()+
-      '\n Será eliminada de forma definitiva. ¿Desea continuar?', tipo:2}
+      '\n\n  Será eliminada de forma definitiva. ¿Desea continuar?', tipo:2}
     });
 
     dialogRef.afterClosed().subscribe(resultado => {

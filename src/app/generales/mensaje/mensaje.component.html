@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{datos.titulo}}</h1>
 <div mat-dialog-content>
-    <pre [innerHTML]="datos.mensaje "></pre>
+    <p>{{datos.mensaje}}</p>
 </div>
 <div mat-dialog-actions fxLayoutAlign="space-around">
     <button mat-button [mat-dialog-close]="'no'" *ngIf="datos.tipo===1">CERRAR</button>

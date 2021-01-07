@@ -32,14 +32,14 @@ export class NoticiaComponent implements OnInit {
     private us:UtilS
     ) { 
     
-    this.fechaMin=new Date((new Date()).getTime()-(1000 * 60 * 60 * 24));
-    this.fechaMax=new Date((new Date()).getTime()+365*(1000 * 60 * 60 * 24));
     this.crearForma();
   }
   crearForma(){
     let vals=null;
     const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
     if(this.cnl.elemento){
+      this.fechaMin=this.us.CadenaADate(this.cnl.elemento.inicio);
+      this.fechaMax=new Date((new Date()).getTime()+365*(1000 * 60 * 60 * 24));
       vals={
         //valor inicial, validaciones sincronas, validaciones asincronas
         titulo:[this.cnl.elemento.titulo,  [Validators.required, Validators.minLength(1), Validators.maxLength(250)]],
@@ -55,6 +55,8 @@ export class NoticiaComponent implements OnInit {
         console.log(this.urlIMG);
       }
     }else{
+      this.fechaMin=new Date((new Date()).getTime()-(1000 * 60 * 60 * 24));
+      this.fechaMax=new Date((new Date()).getTime()+365*(1000 * 60 * 60 * 24));
       vals={
         //valor inicial, validaciones sincronas, validaciones asincronas
         titulo:[ ,  [Validators.required, Validators.minLength(1), Validators.maxLength(250)]],

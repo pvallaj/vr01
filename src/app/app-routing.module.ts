@@ -14,6 +14,7 @@ import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.
 import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
+import { NoticiasComponent } from './seccion3/noticias/noticias.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'oesxvi',         component: OEscritaSXVIComponent},
   {path: 'herramientas',   component: HerramientasComponent},
   {path: 'buscar',         component: BuscarComponent},
+  {path: 'noticias',       component: NoticiasComponent},
   //usuarios
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},

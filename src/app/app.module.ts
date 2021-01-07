@@ -58,6 +58,7 @@ import { NoticiasComponent } from './seccion3/noticias/noticias.component';
 import { EsperaComponent } from './generales/espera/espera.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { UtilS } from './servicios/Util.service';
+import { ImagenTCComponent } from './generales/imagen-tc/imagen-tc.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,6 +93,7 @@ import { UtilS } from './servicios/Util.service';
     NoticiasComponent,
     EsperaComponent,
     NoticiaComponent,
+    ImagenTCComponent,
     
   ],
   imports: [

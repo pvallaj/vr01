@@ -1,0 +1,75 @@
+.titulo {
+    font-size: x-large;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.texto {
+    min-height: 195px;
+    padding: 5px;
+    text-align: justify;
+    font-size: x-large;
+    white-space: pre-wrap
+}
+
+.contenedor-imagen {
+    float: right;
+    width: 300px;
+    height: 180px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.imagen {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+
+/**************************/
+
+.mat-card-content {
+    min-height: 190 !important;
+    border-top: 1px solid gray;
+}
+
+.tNoticia {
+    margin: 10px;
+}
+
+.img_avatar {
+    background-image: url('http://localhost:4200/assets/img/filologicas_logo.jpg');
+    background-size: cover;
+}

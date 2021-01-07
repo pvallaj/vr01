@@ -1,3 +1,7 @@
 .controles {
     height: 50px;
 }
+
+p {
+    white-space: pre-wrap
+}
