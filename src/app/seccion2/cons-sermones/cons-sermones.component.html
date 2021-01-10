@@ -122,8 +122,7 @@
     <div class="resultado" [style.display]="despResultado" *ngIf="!estaCargando">
         <div mat-subheader>Información encontrada en la base de datos</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-
-            <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
+            <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
                 <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
                         <p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_nombre}} {{sermon.autor_apellido}} ({{sermon.autor_orden}})</p>
@@ -139,8 +138,8 @@
         </div>
     </div>
 </div>
-<div class="detalle" *ngIf="desplegarDetalle">
-    <button mat-button class="regresar" (click)="cambiar(0)">
+<div fxFlex *ngIf="desplegarDetalle">
+    <button mat-flat-button color="primary" class="regresar" (click)="cambiar(0)">
         <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
     </button>
     <app-cons-det-sermon [id_sermon]="idSermonSel" [tipo]="1" #detsermon></app-cons-det-sermon>

@@ -26,17 +26,17 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   @Input() public narrativa: Narrativa = null;
   @Input() public textoBuscado: "";
 
-  public bibliografia: any = [];
-  public princeps: any = [];
-  public contexto: any = [];
-  public tipoAccion: any = [];
-  public clasificacion: any = [];
-  public motivos: any = [];
-  public tema: any = [];
-  public versificacion: any = [];
-  public soporte: any = [];
-  public signos: any = [];
-  public vinculos: any = [];
+  public bibliografia: any = null;
+  public princeps: any = null;
+  public contexto: any = null;
+  public tipoAccion: any = null;
+  public clasificacion: any = null;
+  public motivos: any = null;
+  public tema: any = null;
+  public versificacion: any = null;
+  public soporte: any = null;
+  public signos: any = null;
+  public vinculos: any = null;
 
   public estaCargando = false;
   public tabSeleccionado = 0;
@@ -65,19 +65,27 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
       (data) => {
         const temp = data['resultado'];
         console.log(temp);
-        this.bibliografia = temp.bibliograficos[0];
-        this.princeps = temp.princeps[0];
-        this.contexto = temp.contexto[0];
-        this.tipoAccion = temp.tipoAccion;
-        this.clasificacion = temp.clasificacion;
-        this.motivos = temp.motivos;
-        this.tema = temp.temas;
-        this.versificacion = temp.versificacion;
-        this.soporte = temp.soporte;
-        this.signos = temp.signos[0];
-        this.vinculos = temp.vinculos[0];
+
+        this.bibliografia =   temp.bibliograficos[0] || null;
+        this.princeps =       temp.princeps[0] || null;
+        this.contexto =       temp.contexto[0] || null;
+        this.tipoAccion =     temp.tipoAccion || null;
+        this.clasificacion =  temp.clasificacion || null;
+        this.motivos =        temp.motivos || null;
+        this.tema =           temp.temas || null;
+        this.versificacion =  temp.versificacion || null;
+        this.soporte =        temp.soporte || null;
+        this.signos =         temp.signos[0] || null;
+        this.vinculos =       temp.vinculos[0] || null;
+
         this.tabSeleccionado=0;
         this.estaCargando=false;
+        this.tipoAccion.length==0?this.tipoAccion=null:null;
+        this.motivos.length==0?this.motivos=null:null;
+        this.tema.length==0?this.tema=null:null;
+        this.versificacion.length==0?this.versificacion=null:null;
+        this.soporte.length==0?this.soporte=null:null;
+
       },
     (error) => {
         console.log('No se logro la conexión');

@@ -15,6 +15,7 @@ import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.componen
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { NoticiasComponent } from './seccion3/noticias/noticias.component';
+import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'herramientas',   component: HerramientasComponent},
   {path: 'buscar',         component: BuscarComponent},
   {path: 'noticias',       component: NoticiasComponent},
+  {path: 'linea',          component: LineaDTComponent},
   //usuarios
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},

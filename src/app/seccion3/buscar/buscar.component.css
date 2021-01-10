@@ -91,3 +91,7 @@ mat-card-content {
     color: black !important;
     font-size: 18px !important;
 }
+
+.tarjetaresumen {
+    margin-top: 10px;
+}

@@ -33,8 +33,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    console.log("cambio el parametro.....");
-    console.log(changes);
+    
     if (this.id_sermon <= 0) {
       console.log("Regresando a valores iniciales");
       this.sermon=[];
@@ -47,6 +46,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     }
     //consultando detalle del sermon
     this.estaCargando = true;
+
     this.cnx.sermones({id_sermon:this.id_sermon}, 'consulta detalle sermon')
     .subscribe(
       (data)=>{

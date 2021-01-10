@@ -1,4 +1,4 @@
-<mat-card class="buscando" *ngIf="estaCargando">
+<!--mat-card class="buscando" *ngIf="estaCargando">
     <mat-card-content>
         <h2 class="example-h2">Buscando información ...</h2>
         <section class="example-section">
@@ -6,12 +6,21 @@
             </mat-progress-bar>
         </section>
     </mat-card-content>
-</mat-card>
+</mat-card-->
+
+<app-espera *ngIf="estaCargando"></app-espera>
+
+<app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle()">
+
+</app-tc>
 
 <div class="resultado" *ngIf="!estaCargando  && resultadoOE.length>0">
     <div mat-subheader>Información encontrada en la Obra Escrita</div>
-    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-        <mat-card class="tarjeta" *ngFor="let oe of resultadoOE; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=oe.id">
+    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
+        <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of resultadoOE; let i = index" (click)="verDetalle(elemento)" fxFlex="0 0 calc(25% - 10px)"></app-detalle-oe>
+    </div>
+    <!--div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
+        <mat-card class="tarjeta" *ngFor="let oe of resultadoOE; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
             <mat-card-content [ngClass]="{'seleccionado':(oe.id)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                 <div class="contenedorimg">
                     <div class="tituloTarjetaimg">
@@ -20,21 +29,21 @@
                             <mat-icon>menu</mat-icon>
                         </button>
                     </div>
-                    <!--div [innerHTML]="oe.texto" *ngIf="oe.tipo==1"></div-->
-                    <img class="imgprev" *ngIf="oe.tipo==2" src="{{oe.referencia}}">
+                    
+                    <img class="imgprev" *ngIf="oe.tipo==2" src="{{oe.referencia}}" (click)="verDetalle(oe)">
                     <p class="pieTarjetaimg">{{oe.descripcion}}</p>
                 </div>
             </mat-card-content>
         </mat-card>
 
-    </div>
+    </div-->
 </div>
 <mat-divider></mat-divider>
 
 <div *ngIf="!estaCargando && resultadoSermones.length>0">
     <div mat-subheader>Información encontrada en la base de datos de SERMONES</div>
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-        <mat-card class="tarjeta" *ngFor="let sermon of resultadoSermones; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
+        <mat-card class="tarjeta" *ngFor="let sermon of resultadoSermones; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(sermon)">
             <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                 <div fxFlex fxLayout fxLayoutAlign="space-between">
                     <p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p>
@@ -54,7 +63,7 @@
 <div class="resultado" *ngIf="!estaCargando && resultadoNarrativas.length>0">
     <div mat-subheader>Información encontrada en la base de datos de Narrativas</div>
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-        <mat-card class="tarjeta" *ngFor="let narrativa of resultadoNarrativas; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
+        <mat-card class="tarjeta" *ngFor="let narrativa of resultadoNarrativas; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(narrativa)">
             <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                 <div fxFlex fxLayout fxLayoutAlign="space-between">
                     <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>

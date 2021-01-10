@@ -58,7 +58,8 @@ import { NoticiasComponent } from './seccion3/noticias/noticias.component';
 import { EsperaComponent } from './generales/espera/espera.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { UtilS } from './servicios/Util.service';
-import { ImagenTCComponent } from './generales/imagen-tc/imagen-tc.component';
+import { TCComponent } from './generales/imagen-tc/tc.component';
+import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +94,8 @@ import { ImagenTCComponent } from './generales/imagen-tc/imagen-tc.component';
     NoticiasComponent,
     EsperaComponent,
     NoticiaComponent,
-    ImagenTCComponent,
+    TCComponent,
+    LineaDTComponent,
     
   ],
   imports: [

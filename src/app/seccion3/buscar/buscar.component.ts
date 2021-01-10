@@ -16,7 +16,9 @@ export class BuscarComponent implements OnInit, OnDestroy {
   public resultadoOE:string[]=[];
   public resultadoNarrativas:string[]=[];
   public resultadoSermones:string[]=[];
-
+  public referencia:string=null;
+  public tipoReferencia:string=null;
+  public elementoSeleccionado:any;
 
   constructor(private cs:CanalService, private cnx:ConexionService) {
     this.escucha = this.cs.getMessage().subscribe(m => {
@@ -65,6 +67,34 @@ export class BuscarComponent implements OnInit, OnDestroy {
       return sermon.substring(0, (sermon.indexOf(' ', 250))>0?(sermon.indexOf(' ', 250)):sermon.length) + '...';
     }
     return sermon;
+  }
+
+  public verDetalle(e:any){
+    console.log(e);
+    if(e.id_sermon){
+      console.log('-->Sermon');
+      this.tipoReferencia='sermon';
+      this.referencia=e.id_sermon;
+      return;
+    }
+    if(e.id_texto){
+      console.log('-->Relación');
+      this.tipoReferencia='relacion';
+      this.referencia=e.id_texto;
+      return;
+    }
+
+    if(e.tipo){
+      this.tipoReferencia='buscar';
+      this.referencia="varios";
+      this.elementoSeleccionado=e;
+      return;
+    }
+  }
+
+  public cerrarDetalle(){
+    this.tipoReferencia=null;
+    this.referencia=null;
   }
   ngOnDestroy(): void {
     this.escucha.unsubscribe();

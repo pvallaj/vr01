@@ -8,440 +8,417 @@
         </section>
     </mat-card-content>
 </mat-card>
-
-
-<mat-accordion *ngIf="!estaCargando" fxFill>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Relaciones
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="narrativa!=null">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Autor:</div>
-                <div class="valor" fxFlex="85">{{narrativa.autor}}</div>
+<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+    <div class="secciones" fxFlex="0 0 calc(30% - 5px)" fxFlex.lt-lg="100%">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
+            <div class="titulo_seccion">
+                Relación
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">obra:</div>
-                <div class="valor" fxFlex="85">{{narrativa.obra}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Ubicación:</div>
-                <div class="valor" fxFlex="85">{{narrativa.ubicacion}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Narrativa:</div>
-                <div class="valor" fxFlex="85">
-                    <pre [innerHTML]="narrativa.narratio | resaltaTexto:textoBuscado"></pre>
-                    <!--pre [innerHTML]="resalta(narrativa.narratio, textoBuscado)"></pre-->
+            <div class="resultado" fxLayout="column" *ngIf="bibliografia!=null">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Autor:</div>
+                    <div class="valor" fxFlex>{{bibliografia.autor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">obra:</div>
+                    <div class="valor" fxFlex>{{bibliografia.obra}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Ubicación:</div>
+                    <div class="valor" fxFlex>{{bibliografia.ubicacion}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Narrativa:</div>
+                    <div class="valor" fxFlex>
+                        <!--p>{{narrativa.narratio | resaltaTexto:textoBuscado}}</p-->
+                        <pre [innerHTML]="bibliografia.narratio | resaltaTexto:textoBuscado"></pre>
+                    </div>
                 </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                bibliografia
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-tab-group animationDuration="2000ms" [selectedIndex]="1" [backgroundColor]="'primary'">
-            <mat-tab label="Fluido">
-                <div fxFill fxLayout="column" fxLayoutAlign="start center">
-                    <div class="blur">
-                        <div class="shadow">
-                            <div class="content" fxLayout="column">
-                                <div class="titulo">
-                                    Bibliografia
-                                </div>
-                                <div class="texto" [innerHTML]="crearTextoBiliografia(bibliografia)"> </div>
-                            </div>
+    </div>
+    <div class="secciones" *ngIf="!estaCargando" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
+        <div class="seccion" fxFlex="0 0 calc(45% - 5px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
+            <div class="titulo_seccion">
+                Bibliografia
+            </div>
+            <mat-tab-group>
+                <mat-tab label="Fluido">
+                    <div class="texto" [innerHTML]="crearTextoBiliografia(bibliografia)"> </div>
+                </mat-tab>
+                <mat-tab label="Estructurado">
+                    <div class="resultado" fxLayout="column">
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Autor:</div>
+                            <div class="valor" fxFlex>{{bibliografia.autor}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">obra:</div>
+                            <div class="valor" fxFlex>{{bibliografia.obra}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">editor:</div>
+                            <div class="valor" fxFlex>{{bibliografia.editor}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Edición Paleográfica:</div>
+                            <div class="valor" fxFlex>{{bibliografia.ed_paleo}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Director o Cordinador:</div>
+                            <div class="valor" fxFlex>{{bibliografia.director_cor}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Editorial:</div>
+                            <div class="valor" fxFlex>{{bibliografia.editorial}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Ciudad:</div>
+                            <div class="valor" fxFlex>{{bibliografia.ciudad}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Año:</div>
+                            <div class="valor" fxFlex>{{bibliografia.anio}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Obra Anfitrion:</div>
+                            <div class="valor" fxFlex>{{bibliografia.obra_anfitrion}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Tomo:</div>
+                            <div class="valor" fxFlex>{{bibliografia.tomo}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Colección:</div>
+                            <div class="valor" fxFlex>{{bibliografia.coleccion}}</div>
+                        </div>
+                        <div class="fila" fxLayout="row">
+                            <div class="titulo" fxFlex="25">Princeps:</div>
+                            <div class="valor" fxFlex>{{bibliografia.pp}}</div>
                         </div>
                     </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Estructurado">
-                <div class="resultado" fxLayout="column" *ngIf="bibliografia!=[]">
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Autor:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.autor}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">obra:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.obra}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">editor:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.editor}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Edición Paleográfica:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.ed_paleo}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Director o Cordinador:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.director_cor}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Editorial:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.editorial}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Ciudad:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.ciudad}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Año:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.anio}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Obra Anfitrion:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.obra_anfitrion}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Tomo:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.tomo}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Colección:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.coleccion}}</div>
-                    </div>
-                    <div class="fila" fxLayout="row">
-                        <div class="titulo" fxFlex="15">Princeps:</div>
-                        <div class="valor" fxFlex="85">{{bibliografia.pp}}</div>
-                    </div>
-                </div>
-            </mat-tab>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
 
-        </mat-tab-group>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="princeps!=null">
+            <div class="titulo_seccion">
                 Princeps
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="princeps!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Autor:</div>
-                <div class="valor" fxFlex="85">{{princeps.autor}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">obra:</div>
-                <div class="valor" fxFlex="85">{{princeps.obra_tomo}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">librero:</div>
-                <div class="valor" fxFlex="85">{{princeps.librero}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Ciudad:</div>
-                <div class="valor" fxFlex="85">{{princeps.Ciudad}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">A costa de:</div>
-                <div class="valor" fxFlex="85">{{princeps.a_costa_de}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Año:</div>
-                <div class="valor" fxFlex="85">{{princeps.anio}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Princeps:</div>
-                <div class="valor" fxFlex="85">{{princeps.princeps}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Autor:</div>
+                    <div class="valor" fxFlex>{{princeps?.autor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">obra:</div>
+                    <div class="valor" fxFlex>{{princeps?.obra_tomo}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">librero:</div>
+                    <div class="valor" fxFlex>{{princeps?.librero}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Ciudad:</div>
+                    <div class="valor" fxFlex>{{princeps?.Ciudad}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">A costa de:</div>
+                    <div class="valor" fxFlex>{{princeps.a_costa_de}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Año:</div>
+                    <div class="valor" fxFlex>{{princeps.anio}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Princeps:</div>
+                    <div class="valor" fxFlex>{{princeps.princeps}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Descripción discursiva
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="contexto!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Descripción Discursiva:</div>
-                <div class="valor" fxFlex="85">{{contexto.descripcion_discursiva}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Personaje Receptor:</div>
-                <div class="valor" fxFlex="85">{{contexto.receptor}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Personaje Transmisor:</div>
-                <div class="valor" fxFlex="85">{{contexto.trasmisor}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Personaje Emisor:</div>
-                <div class="valor" fxFlex="85">{{contexto.emisor}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Espacio abierto desde el que se cuenta:</div>
-                <div class="valor" fxFlex="85">{{contexto.ed_abierto}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Espacio Cerrado desde el que se cuenta:</div>
-                <div class="valor" fxFlex="85">{{contexto.ed_cerrado}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Espacio Abierto referido:</div>
-                <div class="valor" fxFlex="85">{{contexto.er_abierto}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Espacio Cerrado referido:</div>
-                <div class="valor" fxFlex="85">{{contexto.er_cerrado}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Diurno / Nocturno:</div>
-                <div class="valor" fxFlex="85">{{contexto.diurna_nocturna}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Temporalidad dramática:</div>
-                <div class="valor" fxFlex="85">{{contexto.t_dramatico}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Momento Referido: </div>
-                <div class="valor" fxFlex="85">{{contexto.m_referido}}</div>
-            </div>
-        </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Clasificación
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="clasificacion!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">Categoria</div>
-                <div class="titulo" fxFlex="80">Descripción</div>
-            </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of clasificacion">
-                <div class="valor" fxFlex="20">{{elemento.categoria}}</div>
-                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
-            </div>
-        </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Tipo de acción
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="tipoAccion!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">Tipo Acción</div>
-                <div class="titulo" fxFlex="80">Descripción</div>
-            </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of tipoAccion">
-                <div class="valor" fxFlex="20">{{elemento.tipo_accion}}</div>
-                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
-            </div>
-        </div>
-    </mat-expansion-panel>
+        <mat-divider></mat-divider>
 
-    <mat-expansion-panel>
-        <mat-panel-title>
-            Motivos
-        </mat-panel-title>
-        <mat-panel-description>
-            Descripción de la sección
-        </mat-panel-description>
-        <div class="resultado" fxLayout="column" *ngIf="motivos!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">id</div>
-                <div class="titulo" fxFlex="80">Descripción</div>
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="contexto!=null">
+            <div class="titulo_seccion">
+                Descripción discursiva
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of motivos">
-                <div class="valor" fxFlex="20">{{elemento.id_motivo}}</div>
-                <div class="valor" fxFlex="80">{{elemento.motivo}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Argumento:</div>
+                    <div class="valor" fxFlex>{{contexto.argumento}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Expresión con la que los personajes se refieren a la relación:</div>
+                    <div class="valor" fxFlex>{{contexto.denominacion_accion}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Contexto:</div>
+                    <div class="valor" fxFlex>{{contexto.accion_dramatica}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Texto marco anterior:</div>
+                    <div class="valor" fxFlex>{{contexto.marco_anterior}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Texto marco posterior:</div>
+                    <div class="valor" fxFlex>{{contexto.marco_posterior}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Formula de apertura:</div>
+                    <div class="valor" fxFlex>{{contexto.formula_apertura}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Formula de cierre:</div>
+                    <div class="valor" fxFlex>{{contexto.formula_cierre}}</div>
+                </div>
+
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Descripción Discursiva:</div>
+                    <div class="valor" fxFlex>{{contexto.descripcion_discursiva}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Personaje Receptor:</div>
+                    <div class="valor" fxFlex>{{contexto.receptor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Personaje Transmisor:</div>
+                    <div class="valor" fxFlex>{{contexto.trasmisor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Personaje Emisor:</div>
+                    <div class="valor" fxFlex>{{contexto.emisor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Espacio abierto desde el que se cuenta:</div>
+                    <div class="valor" fxFlex>{{contexto.ed_abierto}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Espacio Cerrado desde el que se cuenta:</div>
+                    <div class="valor" fxFlex>{{contexto.ed_cerrado}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Espacio Abierto referido:</div>
+                    <div class="valor" fxFlex>{{contexto.er_abierto}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Espacio Cerrado referido:</div>
+                    <div class="valor" fxFlex>{{contexto.er_cerrado}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Diurno / Nocturno:</div>
+                    <div class="valor" fxFlex>{{contexto.diurna_nocturna}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Temporalidad dramática:</div>
+                    <div class="valor" fxFlex>{{contexto.t_dramatico}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="35">Momento Referido: </div>
+                    <div class="valor" fxFlex>{{contexto.m_referido}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="clasificacion!=null">
+            <div class="titulo_seccion">
+                Clasificación
+            </div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Categoria</div>
+                    <div class="titulo" fxFlex="80">Descripción</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of clasificacion">
+                    <div class="valor" fxFlex="20">{{elemento.categoria}}</div>
+                    <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
+            <div class="titulo_seccion">
+                Tipo de acción
+            </div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Tipo Acción</div>
+                    <div class="titulo" fxFlex="80">Descripción</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of tipoAccion">
+                    <div class="valor" fxFlex="20">{{elemento.tipo_accion}}</div>
+                    <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="motivos!=null">
+            <div class="titulo_seccion">
+                Motivos
+            </div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex>Descripción</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of motivos">
+                    <div class="valor" fxFlex>{{elemento.motivo}}</div>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tema!=null">
+            <div class="titulo_seccion">
                 Tema
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="tema!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">Palabra</div>
-                <div class="titulo" fxFlex="80">Descripción</div>
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of tema">
-                <div class="valor" fxFlex="20">{{elemento.palabra}}</div>
-                <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Palabra</div>
+                    <div class="titulo" fxFlex="80">Descripción</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of tema">
+                    <div class="valor" fxFlex="20">{{elemento.palabra}}</div>
+                    <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="versificacion!=null">
+            <div class="titulo_seccion">
                 Versificación
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="versificacion!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="80">Tipo de verso</div>
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of versificacion">
-                <div class="valor" fxFlex="80">{{elemento.tipo_verso}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex>Tipo de verso</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of versificacion">
+                    <div class="valor" fxFlex>{{elemento.tipo_verso}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
+            <div class="titulo_seccion">
                 Soporte
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="soporte!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="80">Descripción</div>
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of soporte">
-                <div class="valor" fxFlex="80">{{elemento.tipo_material}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex>Descripción</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngFor="let elemento of soporte">
+                    <div class="valor" fxFlex>{{elemento.tipo_material}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
+            <div class="titulo_seccion">
                 Signos Actorales en los actores dramáticos
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="signos!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Gestos:</div>
-                <div class="valor" fxFlex="60">{{signos.gestos_dramaticos}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos corporales:</div>
-                <div class="valor" fxFlex="60">{{signos.movimientos_dramaticos}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
-                <div class="valor" fxFlex="60">{{signos.voz_dramaticos}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos explícitos en la mirada de los actores:</div>
-                <div class="valor" fxFlex="60">{{signos.vista_dramaticos}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Gestos implícitos de los actores:</div>
-                <div class="valor" fxFlex="60">{{signos.gestos_dramaticos_no}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos corporales implícitos de los actores:</div>
-                <div class="valor" fxFlex="60">{{signos.movimientos_dramaticos_no}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Modulaciones implícitas en la voz de los actores:</div>
-                <div class="valor" fxFlex="60">{{signos.voz_dramaticos_no}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos implícitos en la mirada de los actores:</div>
-                <div class="valor" fxFlex="60">{{signos.vista_dramaticos_no}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Gestos:</div>
+                    <div class="valor" fxFlex>{{signos.gestos_dramaticos}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos corporales:</div>
+                    <div class="valor" fxFlex>{{signos.movimientos_dramaticos}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
+                    <div class="valor" fxFlex>{{signos.voz_dramaticos}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos explícitos en la mirada de los actores:</div>
+                    <div class="valor" fxFlex>{{signos.vista_dramaticos}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Gestos implícitos de los actores:</div>
+                    <div class="valor" fxFlex>{{signos.gestos_dramaticos_no}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos corporales implícitos de los actores:</div>
+                    <div class="valor" fxFlex>{{signos.movimientos_dramaticos_no}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Modulaciones implícitas en la voz de los actores:</div>
+                    <div class="valor" fxFlex>{{signos.voz_dramaticos_no}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos implícitos en la mirada de los actores:</div>
+                    <div class="valor" fxFlex>{{signos.vista_dramaticos_no}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
+            <div class="titulo_seccion">
                 Signos actorales de los personajes referidos en la relación
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="signos!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Gestos:</div>
-                <div class="valor" fxFlex="60">{{signos.gestos_dieg}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos Corporales</div>
-                <div class="valor" fxFlex="60">{{signos.movimientos_dieg}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
-                <div class="valor" fxFlex="60">{{signos.voz_dieg}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Movimientos en la mirada de los personajes referidos:</div>
-                <div class="valor" fxFlex="60">{{signos.vista_dieg}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Signos actorales implícitos de los personajes referidos:</div>
-                <div class="valor" fxFlex="60">{{signos.implicitos}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Gestos:</div>
+                    <div class="valor" fxFlex>{{signos.gestos_dieg}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos Corporales</div>
+                    <div class="valor" fxFlex>{{signos.movimientos_dieg}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
+                    <div class="valor" fxFlex>{{signos.voz_dieg}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Movimientos en la mirada de los personajes referidos:</div>
+                    <div class="valor" fxFlex>{{signos.vista_dieg}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Signos actorales implícitos de los personajes referidos:</div>
+                    <div class="valor" fxFlex>{{signos.implicitos}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-divider></mat-divider>
+
+        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="vinculos!=null">
+            <div class="titulo_seccion">
                 Vinculos
-            </mat-panel-title>
-            <mat-panel-description>
-                Descripción de la sección
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="resultado" fxLayout="column" *ngIf="vinculos!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos visuales:</div>
-                <div class="valor" fxFlex="60">{{vinculos.visuales}}</div>
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos auditivos:</div>
-                <div class="valor" fxFlex="60">{{vinculos.auditivos}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos con el presente de la acción dramática:</div>
-                <div class="valor" fxFlex="60">{{vinculos.presente}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos mediante referencias metadiscursivos:</div>
-                <div class="valor" fxFlex="60">{{vinculos.discurso}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos mediante apelativos al receptor de la relación:</div>
-                <div class="valor" fxFlex="60">{{vinculos.receptor}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="40">Vínculos mediante apelativos al espectador:</div>
-                <div class="valor" fxFlex="60">{{vinculos.espectador}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos visuales:</div>
+                    <div class="valor" fxFlex>{{vinculos.visuales}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos auditivos:</div>
+                    <div class="valor" fxFlex>{{vinculos.auditivos}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos con el presente de la acción dramática:</div>
+                    <div class="valor" fxFlex>{{vinculos.presente}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos mediante referencias metadiscursivos:</div>
+                    <div class="valor" fxFlex>{{vinculos.discurso}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos mediante apelativos al receptor de la relación:</div>
+                    <div class="valor" fxFlex>{{vinculos.receptor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="40">Vínculos mediante apelativos al espectador:</div>
+                    <div class="valor" fxFlex>{{vinculos.espectador}}</div>
+                </div>
             </div>
         </div>
-    </mat-expansion-panel>
-</mat-accordion>
+        <mat-divider></mat-divider>
+    </div>
+</div>

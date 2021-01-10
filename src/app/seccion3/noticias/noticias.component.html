@@ -1,4 +1,4 @@
-<app-imagen-tc *ngIf="imgSel" [imagen]="imgSel" (quitar)="cerrarImagen()"></app-imagen-tc>
+<app-tc *ngIf="imgSel" [referencia]="imgSel" (quitar)="cerrarImagen()" [tipo]="'noticia'"></app-tc>
 <div class="marco" fxLayout="column" fxLayoutAlign="start streatch">
 
     <mat-card class="tNoticia" *ngFor="let elemento of listaNoticias">

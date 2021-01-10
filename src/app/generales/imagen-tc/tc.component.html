@@ -1,0 +1,18 @@
+<div class="espera" fxLayout="column" fxLayoutAlign="center center">
+    <div class="contenedor" *ngIf="tipo=='imagen noticia'">
+        <img class="imagen" mat-card-image src="http://localhost:8000/img_noticias/{{referencia}}">
+    </div>
+    <div class="contenedor" *ngIf="tipo=='buscar'">
+        <app-detalle-oe [elemento]="elemento" [tipo]="2"></app-detalle-oe>
+    </div>
+    <div class="contenedor" *ngIf="tipo=='relacion'">
+        <app-cons-det-narrativa [idTexto]="+referencia"></app-cons-det-narrativa>
+    </div>
+    <div class="contenedor" *ngIf="tipo=='sermon'">
+        <app-cons-det-sermon [id_sermon]="referencia" [tipo]="1"></app-cons-det-sermon>
+    </div>
+
+    <button class="accion" mat-raised-button color="primary" (click)="cerrar()">
+        <!--mat-icon>delete</mat-icon--> Cerrar
+    </button>
+</div>

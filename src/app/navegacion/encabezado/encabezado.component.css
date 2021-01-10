@@ -3,6 +3,19 @@ a {
     color: white;
 }
 
+li {
+    margin: 2px;
+    padding: 5px 10px;
+}
+
+li:hover {
+    border: 1px solid darkblue;
+    color: white;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
 .activo {
     background-color: gainsboro;
     margin: 2px;

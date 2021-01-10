@@ -1,7 +1,7 @@
 <div class="marco" *ngIf="!desplegarDetalle" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
 
-    <form [formGroup]="frm" class="consulta" fxfill>
-        <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <form [formGroup]="frm" class="consulta" fxfill fxLayout.lt-sm="column" fxLayout="row">
+        <div class="defconsulta" fxFlex="80" fxFlex.lt-sm="100" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
 
             <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Autor')>=0 && filtrosActivos.value.indexOf('Obra')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un autor</mat-label>
@@ -179,6 +179,8 @@
     </div>
 </div>
 <div class="detalle" *ngIf="desplegarDetalle">
-    <button mat-button color="Cambiar" (click)="cambiar(null)">Regresar</button>
+    <button mat-flat-button color="primary" (click)="cambiar(null)">
+        <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
+    </button>
     <app-cons-det-narrativa [idTexto]="idNarrativaSel" [narrativa]="narrativaSeleccionada" [textoBuscado]="frm.value.textos"></app-cons-det-narrativa>
 </div>

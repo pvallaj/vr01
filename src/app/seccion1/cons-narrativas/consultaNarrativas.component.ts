@@ -152,7 +152,9 @@ export class ConsultaNarrativasComponent implements OnInit {
       }
       
     }
-
+    var re = /\+/gi; 
+    p.textos=p.textos.replace(re, "$"); 
+    console.log(p.textos);
     let temp:any[]=[];
     this.idxSeleccionado=0;
     console.log(p);
