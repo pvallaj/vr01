@@ -36,22 +36,23 @@ export class BuscarComponent implements OnInit, OnDestroy {
 
   private buscarTermino(terminos:any){
     if(!terminos || !terminos?.text) return;
+    this.estaCargando=true;
     this.cnx.novohisp({terminos:terminos.text}, 'buscar terminos')
     .subscribe(
       (data) => {
         this.resultadoOE=data['resultado'].obraescrita;
         this.resultadoNarrativas=data['resultado'].narrativas;
         this.resultadoSermones=data['resultado'].sermones;
-        //console.log(this.recortaNarrativa);
+
         this.resultadoNarrativas.forEach((lmnt:any) => {
           lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio);
         });
-
+        this.estaCargando=false;
       },
     (error) => {
         console.log('No se logro la conexión');
         console.error(error);
-        //this.estaCargando = false;
+        this.estaCargando = false;
       },
     );
   }

@@ -1,3 +1,4 @@
+<app-espera *ngIf="estaCargando" [tipo]="2"></app-espera>
 <app-tc *ngIf="imgSel" [referencia]="imgSel" (quitar)="cerrarImagen()" [tipo]="'noticia'"></app-tc>
 <div class="marco" fxLayout="column" fxLayoutAlign="start streatch">
 

@@ -6,11 +6,16 @@
     height: 100% !important;
     position: fixed !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
-    cursor: pointer !important;
+    /*cursor: pointer !important;*/
     visibility: visible !important;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: wait !important;
     font-size: 200px !important;
+}
+
+.buscando {
+    cursor: wait !important;
+    margin: 50px;
 }

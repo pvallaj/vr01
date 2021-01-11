@@ -1,4 +1,14 @@
-<div class="espera" fxLayoutAlign="center center">
+<div class="espera" fxLayoutAlign="center center" *ngIf="tipo==1">
     <mat-progress-spinner class="espera-circulo" [color]="'accent'" [mode]="'indeterminate'" [diameter]="150">
     </mat-progress-spinner>
 </div>
+
+<mat-card class="buscando" *ngIf="tipo==2">
+    <mat-card-content>
+        <h2 class="example-h2">Buscando información ...</h2>
+        <section class="example-section">
+            <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+            </mat-progress-bar>
+        </section>
+    </mat-card-content>
+</mat-card>

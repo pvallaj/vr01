@@ -1,4 +1,4 @@
-<mat-card class="buscando" *ngIf="estaCargando">
+<!--mat-card class="buscando" *ngIf="estaCargando">
     <mat-card-content>
         <h2 class="example-h2">Buscando información ...</h2>
         <section class="example-section">
@@ -6,8 +6,8 @@
             </mat-progress-bar>
         </section>
     </mat-card-content>
-</mat-card>
-
+</mat-card-->
+<app-espera *ngIf="estaCargando" [tipo]="2"></app-espera>
 <div class="contenedor" *ngIf="!estaCargando">
     <as-split direction="horizontal">
         <as-split-area [size]="40" [visible]="om_estructura" [order]="0">

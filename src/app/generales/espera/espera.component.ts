@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-espera',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./espera.component.css']
 })
 export class EsperaComponent implements OnInit {
-
+@Input() tipo:number=1;
   constructor() { }
 
   ngOnInit(): void {
