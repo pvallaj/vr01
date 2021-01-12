@@ -45,8 +45,13 @@ export class BuscarComponent implements OnInit, OnDestroy {
         this.resultadoSermones=data['resultado'].sermones;
 
         this.resultadoNarrativas.forEach((lmnt:any) => {
-          lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio);
+          lmnt.narratioRecortado=this.recorta(lmnt.narratio,200);
         });
+
+        this.resultadoSermones.forEach((lmnt:any) => {
+          lmnt.sermonRecortado=this.recorta(lmnt.titulo,200);
+        });
+
         this.estaCargando=false;
       },
     (error) => {
@@ -57,17 +62,11 @@ export class BuscarComponent implements OnInit, OnDestroy {
     );
   }
 
-  public recortaNarrativa(narrativa: string):string {
-    if (narrativa.length > 300) {
-      return narrativa.substring(0, narrativa.indexOf(' ', 300)) + '...';
+  public recorta(texto: string, tm:number):string {
+    if (texto.length > tm) {
+      return texto.substring(0, texto.indexOf(' ', tm)) + '...';
     }
-    return narrativa;
-  }
-  public recortaSermon(sermon: string) {
-    if (sermon.length > 250) {
-      return sermon.substring(0, (sermon.indexOf(' ', 250))>0?(sermon.indexOf(' ', 250)):sermon.length) + '...';
-    }
-    return sermon;
+    return texto;
   }
 
   public verDetalle(e:any){

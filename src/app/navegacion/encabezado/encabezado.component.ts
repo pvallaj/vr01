@@ -16,6 +16,7 @@ export class EncabezadoComponent implements OnInit {
   public txtbuscar:string;
 
   ngOnInit(): void {
+    console.log(this.sus.role);
   }
 
   onToggleNV(){

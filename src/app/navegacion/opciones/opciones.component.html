@@ -1,37 +1,47 @@
 <mat-list>
     <div mat-subheader>Opciones</div>
-    <a mat-list-item routerLink="/textos" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Textos Literarios I</div>
+    <a mat-list-item routerLink="/oesxvi" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>star_border</mat-icon>
+        <div mat-line>Siglo XVI</div>
     </a>
-    <a mat-list-item routerLink="/sermones" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Textos Literarios III</div>
+    <a mat-list-item routerLink="/oesxvii" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>star_border</mat-icon>
+        <div mat-line>Siglo XVII</div>
     </a>
-    <a mat-list-item routerLink="/fototeca" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Fototeca</div>
+    <a mat-list-item routerLink="/oesxviii" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>star_border</mat-icon>
+        <div mat-line>Siglo XVIII</div>
     </a>
-    <a mat-list-item routerLink="/videoteca" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Videoteca</div>
+    <a mat-list-item routerLink="/herramientas" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>star_border</mat-icon>
+        <div mat-line>Herramientas</div>
     </a>
-    <a mat-list-item routerLink="/biblioteca" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Biblioteca</div>
+    <a mat-list-item routerLink="/linea" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>star_border</mat-icon>
+        <div mat-line>Linea de tiempo</div>
     </a>
     <a mat-list-item routerLink="/noticias" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
+        <mat-icon mat-list-icon>star_border</mat-icon>
         <div mat-line>Noticias</div>
     </a>
-    <a mat-list-item routerLink="/acercade" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>Este proyecto</mat-icon>
-        <div mat-line>Usuarios</div>
+
+    <a mat-list-item routerLink="/publicar" *ngIf="su.role=='publicador' || su.role=='admin'" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>vpn_key</mat-icon>
+        <div mat-line>Publicar Noticias</div>
     </a>
-    <a mat-list-item routerLink="/privado" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <div mat-line>Usuarios</div>
+
+    <a mat-list-item routerLink="/usuarios" *ngIf="su.role=='admin'" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>vpn_key</mat-icon>
+        <div mat-line>Administrar Usuarios</div>
     </a>
-    <mat-divider></mat-divider>
+
+    <a mat-list-item routerLink="/privado" *ngIf="su.estadoSesion=='conectado'" (click)="salir()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <div mat-line>Salir</div>
+    </a>
+
+    <a mat-list-item routerLink="/sesion" *ngIf="!su.role" (click)="onToggleNV()">
+        <mat-icon mat-list-icon>person</mat-icon>
+    </a>
 
 </mat-list>

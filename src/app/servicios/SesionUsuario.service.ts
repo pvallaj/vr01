@@ -40,10 +40,10 @@ export class SesionUsuario{
 					localStorage.setItem('tkn',		resp['resultado'].token);
 					localStorage.setItem('usuario',	datos.correo);
 					localStorage.setItem('nombre',	resp['resultado'].nombre);
-					localStorage.setItem('role',	resp['resultado'].role);
+					localStorage.setItem('role',	(resp['resultado'].role as string).toLowerCase());
 					this._usuario=			datos.correo;
 					this._nombreUsuario=	resp['resultado'].nombre;
-					this._role=				resp['resultado'].role;
+					this._role=				(resp['resultado'].role as string).toLowerCase();
 					this._estadoSesion='conectado';
 				}
 			  return resp;

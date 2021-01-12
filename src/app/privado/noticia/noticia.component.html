@@ -4,9 +4,9 @@
         <h4 class="modal-title " *ngIf="cnl.elemento==null">Registro de Noticia</h4>
         <h4 class="modal-title " *ngIf="cnl.elemento!=null">Actualización de datos de Noticia</h4>
     </div>
-    <form [formGroup]="frm" autocomplete="off" class="forma" fxLayout="row" fxLayoutAlign="center">
+    <form [formGroup]="frm" autocomplete="off" class="forma" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center">
 
-        <div class="fotoM1" fxFlex="30" id="drop_zone" (click)="archivoIMG.click()" fxLayoutAlign="center center">
+        <div class="fotoM1" id="drop_zone" (click)="archivoIMG.click()" fxLayoutAlign="center center">
             <input formControlName="imagen" #archivoIMG hidden="true" type="file" onclick="this.value=null" (change)="archivoSeleccionado($event)" accept=".jpg,.png" />
             <!---button class="btnArchivo" mat-mini-fab color="primary" (click)="archivoIMG.click()">
                 <mat-icon>attach_file</mat-icon> 
@@ -14,7 +14,7 @@
             <p class="textoIMG">Dé un click aqui para seleccionar una imagen de su equipo</p>
             <img fxFlex="0 0 calc(100%-10px)" class="imagen" [src]="urlIMG" *ngIf="urlIMG">
         </div>
-        <div class="datos" fxLayout="column" fxFlex>
+        <div class="datos" fxFlex="70" fxLayout="column" fxFlex>
 
             <mat-form-field>
                 <mat-label>Titulo</mat-label>
@@ -36,7 +36,7 @@
             </mat-form-field>
             <div class="fechasMarco" fxLayout="column">
                 <p>Especifique las fechas de INICIO y TERMINO de publicación </p>
-                <div class="fechas" fxLayoutAlign="space-around">
+                <div class="fechas" fxLayout.lt-sm="column" fxLayoutAlign="space-around">
                     <mat-form-field appearance="fill">
                         <mat-label>Fecha de inicio</mat-label>
                         <input formControlName="inicio" [readonly]="true" [min]="fechaMin" [max]="fechaMax" matInput [matDatepicker]="dpInicio">
