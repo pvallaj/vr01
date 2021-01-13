@@ -1,4 +1,4 @@
-<div class="marco" *ngIf="!desplegarDetalle" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
+<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
 
     <form [formGroup]="frm" class="consulta" fxfill fxLayout.lt-sm="column" fxLayout="row">
         <div class="defconsulta" fxFlex="80" fxFlex.lt-sm="100" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
@@ -165,7 +165,7 @@
             <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
                 <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
                     <div fxFlex fxLayout fxLayoutAlign="space-between">
-                        <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
+                        <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor }}</p>
                         <button *ngIf="(narrativa.id_texto)==idxSeleccionado" mat-mini-fab color="primary" (click)="cambiar(narrativa)">
                             <mat-icon>menu</mat-icon>
                         </button>
@@ -178,9 +178,12 @@
         </div>
     </div>
 </div>
-<div class="detalle" *ngIf="desplegarDetalle">
+<!--div class="detalle" *ngIf="desplegarDetalle">
     <button mat-flat-button color="primary" (click)="cambiar(null)">
         <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
     </button>
     <app-cons-det-narrativa [idTexto]="idNarrativaSel" [narrativa]="narrativaSeleccionada" [textoBuscado]="frm.value.textos"></app-cons-det-narrativa>
-</div>
+</div-->
+<app-tc *ngIf="idNarrativaSel!=0" [referencia]="idNarrativaSel" [tipo]="'relacion'" (quitar)="cerrarDetalle()">
+
+</app-tc>

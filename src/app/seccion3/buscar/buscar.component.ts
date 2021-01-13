@@ -20,10 +20,10 @@ export class BuscarComponent implements OnInit, OnDestroy {
   public tipoReferencia:string=null;
   public elementoSeleccionado:any;
 
+  public termino:string;
   constructor(private cs:CanalService, private cnx:ConexionService) {
     this.escucha = this.cs.getMessage().subscribe(m => {
       if (m) {
-        console.log(m);
         this.buscarTermino(m);
       }
     });
@@ -37,6 +37,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
   private buscarTermino(terminos:any){
     if(!terminos || !terminos?.text) return;
     this.estaCargando=true;
+    this.termino=terminos.text;
     this.cnx.novohisp({terminos:terminos.text}, 'buscar terminos')
     .subscribe(
       (data) => {

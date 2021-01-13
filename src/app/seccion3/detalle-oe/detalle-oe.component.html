@@ -1,14 +1,18 @@
 <!--Tarjeta para resumen de Texto-->
 <mat-card class="TRTarjeta" *ngIf="elemento?.tipo==1 && tipo==1">
     <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
+        <mat-card-title>
+            <div class="tituloTarjeta" [innerHTML]="elemento.capitulo | resaltaTexto:termino"></div>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
+        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
         <!--div fxLayout fxLayoutAlign="space-between">
             <p class="TRTituloTarjeta">{{elemento.id}} - {{elemento.capitulo}}</p>
         </div-->
-        <p class="TRContenidoTarjeta">{{recorta(elemento.texto, 150)}}</p>
+        <div class="TRContenidoTarjeta" [innerHTML]="recorta(elemento.texto, 150) | resaltaTexto:termino"></div>
     </mat-card-content>
 </mat-card>
 

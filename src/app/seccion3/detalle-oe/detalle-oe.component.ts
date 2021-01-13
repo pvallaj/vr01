@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CanalService } from '../../servicios/canal.service';
 
 @Component({
   selector: 'app-detalle-oe',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DetalleOEComponent implements OnInit {
   @Input() elemento:any;
   @Input() tipo:number=1; //1.- Detalle completo, 2.- Detalle resumido
-
-  constructor() { }
+  public termino:string;
+  constructor(private cs:CanalService) { 
+    if(cs.terminoConsulta){
+      this.termino=cs.terminoConsulta;
+    }
+  }
 
   ngOnInit(): void {
+
   }
 
   recorta(texto:string, largo:number):string{

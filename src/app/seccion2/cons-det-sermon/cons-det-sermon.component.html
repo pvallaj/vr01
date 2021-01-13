@@ -121,11 +121,11 @@
         <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="25">Autor:</div>
-                <div class="valor">{{sermon.nombre}}</div>
+                <div class="valor" [innerHTML]="sermon.nombre | resaltaTexto:terminoConsulta"></div>
             </div>
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="25">Titulo:</div>
-                <div class="valor" fxFlex="75">{{sermon.titulo}}</div>
+                <div class="valor" fxFlex="75" [innerHTML]="sermon.titulo | resaltaTexto:terminoConsulta"></div>
             </div>
             <div class="fila" fxLayout="row" *ngIf="libro?.libro_titulo">
                 <div class="titulo" fxFlex="25">En:</div>

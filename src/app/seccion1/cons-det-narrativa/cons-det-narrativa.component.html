@@ -8,7 +8,7 @@
         </section>
     </mat-card-content>
 </mat-card>
-<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around">
     <div class="secciones" fxFlex="0 0 calc(30% - 5px)" fxFlex.lt-lg="100%">
         <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
@@ -17,11 +17,11 @@
             <div class="resultado" fxLayout="column" *ngIf="bibliografia!=null">
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">Autor:</div>
-                    <div class="valor" fxFlex>{{bibliografia.autor}}</div>
+                    <div class="valor" fxFlex [innerHTML]="bibliografia.autor | resaltaTexto:textoBuscado"></div>
                 </div>
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">obra:</div>
-                    <div class="valor" fxFlex>{{bibliografia.obra}}</div>
+                    <div class="valor" fxFlex [innerHTML]="bibliografia.obra | resaltaTexto:textoBuscado"></div>
                 </div>
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">Ubicación:</div>
@@ -30,14 +30,13 @@
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">Narrativa:</div>
                     <div class="valor" fxFlex>
-                        <!--p>{{narrativa.narratio | resaltaTexto:textoBuscado}}</p-->
                         <pre [innerHTML]="bibliografia.narratio | resaltaTexto:textoBuscado"></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="secciones" *ngIf="!estaCargando" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
+    <div class="secciones" *ngIf="!estaCargando" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around">
         <div class="seccion" fxFlex="0 0 calc(45% - 5px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
                 Bibliografia

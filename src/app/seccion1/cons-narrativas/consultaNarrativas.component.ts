@@ -222,8 +222,10 @@ export class ConsultaNarrativasComponent implements OnInit {
     return false;
   }
   public cambiar(seleccionado){
-    
-    this.desplegarDetalle=!this.desplegarDetalle;
+    this.idNarrativaSel = seleccionado.id_texto;
+    this.narrativaSeleccionada = seleccionado;
+    console.log(this.idNarrativaSel);
+    /*this.desplegarDetalle=!this.desplegarDetalle;
 
     if (this.desplegarDetalle) {
       this.idNarrativaSel = seleccionado.id_texto;
@@ -231,9 +233,12 @@ export class ConsultaNarrativasComponent implements OnInit {
     } else {
       this.idNarrativaSel = 0;
       this.narrativaSeleccionada = null;
-    }
+    }*/
   }
-
+  cerrarDetalle(){
+    this.idNarrativaSel = 0;
+    this.narrativaSeleccionada = null;
+  }
 
   crearForma(){
     this.frm=this.fb.group({

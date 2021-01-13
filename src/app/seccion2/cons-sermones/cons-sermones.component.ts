@@ -54,6 +54,7 @@ export class ConsSermonesComponent implements OnInit {
   // seleccionar elemento
   public idxSeleccionado = 0;
   public idSermonSel = 0;
+  
   // Cargando datos.
   public estaCargando = false;
 
@@ -190,7 +191,7 @@ export class ConsSermonesComponent implements OnInit {
         });
         this.listaResultado = temp;
 
-        this.idSermonSel = -1;
+        this.idSermonSel = 0;
         this.idxSeleccionado = -1;
         this.estaCargando = false;
       },
@@ -212,6 +213,10 @@ export class ConsSermonesComponent implements OnInit {
   public cambiar(ids) {
     this.idSermonSel = ids;
     this.desplegarDetalle=!this.desplegarDetalle;
+    
+  }
+  cerrarDetalle(){
+    this.idSermonSel = 0;
   }
 
   private _filter(value: string): string[] {

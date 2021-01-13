@@ -1,6 +1,7 @@
 import {Component, Inject, Input, OnChanges, OnInit} from '@angular/core';
 import { ConexionService } from '../../servicios/Conexion.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CanalService } from '../../servicios/canal.service';
 
 export interface Parametros {
   nombre: string;
@@ -24,7 +25,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
   @Input() public idTexto = 0;
   @Input() public narrativa: Narrativa = null;
-  @Input() public textoBuscado: "";
+  @Input() public textoBuscado:string= "";
 
   public bibliografia: any = null;
   public princeps: any = null;
@@ -43,10 +44,15 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   
   constructor(
     private cnx: ConexionService,
-    public dialog: MatDialog ) {}
+    public dialog: MatDialog,
+    public cs:CanalService ) {}
 
   ngOnInit(): void {
     this.tabSeleccionado=0;
+    if(!this.textoBuscado){
+      this.textoBuscado=this.cs.terminoConsulta;
+    }
+    
   }
   
   ngOnChanges(changes) {

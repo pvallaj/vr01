@@ -18,12 +18,12 @@
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
         <mat-card class="tarjeta" *ngFor="let sermon of resultadoSermones; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(sermon)">
             <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="start stretch">
-                <p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p>
-                <p class="texto">{{sermon.sermonRecortado}}</p>
-                <p class="pieTarjeta">{{sermon.ciudad+', '+sermon.anio}}</p>
+                <!--p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido | resaltaTexto:'salazar'}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p-->
+                <div fxFlex class="tituloTarjeta" [innerHTML]="sermon.id_sermon+' - '+sermon.autor_nombre+' '+sermon.autor_apellido | resaltaTexto:termino"></div>
+                <div class="texto" [innerHTML]="sermon.sermonRecortado | resaltaTexto:termino"></div>
+                <div class="pieTarjeta" [innerHTML]="sermon.ciudad+', '+sermon.anio | resaltaTexto:termino"></div>
             </mat-card-content>
         </mat-card>
-
     </div>
 </div>
 <mat-divider></mat-divider>
@@ -33,9 +33,9 @@
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
         <mat-card class="tarjeta" *ngFor="let narrativa of resultadoNarrativas; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(narrativa)">
             <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
-                <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor}}</p>
-                <div [innerHTML]="narrativa.narratioRecortado "></div>
-                <p class="pieTarjeta">{{narrativa.obra+', '+narrativa.ubicacion}}</p>
+                <div fxFlex class="tituloTarjeta" [innerHTML]="(i+1)+' - '+narrativa.autor | resaltaTexto:termino"></div>
+                <div [innerHTML]="narrativa.narratioRecortado | resaltaTexto:termino"></div>
+                <div class="pieTarjeta" [innerHTML]="narrativa.obra+', '+narrativa.ubicacion | resaltaTexto:termino"></div>
             </mat-card-content>
         </mat-card>
 

@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit,Input, OnChanges} from '@angular/core';
 import { ConexionService } from '../../servicios/Conexion.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CanalService } from '../../servicios/canal.service';
 
 export interface Parametros {
   nombre: string;
@@ -16,20 +17,24 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
 
   @Input() id_sermon:number=0;
   @Input() tipo:number=0;
-  sermon:any=[];
-  libro:any=[];
-  preliminares:any=[];
-  catalogos:any=[];
-  grabados:any=[];
-  repositorios:any=[];
-  estaCargando:boolean=false;
-  tabSeleccionado=0;
+  public sermon:any=[];
+  public libro:any=[];
+  public preliminares:any=[];
+  public catalogos:any=[];
+  public grabados:any=[];
+  public repositorios:any=[];
+  public estaCargando:boolean=false;
+  public tabSeleccionado=0;
+  public terminoConsulta:string='';
 
-  constructor(private cnx:ConexionService,
-    public dialog: MatDialog,) {}
+  constructor(
+    private cnx:ConexionService,
+    public dialog: MatDialog,
+    public cs:CanalService) {}
 
   ngOnInit(): void {
     this.tabSeleccionado=0;
+    this.terminoConsulta=this.cs.terminoConsulta;
   }
 
   ngOnChanges(changes) {
@@ -58,13 +63,13 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.catalogos=temp.catalogos;
         this.grabados=temp.grabados;
         this.repositorios=temp.repositorios;
-        console.log(temp);
+        //console.log(temp);
         this.estaCargando=false;
         this.tabSeleccionado=0;
       },
     (error)=>{
-        console.log('No se logro la conexión');
-        console.error(error);
+        //console.log('No se logro la conexión');
+        //console.error(error);
         this.estaCargando=false;
       }
     )

@@ -1,4 +1,4 @@
-<div class="marco" *ngIf="!desplegarDetalle" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
+<div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
     <form [formGroup]="frm" class="consulta" fxfill fxLayout="row" fxLayout.lt-sm="column">
         <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
             <mat-form-field class="ac" *ngIf="filtroActivo('Autor')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
@@ -138,9 +138,13 @@
         </div>
     </div>
 </div>
-<div fxFlex *ngIf="desplegarDetalle">
+<!--div fxFlex *ngIf="desplegarDetalle">
     <button mat-flat-button color="primary" class="regresar" (click)="cambiar(0)">
         <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
     </button>
     <app-cons-det-sermon [id_sermon]="idSermonSel" [tipo]="1" #detsermon></app-cons-det-sermon>
-</div>
+</div-->
+
+<app-tc *ngIf="idSermonSel!=0" [referencia]="idSermonSel" [tipo]="'sermon'" (quitar)="cerrarDetalle()">
+
+</app-tc>
