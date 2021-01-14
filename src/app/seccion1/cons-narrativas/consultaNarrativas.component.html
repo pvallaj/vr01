@@ -159,20 +159,21 @@
         </mat-card-content>
     </mat-card>
     <div class="resultado" *ngIf="!estaCargando" fxFill>
-        <div mat-subheader>Información encontrada en la base de datos</div>
+        <div>Información encontrada en la base de datos</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-
-            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=narrativa.id_texto">
-                <mat-card-content [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
-                    <div fxFlex fxLayout fxLayoutAlign="space-between">
-                        <p fxFlex class="tituloTarjeta">{{i+1}} - {{narrativa.autor }}</p>
-                        <button *ngIf="(narrativa.id_texto)==idxSeleccionado" mat-mini-fab color="primary" (click)="cambiar(narrativa)">
-                            <mat-icon>menu</mat-icon>
-                        </button>
-                    </div>
+            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <mat-card-header>
+                    <mat-card-title>{{narrativa.autor }}</mat-card-title>
+                    <mat-card-subtitle>{{narrativa.obra+', '+narrativa.ubicacion}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
                     <div [innerHTML]="narrativa.narratioRecortado | resaltaTexto:frm.value.textos"></div>
-                    <p class="pieTarjeta">{{narrativa.obra+', '+narrativa.ubicacion}}</p>
                 </mat-card-content>
+                <mat-card-actions>
+                    <button class="btnDetalle" mat-flat-button color="primary" (click)="cambiar(narrativa)">
+                        <mat-icon>article</mat-icon> Ver Detalle
+                    </button>
+                </mat-card-actions>
             </mat-card>
 
         </div>

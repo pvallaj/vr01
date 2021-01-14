@@ -50,29 +50,21 @@
     overflow-y: scroll;
 }
 
-.tarjeta {
+mat-card {
     margin-top: 10px;
-}
-
-.tituloTarjeta {
-    font-size: medium;
-    font-weight: bold;
-    font-style: italic;
-    border-bottom: solid 1px black;
-}
-
-.pieTarjeta {
-    margin-top: 10px;
-    border-top: solid 1px black;
-    color: grey;
-    font-weight: bold;
-}
-
-.seleccionado {
-    background: lightblue;
 }
 
 mat-card-content {
+    padding: 10px 0;
+}
+
+mat-card-header {
+    background-color: lightgray;
+    border: 2px solid rgba(0, 0, 0, .3);
+}
+
+.btnDetalle {
+    width: 100% !important;
     height: 100%;
 }
 
