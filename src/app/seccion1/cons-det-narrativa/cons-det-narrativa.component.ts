@@ -115,7 +115,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
       res=res+", trad. "+elmt.ed_paleo;
     }
     if(elmt.editor){
-      res=res+", "+elmt.editor;
+      res=res+", ed. "+elmt.editor;
     }
     if(elmt.ciudad){
       res=res+", "+elmt.ciudad;

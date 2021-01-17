@@ -37,7 +37,8 @@ export class ConsultaNarrativasComponent implements OnInit {
   public desplegarDetalle=false;
 
   public frm:FormGroup;
-
+  public vTextos:string='';
+  
   //paginación
   public pidx = 0; //Número de página.
   public ptam = 10; //tamaño de la pagina

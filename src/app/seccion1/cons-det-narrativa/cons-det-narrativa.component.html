@@ -30,7 +30,7 @@
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">Narrativa:</div>
                     <div class="valor" fxFlex>
-                        <pre [innerHTML]="bibliografia.narratio | resaltaTexto:textoBuscado"></pre>
+                        <div [innerHTML]="bibliografia.narratio | resaltaTexto:textoBuscado"></div>
                     </div>
                 </div>
             </div>
@@ -110,6 +110,10 @@
                     <div class="valor" fxFlex>{{princeps?.autor}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Titulo:</div>
+                    <div class="valor" fxFlex>{{princeps?.titulo}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">obra:</div>
                     <div class="valor" fxFlex>{{princeps?.obra_tomo}}</div>
                 </div>
@@ -130,12 +134,24 @@
                     <div class="valor" fxFlex>{{princeps.anio}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="25">Princeps:</div>
+                    <div class="titulo" fxFlex="25">pp. Princeps:</div>
                     <div class="valor" fxFlex>{{princeps.princeps}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Biblioteca de resguardo:</div>
+                    <div class="valor" fxFlex>{{princeps.biblioteca}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Clasificación:</div>
+                    <div class="valor" fxFlex>{{princeps.clasificacion}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="25">Archivo digital:</div>
+                    <div class="valor" fxFlex="75">{{princeps.archivo_dig}}</div>
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="contexto!=null">
             <div class="titulo_seccion">
@@ -217,7 +233,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="clasificacion!=null">
             <div class="titulo_seccion">
@@ -234,7 +250,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
             <div class="titulo_seccion">
@@ -251,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="motivos!=null">
             <div class="titulo_seccion">
@@ -266,7 +282,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tema!=null">
             <div class="titulo_seccion">
@@ -283,7 +299,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="versificacion!=null">
             <div class="titulo_seccion">
@@ -298,7 +314,7 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
@@ -314,12 +330,12 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
 
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
             <div class="titulo_seccion">
-                Signos Actorales en los actores dramáticos
+                Signos Actorales
             </div>
             <div class="resultado" fxLayout="column">
                 <div class="fila" fxLayout="row">
@@ -356,9 +372,9 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
+
+        <!--div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
             <div class="titulo_seccion">
                 Signos actorales de los personajes referidos en la relación
             </div>
@@ -384,8 +400,8 @@
                     <div class="valor" fxFlex>{{signos.implicitos}}</div>
                 </div>
             </div>
-        </div>
-        <mat-divider></mat-divider>
+        </div-->
+
 
         <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="vinculos!=null">
             <div class="titulo_seccion">
@@ -418,6 +434,6 @@
                 </div>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
     </div>
 </div>

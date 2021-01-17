@@ -11,8 +11,8 @@
             </mat-form-field>
 
             <mat-form-field class="tituloSermon" *ngIf="filtroActivo('Titulo')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                <input matInput type="text" placeholder="En el titulo del sermón" formControlName="titulo" name="titulo" [(ngModel)]="vTitulo">
+                <button mat-button matSuffix mat-icon-button (click)="vTitulo=''">
                   <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
@@ -119,7 +119,7 @@
             </section>
         </mat-card-content>
     </mat-card>
-    <div class="resultado" [style.display]="despResultado" *ngIf="!estaCargando">
+    <div class="resultado" *ngIf="!estaCargando && listaResultado">
         <div mat-subheader>Información encontrada en la base de datos</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
             <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">

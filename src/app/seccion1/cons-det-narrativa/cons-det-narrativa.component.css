@@ -11,6 +11,7 @@
 
 .valor {
     padding: 5px;
+    white-space: pre-wrap;
 }
 
 .fila {

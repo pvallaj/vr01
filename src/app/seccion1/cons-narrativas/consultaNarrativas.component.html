@@ -115,8 +115,8 @@
 
             <mat-form-field *ngIf="filtrosActivos.value.indexOf('Textos o Palabras')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Buscan de palabras o textos</mat-label>
-                <input matInput type="text" formControlName="textos" name="textosPalabras">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                <input matInput type="text" formControlName="textos" name="textosPalabras" [(ngModel)]="vTextos">
+                <button mat-button matSuffix mat-icon-button (click)="vTextos=''">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
@@ -185,6 +185,6 @@
     </button>
     <app-cons-det-narrativa [idTexto]="idNarrativaSel" [narrativa]="narrativaSeleccionada" [textoBuscado]="frm.value.textos"></app-cons-det-narrativa>
 </div-->
-<app-tc *ngIf="idNarrativaSel!=0" [referencia]="idNarrativaSel" [tipo]="'relacion'" (quitar)="cerrarDetalle()">
+<app-tc *ngIf="idNarrativaSel!=0" [referencia]="idNarrativaSel" [tipo]="'relacion'" [textoBuscado]="frm.value.textos" (quitar)="cerrarDetalle()">
 
 </app-tc>

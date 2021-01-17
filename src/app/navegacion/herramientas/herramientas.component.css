@@ -8,6 +8,10 @@ mat-card-header {
     border-radius: 5px;
 }
 
+mat-card-subtitle {
+    color: rgba(255, 255, 255, .6);
+}
+
 mat-card-content {
     padding: 20px 0;
 }

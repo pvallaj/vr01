@@ -8,7 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TCComponent implements OnInit {
   @Input() referencia:string;
   @Input() tipo:string;
+  @Input() textoBuscado:string="";
   @Input() elemento:any;
+  
   @Output() quitar=new EventEmitter<string>();
   constructor() { }
 

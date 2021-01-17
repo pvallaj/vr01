@@ -15,7 +15,7 @@ import { ConsDetSermonComponent } from '../cons-det-sermon/cons-det-sermon.compo
   styleUrls: ['./cons-sermones.component.css'],
 })
 export class ConsSermonesComponent implements OnInit {
-  public listaResultado: any[] = [];
+  public listaResultado: any[] = null;
   // autocomplete autores
   public acAutores = new FormControl();
   public listaAutores: string[] = [];
@@ -46,6 +46,7 @@ export class ConsSermonesComponent implements OnInit {
   public despDetalle = 'none';
 
   public frm: FormGroup;
+  public vTitulo:string='';
 
   // paginación
   public pidx = 0; // Número de página.
@@ -249,7 +250,7 @@ export class ConsSermonesComponent implements OnInit {
     });
     this.frm.valueChanges.subscribe((v)=>{
       console.log(v);
-      this.listaResultado=[];
+      this.listaResultado=null;
     });
     
     this.filtrosActivos.valueChanges.subscribe((v)=>{
@@ -258,7 +259,7 @@ export class ConsSermonesComponent implements OnInit {
         
         this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
       }
-      this.listaResultado=[];
+      this.listaResultado=null;
     });
   }
 
@@ -268,10 +269,10 @@ export class ConsSermonesComponent implements OnInit {
   }
 
   public cambioAutor() {
-    this.listaResultado = [];
+    this.listaResultado = null;
   }
   public cambioAutorPreliminar() {
-    this.listaResultado = [];
+    this.listaResultado = null;
   }
 
   public cambioFiltros(e) {
