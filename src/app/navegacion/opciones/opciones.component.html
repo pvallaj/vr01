@@ -25,7 +25,7 @@
         <div mat-line>Noticias</div>
     </a>
 
-    <a mat-list-item routerLink="/publicar" *ngIf="su.role=='publicador' || su.role=='admin'" (click)="onToggleNV()">
+    <a mat-list-item routerLink="/publicar" *ngIf="su.role=='publicar' || su.role=='admin'" (click)="onToggleNV()">
         <mat-icon mat-list-icon>vpn_key</mat-icon>
         <div mat-line>Publicar Noticias</div>
     </a>

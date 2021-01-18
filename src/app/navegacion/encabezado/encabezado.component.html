@@ -26,7 +26,7 @@
                     <mat-icon>person</mat-icon>
                 </a>
             </li>
-            <li routerLinkActive="activo" *ngIf="sus.role=='publicador' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
+            <li routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
             <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
             <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">
                 <button mat-icon-button (click)="salir()">

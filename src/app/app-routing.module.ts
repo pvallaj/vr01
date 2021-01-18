@@ -16,6 +16,8 @@ import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { NoticiasComponent } from './seccion3/noticias/noticias.component';
 import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
+import { GRegGuard } from './privado/g-reg.guard';
+import { GRegAdmGuard } from './privado/g-reg-adm.guard';
 
 
 
@@ -33,11 +35,11 @@ const routes: Routes = [
   //usuarios
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},
-  {path: 'usuarios',       component: ListaUsuariosComponent},
+  {path: 'usuarios',       component: ListaUsuariosComponent, canActivate:[GRegGuard,GRegAdmGuard]},
   //noticias
-  {path: 'publicar',       component: LtsNoticiasComponent},
-  {path: 'crearNoticia',   component: NoticiaComponent},
-  {path: 'modifNoticia',   component: NoticiaComponent},
+  {path: 'publicar',       component: LtsNoticiasComponent, canActivate:[GRegGuard]},
+  {path: 'crearNoticia',   component: NoticiaComponent, canActivate:[GRegGuard]},
+  {path: 'modifNoticia',   component: NoticiaComponent, canActivate:[GRegGuard]},
 
   { path: '',   redirectTo: '/inicio', pathMatch: 'full' }, 
   { path: '**', component: InicioComponent }

@@ -124,7 +124,7 @@
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
             <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
                 <mat-card-header>
-                    <mat-card-title>{{sermon.id_sermon}} - {{sermon.autor_nombre}} {{sermon.autor_apellido}} ({{sermon.autor_orden}})</mat-card-title>
+                    <mat-card-title>{{sermon.id_sermon}} - {{sermon.autor_nombre}} {{sermon.autor_apellido}} {{sermon.autor_orden?'('+sermon.autor_orden+')':''}}</mat-card-title>
                     <mat-card-subtitle>{{sermon.ciudad+', '+sermon.anio}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
