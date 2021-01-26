@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Opciones de consulta</h2>
+<mat-dialog-content class="marco">
+    <div class="titulo">Seleccione las opciones de consulta que desea agregar a su busqueda</div>
+
+    <div class="opciones">
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.autor" [labelPosition]="'after'">
+                Consulte los <i>sermones</i> de uno o más de los <b>AUTORES</b> disponibles, de la Epoca Novohispana.
+            </mat-checkbox>
+        </div>
+
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.titulo" [labelPosition]="'after'">
+                Consulte los <i>sermones</i> que <b>CONTENGAN EN SU TITULO</b> las palabras que especifique.
+            </mat-checkbox>
+        </div>
+
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.thema" [labelPosition]="'after'">
+                Consulte los <i>sermones</i> que <b>CONTENGAN EN SU THEMA o LIBRO</b> las palabras que especifique.
+            </mat-checkbox>
+        </div>
+
+        <div class="banios" fxLayout="column">
+            <mat-checkbox [labelPosition]="'after'" [(ngModel)]="fanios">Busqueda por años</mat-checkbox>
+            <mat-radio-group [(ngModel)]="tipoAnios" fxLayout="column">
+                <mat-radio-button value="anio" [disabled]="!fanios">Consulte los <i>sermones</i> publicados en el <b>AÑO</b> especificado.</mat-radio-button>
+                <mat-radio-button value="anios" [disabled]="!fanios">Consulte los <i>sermones</i> publicados en el <b>RANGO DE AÑOS</b> que especifique.</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.impresor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Consulte los <i>sermones</i> publicados por el <b>IMPRESOR</b> que seleccione.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.preliminares" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Consulte los <i>sermones</i> relacionados al <b>AUTOR DE LOS PRELIMINARES</b> que seleccione.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.dedicatarios" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Consulte los <i>sermones</i> que contenga los <b>DEDICATARIOS</b> que seleccione.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.ciudad" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Consulte los <i>sermones</i> publicados en la <b>CIUDAD</b> que seleccione.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.obra" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Consulte los <i>sermones</i> por el <b>TITULO DE LA OBRA</b>.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.orden" [labelPosition]="'after'">
+                Consulte los <i>sermones</i> relacionados a la <b>ORDEN</b> que seleccione.
+            </mat-checkbox>
+        </div>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="opciones" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-raised-button [mat-dialog-close]="'no'">
+        <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+    <button mat-raised-button [mat-dialog-close]="'si'" (click)="aceptar()">
+        <mat-icon>check</mat-icon> Aceptar
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Opciones de consulta</h2>
+<mat-dialog-content class="marco">
+    <div class="titulo">Seleccione las opciones de consulta que desea agregar a su busqueda</div>
+    <mat-radio-group [(ngModel)]="tipo" (change)="tipos($event)">
+        <mat-radio-button value="individuales">Opciones individuales</mat-radio-button>
+        <div class="opciones">
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.autor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> de uno o más de los <b>AUTORES</b> disponibles, de la Epoca Novohispana.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.obra" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> de uno o más de las <b>OBRAS</b> disponibles, de la Epoca Novohispana.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <p>IMPORTANTE: Si selecciona AUTOR y OBRA al mismo tiempo, solo podra seleccionar un autor y las obras disponibles dependerán del autor seleccionado.</p>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.clasificacion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con la <b>CLASIFICACIÓN</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.tema" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con el <b>TEMA</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.motivo" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con el <b>MOTIVO</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.tipoVerso" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con el <b>TIPO DE VERSO</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.tipoAccion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con el <b>TIPO DE ACCIÓN</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.soporte" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte las <i>relaciones</i> con el <b>TIPO DE SOPORTE</b> que seleccione.
+                </mat-checkbox>
+            </div>
+            <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'">
+                    Consulte las <i>relaciones</i> que contengan la <b>PALABRA o FRASE</b> que usted escriba.
+                </mat-checkbox>
+            </div>
+
+        </div>
+        <mat-radio-button value="signos"><b>Signos Actorales.</b> Revise las relaciones en base a sus signos actorales</mat-radio-button>
+    </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions class="opciones" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-raised-button [mat-dialog-close]="'no'">
+        <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+    <button mat-raised-button [mat-dialog-close]="'si'" (click)="aceptar()">
+        <mat-icon>check</mat-icon> Aceptar
+    </button>
+</mat-dialog-actions>

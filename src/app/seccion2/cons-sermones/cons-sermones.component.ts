@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MnsjDetalleComponent } from '../../seccion1/mnsj-detalle/mnsj-detalle.component';
 import { ConexionService } from '../../servicios/Conexion.service';
 import { ConsDetSermonComponent } from '../cons-det-sermon/cons-det-sermon.component';
+import { BusqAvanzadaSComponent } from '../busq-avanzada-s/busq-avanzada-s.component';
 
 @Component({
   selector: 'app-cons-sermones',
@@ -47,6 +48,7 @@ export class ConsSermonesComponent implements OnInit {
 
   public frm: FormGroup;
   public vTitulo:string='';
+  public vThema:string='';
 
   // paginación
   public pidx = 0; // Número de página.
@@ -65,16 +67,17 @@ export class ConsSermonesComponent implements OnInit {
   // ----------------------------
   public filtrosActivos = new FormControl();
   public listaFiltros: any[] = [
-                                    { filtro : 'Autor',        descripcion: 'Descripción del filtro' },
-                                    { filtro : 'Titulo',       descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Año',          descripcion: 'Permite especificar un año en la consulta'},
-                                    { filtro : 'Rango de años',descripcion: 'Permite espeficicar un año inicial y un año final en la consulta'},
-                                    { filtro : 'Impresor',     descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Preliminares', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Dedicatarios', descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Ciudad',       descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Obra',         descripcion: 'Descripción del filtro'},
-                                    { filtro : 'Orden',        descripcion: 'Descripción del filtro'},];
+                                    { filtro : 'Autor'      },
+                                    { filtro : 'Titulo'     },
+                                    { filtro : 'Thema'      },
+                                    { filtro : 'Año'        },
+                                    { filtro : 'Rango de años'},
+                                    { filtro : 'Impresor'},
+                                    { filtro : 'Preliminares'},
+                                    { filtro : 'Dedicatarios'},
+                                    { filtro : 'Ciudad'},
+                                    { filtro : 'Obra'},
+                                    { filtro : 'Orden'},];
 
   // @ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
@@ -137,8 +140,11 @@ export class ConsSermonesComponent implements OnInit {
 
   public consulta() {
     this.estaCargando = true;
+    console.log(this.filtrosActivos);
+    console.log(this.filtroActivo('Dedicatarios'));
+    
     const p = {
-      autor:        this.filtroActivo('Autor')?this.acAutores.value:'',
+      autor:        this.filtroActivo('Autor')? this.acAutores.value:'',
       id_autor: -1,
 
       titulo:       this.filtroActivo('Titulo')?this.frm.value.titulo:'',
@@ -156,28 +162,34 @@ export class ConsSermonesComponent implements OnInit {
       ciudad:       this.filtroActivo('Ciudad')?this.frm.value.ciudad:'',
       tituloObra:   this.filtroActivo('Obra')?this.frm.value.tituloObra:'',
       orden:        this.filtroActivo('Orden')?this.frm.value.orden:'',
+      thema:        this.filtroActivo('Thema')?this.frm.value.thema:'',
 
       desde:  this.pidx * this.ptam,
       pagtam: this.ptam,
     };
 
     let temp: any[] = [];
-
-    const encontrado = this.listaAutoresOriginal.find((el) => el.autor === this.acAutores.value);
-    if (encontrado) {
-      p.id_autor = encontrado.id_autor;
+    if(this.filtroActivo('Autor')){
+      const encontrado = this.listaAutoresOriginal.find((el) => el.autor === this.acAutores.value);
+      if (encontrado) {
+        p.id_autor = encontrado.id_autor;
+      }
     }
 
-    const preliminarEncontrado = this.listaPreliminaresOriginal.find((el) => el.autor === this.acPreliminares.value);
-    if (preliminarEncontrado) {
-      p.id_preliminar = preliminarEncontrado.id_autor;
+    if(this.filtroActivo('Preliminares')){
+      const preliminarEncontrado = this.listaPreliminaresOriginal.find((el) => el.autor === this.acPreliminares.value);
+      if (preliminarEncontrado) {
+        p.id_preliminar = preliminarEncontrado.id_autor;
+      }
     }
 
-    const dedicatarioEncontrado = this.listaDedicatariosOriginal.find((el) => el.autor === this.acDedicatarios.value);
-    if (dedicatarioEncontrado) {
-      p.id_dedicatario = dedicatarioEncontrado.id_dedicatario;
+    if(this.filtroActivo('Dedicatarios')){
+      const dedicatarioEncontrado = this.listaDedicatariosOriginal.find((el) => el.autor === this.acDedicatarios.value);
+      if (dedicatarioEncontrado) {
+        p.id_dedicatario = dedicatarioEncontrado.id_dedicatario;
+      }
     }
-
+    
     this.cnx.sermones(p, 'consulta sermones')
     .subscribe(
       (data) => {
@@ -247,6 +259,7 @@ export class ConsSermonesComponent implements OnInit {
       ciudad:       ['' ],
       tituloObra:   ['' ],
       orden:        ['' ],
+      thema:        ['' ],
     });
     this.frm.valueChanges.subscribe((v)=>{
       console.log(v);
@@ -284,6 +297,12 @@ export class ConsSermonesComponent implements OnInit {
       return sermon.substring(0, (sermon.indexOf(' ', 250))>0?(sermon.indexOf(' ', 250)):sermon.length) + '...';
     }
     return sermon;
+  }
+  public abrirBusquedaAvanzada(){
+    const dialogRef = this.dialog.open(BusqAvanzadaSComponent, {
+      data: {filtros:this.filtrosActivos}
+    });
+    
   }
 }
 

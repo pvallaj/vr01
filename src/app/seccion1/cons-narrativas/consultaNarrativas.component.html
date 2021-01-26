@@ -93,7 +93,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Tipo de Accion')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Tipo de Acción')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Seleccione un Tipo de Acción</mat-label>
                 <mat-select name="clase" formControlName="tipoAccion">
                     <mat-option>Ninguno</mat-option>
@@ -130,8 +130,8 @@
             </mat-form-field>
 
         </div>
-        <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch">
-            <mat-form-field appearance="fill" matTooltip="Seleccione los campos que desea usar en la busqueda de Narrativas">
+        <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="15px">
+            <!--mat-form-field appearance="fill" matTooltip="Seleccione los campos que desea usar en la busqueda de Narrativas">
                 <mat-label>Busqueda Avanzada</mat-label>
                 <mat-select [formControl]="filtrosActivos" multiple>
                     <mat-select-trigger>
@@ -142,7 +142,10 @@
                     </mat-select-trigger>
                     <mat-option *ngFor="let f of listaFiltros" [value]="f.filtro" matTooltip="{{f.descripcion}}">{{f.filtro}}</mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field-->
+            <button mat-raised-button (click)="abrirBusquedaAvanzada()">
+                <mat-icon>settings</mat-icon> Busqueda Avanzada
+            </button>
             <button mat-raised-button (click)="consulta()">
                 <mat-icon>search</mat-icon> BUSCAR
             </button>
@@ -158,7 +161,7 @@
             </section>
         </mat-card-content>
     </mat-card>
-    <div class="resultado" *ngIf="!estaCargando" fxFill>
+    <div class="resultado" *ngIf="!estaCargando && listaResultado!=null" fxFill>
         <div>Información encontrada en la base de datos</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
             <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
@@ -178,6 +181,9 @@
 
         </div>
     </div>
+
+    <app-mapa-signos *ngIf="listaResultadoSA!=null" [datos]="listaResultadoSA"></app-mapa-signos>
+
 </div>
 <!--div class="detalle" *ngIf="desplegarDetalle">
     <button mat-flat-button color="primary" (click)="cambiar(null)">

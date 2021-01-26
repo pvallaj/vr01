@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { SesionUsuario } from './SesionUsuario.service';
 
 
 @Injectable({
@@ -12,8 +13,18 @@ export class ConexionService {
   public componente:"";
 
   constructor(protected http: HttpClient) {
-    this.headers = new HttpHeaders({ 'content':"application/json",
-    'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
+    let token=localStorage.getItem('tkn')
+    /*if(token!=null){
+      console.log('El TOKEN: '+token);
+      this.headers = new HttpHeaders({ 
+        'content':"application/json",
+        'content-type':"application/x-www-form-urlencoded; charset=UTF-8",
+        'Authorization':token
+      });
+    }else{*/
+      this.headers = new HttpHeaders({ 'content':"application/json",
+      'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
+    //}
    //this.headers = new HttpHeaders({ 'content-type':"application/x-www-form-urlencoded"});
   }
 
@@ -38,6 +49,12 @@ export class ConexionService {
   }
 
   public noticias(parametros, accion){
+    let token=localStorage.getItem('tkn') 
+    if(token){
+      console.log("el token es: "+token);
+      this.headers.set('Authorization',token) 
+    }
+    console.log(this.headers);
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'noticias', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }

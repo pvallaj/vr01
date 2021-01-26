@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
-import {FormControl} from '@angular/forms';
-import {  FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 
 import { ConexionService } from '../../servicios/Conexion.service';
 
 import { MatDialog } from '@angular/material/dialog';
-
+import { BusqAvanzadaComponent } from '../busq-avanzada/busq-avanzada.component';
 
 
 @Component({
@@ -16,7 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./consultaNarrativas.component.css']
 })
 export class ConsultaNarrativasComponent implements OnInit {
-  public listaResultado:any[]=[];
+  
+
+  public listaResultado:any[]=null;
+  public listaResultadoSA:any[]=null;
   //autocomplete
   public acAutores = new FormControl();
   public listaAutores:any[]=[];
@@ -57,6 +60,10 @@ export class ConsultaNarrativasComponent implements OnInit {
   public fcAutores = new FormControl();
   public fcObras = new FormControl();
   // ----------------------------
+
+  
+  
+  //------------------------------
   public filtrosActivos = new FormControl();
   public listaFiltros: any[] = [
     { filtro : 'Autor', descripcion: 'Descripción del filtro' },
@@ -65,7 +72,7 @@ export class ConsultaNarrativasComponent implements OnInit {
     { filtro : 'Tema', descripcion: 'Descripción del filtro'},
     { filtro : 'Motivo', descripcion: 'Descripción del filtro'},
     { filtro : 'Tipo de Verso', descripcion: 'Descripción del filtro'},
-    { filtro : 'Tipo de Accion', descripcion: 'Descripción del filtro'},
+    { filtro : 'Tipo de Acción', descripcion: 'Descripción del filtro'},
     { filtro : 'Soporte', descripcion: 'Descripción del filtro'},
     { filtro : 'Textos o Palabras', descripcion: 'Busqueda de palabras o textos en un espacio de N palabras'},
     { filtro : 'Signos Actorales', descripcion: 'Descripción del filtro'},];
@@ -78,6 +85,8 @@ export class ConsultaNarrativasComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    
     this.crearForma();
 
     this.cnx.narrativas(null, 'consulta catalogo base').subscribe(
@@ -257,18 +266,18 @@ export class ConsultaNarrativasComponent implements OnInit {
     });
     this.frm.valueChanges.subscribe((v)=>{
       console.log(v);
-      this.listaResultado=[];
+      this.listaResultado=null;
       if(this.filtroActivo("Autor")) {
         this.listaObras = this.listaAutoresObras;
       };
     });
     this.fcAutores.valueChanges.subscribe((v)=>{
       console.log(v);
-      this.listaResultado=[];
+      this.listaResultado=null;
     });
     this.fcObras.valueChanges.subscribe((v)=>{
       console.log(v);
-      this.listaResultado=[];
+      this.listaResultado=null;
     });
     this.filtrosActivos.valueChanges.subscribe((v)=>{
       console.log(v);
@@ -276,7 +285,7 @@ export class ConsultaNarrativasComponent implements OnInit {
         
         this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
       }
-      this.listaResultado=[];
+      this.listaResultado=null;
     });
   }
 
@@ -285,7 +294,39 @@ export class ConsultaNarrativasComponent implements OnInit {
     return true;
   }
 
+  public abrirBusquedaAvanzada(){
+    const dialogRef = this.dialog.open(BusqAvanzadaComponent, {
+      data: {filtros:this.filtrosActivos}
+    });
+    dialogRef.afterClosed().subscribe(resultado => {
+      if(this.filtroActivo('Signos Actorales')){
+        this.listaResultado=null;
+        this.buscarSignosActorales();
+      }else{
+        this.listaResultadoSA=null;
+      }
+    });
+  }
 
+  private buscarSignosActorales(){
+    let p=null;
+    this.estaCargando=true;
+    this.cnx.narrativas(p, 'consulta signos actorales')
+    .subscribe(
+      (data)=>{
+        this.listaResultadoSA= data['resultado'];
+        this.estaCargando=false;
+      },
+    (error)=>{
+        console.log('No se logro la conexión');
+        console.error(error);
+        this.estaCargando=false;
+      }
+    )
+  }
+
+  
+  
 
   public recortaNarrativa(narrativa: string):string {
     if (narrativa.length > 300) {

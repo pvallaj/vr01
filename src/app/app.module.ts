@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -19,6 +19,11 @@ import 'hammerjs';
 
 //Vista de arbol
 import { TreeviewModule } from "ngx-treeview";
+
+//ToolTip
+
+import {TooltipModule} from 'ng2-tooltip-directive';
+
 //local
 
 import { ConsultaComponent } from './seccion1/consulta/consulta.component';
@@ -35,11 +40,15 @@ import { ListaCatalogoComponent } from './seccion1/consulta/lista-catalogo/lista
 import { ConsSermonesComponent } from './seccion2/cons-sermones/cons-sermones.component';
 import { ConsDetSermonComponent } from './seccion2/cons-det-sermon/cons-det-sermon.component';
 
-import { InicioComponent } from './navegacion/inicio/inicio.component';
+//pipes
 import { SeguroPipe } from './pipes/seguro.pipe';
 import { ResaltaTextoPipe } from './pipes/ResaltaTexto.pipe';
+import { RecortaTextoPipe } from './pipes/recorta.pipe';
+//
+import { InicioComponent } from './navegacion/inicio/inicio.component';
 import { SesionUsuario } from "./servicios/SesionUsuario.service";
 import { CanalService } from './servicios/canal.service';
+import { APIInterceptor } from './servicios/jwt.interceptor';
 
 import { MaterialModule } from './material.module';
 import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
@@ -60,6 +69,9 @@ import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { UtilS } from './servicios/Util.service';
 import { TCComponent } from './generales/imagen-tc/tc.component';
 import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
+import { BusqAvanzadaComponent } from './seccion1/busq-avanzada/busq-avanzada.component';
+import { BusqAvanzadaSComponent } from './seccion2/busq-avanzada-s/busq-avanzada-s.component';
+import { MapaSignosComponent } from './seccion1/mapa-signos/mapa-signos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +90,7 @@ import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
     //pipes
     SeguroPipe,
     ResaltaTextoPipe,
+    RecortaTextoPipe,
     //otros
     BibliotecaComponent,
     LtsNoticiasComponent,
@@ -96,6 +109,9 @@ import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
     NoticiaComponent,
     TCComponent,
     LineaDTComponent,
+    BusqAvanzadaComponent,
+    BusqAvanzadaSComponent,
+    MapaSignosComponent,
     
   ],
   imports: [
@@ -111,9 +127,14 @@ import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
     TreeviewModule.forRoot(),
     DragDropModule,
     AngularSplitModule,
-    PdfViewerModule
+    PdfViewerModule,
+
+    TooltipModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: APIInterceptor, 
+      multi:true},
     ConexionService,
     SesionUsuario,
     CanalService,

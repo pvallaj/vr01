@@ -24,6 +24,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core'; 
@@ -74,7 +75,8 @@ export const PERSONALIZADO_DATE_FORMATS: MatDateFormats = {
      MatDividerModule,
      MatCheckboxModule,
      MatDatepickerModule,
-     MatNativeDateModule
+     MatNativeDateModule,
+     MatRadioModule
   ],
   exports:[
     MatSliderModule,
@@ -101,7 +103,8 @@ export const PERSONALIZADO_DATE_FORMATS: MatDateFormats = {
     MatDividerModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule    
+    MatNativeDateModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }
