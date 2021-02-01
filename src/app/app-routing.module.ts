@@ -18,6 +18,7 @@ import { NoticiasComponent } from './seccion3/noticias/noticias.component';
 import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
 import { GRegGuard } from './privado/g-reg.guard';
 import { GRegAdmGuard } from './privado/g-reg-adm.guard';
+import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.component';
 
 
 
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'inicio',         component: InicioComponent},
   {path: 'relaciones',     component: ConsultaNarrativasComponent},
   {path: 'sermones',       component: ConsSermonesComponent},
-  {path: 'oesxvi',         component: OEscritaSXVIComponent},
+  {path: 'oesxvi',         component: OEscritaV2Component},
   {path: 'herramientas',   component: HerramientasComponent},
   {path: 'buscar',         component: BuscarComponent},
   {path: 'noticias',       component: NoticiasComponent},

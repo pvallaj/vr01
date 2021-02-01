@@ -4,81 +4,144 @@
         <input matInput (keyup)="aplicarFiltro($event)" placeholder="Palabra o frace a buscar" #input>
     </mat-form-field>
     <div class="mostrar" fxLayout="row" fxLayoutAlign="space-between">
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moGD" (change)="cambiarGD($event)">GESTOS </mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moMD" (change)="cambiarMD($event)">MOVIMIENTOS CORPORALES</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moVoD" (change)="cambiarVoD($event)">MODULACIÓN DE VOZ</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moViD" (change)="cambiarViD($event)">MOVIMIENTOS EN LA MIRADA</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moGDn" (change)="cambiarGDn($event)">GESTOS IMPLICITOS</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moMDn" (change)="cambiarMDn($event)">MOVIMIENTOS CORPORALES IMPLICITOS</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moVoDn" (change)="cambiarVoDn($event)">MODULACIÓN DE VOZ IMPLICITA</mat-checkbox>
-        <mat-checkbox [labelPosition]="'after'" [(ngModel)]="moViDn" (change)="cambiarViDn($event)">MOVIMIENTOS EN LA MIRADA IMPLICITA</mat-checkbox>
+        <mat-chip-list #chipList aria-label="Agregar Signos Actorales">
+            <mat-chip *ngIf="!moGD">GESTOS
+                <mat-icon matChipRemove (click)="cambiarGD($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moMD">MOVIMIENTOS CORPORALES
+                <mat-icon matChipRemove (click)="cambiarMD($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moVoD">MODULACIÓN DE VOZ
+                <mat-icon matChipRemove (click)="cambiarVoD($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moViD">MOVIMIENTOS EN LA MIRADA
+                <mat-icon matChipRemove (click)="cambiarViD($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moGDn">GESTOS IMPLICITOS
+                <mat-icon matChipRemove (click)="cambiarGDn($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moMDn">MOVIMIENTOS CORPORALES IMPLICITOS
+                <mat-icon matChipRemove (click)="cambiarMDn($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moVoDn">MODULACIÓN DE VOZ IMPLICITA
+                <mat-icon matChipRemove (click)="cambiarVoDn($event)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!moViDn">MOVIMIENTOS EN LA MIRADA IMPLICITA
+                <mat-icon matChipRemove (click)="cambiarViDn($event)">done</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+
+
     </div>
     <div class="marco-tabla">
         <table mat-table [dataSource]="listaResultadoSA" matSort [style.width.px]="(columnasSA.length-4)*250+800">
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <ng-container matColumnDef="id_texto" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> ID </th>
                 <td mat-cell *matCellDef="let row"> {{row.id_texto}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="autor">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> AUTOR </th>
+            <ng-container matColumnDef="autor" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> AUTOR </th>
                 <td mat-cell *matCellDef="let row"> {{row.autor}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="obra">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> OBRA </th>
+            <ng-container matColumnDef="obra" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> OBRA </th>
                 <td mat-cell *matCellDef="let row"> {{row.obra}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="narratio">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> RELACIÓN </th>
+            <ng-container matColumnDef="narratio" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> RELACIÓN </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.narratio | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="gestos_dramaticos">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> GESTOS </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos">GESTOS
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarGD($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.gestos_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.gestos_dramaticos | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="movimientos_dramaticos">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MOVIMIENTOS CORPORALES </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MOVIMIENTOS CORPORALES
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarMD($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.movimientos_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.movimientos_dramaticos | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="voz_dramaticos">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MODULACIÓN DE VOZ </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MODULACIÓN DE VOZ
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarVoD($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.voz_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.voz_dramaticos | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="vista_dramaticos">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MOVIMIENTOS EN LA MIRADA DE LOS ACTORES </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MOVIMIENTOS EN LA MIRADA DE LOS ACTORES
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarViD($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.vista_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.vista_dramaticos | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="gestos_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> GESTOS IMPLICITOS </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> GESTOS IMPLICITOS
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarGDn($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.gestos_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.gestos_dramaticos_no | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="movimientos_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MOVIMIENTOS CORPORALES IMPLICITOS</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS CORPORALES IMPLICITOS
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarMDn($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.movimientos_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.movimientos_dramaticos_no | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="voz_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MODULACIÓN DE VOZ IMPLICITA</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MODULACIÓN DE VOZ IMPLICITA
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarVoDn($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.voz_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.voz_dramaticos_no | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="vista_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> MOVIMIENTOS EXPLÍCITOS EN LA MIRADA DE LOS ACTORES</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS EXPLÍCITOS EN LA MIRADA DE LOS ACTORES
+                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarViDn($event)">
+                        <mat-icon>close</mat-icon>
+                    </button-->
+                </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.vista_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.vista_dramaticos_no | recortaTexto:200}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="g1" sticky>
+                <th mat-header-cell *matHeaderCellDef colspan="4"> Titulos </th>
+            </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnasSA"></tr>
+            <ng-container matColumnDef="g2">
+                <th mat-header-cell *matHeaderCellDef colspan="3" class="explicitos"> SIGNOS EN LOS ACTORES DRAMÁTICOS </th>
+            </ng-container>
+
+            <ng-container matColumnDef="g3">
+                <th mat-header-cell *matHeaderCellDef colspan="3" class="implicitos"> SIGNOS EN LOS PERSONAJES DE LA RELACIÓN </th>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasSAT1"></tr>
+            <tr mat-header-row *matHeaderRowDef="columnasSAT2"></tr>
             <tr mat-row *matRowDef="let row; columns: columnasSA;"></tr>
-
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No se encontraron coincidencias "{{input.value}}"</td>

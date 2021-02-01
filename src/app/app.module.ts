@@ -72,6 +72,9 @@ import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
 import { BusqAvanzadaComponent } from './seccion1/busq-avanzada/busq-avanzada.component';
 import { BusqAvanzadaSComponent } from './seccion2/busq-avanzada-s/busq-avanzada-s.component';
 import { MapaSignosComponent } from './seccion1/mapa-signos/mapa-signos.component';
+import { MapaVinculosComponent } from './seccion1/mapa-vinculos/mapa-vinculos.component';
+import { MapaContextoComponent } from './seccion1/mapa-contexto/mapa-contexto.component';
+import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +115,9 @@ import { MapaSignosComponent } from './seccion1/mapa-signos/mapa-signos.componen
     BusqAvanzadaComponent,
     BusqAvanzadaSComponent,
     MapaSignosComponent,
+    MapaVinculosComponent,
+    MapaContextoComponent,
+    OEscritaV2Component,
     
   ],
   imports: [

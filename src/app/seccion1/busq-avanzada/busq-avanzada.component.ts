@@ -69,19 +69,30 @@ export class BusqAvanzadaComponent implements OnInit {
   public aceptar(){
     if(this.tipo=='signos'){
       this.datos.filtros.value=['Signos Actorales'];
-    }else{
-      this.datos.filtros.value=[];
-      if(this.filtros.autor)          this.datos.filtros.value.push('Autor');
-      if(this.filtros.obra)           this.datos.filtros.value.push('Obra');
-      if(this.filtros.clasificacion)  this.datos.filtros.value.push('Clasificación');
-      if(this.filtros.tema)           this.datos.filtros.value.push('Tema');
-      if(this.filtros.motivo)         this.datos.filtros.value.push('Motivo');
-      if(this.filtros.tipoVerso)      this.datos.filtros.value.push('Tipo de Verso');
-      if(this.filtros.tipoAccion)     this.datos.filtros.value.push('Tipo de Acción');
-      if(this.filtros.soporte)        this.datos.filtros.value.push('Soporte');
-      if(this.filtros.texto)          this.datos.filtros.value.push('Textos o Palabras');
-      console.log(this.datos.filtros);
+      return;
     }
+
+    if(this.tipo=='vinculos'){
+      this.datos.filtros.value=['Vinculos'];
+      return;
+    }
+
+    if(this.tipo=='contexto'){
+      this.datos.filtros.value=['Contexto'];
+      return;
+    }
+
+    this.datos.filtros.value=[];
+    if(this.filtros.autor)          this.datos.filtros.value.push('Autor');
+    if(this.filtros.obra)           this.datos.filtros.value.push('Obra');
+    if(this.filtros.clasificacion)  this.datos.filtros.value.push('Clasificación');
+    if(this.filtros.tema)           this.datos.filtros.value.push('Tema');
+    if(this.filtros.motivo)         this.datos.filtros.value.push('Motivo');
+    if(this.filtros.tipoVerso)      this.datos.filtros.value.push('Tipo de Verso');
+    if(this.filtros.tipoAccion)     this.datos.filtros.value.push('Tipo de Acción');
+    if(this.filtros.soporte)        this.datos.filtros.value.push('Soporte');
+    if(this.filtros.texto)          this.datos.filtros.value.push('Textos o Palabras');
+    
   }
   public cancelar(){
 

@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Opciones de consulta</h2>
 <mat-dialog-content class="marco">
     <div class="titulo">Seleccione las opciones de consulta que desea agregar a su busqueda</div>
-    <mat-radio-group [(ngModel)]="tipo" (change)="tipos($event)">
+    <mat-radio-group [(ngModel)]="tipo" (change)="tipos($event)" fxLayout="column">
         <mat-radio-button value="individuales">Opciones individuales</mat-radio-button>
         <div class="opciones">
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
@@ -48,13 +48,15 @@
                 </mat-checkbox>
             </div>
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
-                <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'">
+                <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte las <i>relaciones</i> que contengan la <b>PALABRA o FRASE</b> que usted escriba.
                 </mat-checkbox>
             </div>
 
         </div>
         <mat-radio-button value="signos"><b>Signos Actorales.</b> Revise las relaciones en base a sus signos actorales</mat-radio-button>
+        <mat-radio-button value="vinculos"><b>Vinculos.</b> Por los vinculos entre la acción y la relación</mat-radio-button>
+        <mat-radio-button value="contexto"><b>Contexto.</b> Por el contexto en el que se ubica la relación</mat-radio-button>
     </mat-radio-group>
 </mat-dialog-content>
 <mat-dialog-actions class="opciones" fxLayout="row" fxLayoutAlign="space-around center">

@@ -8,24 +8,14 @@ import { SesionUsuario } from './SesionUsuario.service';
 })
 export class ConexionService {
   headers: HttpHeaders;
-  //urlBase:string='http://api.appsparatodos.com.mx';
-  urlBase:string='/api';
+  urlBase:string='http://api.appsparatodos.com.mx';
+  //urlBase:string='/api';
   public componente:"";
 
   constructor(protected http: HttpClient) {
     let token=localStorage.getItem('tkn')
-    /*if(token!=null){
-      console.log('El TOKEN: '+token);
-      this.headers = new HttpHeaders({ 
-        'content':"application/json",
-        'content-type':"application/x-www-form-urlencoded; charset=UTF-8",
-        'Authorization':token
-      });
-    }else{*/
-      this.headers = new HttpHeaders({ 'content':"application/json",
+    this.headers = new HttpHeaders({ 'content':"application/json",
       'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
-    //}
-   //this.headers = new HttpHeaders({ 'content-type':"application/x-www-form-urlencoded"});
   }
 
   public sermones(parametros, accion){

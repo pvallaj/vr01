@@ -1,0 +1,117 @@
+<div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-form-field>
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="aplicarFiltro($event)" placeholder="Palabra o frace a buscar" #input>
+    </mat-form-field>
+    <div class="mostrar" fxLayout="row" fxLayoutAlign="space-between">
+        <mat-chip-list #chipList>
+            <mat-chip *ngIf="!estaVisible('visuales')" selected color="primary" (click)="cambiar('visuales',4)">VISUALES
+                <mat-icon matChipRemove (click)="cambiar('visuales',4)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('auditivos')" selected color="primary" (click)="cambiar('auditivos',5)">AUDITIVOS
+                <mat-icon matChipRemove (click)="cambiar('auditivos',5)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('presente_accion')" selected color="primary" (click)="cambiar('presente_accion',6)">PRESENTE DE LA ACCIÓN DRAMÁTICA
+                <mat-icon matChipRemove (click)="cambiar('presente_accion',6)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('ref_discurso')" selected color="primary" (click)="cambiar('ref_discurso',7)">REFERENCIAS AL METADISCURSO
+                <mat-icon matChipRemove (click)="cambiar('ref_discurso',7)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('apltvo_recep')" selected color="primary" (click)="cambiar('apltvo_recep',8)">APELATIVOS AL RECEPTOR DE LA RELACIÓN
+                <mat-icon matChipRemove (click)="cambiar('apltvo_recep',9)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('apltvo_espect')" selected color="primary" (click)="cambiar('apltvo_espect',9)">APELATIVOS AL ESPECTADOR
+                <mat-icon matChipRemove (click)="cambiar('apltvo_espect',10)">done</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+
+
+    </div>
+    <div class="marco-tabla">
+        <table mat-table [dataSource]="listaResultado" matSort [style.width.px]="(columnasV.length-4)*250+800">
+            <ng-container matColumnDef="id" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_texto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="autor" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> AUTOR </th>
+                <td mat-cell *matCellDef="let row"> {{row.autor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="obra" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> OBRA </th>
+                <td mat-cell *matCellDef="let row"> {{row.obra}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="narratio" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> RELACIÓN </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.narratio | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visuales">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('visuales',5)">
+                        <mat-icon>close</mat-icon>
+                    </button>VISUALES
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.visuales}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.visuales | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="auditivos">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('auditivos',5)">
+                        <mat-icon>close</mat-icon>
+                    </button>AUDITIVOS
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.auditivos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.auditivos | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="presente_accion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('presente_accion',6)">
+                        <mat-icon>close</mat-icon>
+                    </button>PRESENTE DE LA ACCIÓN DRAMÁTICA
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.presente_accion}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.presente_accion | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ref_discurso">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('ref_discurso',7)">
+                        <mat-icon>close</mat-icon>
+                    </button>REFERENCIAS AL METADISCURSO
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.ref_discurso}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.ref_discurso | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="apltvo_recep">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('apltvo_recep',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>APELATIVOS AL RECEPTOR DE LA RELACIÓN
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.apltvo_recep}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.apltvo_recep | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="apltvo_espect">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-mini-fab color="primary" (click)="cambiar('apltvo_espect',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>APELATIVOS AL ESPECTADOR
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.apltvo_espect}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.apltvo_espect | recortaTexto:200}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasV"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasV;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se encontraron coincidencias "{{input.value}}"</td>
+            </tr>
+        </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
+</div>

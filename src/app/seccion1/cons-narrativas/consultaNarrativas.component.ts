@@ -20,6 +20,8 @@ export class ConsultaNarrativasComponent implements OnInit {
 
   public listaResultado:any[]=null;
   public listaResultadoSA:any[]=null;
+  public listaResultadoV:any[]=null;
+  public listaResultadoC:any[]=null;
   //autocomplete
   public acAutores = new FormControl();
   public listaAutores:any[]=[];
@@ -289,12 +291,16 @@ export class ConsultaNarrativasComponent implements OnInit {
     });
   }
 
-  private filtroActivo(f:string):boolean{
+  public filtroActivo(f:string):boolean{
     if(this.filtrosActivos.value.indexOf(f)==-1) return false;
     return true;
   }
 
   public abrirBusquedaAvanzada(){
+    this.listaResultadoSA=null;
+    this.listaResultadoV=null;
+    this.listaResultadoC=null;
+    this.listaResultado=null
     const dialogRef = this.dialog.open(BusqAvanzadaComponent, {
       data: {filtros:this.filtrosActivos}
     });
@@ -302,9 +308,20 @@ export class ConsultaNarrativasComponent implements OnInit {
       if(this.filtroActivo('Signos Actorales')){
         this.listaResultado=null;
         this.buscarSignosActorales();
-      }else{
-        this.listaResultadoSA=null;
+        return;
       }
+      if(this.filtroActivo('Vinculos')){
+        this.listaResultado=null;
+        this.buscarVinculos();
+        return;
+      }
+
+      if(this.filtroActivo('Contexto')){
+        this.listaResultado=null;
+        this.buscarContexto();
+        return;
+      }
+
     });
   }
 
@@ -325,8 +342,39 @@ export class ConsultaNarrativasComponent implements OnInit {
     )
   }
 
+  private buscarVinculos(){
+    let p=null;
+    this.estaCargando=true;
+    this.cnx.narrativas(p, 'consulta vinculos')
+    .subscribe(
+      (data)=>{
+        this.listaResultadoV= data['resultado'];
+        this.estaCargando=false;
+      },
+    (error)=>{
+        console.log('No se logro la conexión');
+        console.error(error);
+        this.estaCargando=false;
+      }
+    )
+  }
   
-  
+  private buscarContexto(){
+    let p=null;
+    this.estaCargando=true;
+    this.cnx.narrativas(p, 'consulta contexto')
+    .subscribe(
+      (data)=>{
+        this.listaResultadoC= data['resultado'];
+        this.estaCargando=false;
+      },
+    (error)=>{
+        console.log('No se logro la conexión');
+        console.error(error);
+        this.estaCargando=false;
+      }
+    )
+  }
 
   public recortaNarrativa(narrativa: string):string {
     if (narrativa.length > 300) {

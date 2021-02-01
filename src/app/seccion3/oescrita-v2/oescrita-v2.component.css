@@ -1,0 +1,101 @@
+ /*.contenedor {
+    position: relative;
+}
+
+.fondo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 80%;
+    border: 1px solid black;
+}
+
+.izquierda {
+    padding: 10px;
+    height: 700px;
+    border: 1px solid white;
+    background-image: url('/assets/fotos/ts-xvi/c1/portada.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: multiply;
+    display: block;
+}
+
+.derecha {
+    padding: 10px;
+    height: 900px;
+    border: 1px solid white;
+    background-image: url('/assets/fotos/ts-xvi/c3/portada.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: multiply;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+}
+
+.marco {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.submarco {
+    width: 50%;
+    height: 200px;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    border: .5px solid blue;
+    background-color: rgba(255, 255, 255, .5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.titulo {
+    background-color: white;
+    font-size: 25px;
+}*/
+ 
+ .contenedor {
+     width: 100%;
+     height: 92%;
+     padding: 5px;
+ }
+ 
+ .fondo {
+     background-image: url('/assets/fotos/ts-xvi/c1/portada.jpg');
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     border-radius: 10px;
+     background-color: rgba(255, 255, 255, .5);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ 
+ .marco {
+     width: 100%;
+     height: 100%;
+ }
+ 
+ .submarco {
+     width: 96%;
+     height: 200px;
+     color: black;
+     padding: 15px;
+     border-radius: 10px;
+     background-color: rgba(255, 255, 255, .5);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ 
+ .titulo {
+     font-size: 25px;
+ }

@@ -1,0 +1,78 @@
+.marco {
+    margin: 20px;
+}
+
+.marco-tabla {
+    width: 100%;
+    margin: 10px;
+    overflow: scroll;
+    scroll-behavior: auto;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-column-id {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    width: 50px !important;
+    flex: 0 0 50px !important;
+    background-color: lightslategray;
+    color: white;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-autor,
+.mat-column-obra,
+.mat-column-narratio {
+    width: 150px !important;
+    border-left: 1px dotted gray;
+    background-color: lightslategray;
+    color: white;
+}
+
+.mat-column-narratio {
+    width: 250px !important;
+}
+
+.mat-column-argumento,
+.mat-column-accion_dramatica,
+.mat-column-voz_dramaticos,
+.mat-column-marco_anterior,
+.mat-column-marco_posterior,
+.mat-column-formula_apertura,
+.mat-column-formula_cierre,
+.mat-column-tiempo,
+.mat-column-tiempo_referido {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    width: 250px !important;
+    border-left: 1px dotted gray;
+    padding: 5px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.tooltip {
+    color: blue;
+}
+
+mat-header-cell {
+    justify-content: center !important;
+    background-color: lightslategray;
+    color: white;
+    font-weight: bold;
+}

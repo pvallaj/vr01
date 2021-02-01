@@ -14,32 +14,37 @@
     width: 100%;
 }
 
-.mat-column-id {
-    word-wrap: break-word !important;
-    white-space: unset !important;
+.mat-column-id_texto {
     width: 50px !important;
-    flex: 0 0 50px !important;
-    background-color: lightslategray;
-    color: white;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    border-left: 1px dotted gray;
+    background-color: honeydew;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .mat-column-autor,
 .mat-column-obra,
 .mat-column-narratio {
+    width: 150px !important;
+    border-left: 1px dotted gray;
+    background-color: honeydew;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mat-column-narratio {
+    width: 250px !important;
+}
+
+.mat-column-gestos_dramaticos,
+.mat-column-movimientos_dramaticos,
+.mat-column-voz_dramaticos,
+.mat-column-vista_dramaticos {
     word-wrap: break-word !important;
     white-space: unset !important;
-    /*flex: 0 0 28% !important;*/
-    width: 200px !important;
+    width: 250px !important;
     border-left: 1px dotted gray;
-    background-color: lightslategray;
-    color: white;
+    background-color: azure;
     padding: 5px !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -50,10 +55,6 @@
     hyphens: auto;
 }
 
-.mat-column-gestos_dramaticos,
-.mat-column-movimientos_dramaticos,
-.mat-column-voz_dramaticos,
-.mat-column-vista_dramaticos,
 .mat-column-gestos_dramaticos_no,
 .mat-column-movimientos_dramaticos_no,
 .mat-column-voz_dramaticos_no,
@@ -62,6 +63,7 @@
     white-space: unset !important;
     width: 250px !important;
     border-left: 1px dotted gray;
+    background-color: beige;
     padding: 5px !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -76,9 +78,19 @@
     color: blue;
 }
 
-.mat-header-cell {
+.mat-header-cell.relacion {
     justify-content: flex-end;
-    background-color: lightslategray;
-    color: white;
+    background-color: honeydew;
     font-weight: bold;
+    text-align: center;
+}
+
+.mat-header-cell.explicitos {
+    background-color: azure;
+    text-align: center;
+}
+
+.mat-header-cell.implicitos {
+    background-color: beige;
+    text-align: center;
 }

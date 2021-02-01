@@ -7,10 +7,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatList, MatListModule } from "@angular/material/list";
+import { MatListModule } from "@angular/material/list";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatChipsModule} from '@angular/material/chips';
@@ -26,6 +28,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core'; 
 
@@ -76,7 +79,8 @@ export const PERSONALIZADO_DATE_FORMATS: MatDateFormats = {
      MatCheckboxModule,
      MatDatepickerModule,
      MatNativeDateModule,
-     MatRadioModule
+     MatRadioModule,
+     MatSortModule
   ],
   exports:[
     MatSliderModule,
@@ -104,7 +108,8 @@ export const PERSONALIZADO_DATE_FORMATS: MatDateFormats = {
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSortModule
   ]
 })
 export class MaterialModule { }

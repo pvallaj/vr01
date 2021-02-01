@@ -40,9 +40,14 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   public moViDn=true;
 
   //------------------------------
-  public columnasSA:string[]=['id','autor','obra', 'narratio',
-  'gestos_dramaticos', 'movimientos_dramaticos','voz_dramaticos','vista_dramaticos',
-  'gestos_dramaticos_no', 'movimientos_dramaticos_no','voz_dramaticos_no','vista_dramaticos_no'];
+  public columnasSA:string[]=['id_texto','autor','obra', 'narratio',
+  'gestos_dramaticos', 'movimientos_dramaticos','voz_dramaticos',
+  'gestos_dramaticos_no', 'movimientos_dramaticos_no','voz_dramaticos_no'];
+
+  public columnasSAT1:string[]=['id_texto','autor','obra', 'narratio','g2','g3']
+  public columnasSAT2:string[]=[
+    'gestos_dramaticos', 'movimientos_dramaticos','voz_dramaticos',
+    'gestos_dramaticos_no', 'movimientos_dramaticos_no','voz_dramaticos_no'];
 
   constructor() { }
 
@@ -55,60 +60,68 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
     this.listaResultadoSA.sort = this.sort;
   }
   public cambiarGD(e){
-    if(this.moGD){
+    if(!this.moGD){
       this.columnasSA.splice(4,0,'gestos_dramaticos');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='gestos_dramaticos');
     }
+    this.moGD=!this.moGD;
   }
   public cambiarGDn(e){
-    if(this.moGDn){
+    if(!this.moGDn){
       this.columnasSA.splice(8,0,'gestos_dramaticos_no');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='gestos_dramaticos_no');
     }
+    this.moGDn=!this.moGDn;
   }
   public cambiarMD(e){
-    if(this.moMD){
+    if(!this.moMD){
       this.columnasSA.splice(5,0,'movimientos_dramaticos');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='movimientos_dramaticos');
     }
+    this.moMD=!this.moMD;
   }
   public cambiarMDn(e){
-    if(this.moMDn){
+    if(!this.moMDn){
       this.columnasSA.splice(9,0,'movimientos_dramaticos_no');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='movimientos_dramaticos_no');
     }
+    this.moMDn=!this.moMDn;
   }
   public cambiarVoD(e){
-    if(this.moVoD){
+    if(!this.moVoD){
       this.columnasSA.splice(6,0,'voz_dramaticos');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='voz_dramaticos');
     }
+    this.moVoD=!this.moVoD;
   }
   public cambiarVoDn(e){
-    if(this.moVoDn){
+    if(!this.moVoDn){
       this.columnasSA.splice(10,0,'voz_dramaticos_no');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='voz_dramaticos_no');
     }
+    this.moVoDn=!this.moVoDn;
   }
   public cambiarViD(e){
-    if(this.moViD){
+    if(!this.moViD){
       this.columnasSA.splice(7,0,'vista_dramaticos');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='vista_dramaticos');
     }
+    this.moViD=!this.moViD;
   }
   public cambiarViDn(e){
-    if(this.moViDn){
+    if(!this.moViDn){
       this.columnasSA.splice(11,0,'vista_dramaticos_no');
     }else{
       this.columnasSA=this.columnasSA=this.columnasSA.filter(el=>el!='vista_dramaticos_no');
     }
+    this.moViDn=!this.moViDn;
   }
   public aplicarFiltro(e){
     const filterValue = (event.target as HTMLInputElement).value;

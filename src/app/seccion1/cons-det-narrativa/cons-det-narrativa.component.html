@@ -1,15 +1,14 @@
 <mat-card class="buscando" *ngIf="estaCargando">
     <mat-card-content>
         <h2 class="example-h2">Consultando base de datos</h2>
-
         <section class="example-section">
             <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
             </mat-progress-bar>
         </section>
     </mat-card-content>
 </mat-card>
-<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around">
-    <div class="secciones" fxFlex="0 0 calc(30% - 5px)" fxFlex.lt-lg="100%">
+<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px" fxLayoutAlign="space-around">
+    <div class="secciones" fxFlex="50" fxFlex.lt-lg="100%">
         <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
                 Relación
@@ -36,8 +35,8 @@
             </div>
         </div>
     </div>
-    <div class="secciones" *ngIf="!estaCargando" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around">
-        <div class="seccion" fxFlex="0 0 calc(45% - 5px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
+    <div class="secciones" fxFlex="50" *ngIf="!estaCargando" fxLayout="column" fxLayoutAlign="start">
+        <div class="seccion" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
                 Bibliografia
             </div>
@@ -100,7 +99,7 @@
             </mat-tab-group>
         </div>
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="princeps!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="princeps!=null">
             <div class="titulo_seccion">
                 Princeps
             </div>
@@ -153,7 +152,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="contexto!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="contexto!=null">
             <div class="titulo_seccion">
                 Descripción discursiva
             </div>
@@ -235,7 +234,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="clasificacion!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="clasificacion!=null">
             <div class="titulo_seccion">
                 Clasificación
             </div>
@@ -252,7 +251,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
             <div class="titulo_seccion">
                 Tipo de acción
             </div>
@@ -269,7 +268,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="motivos!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="motivos!=null">
             <div class="titulo_seccion">
                 Motivos
             </div>
@@ -284,7 +283,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tema!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tema!=null">
             <div class="titulo_seccion">
                 Tema
             </div>
@@ -301,7 +300,7 @@
         </div>
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="versificacion!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="versificacion!=null">
             <div class="titulo_seccion">
                 Versificación
             </div>
@@ -317,7 +316,7 @@
 
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
             <div class="titulo_seccion">
                 Soporte
             </div>
@@ -333,7 +332,7 @@
 
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="signos!=null">
             <div class="titulo_seccion">
                 Signos Actorales
             </div>
@@ -350,10 +349,10 @@
                     <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
                     <div class="valor" fxFlex>{{signos.voz_dramaticos}}</div>
                 </div>
-                <div class="fila" fxLayout="row">
+                <!--div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="40">Movimientos explícitos en la mirada de los actores:</div>
                     <div class="valor" fxFlex>{{signos.vista_dramaticos}}</div>
-                </div>
+                </div-->
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="40">Gestos implícitos de los actores:</div>
                     <div class="valor" fxFlex>{{signos.gestos_dramaticos_no}}</div>
@@ -366,10 +365,10 @@
                     <div class="titulo" fxFlex="40">Modulaciones implícitas en la voz de los actores:</div>
                     <div class="valor" fxFlex>{{signos.voz_dramaticos_no}}</div>
                 </div>
-                <div class="fila" fxLayout="row">
+                <!--div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="40">Movimientos implícitos en la mirada de los actores:</div>
                     <div class="valor" fxFlex>{{signos.vista_dramaticos_no}}</div>
-                </div>
+                </div-->
             </div>
         </div>
 
@@ -403,7 +402,7 @@
         </div-->
 
 
-        <div class="seccion" fxFlex="0 0 calc(45% - 10px)" fxFlex.lt-lg="100%" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="vinculos!=null">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="vinculos!=null">
             <div class="titulo_seccion">
                 Vinculos
             </div>

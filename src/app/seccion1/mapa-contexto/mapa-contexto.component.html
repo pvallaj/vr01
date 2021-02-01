@@ -1,0 +1,141 @@
+<div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-form-field>
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="aplicarFiltro($event)" placeholder="Palabra o frace a buscar" #input>
+    </mat-form-field>
+    <div class="mostrar" fxLayout="row" fxLayoutAlign="space-between">
+        <mat-chip-list #chipList>
+            <mat-chip *ngIf="!estaVisible('argumento')" selected color="primary" (click)="cambiar('argumento',4)">ARGUMENTO
+                <mat-icon matChipRemove (click)="cambiar('argumento',4)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('accion_dramatica')" selected color="primary" (click)="cambiar('accion_dramatica',5)">CONTEXTO DRAMÁTICO EN TORNO A LA RELACIÓN
+                <mat-icon matChipRemove (click)="cambiar('accion_dramatica',5)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('marco_anterior')" selected color="primary" (click)="cambiar('marco_anterior',6)">MARCO ANTERIOR
+                <mat-icon matChipRemove (click)="cambiar('marco_anterior',6)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('marco_posterior')" selected color="primary" (click)="cambiar('marco_posterior',7)">MARCO POSTERIOR
+                <mat-icon matChipRemove (click)="cambiar('marco_posterior',7)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('formula_apertura')" selected color="primary" (click)="cambiar('formula_apertura',8)">FÓRMULA DE APERTURA
+                <mat-icon matChipRemove (click)="cambiar('formula_apertura',9)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('formula_cierre')" selected color="primary" (click)="cambiar('formula_cierre',9)">FORMULA DE CIERRE
+                <mat-icon matChipRemove (click)="cambiar('formula_cierre',10)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('tiempo')" selected color="primary" (click)="cambiar('tiempo',9)">ESPACIO DESDE EL QUE SE CUENTA
+                <mat-icon matChipRemove (click)="cambiar('tiempo',10)">done</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="!estaVisible('tiempo_referido')" selected color="primary" (click)="cambiar('tiempo_referido',9)">ESPACIOS REFERIDOS
+                <mat-icon matChipRemove (click)="cambiar('tiempo_referido',10)">done</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+
+
+    </div>
+    <div class="marco-tabla">
+        <table mat-table [dataSource]="listaResultado" matSort [style.width.px]="(columnasV.length-4)*250+800">
+            <ng-container matColumnDef="id" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id_texto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="autor" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> AUTOR </th>
+                <td mat-cell *matCellDef="let row"> {{row.autor}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="obra" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> OBRA </th>
+                <td mat-cell *matCellDef="let row"> {{row.obra}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="narratio" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> RELACIÓN </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.narratio | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="argumento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('argumento',4)">
+                        <mat-icon>close</mat-icon>
+                    </button> ARGUMENTO
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.argumento}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.argumento | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="accion_dramatica">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('accion_dramatica',5)">
+                        <mat-icon>close</mat-icon>
+                    </button> CONTEXTO DRAMÁTICO EN TORNO A LA RELACIÓN
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.accion_dramatica}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.accion_dramatica | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="marco_anterior">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('marco_anterior',6)">
+                        <mat-icon>close</mat-icon>
+                    </button>MARCO ANTERIOR
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.marco_anterior}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.marco_anterior | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="marco_posterior">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('marco_posterior',7)">
+                        <mat-icon>close</mat-icon>
+                    </button>MARCO POSTERIOR
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.marco_posterior}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.marco_posterior | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="formula_apertura">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('formula_apertura',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>FÓRMULA DE APERTURA
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.formula_apertura}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.formula_apertura | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="formula_cierre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('formula_cierre',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>FORMULA DE CIERRE
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.formula_cierre}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.formula_cierre | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tiempo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('tiempo',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>ESPACIO DESDE EL QUE SE CUENTA
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.tiempo}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.tiempo | recortaTexto:200}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tiempo_referido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('tiempo_referido',8)">
+                        <mat-icon>close</mat-icon>
+                    </button>ESPACIOS REFERIDOS
+                </th>
+                <td mat-cell *matCellDef="let row" tooltip="{{row.tiempo_referido}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.tiempo_referido | recortaTexto:200}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasV"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasV;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se encontraron coincidencias "{{input.value}}"</td>
+            </tr>
+        </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
+</div>
