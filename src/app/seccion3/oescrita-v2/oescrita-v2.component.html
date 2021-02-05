@@ -18,16 +18,39 @@
     </div>
 </div-->
 
-<div class="contenedor" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
-    <div class="fondo" fxFlex="50">
-
+<div *ngIf="resultado!=null && capituloSeleccionado==null" class="contenedor" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+    <div class="fondo" fxFlex="50" fxLayout="row" fxLayoutGap="15px">
+        <img class="imagen" src="{{el.referencia}}" *ngFor="let el of imagenes">
     </div>
     <div class="marco" fxFlex="50" fxLayout="column" fxLayoutAlign="start">
         <div class="submarco">
             <div class="titulo">Historia de las Literaturas en México. Siglo XVI</div>
             <div class="descripcion">Descripción de la obra</div>
-            <div class="titulo">Capitulos</div>
+            <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0}" *ngFor="let reg of resultado" (click)="verCapitulo(reg.etiquetas)">{{reg.texto}}</div>
         </div>
 
+    </div>
+</div>
+
+<div class="contenedor-2" *ngIf="capituloSeleccionado!=null">
+    <as-split direction="vertical">
+        <as-split-area [size]="70" [visible]="om_detalle" [order]="0">
+            <app-detalle-oe [elemento]="elementoSeleccionado" [tipo]="2"></app-detalle-oe>
+        </as-split-area>
+        <as-split-area [size]="30" [visible]="om_lista" [order]="1">
+            <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
+                <app-detalle-oe class="tarjetaresumen" [ngClass]="{tarjetaSeleccionada:elemento==elementoSeleccionado}" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = index" (click)="elementoSeleccionado=elemento" fxFlex="0 0 calc(25% - 10px)"></app-detalle-oe>
+            </div>
+        </as-split-area>
+    </as-split>
+
+    <button class="ctrl-regresar" mat-raised-button color="primary" (click)="regresar()">
+        <mat-icon >keyboard_backspace</mat-icon>
+        Regresar
+    </button>
+    <div class="controles" fxLayout="column" fxLayoutGap="3px">
+        <button class="ctrl" mat-raised-button color="primary" (click)="ctrlVisible=!ctrlVisible">{{ctrlVisible?'Ocultar':'Opciones'}}</button>
+        <button class="ctrl" mat-raised-button color="accent" (click)="om_detalle=!om_detalle" *ngIf="ctrlVisible">{{om_detalle?'Ocultar Detalle':'Mostrar Detalle'}}</button>
+        <button class="ctrl" mat-raised-button color="accent" (click)="om_lista=!om_lista" *ngIf="ctrlVisible">{{om_lista?'Ocultar Lista':'Mostrar Lista'}}</button>
     </div>
 </div>

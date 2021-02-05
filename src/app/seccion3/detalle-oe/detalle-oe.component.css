@@ -1,7 +1,8 @@
 /*Tarjeta Texto Detalle*/
 
-.tarjeta {
-    height: 100%;
+.contenidoTarjeta {
+    font-size: large;
+    text-align: center;
 }
 
 .tituloTarjeta {

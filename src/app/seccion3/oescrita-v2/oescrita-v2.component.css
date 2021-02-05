@@ -72,10 +72,12 @@ img {
  }
  
  .fondo {
-     background-image: url('/assets/fotos/ts-xvi/c1/portada.jpg');
+     /*background-image: url('/assets/fotos/ts-xvi/c1/portada.jpg');
      background-size: contain;
      background-repeat: no-repeat;
-     background-position: center;
+     background-position: center;*/
+     padding: 10px;
+     overflow-x: scroll;
      border-radius: 10px;
      background-color: rgba(255, 255, 255, .5);
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -87,15 +89,85 @@ img {
  }
  
  .submarco {
-     width: 96%;
-     height: 200px;
+     width: 100%;
+     height: 100%;
      color: black;
      padding: 15px;
      border-radius: 10px;
      background-color: rgba(255, 255, 255, .5);
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     overflow-y: scroll;
+     ;
  }
  
  .titulo {
      font-size: 25px;
+ }
+ 
+ .seccion {
+     font-weight: bold;
+ }
+ 
+ .capitulo {
+     padding-left: 20px;
+     color: blue;
+     cursor: pointer;
+ }
+ 
+ .imagen {
+     width: auto;
+     height: 100%;
+     border-radius: 10px;
+     border: 1px solid grey;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ /******************************************************************************/
+ 
+ .estructura,
+ .vprev,
+ .superior,
+ .inferior {
+     border: solid 1px red;
+     max-height: 100vh;
+     overflow: auto;
+ }
+ 
+ .contenedor-2 {
+     width: 98%;
+     height: 800px;
+     position: relative;
+     margin: 10px 10px;
+ }
+ 
+ .controles {
+     position: absolute;
+     right: 5px;
+     top: 5px;
+ }
+ 
+ .ctrl-regresar {
+     position: absolute;
+     right: 150px;
+     top: 5px;
+ }
+ 
+ .buscando {
+     width: 60%;
+     padding: 10px;
+     margin-top: 20px;
+     align-self: center;
+ }
+ 
+ .row-item .bi {
+     cursor: pointer;
+ }
+ /*tarjeta*/
+ 
+ .tarjetaresumen {
+     margin: 5px 0;
+ }
+ 
+ .tarjetaSeleccionada {
+     border: 5px solid lemonchiffon;
+     border-radius: 5px;
  }

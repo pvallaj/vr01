@@ -1,5 +1,5 @@
 .contenedor {
-    margin: 50px;
+    margin: 10px;
 }
 
 mat-card-header {
@@ -14,4 +14,8 @@ mat-card-subtitle {
 
 mat-card-content {
     padding: 20px 0;
+}
+
+.parrafo {
+    text-align: justify;
 }

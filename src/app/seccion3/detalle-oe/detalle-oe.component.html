@@ -22,11 +22,9 @@
         <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
         <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-        <!--div fxLayout>
-            <p class="tituloTarjeta"> {{elemento.capitulo}}</p>
-        </div-->
-        <p class="contenidoTarjeta">{{elemento.texto}}</p>
+    <mat-card-content fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="30px">
+        <img class="imgprev" fxFlex="50" *ngIf="elemento.etiquetas.indexOf('portada')>=0" src="{{elemento.referencia}}">
+        <p class="contenidoTarjeta" fxFlex="50">{{elemento.texto}}</p>
     </mat-card-content>
 </mat-card>
 
