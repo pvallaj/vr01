@@ -49,6 +49,7 @@ export class ConsSermonesComponent implements OnInit {
   public frm: FormGroup;
   public vTitulo:string='';
   public vThema:string='';
+  public vGrabado:string='';
 
   // paginación
   public pidx = 0; // Número de página.
@@ -77,7 +78,8 @@ export class ConsSermonesComponent implements OnInit {
                                     { filtro : 'Dedicatarios'},
                                     { filtro : 'Ciudad'},
                                     { filtro : 'Obra'},
-                                    { filtro : 'Orden'},];
+                                    { filtro : 'Orden'},
+                                    { filtro : 'Grabado'},];
 
   // @ViewChild("detsermon") detSermon: ConsDetSermonComponent;
 
@@ -163,6 +165,7 @@ export class ConsSermonesComponent implements OnInit {
       tituloObra:   this.filtroActivo('Obra')?this.frm.value.tituloObra:'',
       orden:        this.filtroActivo('Orden')?this.frm.value.orden:'',
       thema:        this.filtroActivo('Thema')?this.frm.value.thema:'',
+      grabado:      this.filtroActivo('Grabado')?this.frm.value.grabado:'',
 
       desde:  this.pidx * this.ptam,
       pagtam: this.ptam,
@@ -260,6 +263,7 @@ export class ConsSermonesComponent implements OnInit {
       tituloObra:   ['' ],
       orden:        ['' ],
       thema:        ['' ],
+      grabado:      ['' , [ Validators.maxLength(30)]],
     });
     this.frm.valueChanges.subscribe((v)=>{
       console.log(v);

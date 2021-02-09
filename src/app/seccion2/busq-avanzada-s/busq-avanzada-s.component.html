@@ -5,60 +5,73 @@
     <div class="opciones">
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.autor" [labelPosition]="'after'">
-                Consulte los <i>sermones</i> de uno o más de los <b>AUTORES</b> disponibles, de la Epoca Novohispana.
+                Consulte por <b>AUTOR</b>: introduciendo el nombre del autor de un sermón se mostrarán las opciones coincidentes entre los autores de sermones.
             </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.titulo" [labelPosition]="'after'">
+                Consulte por <b>TITULO</b>: escribiendo el título del sermón o bien una o varias palabras presentes en dicho título, se mostrarán los sermones que la(s) contiene(n).
+            </mat-checkbox>
+        </div>
+        <div class="banios" fxLayout="column">
+            <mat-checkbox [labelPosition]="'after'" [(ngModel)]="fanios">Busqueda por años</mat-checkbox>
+            <mat-radio-group [(ngModel)]="tipoAnios" fxLayout="column">
+                <mat-radio-button value="anio" [disabled]="!fanios">Por <b>AÑO DE PUBLICACIÓN</b>:introduciendo un año específico se mostrarán los sermones impresos en ese año.</mat-radio-button>
+                <mat-radio-button value="anios" [disabled]="!fanios">Por un <b>RANGO DE AÑOS</b>: introduciendo un rango de años se mostrarán los sermones impresos en ese lapso.</mat-radio-button>
+            </mat-radio-group>
         </div>
 
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
-            <mat-checkbox [(ngModel)]="filtros.titulo" [labelPosition]="'after'">
-                Consulte los <i>sermones</i> que <b>CONTENGAN EN SU TITULO</b> las palabras que especifique.
+            <mat-checkbox [(ngModel)]="filtros.ciudad" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Por <b>CIUDAD DE PUBLICACIÓN</b>: esta opción permite visualizar los lugares de publicación del total de los sermones del corpus. Las opciones son: a) la Ciudad de México; b) la ciudad de Puebla de los Ángeles; y c) no consta la ciudad
+                en el pie de imprenta.
+            </mat-checkbox>
+        </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.impresor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                Por <b>IMPRESOR</b>: seleccionando, entre un listado, el nombre de un impresor se mostrarán los sermones que sacó a la luz ese impresor.
             </mat-checkbox>
         </div>
 
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.thema" [labelPosition]="'after'">
-                Consulte los <i>sermones</i> que <b>CONTENGAN EN SU THEMA o LIBRO</b> las palabras que especifique.
-            </mat-checkbox>
-        </div>
-
-        <div class="banios" fxLayout="column">
-            <mat-checkbox [labelPosition]="'after'" [(ngModel)]="fanios">Busqueda por años</mat-checkbox>
-            <mat-radio-group [(ngModel)]="tipoAnios" fxLayout="column">
-                <mat-radio-button value="anio" [disabled]="!fanios">Consulte los <i>sermones</i> publicados en el <b>AÑO</b> especificado.</mat-radio-button>
-                <mat-radio-button value="anios" [disabled]="!fanios">Consulte los <i>sermones</i> publicados en el <b>RANGO DE AÑOS</b> que especifique.</mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div class="fila" fxLayout="row" fxLayoutGap="20px">
-            <mat-checkbox [(ngModel)]="filtros.impresor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                Consulte los <i>sermones</i> publicados por el <b>IMPRESOR</b> que seleccione.
+                Por pasaje <b>bíblico (thema)</b> o por su <b>referencia bíblica</b>: esta búsqueda tiene dos opciones: a) introduciendo el pasaje bíblico que encabeza un sermón (tema) o una o varias palabras presentes en dicho pasaje; o b) por la referencia
+                del libro y el versículo bíblicos que corresponden al pasaje. Se mostrarán los sermones construidos a partir de dicho tema. (Sólo se registran pasajes bíblicos en latín, con base en la Vulgata). Consulte los <i>sermones</i> que <b>CONTENGAN EN SU THEMA o LIBRO</b>                las palabras que especifique.
             </mat-checkbox>
         </div>
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.preliminares" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                Consulte los <i>sermones</i> relacionados al <b>AUTOR DE LOS PRELIMINARES</b> que seleccione.
+                Por <b>autor de los preliminares</b>: introduciendo el nombre de un autor se mostrará el o los sermones que contengan textos preliminares (licencias, aprobaciones, censuras, pareceres, dedicatorias, prólogos, piezas poéticas, entre otros)
+                escritos por dicho autor.
             </mat-checkbox>
         </div>
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.dedicatarios" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                Consulte los <i>sermones</i> que contenga los <b>DEDICATARIOS</b> que seleccione.
-            </mat-checkbox>
-        </div>
-        <div class="fila" fxLayout="row" fxLayoutGap="20px">
-            <mat-checkbox [(ngModel)]="filtros.ciudad" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                Consulte los <i>sermones</i> publicados en la <b>CIUDAD</b> que seleccione.
+                Por <b>dedicatario:</b> esta opción permite elegir, entre los nombres de una lista, a aquellos personajes a quienes uno o más sermones fueron dedicados.
             </mat-checkbox>
         </div>
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.obra" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                Consulte los <i>sermones</i> por el <b>TITULO DE LA OBRA</b>.
+                Por título de la <b>obra que contiene el sermón</b>: esta búsqueda permite elegir, entre un listado de títulos, la obra en que se encuentran incluidos uno o más sermones (se refiere a los casos en que uno o más sermones se encuentran contenidos
+                dentro de otra obra, sea ésta un sermonario, una relación de festejos u otro tipo de obra).
             </mat-checkbox>
         </div>
         <div class="fila" fxLayout="row" fxLayoutGap="20px">
             <mat-checkbox [(ngModel)]="filtros.orden" [labelPosition]="'after'">
-                Consulte los <i>sermones</i> relacionados a la <b>ORDEN</b> que seleccione.
+                Por orden <b>religiosa o cargo religioso</b>: seleccionando entre un listado, esta búsqueda permite encontrar todos los sermones que fueron predicados por los integrantes de una determinada orden religiosa, así como por los que tuvieron
+                el cargo de obispo o arzobispo.
             </mat-checkbox>
         </div>
+        <div class="fila" fxLayout="row" fxLayoutGap="20px">
+            <mat-checkbox [(ngModel)]="filtros.grabado" [labelPosition]="'after'">
+                Por <b>Palabra en el grabado</b>: escribiendo una o mas palabras, se mostrarán los sermones que en su grabado contengan las palabras especificadas.
+            </mat-checkbox>
+        </div>
+
+
+
+
+
 
     </div>
 </mat-dialog-content>

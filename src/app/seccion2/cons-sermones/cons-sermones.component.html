@@ -96,6 +96,14 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+
+            <mat-form-field class="tituloSermon" *ngIf="filtroActivo('Grabado')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <input matInput type="text" placeholder="Palabras en el GRABADO del sermón" formControlName="grabado" name="thema" [(ngModel)]="vGrabado">
+                <button mat-button matSuffix mat-icon-button (click)="vThema=''">
+                  <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
         </div>
         <div fxLayout="column" fxFlex fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
             <!--mat-form-field appearance="fill" fxFill>

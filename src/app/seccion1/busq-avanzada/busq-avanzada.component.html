@@ -17,27 +17,35 @@
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
                 <p>IMPORTANTE: Si selecciona AUTOR y OBRA al mismo tiempo, solo podra seleccionar un autor y las obras disponibles dependerán del autor seleccionado.</p>
             </div>
+
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
-                <mat-checkbox [(ngModel)]="filtros.clasificacion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                    Consulte las <i>relaciones</i> con la <b>CLASIFICACIÓN</b> que seleccione.
+                <mat-checkbox [(ngModel)]="filtros.tema" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte por <b>TEMA</b>: agrupa las relaciones por los temas más comunes en el teatro áureo.
                 </mat-checkbox>
             </div>
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
-                <mat-checkbox [(ngModel)]="filtros.tema" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                    Consulte las <i>relaciones</i> con el <b>TEMA</b> que seleccione.
+                <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte por <b>PALABRA</b>: permite hacer búsquedas ingresando cualquier palabra que esté presente en la relación.
                 </mat-checkbox>
             </div>
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
                 <mat-checkbox [(ngModel)]="filtros.motivo" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                    Consulte las <i>relaciones</i> con el <b>MOTIVO</b> que seleccione.
+                    Consulte por <b>MOTIVO</b>: agrupa las relaciones por motivos literarios (nos basamos en los que estableció Stith Thompson en su Motif-index of folk-literature).
                 </mat-checkbox>
             </div>
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
                 <mat-checkbox [(ngModel)]="filtros.tipoVerso" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                    Consulte las <i>relaciones</i> con el <b>TIPO DE VERSO</b> que seleccione.
+                    Consulte por tipo de <b>Versificación</b>: las agrupa de acuerdo con su forma métrica.
                 </mat-checkbox>
             </div>
             <div class="fila" fxLayout="row" fxLayoutGap="20px">
+                <mat-checkbox [(ngModel)]="filtros.clasificacion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
+                    Consulte por la <b>UBICACIÓN TEMPORAL</b> de la <i>relación</i> con respecto a la acción dramática; agrupa las relaciones en seis categorías con base en un criterio temporal (por ejemplo, registra si una relación narra sucesos anteriores,
+                    o simultáneos, o posteriores a la virtual representación).
+                </mat-checkbox>
+            </div>
+
+            <!--div class="fila" fxLayout="row" fxLayoutGap="20px">
                 <mat-checkbox [(ngModel)]="filtros.tipoAccion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte las <i>relaciones</i> con el <b>TIPO DE ACCIÓN</b> que seleccione.
                 </mat-checkbox>
@@ -46,17 +54,13 @@
                 <mat-checkbox [(ngModel)]="filtros.soporte" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte las <i>relaciones</i> con el <b>TIPO DE SOPORTE</b> que seleccione.
                 </mat-checkbox>
-            </div>
-            <div class="fila" fxLayout="row" fxLayoutGap="20px">
-                <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
-                    Consulte las <i>relaciones</i> que contengan la <b>PALABRA o FRASE</b> que usted escriba.
-                </mat-checkbox>
-            </div>
+            </div-->
 
         </div>
-        <mat-radio-button value="signos"><b>Signos Actorales.</b> Revise las relaciones en base a sus signos actorales</mat-radio-button>
-        <mat-radio-button value="vinculos"><b>Vinculos.</b> Por los vinculos entre la acción y la relación</mat-radio-button>
-        <mat-radio-button value="contexto"><b>Contexto.</b> Por el contexto en el que se ubica la relación</mat-radio-button>
+        <mat-radio-button value="vinculos">Por <b>Vinculos.</b> Por vínculos: ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.</mat-radio-button>
+        <mat-radio-button value="contexto">Por <b>Contexto.</b>: Permite observar el contexto en el que la relación se inserta.</mat-radio-button>
+        <mat-radio-button value="signos">Por <b>Signos Actorales.</b>: permite acceder a las relaciones a través de los gestos y signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la
+            misma relación. </mat-radio-button>
     </mat-radio-group>
 </mat-dialog-content>
 <mat-dialog-actions class="opciones" fxLayout="row" fxLayoutAlign="space-around center">

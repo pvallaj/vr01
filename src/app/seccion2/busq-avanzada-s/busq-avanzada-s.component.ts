@@ -19,7 +19,8 @@ export class BusqAvanzadaSComponent implements OnInit {
     dedicatarios:false,
     ciudad:false,
     obra:false,
-    orden:false
+    orden:false,
+    grabado:false
   }
   public tipo:string='individuales';
   public fanios=false;
@@ -43,6 +44,7 @@ export class BusqAvanzadaSComponent implements OnInit {
       this.filtros.ciudad=          fa.indexOf('Ciudad')>=0?true:false;
       this.filtros.orden=           fa.indexOf('Orden')>=0?true:false;
       this.filtros.thema=           fa.indexOf('Thema')>=0?true:false;
+      this.filtros.grabado=         fa.indexOf('Grabado')>=0?true:false;
 
       if(fa.indexOf('Año')>=0){
         this.fanios=true;
@@ -67,6 +69,7 @@ export class BusqAvanzadaSComponent implements OnInit {
       if(this.filtros.ciudad)         this.datos.filtros.value.push('Ciudad');
       if(this.filtros.orden)          this.datos.filtros.value.push('Orden');
       if(this.filtros.thema)          this.datos.filtros.value.push('Thema');
+      if(this.filtros.grabado)        this.datos.filtros.value.push('Grabado');
       if(this.fanios){
         if(this.tipoAnios=="anio")
           this.datos.filtros.value.push('Año');
