@@ -54,7 +54,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill" *ngIf="filtrosActivos.value.indexOf('Clasificación')>=0" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <mat-label>Seleccione una clasificación</mat-label>
+                <mat-label>Seleccione una ubicación temporal</mat-label>
                 <mat-select name="clase" formControlName="clasificacion">
                     <mat-option>Ninguno</mat-option>
                     <mat-option *ngFor="let categoria of listaClasificacion" [value]="categoria.id" matTooltip="{{categoria.categoria}}">

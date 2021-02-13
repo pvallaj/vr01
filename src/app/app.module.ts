@@ -52,7 +52,6 @@ import { APIInterceptor } from './servicios/jwt.interceptor';
 
 import { MaterialModule } from './material.module';
 import { FTGaleriaComponent } from './fototeca/ftgaleria/ftgaleria.component';
-import { BibliotecaComponent } from './biblioteca/biblioteca.component';
 import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
 import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-usuario.component';
 import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
@@ -95,7 +94,6 @@ import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.componen
     ResaltaTextoPipe,
     RecortaTextoPipe,
     //otros
-    BibliotecaComponent,
     LtsNoticiasComponent,
     RegistroUsuarioComponent,
     IniciarSesionComponent,

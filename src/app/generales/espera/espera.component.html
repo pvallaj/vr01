@@ -1,9 +1,19 @@
+<!------------------------------------------------------------------------------------------
+Descripción:
+    codigo html para el bloqueo de pantalla
+------------------------------------------------------------------------------------------->
 <div class="espera" fxLayoutAlign="center center" *ngIf="tipo==1">
+    <!------------------------------------------------------------------------------------------
+        Muesta el circulo girando
+    ------------------------------------------------------------------------------------------->
     <mat-progress-spinner class="espera-circulo" [color]="'accent'" [mode]="'indeterminate'" [diameter]="150">
     </mat-progress-spinner>
 </div>
 
 <mat-card class="buscando" *ngIf="tipo==2">
+    <!------------------------------------------------------------------------------------------
+        Muesta la barra movimiento
+    ------------------------------------------------------------------------------------------->
     <mat-card-content>
         <h2 class="example-h2">Buscando información ...</h2>
         <section class="example-section">

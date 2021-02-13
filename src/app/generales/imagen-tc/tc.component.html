@@ -1,14 +1,34 @@
+<!------------------------------------------------------------------------------------------
+Descripción:
+    muestra una ventana con:
+       La imagen en tamaño completo, 
+       el detalle de una tarjeta de detalle de una consulta de la obra escrita 
+       el detalle resultado de una consulta en la base de datos de relaciones o 
+       el detalle resultado de una consulta en la base de datos de sermones
+------------------------------------------------------------------------------------------->
 <div class="espera" fxLayout="column" fxLayoutAlign="center center">
     <div class="contenedor" *ngIf="tipo=='imagen noticia'">
+        <!------------------------------------------------------------------------------------------
+            La imagen en tamaño completo,
+        ------------------------------------------------------------------------------------------->
         <img class="imagen" mat-card-image src="http://localhost:8000/img_noticias/{{referencia}}">
     </div>
     <div class="contenedor" *ngIf="tipo=='buscar'">
+        <!------------------------------------------------------------------------------------------
+            el detalle de una tarjeta de detalle de una consulta de la obra escrita
+        ------------------------------------------------------------------------------------------->
         <app-detalle-oe [elemento]="elemento" [tipo]="2"></app-detalle-oe>
     </div>
     <div class="contenedor" *ngIf="tipo=='relacion'">
+        <!------------------------------------------------------------------------------------------
+            el detalle resultado de una consulta en la base de datos de relaciones
+        ------------------------------------------------------------------------------------------->
         <app-cons-det-narrativa [idTexto]="+referencia" [textoBuscado]="textoBuscado"></app-cons-det-narrativa>
     </div>
     <div class="contenedor" *ngIf="tipo=='sermon'">
+        <!------------------------------------------------------------------------------------------
+            el detalle resultado de una consulta en la base de datos de sermones
+        ------------------------------------------------------------------------------------------->
         <app-cons-det-sermon [id_sermon]="referencia" [tipo]="1" [textoBuscado]="textoBuscado"></app-cons-det-sermon>
     </div>
 
