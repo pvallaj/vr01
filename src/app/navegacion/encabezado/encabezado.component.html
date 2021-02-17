@@ -1,8 +1,16 @@
-<mat-toolbar color="primary">
+<!------------------------------------------------------------------------------------------
+Descripción:
+    despliga la primera pantalla de la aplicación
+------------------------------------------------------------------------------------------->
+
+<mat-toolbar [class.barra]="r.url!='/inicio'">
+
+    <!------------------------------------------------------------------------------------------
+        sección de opciones de usuario.
+    ------------------------------------------------------------------------------------------->
     <button mat-icon-button (click)="onToggleNV()" fxHide.gt-xs>
     <mat-icon>menu</mat-icon>
     </button>
-    <div>Logo</div>
     <mat-form-field class="buscador" fxFlex.lt-sm="100">
         <mat-label>Buscar</mat-label>
         <input matInput type="text" [(ngModel)]="txtbuscar" (keyup.enter)="buscarTermino($event)">
@@ -13,27 +21,29 @@
     <button mat-fab color="primary" (click)="buscarTermino($event)">
         <mat-icon>search</mat-icon>
     </button>
-    <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
-            <li routerLinkActive="activo"><a routerLink="/oesxvi">Siglo XVI</a></li>
-            <li routerLinkActive="activo"><a routerLink="/oesxvii">Siglo XVII</a></li>
-            <li routerLinkActive="activo"><a routerLink="/oesxviii">Siglo XVIII</a></li>
-            <li routerLinkActive="activo"><a routerLink="/herramientas">Herramientas</a></li>
-            <li routerLinkActive="activo"><a routerLink="/linea">Linea de tiempo</a></li>
-            <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
-            <li routerLinkActive="activo">
-                <a routerLink="/sesion" *ngIf="!sus.role">
-                    <mat-icon>person</mat-icon>
-                </a>
-            </li>
-            <li routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
-            <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
-            <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">
-                <button mat-icon-button (click)="salir()">
+    <nav fxFlex>
+        <div class="wrapper" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+            <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
+                <li routerLinkActive="activo"><a routerLink="/oesxvi">Siglo XVI</a></li>
+                <li routerLinkActive="activo"><a routerLink="/oesxvii">Siglo XVII</a></li>
+                <li routerLinkActive="activo"><a routerLink="/oesxviii">Siglo XVIII</a></li>
+                <li routerLinkActive="activo"><a routerLink="/herramientas">Herramientas</a></li>
+                <li routerLinkActive="activo"><a routerLink="/linea">Linea de tiempo</a></li>
+                <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
+                <li routerLinkActive="activo">
+                    <a routerLink="/sesion" *ngIf="!sus.role">
+                        <mat-icon>person</mat-icon>
+                    </a>
+                </li>
+                <li routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
+                <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
+                <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">
+                    <button mat-icon-button (click)="salir()">
                     <mat-icon>exit_to_app</mat-icon> Salir
                 </button>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
 
-    </div>
+    </nav>
 </mat-toolbar>

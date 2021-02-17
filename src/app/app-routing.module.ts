@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { VideoComponent } from './videoteca/video/video.component';
+
 
 import { ConsultaNarrativasComponent } from './seccion1/cons-narrativas/consultaNarrativas.component';
 import { ConsSermonesComponent } from './seccion2/cons-sermones/cons-sermones.component';
@@ -11,7 +11,7 @@ import { RegistroUsuarioComponent } from './privado/registro-usuario/registro-us
 import { LtsNoticiasComponent } from './privado/lts-noticias/lts-noticias.component';
 import { ListaUsuariosComponent } from './privado/lista-usuarios/lista-usuarios.component';
 import { IniciarSesionComponent } from './privado/iniciar-sesion/iniciar-sesion.component';
-import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
+//import { OEscritaSXVIComponent } from './seccion3/oescrita/oescritaSXVI.component';
 import { BuscarComponent } from './seccion3/buscar/buscar.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { NoticiasComponent } from './seccion3/noticias/noticias.component';

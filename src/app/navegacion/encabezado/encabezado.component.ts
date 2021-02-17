@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
 })
 export class EncabezadoComponent implements OnInit {
   @Output() navBarToggle = new EventEmitter<void>();
-  constructor(public sus:SesionUsuario, private r:Router, private cc:CanalService) { }
+  constructor(public sus:SesionUsuario, public r:Router, private cc:CanalService) { }
 
   public txtbuscar:string;
 

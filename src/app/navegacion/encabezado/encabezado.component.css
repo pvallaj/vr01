@@ -1,14 +1,29 @@
 a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
-li {
+mat-toolbar {
+    background-color: #dcc27b;
+    height: 72px;
+}
+
+.barra {
+    margin-top: 90px;
+}
+
+nav {
+    height: 72px;
+}
+
+
+/*li {
     margin: 2px;
     padding: 5px 10px;
-}
+}*/
 
-li:hover {
+
+/*li:hover {
     border: 1px solid darkblue;
     color: white;
     margin: 2px;
@@ -31,7 +46,7 @@ li:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-}
+}*/
 
 .buscador {
     margin-top: 15px;
