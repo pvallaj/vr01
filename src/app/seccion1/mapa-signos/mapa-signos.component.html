@@ -1,4 +1,8 @@
 <div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="titulo">
+        <h3>Signos Actorales</h3>
+        <p>Permite acceder a las relaciones a través de los gestos y los signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la misma relación</p>
+    </div>
     <mat-form-field>
         <mat-label>Filtro</mat-label>
         <input matInput (keyup)="aplicarFiltro($event)" placeholder="Palabra o frace a buscar" #input>
@@ -47,7 +51,12 @@
 
             <ng-container matColumnDef="obra" sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> OBRA </th>
-                <td mat-cell *matCellDef="let row"> {{row.obra}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.obra}} ({{row.ubicacion}}) </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ubicacion" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> UBICACIÓN </th>
+                <td mat-cell *matCellDef="let row"> {{row.ubicacion}} </td>
             </ng-container>
 
             <ng-container matColumnDef="narratio" sticky>
@@ -92,7 +101,7 @@
             </ng-container>
 
             <ng-container matColumnDef="gestos_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> GESTOS IMPLICITOS
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> GESTOS
                     <!--button mat-button matSuffix mat-icon-button (click)="cambiarGDn($event)">
                         <mat-icon>close</mat-icon>
                     </button-->
@@ -101,7 +110,7 @@
             </ng-container>
 
             <ng-container matColumnDef="movimientos_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS CORPORALES IMPLICITOS
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS CORPORALES
                     <!--button mat-button matSuffix mat-icon-button (click)="cambiarMDn($event)">
                         <mat-icon>close</mat-icon>
                     </button-->
@@ -110,7 +119,7 @@
             </ng-container>
 
             <ng-container matColumnDef="voz_dramaticos_no">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MODULACIÓN DE VOZ IMPLICITA
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MODULACIÓN DE VOZ
                     <!--button mat-button matSuffix mat-icon-button (click)="cambiarVoDn($event)">
                         <mat-icon>close</mat-icon>
                     </button-->

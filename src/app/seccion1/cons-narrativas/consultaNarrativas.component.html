@@ -131,8 +131,11 @@
 
         </div>
         <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="15px">
-            <button mat-raised-button (click)="abrirBusquedaAvanzada()">
+            <button *ngIf="listaResultadoSA==null && listaResultadoV==null && listaResultadoC==null" mat-raised-button (click)="abrirBusquedaAvanzada()">
                 <mat-icon>settings</mat-icon> Busqueda Avanzada
+            </button>
+            <button *ngIf="listaResultadoSA!=null || listaResultadoV!=null || listaResultadoC!=null" mat-raised-button (click)="abrirBusquedaAvanzada()">
+                <mat-icon>settings</mat-icon> Regresar a busqueda por parametros
             </button>
             <button mat-raised-button *ngIf="!filtroActivo('Signos Actorales') && !filtroActivo('Vinculos')  && !filtroActivo('Contexto')" (click)="consulta()">
                 <mat-icon>search</mat-icon> BUSCAR
@@ -141,7 +144,7 @@
     </form>
     <mat-card class="buscando" *ngIf="estaCargando">
         <mat-card-content>
-            <h2 class="example-h2">Consultando base de datos</h2>
+            <h2 class="example-h2">Consultando base de datos de RELACIONES</h2>
 
             <section class="example-section">
                 <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
@@ -150,7 +153,8 @@
         </mat-card-content>
     </mat-card>
     <div class="resultado" *ngIf="!estaCargando && listaResultado!=null" fxFill>
-        <div>Información encontrada en la base de datos</div>
+        <h3 *ngIf="listaResultado!=null && listaResultado.length>0">Información encontrada en la base de datos de RELACIONES</h3>
+        <h3 *ngIf="listaResultado.length==0">No se encontró información con los parametros proporcionados. Intente con otros datos.</h3>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
             <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-card-header>

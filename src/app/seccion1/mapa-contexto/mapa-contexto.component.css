@@ -19,8 +19,8 @@
     white-space: unset !important;
     width: 50px !important;
     flex: 0 0 50px !important;
-    background-color: lightslategray;
     color: white;
+    background-color: #5d1013;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -32,11 +32,12 @@
 
 .mat-column-autor,
 .mat-column-obra,
+.mat-column-ubicacion,
 .mat-column-narratio {
     width: 150px !important;
     border-left: 1px dotted gray;
-    background-color: lightslategray;
     color: white;
+    background-color: #5d1013;
 }
 
 .mat-column-narratio {
@@ -70,9 +71,9 @@
     color: blue;
 }
 
-mat-header-cell {
-    justify-content: center !important;
-    background-color: lightslategray;
+.mat-header-cell {
+    justify-content: flex-end;
     color: white;
+    background-color: #5d1013;
     font-weight: bold;
 }

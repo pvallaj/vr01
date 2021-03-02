@@ -68,6 +68,10 @@ mat-card-subtitle {
     color: white;
 }
 
+h3 {
+    text-align: center;
+}
+
 .btnDetalle {
     width: 100% !important;
     height: 100%;

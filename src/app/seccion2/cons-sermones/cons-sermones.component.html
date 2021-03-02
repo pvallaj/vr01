@@ -138,7 +138,8 @@
         </mat-card-content>
     </mat-card>
     <div class="resultado" *ngIf="!estaCargando && listaResultado">
-        <div mat-subheader>Información encontrada en la base de datos</div>
+        <div mat-subheader *ngIf="listaResultado.length>0" class="info">Información encontrada en la base de datos</div>
+        <div mat-subheader *ngIf="listaResultado.length==0" class="noinfo">NO se encontró información con los parametros proporcionados.</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
             <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="space-between" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
                 <mat-card-header>
@@ -165,6 +166,6 @@
     <app-cons-det-sermon [id_sermon]="idSermonSel" [tipo]="1" #detsermon></app-cons-det-sermon>
 </div-->
 
-<app-tc *ngIf="idSermonSel!=0" [referencia]="idSermonSel" [tipo]="'sermon'" (quitar)="cerrarDetalle()">
+<app-tc class="ventana" *ngIf="idSermonSel!=0" [referencia]="idSermonSel" [tipo]="'sermon'" (quitar)="cerrarDetalle()">
 
 </app-tc>

@@ -37,6 +37,7 @@ export class EncabezadoComponent implements OnInit {
   constructor(public sus:SesionUsuario, public r:Router, private cc:CanalService) { }
 
   public txtbuscar:string;
+  public bexacta=true;
 
   ngOnInit(): void {
     
@@ -79,7 +80,12 @@ export class EncabezadoComponent implements OnInit {
     ******************************************************************************************/
     this.cc.terminoConsulta=this.txtbuscar;
     this.r.navigate(['/buscar']);
-    this.cc.sendMessage(this.txtbuscar);
+    if(this.bexacta){     
+      this.cc.sendMessage('"'+this.txtbuscar+'"');
+    }else{
+      this.cc.sendMessage(this.txtbuscar);
+    }
+    
   }
 
 }

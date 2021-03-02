@@ -178,11 +178,11 @@
                     <div class="valor" fxFlex>{{contexto.marco_posterior}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="35">Formula de apertura:</div>
+                    <div class="titulo" fxFlex="35">Estructura formularia de apertura:</div>
                     <div class="valor" fxFlex>{{contexto.formula_apertura}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="35">Formula de cierre:</div>
+                    <div class="titulo" fxFlex="35">Estructura formularia de cierre:</div>
                     <div class="valor" fxFlex>{{contexto.formula_cierre}}</div>
                 </div>
 
@@ -250,8 +250,10 @@
             </div>
         </div>
 
-
-        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
+        <!------------------------------------------------------------------------------------------
+            Se elimino esta sección.
+        ------------------------------------------------------------------------------------------->
+        <!--div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="tipoAccion!=null">
             <div class="titulo_seccion">
                 Tipo de acción
             </div>
@@ -265,7 +267,7 @@
                     <div class="valor" fxFlex="80">{{elemento.descripcion}}</div>
                 </div>
             </div>
-        </div>
+        </div-->
 
 
         <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="motivos!=null">
@@ -316,7 +318,7 @@
 
 
 
-        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
+        <!--div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="soporte!=null">
             <div class="titulo_seccion">
                 Soporte
             </div>
@@ -328,7 +330,7 @@
                     <div class="valor" fxFlex>{{elemento.tipo_material}}</div>
                 </div>
             </div>
-        </div>
+        </div-->
 
 
 
@@ -338,15 +340,18 @@
             </div>
             <div class="resultado" fxLayout="column">
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="20">Gestos:</div>
+                    <div class="tituloSAD" fxFlex>SIGNOS EN LOS ACTORES DRAMÁTICOS</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="30">Gestos:</div>
                     <div class="valor" fxFlex>{{signos.gestos_dramaticos}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="40">Movimientos corporales:</div>
+                    <div class="titulo" fxFlex="30">Movimientos Corporales:</div>
                     <div class="valor" fxFlex>{{signos.movimientos_dramaticos}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="40">Modulaciones de Voz:</div>
+                    <div class="titulo" fxFlex="30">Modulaciones de Voz:</div>
                     <div class="valor" fxFlex>{{signos.voz_dramaticos}}</div>
                 </div>
                 <!--div class="fila" fxLayout="row">
@@ -354,15 +359,18 @@
                     <div class="valor" fxFlex>{{signos.vista_dramaticos}}</div>
                 </div-->
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="40">Gestos implícitos de los actores:</div>
+                    <div class="tituloSPR" fxFlex>SIGNOS EN LOS PERSONAJES DE LA RELACIÓN</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="30">Gestos:</div>
                     <div class="valor" fxFlex>{{signos.gestos_dramaticos_no}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="40">Movimientos corporales implícitos de los actores:</div>
+                    <div class="titulo" fxFlex="30">Movimientos Corporales:</div>
                     <div class="valor" fxFlex>{{signos.movimientos_dramaticos_no}}</div>
                 </div>
                 <div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="40">Modulaciones implícitas en la voz de los actores:</div>
+                    <div class="titulo" fxFlex="30">Modulaciones de Voz:</div>
                     <div class="valor" fxFlex>{{signos.voz_dramaticos_no}}</div>
                 </div>
                 <!--div class="fila" fxLayout="row">

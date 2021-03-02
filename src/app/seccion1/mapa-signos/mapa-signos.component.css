@@ -17,17 +17,20 @@
 .mat-column-id_texto {
     width: 50px !important;
     border-left: 1px dotted gray;
-    background-color: honeydew;
+    color: white;
+    background-color: #5d1013;
     font-size: 14px;
     font-weight: bold;
 }
 
 .mat-column-autor,
 .mat-column-obra,
+.mat-column-ubicacion,
 .mat-column-narratio {
     width: 150px !important;
     border-left: 1px dotted gray;
-    background-color: honeydew;
+    color: white;
+    background-color: #5d1013;
     font-size: 14px;
     font-weight: bold;
 }
@@ -80,17 +83,20 @@
 
 .mat-header-cell.relacion {
     justify-content: flex-end;
-    background-color: honeydew;
+    color: white;
+    background-color: #5d1013;
     font-weight: bold;
     text-align: center;
 }
 
 .mat-header-cell.explicitos {
     background-color: azure;
+    font-weight: bold;
     text-align: center;
 }
 
 .mat-header-cell.implicitos {
     background-color: beige;
+    font-weight: bold;
     text-align: center;
 }

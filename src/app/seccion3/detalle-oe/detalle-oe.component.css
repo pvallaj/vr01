@@ -12,11 +12,49 @@
     font-size: medium;
 }
 
+.sectexto {
+    padding-top: 50px;
+    box-shadow: 0 10px 10px 5px;
+    padding-right: 150px;
+    padding-left: 150px;
+    border-radius: 10px;
+}
+
+.ct01 {
+    position: relative;
+    width: 600px;
+}
+
+.imgprev01 {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 600px;
+    height: auto;
+}
+
+.sectexto01 {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bt1 {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
 
 /*Tarjeta Texto Resumen*/
 
 .TRTarjeta {
     height: 100%;
+    cursor: pointer;
 }
 
 .TRTituloTarjeta {
@@ -24,10 +62,12 @@
     font-weight: bold;
     border-bottom: 1px solid gray;
     font-size: medium;
+    cursor: pointer;
 }
 
 .TRContenidoTarjeta {
     font-size: medium;
+    cursor: pointer;
 }
 
 
@@ -44,12 +84,15 @@
 .imgprev {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 5px;
 }
 
 .TarjetaIR {
     height: 400px;
     overflow-y: scroll;
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 

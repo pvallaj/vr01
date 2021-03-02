@@ -83,7 +83,7 @@ export class ConsultaNarrativasComponent implements OnInit {
     private cnx: ConexionService,
     public dialog: MatDialog,
     private fb: FormBuilder) {
-      this.filtrosActivos.setValue(['Autor']);
+      this.filtrosActivos.setValue(['Autor','Obra', 'Textos o Palabras']);
     }
 
   ngOnInit(): void {
@@ -166,10 +166,10 @@ export class ConsultaNarrativasComponent implements OnInit {
     }
     var re = /\+/gi; 
     p.textos=p.textos.replace(re, "$"); 
-    console.log(p.textos);
+    //console.log(p.textos);
     let temp:any[]=[];
     this.idxSeleccionado=0;
-    console.log(p);
+    //console.log(p);
     this.cnx.narrativas(p, 'consulta narrativas')
     .subscribe(
       (data)=>{
@@ -180,7 +180,9 @@ export class ConsultaNarrativasComponent implements OnInit {
           this.listaResultado=this.listaResultado.filter(lmnt =>this.filtraDistancia(lmnt.narratio));
         }
         this.listaResultado.forEach(lmnt => {
-          lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio);
+          let termino=this.frm.value.textos;
+
+          lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio,termino,300);
         });
         this.estaCargando=false;
       },
@@ -376,12 +378,23 @@ export class ConsultaNarrativasComponent implements OnInit {
     )
   }
 
-  public recortaNarrativa(narrativa: string):string {
-    if (narrativa.length > 300) {
-      return narrativa.substring(0, narrativa.indexOf(' ', 300)) + '...';
-    }
-    return narrativa;
-  }
+  public recortaNarrativa(texto: string, termino:string, largo:number):string {
+    //texto.normalize('NFD')
+    if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>largo){
+      let pt=texto.indexOf(termino)
+      let inicio=pt-largo/2+(texto.indexOf(' ', pt-largo/2)-(pt-largo/2));
+      let fin=texto.indexOf(' ',inicio+largo);
+      if(fin==-1){
+        return '...'+texto.substring(inicio)
+      }
+      return '...'+texto.substring(inicio, fin) + '...';
+    }else{
+      if (texto.length > largo) {
+        return texto.substring(0, texto.indexOf(' ', largo)) + '...';
+      }
 
+    }
+    return texto;
+  }
 }
 

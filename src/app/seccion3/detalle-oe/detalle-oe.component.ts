@@ -20,10 +20,26 @@ export class DetalleOEComponent implements OnInit {
 
   }
 
-  recorta(texto:string, largo:number):string{
-    if (texto.length > largo) {
-      return texto.substring(0, (texto.indexOf(' ', largo))>0?(texto.indexOf(' ', largo)):texto.length) + '...';
+  recorta(termino:string, texto:string, largo:number):string{
+    if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>largo){
+      let pt=texto.indexOf(termino)
+      let inicio=pt-largo/2+(texto.indexOf(' ', pt-largo/2)-(pt-largo/2));
+      let fin=texto.indexOf(' ',inicio+largo);
+      if(fin==-1){
+        return '...'+texto.substring(inicio)
+      }
+      return '...'+texto.substring(inicio, fin) + '...';
+    }else{
+      if (texto.length > largo) {
+        return texto.substring(0, texto.indexOf(' ', largo)) + '...';
+      }
+
     }
     return texto;
+  }
+
+  public mostrarTexto=true;
+  ocultarTexto(){
+    this.mostrarTexto=!this.mostrarTexto;
   }
 }

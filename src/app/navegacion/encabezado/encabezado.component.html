@@ -11,16 +11,24 @@ Descripción:
     <button mat-icon-button (click)="onToggleNV()" fxHide.gt-xs>
     <mat-icon>menu</mat-icon>
     </button>
+
     <mat-form-field class="buscador" fxFlex.lt-sm="100">
         <mat-label>Buscar</mat-label>
         <input matInput type="text" [(ngModel)]="txtbuscar" (keyup.enter)="buscarTermino($event)">
-        <button mat-button *ngIf="txtbuscar" matSuffix mat-icon-button (click)="txtbuscar=''">
-            <mat-icon>close</mat-icon>
-        </button>
     </mat-form-field>
-    <button mat-fab color="primary" (click)="buscarTermino($event)">
+
+    <button *ngIf="txtbuscar" mat-icon-button matSuffix (click)="txtbuscar=''">
+        <mat-icon>close</mat-icon>
+    </button>
+
+
+
+    <button mat-mini-fab color="primary" (click)="buscarTermino($event)">
         <mat-icon>search</mat-icon>
     </button>
+    <div class="busq-exacta">
+        <mat-checkbox [(ngModel)]="bexacta">busqueda <br> exacta</mat-checkbox>
+    </div>
     <nav fxFlex>
         <div class="wrapper" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
             <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
@@ -30,11 +38,11 @@ Descripción:
                 <li routerLinkActive="activo"><a routerLink="/herramientas">Herramientas</a></li>
                 <li routerLinkActive="activo"><a routerLink="/linea">Linea de tiempo</a></li>
                 <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
-                <li routerLinkActive="activo">
+                <!--li routerLinkActive="activo">
                     <a routerLink="/sesion" *ngIf="!sus.role">
                         <mat-icon>person</mat-icon>
                     </a>
-                </li>
+                </li-->
                 <li routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
                 <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
                 <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">

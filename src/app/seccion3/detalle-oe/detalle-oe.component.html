@@ -12,21 +12,55 @@
         <!--div fxLayout fxLayoutAlign="space-between">
             <p class="TRTituloTarjeta">{{elemento.id}} - {{elemento.capitulo}}</p>
         </div-->
-        <div class="TRContenidoTarjeta" [innerHTML]="recorta(elemento.texto, 150) | resaltaTexto:termino"></div>
+        <div class="TRContenidoTarjeta" [innerHTML]="recorta(termino, elemento.texto, 150) | resaltaTexto:termino"></div>
     </mat-card-content>
 </mat-card>
 
 <!--Tarjeta para detalle de Texto-->
+<!------------------------------------------------------------------------------------------
+    version 1
+------------------------------------------------------------------------------------------->
 <mat-card class="tarjeta" *ngIf="elemento?.tipo==1 && tipo==2">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="30px">
+    <mat-card-content fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="space-around" fxLayoutGap="30px">
         <img class="imgprev" fxFlex="50" *ngIf="elemento.etiquetas.indexOf('portada')>=0" src="{{elemento.referencia}}">
-        <p class="contenidoTarjeta" fxFlex="50">{{elemento.texto}}</p>
+        <div class="sectexto" fxLayout="column">
+            <mat-card-header>
+                <mat-card-title class="tituloTarjeta">
+                    <div class="tituloTarjeta" [innerHTML]="elemento.capitulo | resaltaTexto:termino"></div>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <div class="contenidoTarjeta" fxFlex="50" [innerHTML]="elemento.texto | resaltaTexto:termino"></div>
+        </div>
     </mat-card-content>
 </mat-card>
+
+<!------------------------------------------------------------------------------------------
+version 2
+------------------------------------------------------------------------------------------->
+<!--div class="tarjeta" *ngIf="elemento?.tipo==1 && tipo==2" fxLayout="column" fxLayoutAlign="start space-around">
+    <div class="cabecera" fxLayout="row">
+        <div fxFlex>
+            <div class="tituloTarjeta" [innerHTML]="elemento.capitulo | resaltaTexto:termino">
+            </div>
+            <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
+        </div>
+    </div>
+    <div class="contenido" fxLayout="row" fxLayoutAlign="center">
+        <div class="ct01">
+            <img class="imgprev01" *ngIf="elemento.etiquetas.indexOf('portada')>=0" src="{{elemento.referencia}}">
+            <div class="sectexto01" *ngIf="mostrarTexto" [innerHTML]="elemento.texto | resaltaTexto:termino"></div>
+            <button class="bt" mat-stroked-button *ngIf="mostrarTexto" (click)="ocultarTexto()">
+                <mat-icon>keyboard_arrow_up</mat-icon> Ocultar Resumen
+            </button>
+            <button class="bt" mat-stroked-button *ngIf="!mostrarTexto" (click)="ocultarTexto()">
+                <mat-icon>keyboard_arrow_down</mat-icon> Mostrar Resumen
+            </button>
+        </div>
+    </div>
+</div-->
 
 <!--Tarjeta para resumen de IMAGEN-->
 <mat-card class="TarjetaIR" *ngIf="elemento?.tipo==2  && tipo==1">

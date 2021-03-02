@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
-            <div class="fila" fxLayout="row" *ngIf="sermon?.protesta_fe">
+            <div class="fila" fxLayout="row" *ngIf="sermon?.protesta_fe!=null">
                 <div class="titulo" fxFlex="15">Protesta de fe:</div>
                 <div class="valor">{{sermon.protesta_fe}}</div>
             </div>
@@ -101,12 +101,12 @@
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="30">Repositorio</div>
                 <div class="titulo" fxFlex="35">Clasificación</div>
-                <div class="titulo" fxFlex="35">Digitalizado en</div>
+                <div class="titulo" fxFlex="35" *ngIf="tieneDatosDigitalizados">Digitalizado en</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
                 <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>
                 <div class="valor" fxFlex="35">{{elemento.clasificacion}}</div>
-                <div class="valor" fxFlex="35">{{elemento.enlace_digitalizacion}}</div>
+                <div class="valor" fxFlex="35" *ngIf="tieneDatosDigitalizados">{{elemento.enlace_digitalizacion}}</div>
             </div>
         </div>
 
@@ -146,7 +146,7 @@
             </div>
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="25">Impresor:</div>
-                <div class="valor" fxFlex="75">{{libro?.libro_impresor}}</div>
+                <div class="valor" fxFlex="75">{{sermon?.impresor}}</div>
             </div>
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="25">Año:</div>
@@ -209,16 +209,26 @@
         <div class="titulo_seccion">
             Repositorios
         </div>
-        <div class="resultado" fxLayout="column" *ngIf="repositorios!=[]">
+        <div class="resultado" fxLayout="column" *ngIf="repositorios!=null && tieneDatosDigitalizados">
+            <div class="fila" fxLayout="row">
+                <div class="titulo" fxFlex="30">Repositorio</div>
+                <div class="titulo" fxFlex="20">Clasificación</div>
+                <div class="titulo" fxFlex="50">Digitalizado en</div>
+            </div>
+            <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
+                <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>
+                <div class="valor" fxFlex="20">{{elemento.clasificacion}}</div>
+                <div class="valor" fxFlex="50">{{elemento.enlace_digitalizacion}}</div>
+            </div>
+        </div>
+        <div class="resultado" fxLayout="column" *ngIf="repositorios!=null && !tieneDatosDigitalizados">
             <div class="fila" fxLayout="row">
                 <div class="titulo" fxFlex="45">Repositorio</div>
-                <div class="titulo" fxFlex="35">Clasificación</div>
-                <div class="titulo" fxFlex="20">Digitalizado en</div>
+                <div class="titulo" fxFlex="55">Clasificación</div>
             </div>
             <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
                 <div class="valor" fxFlex="45">{{elemento.repositorio_tipo}}</div>
-                <div class="valor" fxFlex="35">{{elemento.clasificacion}}</div>
-                <div class="valor" fxFlex="20">{{elemento.enlace_digitalizacion}}</div>
+                <div class="valor" fxFlex="55">{{elemento.clasificacion}}</div>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@ export class MapaVinculosComponent implements OnInit {
   public listaResultado:MatTableDataSource<any>=null;
 
   //------------------------------
-  public columnasV:string[]=['id','autor','obra', 'narratio',
+  public columnasV:string[]=['id','autor','obra',  'narratio',
   'visuales', 'auditivos','presente_accion','ref_discurso','apltvo_recep','apltvo_espect'];
 
   public columnasO:string[]=[];

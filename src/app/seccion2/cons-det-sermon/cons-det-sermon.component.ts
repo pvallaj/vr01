@@ -18,15 +18,16 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   @Input() id_sermon:number=0;
   @Input() tipo:number=0;
   @Input() textoBuscado:string="";
-  public sermon:any=[];
-  public libro:any=[];
-  public preliminares:any=[];
-  public catalogos:any=[];
-  public grabados:any=[];
-  public repositorios:any=[];
+  public sermon:any=null;
+  public libro:any=null;
+  public preliminares:any[]=null;
+  public catalogos:any[]=null;
+  public grabados:any[]=null;
+  public repositorios:any[]=null;
   public estaCargando:boolean=false;
   public tabSeleccionado=0;
   public terminoConsulta:string='';
+  public tieneDatosDigitalizados=false;
 
   constructor(
     private cnx:ConexionService,
@@ -42,7 +43,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     
     if (this.id_sermon <= 0) {
       console.log("Regresando a valores iniciales");
-      this.sermon=[];
+      this.sermon=null;
       this.libro=[];
       this.preliminares=[];
       this.catalogos=[];
@@ -67,6 +68,12 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         //console.log(temp);
         this.estaCargando=false;
         this.tabSeleccionado=0;
+        if(this.sermon.protesta_fe!=null && this.sermon.protesta_fe.toLowerCase()=="nada") this.sermon.protesta_fe=null;
+        this.repositorios.forEach(element => {
+          if(element.enlace_digitalizacion!=null){
+            this.tieneDatosDigitalizados=true;
+          }
+        });
       },
     (error)=>{
         //console.log('No se logro la conexión');

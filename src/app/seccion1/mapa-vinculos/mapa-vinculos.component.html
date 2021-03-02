@@ -1,4 +1,8 @@
 <div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="titulo">
+        <h3>Vinculos</h3>
+        <p>Ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.</p>
+    </div>
     <mat-form-field>
         <mat-label>Filtro</mat-label>
         <input matInput (keyup)="aplicarFiltro($event)" placeholder="Palabra o frace a buscar" #input>
@@ -30,28 +34,33 @@
     <div class="marco-tabla">
         <table mat-table [dataSource]="listaResultado" matSort [style.width.px]="(columnasV.length-4)*250+800">
             <ng-container matColumnDef="id" sticky>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> ID </th>
                 <td mat-cell *matCellDef="let row"> {{row.id_texto}} </td>
             </ng-container>
 
             <ng-container matColumnDef="autor" sticky>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> AUTOR </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> AUTOR </th>
                 <td mat-cell *matCellDef="let row"> {{row.autor}} </td>
             </ng-container>
 
             <ng-container matColumnDef="obra" sticky>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> OBRA </th>
-                <td mat-cell *matCellDef="let row"> {{row.obra}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> OBRA </th>
+                <td mat-cell *matCellDef="let row"> {{row.obra}} ({{row.ubicacion}}) </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ubicacion" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> UBICACIÓN </th>
+                <td mat-cell *matCellDef="let row"> {{row.ubicacion}} </td>
             </ng-container>
 
             <ng-container matColumnDef="narratio" sticky>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> RELACIÓN </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> RELACIÓN </th>
                 <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.narratio | recortaTexto:200}} </td>
             </ng-container>
 
             <ng-container matColumnDef="visuales">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('visuales',5)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('visuales',5)">
                         <mat-icon>close</mat-icon>
                     </button>VISUALES
                 </th>
@@ -60,7 +69,7 @@
 
             <ng-container matColumnDef="auditivos">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('auditivos',5)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('auditivos',5)">
                         <mat-icon>close</mat-icon>
                     </button>AUDITIVOS
                 </th>
@@ -69,7 +78,7 @@
 
             <ng-container matColumnDef="presente_accion">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('presente_accion',6)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('presente_accion',6)">
                         <mat-icon>close</mat-icon>
                     </button>EXPRESIONES QUE REFLEJAN EL IMPACTO EMOCIONAL DE LA RELACIÓN
                 </th>
@@ -78,7 +87,7 @@
 
             <ng-container matColumnDef="ref_discurso">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('ref_discurso',7)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('ref_discurso',7)">
                         <mat-icon>close</mat-icon>
                     </button>REFERENCIAS AL METADISCURSO
                 </th>
@@ -87,7 +96,7 @@
 
             <ng-container matColumnDef="apltvo_recep">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('apltvo_recep',8)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('apltvo_recep',8)">
                         <mat-icon>close</mat-icon>
                     </button>APELATIVOS AL RECEPTOR DE LA RELACIÓN
                 </th>
@@ -96,7 +105,7 @@
 
             <ng-container matColumnDef="apltvo_espect">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    <button mat-mini-fab color="primary" (click)="cambiar('apltvo_espect',8)">
+                    <button mat-button matSuffix mat-icon-button (click)="cambiar('apltvo_espect',8)">
                         <mat-icon>close</mat-icon>
                     </button>APELATIVOS AL ESPECTADOR
                 </th>

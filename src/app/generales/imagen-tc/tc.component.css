@@ -11,6 +11,8 @@
     align-items: center;
     justify-content: center;
     font-size: 200px !important;
+    padding-top: 110px;
+    padding-bottom: 30px;
 }
 
 .contenedor {
