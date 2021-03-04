@@ -1,0 +1,30 @@
+.contenedor {
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.tarjeta {
+    background-color: #5d1013;
+    color: white;
+}
+
+.avatarUNAM {
+    background-image: url('/assets/img/logo_unam.png');
+    background-size: cover;
+    width: 75px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.avatarFll {
+    background-image: url('/assets/img/logo_iif.png');
+    background-size: cover;
+    width: 90px;
+    height: auto;
+    border-radius: 5px;
+}
+
+mat-card-subtitle {
+    color: seashell;
+}

@@ -19,6 +19,8 @@ import { LineaDTComponent } from './seccion3/linea-dt/linea-dt.component';
 import { GRegGuard } from './privado/g-reg.guard';
 import { GRegAdmGuard } from './privado/g-reg-adm.guard';
 import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.component';
+import { DInteresComponent } from './seccion3/dinteres/dinteres.component';
+import { ContactosComponent } from './seccion3/contactos/contactos.component';
 
 
 
@@ -33,6 +35,8 @@ const routes: Routes = [
   {path: 'buscar',         component: BuscarComponent},
   {path: 'noticias',       component: NoticiasComponent},
   {path: 'linea',          component: LineaDTComponent},
+  {path: 'deinteres',      component: DInteresComponent},
+  {path: 'contactos',      component: ContactosComponent},
   //usuarios
   {path: 'registro',       component: RegistroUsuarioComponent},
   {path: 'sesion',         component: IniciarSesionComponent},

@@ -19,3 +19,16 @@ mat-card-content {
 .parrafo {
     text-align: justify;
 }
+
+.versa {
+    font-variant: small-caps;
+}
+
+.declaratoria {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: justify;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+}

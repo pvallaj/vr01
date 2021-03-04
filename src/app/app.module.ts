@@ -74,6 +74,8 @@ import { MapaSignosComponent } from './seccion1/mapa-signos/mapa-signos.componen
 import { MapaVinculosComponent } from './seccion1/mapa-vinculos/mapa-vinculos.component';
 import { MapaContextoComponent } from './seccion1/mapa-contexto/mapa-contexto.component';
 import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.component';
+import { DInteresComponent } from './seccion3/dinteres/dinteres.component';
+import { ContactosComponent } from './seccion3/contactos/contactos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +118,8 @@ import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.componen
     MapaVinculosComponent,
     MapaContextoComponent,
     OEscritaV2Component,
+    DInteresComponent,
+    ContactosComponent,
     
   ],
   imports: [
