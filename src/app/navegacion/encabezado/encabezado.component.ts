@@ -34,10 +34,10 @@ import { Router } from '@angular/router';
 })
 export class EncabezadoComponent implements OnInit {
   @Output() navBarToggle = new EventEmitter<void>();
-  constructor(public sus:SesionUsuario, public r:Router, private cc:CanalService) { }
+  constructor(public sus:SesionUsuario, public r:Router) { }
 
-  public txtbuscar:string;
-  public bexacta=true;
+  
+  
 
   ngOnInit(): void {
     
@@ -68,24 +68,6 @@ export class EncabezadoComponent implements OnInit {
     this.r.navigate(['inicio']);
   }
 
-  public buscarTermino(e:any){
-    /*****************************************************************************************
-      Descripción
-        El usuario ha presionado ENTER en la caja de buscar o ha dado  
-        CLICK en el botón "BUSCAR", lo que indica que desea hacer una consulta.
-      Parametros
-          
-      Resultado
-          
-    ******************************************************************************************/
-    this.cc.terminoConsulta=this.txtbuscar;
-    this.r.navigate(['/buscar']);
-    if(this.bexacta){     
-      this.cc.sendMessage('"'+this.txtbuscar+'"');
-    }else{
-      this.cc.sendMessage(this.txtbuscar);
-    }
-    
-  }
+ 
 
 }

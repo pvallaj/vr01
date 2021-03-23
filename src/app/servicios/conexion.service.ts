@@ -8,9 +8,11 @@ import { SesionUsuario } from './SesionUsuario.service';
 })
 export class ConexionService {
   headers: HttpHeaders;
-  urlBase:string='http://appsparatodos.com.mx/api';
+  //urlBase:string='http://appsparatodos.com.mx/api';
   //urlBase:string='http://api.appsparatodos.com.mx';
-  //urlBase:string='/api';
+  //urlBase:string='http://appsparatodos.com.mx/api';
+  //urlBase:string='/hlmnovohispana/api/index.php';
+  urlBase:string='/api';
   public componente:"";
 
   constructor(protected http: HttpClient) {

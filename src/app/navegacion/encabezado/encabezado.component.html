@@ -3,7 +3,7 @@ Descripción:
     despliga la primera pantalla de la aplicación
 ------------------------------------------------------------------------------------------->
 
-<mat-toolbar [class.barra]="r.url!='/inicio'">
+<mat-toolbar>
 
     <!------------------------------------------------------------------------------------------
         sección de opciones de usuario.
@@ -12,34 +12,24 @@ Descripción:
     <mat-icon>menu</mat-icon>
     </button>
 
-    <mat-form-field class="buscador" fxFlex.lt-sm="100">
-        <mat-label>Buscar</mat-label>
-        <input matInput type="text" [(ngModel)]="txtbuscar" (keyup.enter)="buscarTermino($event)">
-    </mat-form-field>
 
-    <button *ngIf="txtbuscar" mat-icon-button matSuffix (click)="txtbuscar=''">
-        <mat-icon>close</mat-icon>
-    </button>
-
-
-
-    <button mat-mini-fab color="primary" (click)="buscarTermino($event)">
-        <mat-icon>search</mat-icon>
-    </button>
-    <div class="busq-exacta">
-        <mat-checkbox [(ngModel)]="bexacta">busqueda <br> exacta</mat-checkbox>
-    </div>
     <nav fxFlex>
         <div class="wrapper" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
             <ul fxLayout fxLayoutGap="10px" class="elemento-nav">
+                <li routerLinkActive="activo"><a routerLink="/inicio"><span class="icon-home"></span></a></li>
                 <li routerLinkActive="activo"><a routerLink="/oesxvi">Siglo XVI</a></li>
                 <li routerLinkActive="activo"><a routerLink="/oesxvii">Siglo XVII</a></li>
                 <li routerLinkActive="activo"><a routerLink="/oesxviii">Siglo XVIII</a></li>
-                <li routerLinkActive="activo"><a routerLink="/herramientas">Herramientas</a></li>
+                <li routerLinkActive="activo"><a href="#">Herramientas</a>
+                    <ul>
+                        <li><a routerLink="/PresentacionRelaciones">Relaciones</a></li>
+                        <li><a routerLink="/PresentacionSermones">Sermones</a></li>
+                    </ul>
+                </li>
                 <li routerLinkActive="activo"><a routerLink="/linea">Linea de tiempo</a></li>
                 <li routerLinkActive="activo"><a routerLink="/deinteres">Enlaces de interes</a></li>
                 <li routerLinkActive="activo"><a routerLink="/contactos">Contactos</a></li>
-                <li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li>
+                <!--li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li-->
                 <!--li routerLinkActive="activo">
                     <a routerLink="/sesion" *ngIf="!sus.role">
                         <mat-icon>person</mat-icon>

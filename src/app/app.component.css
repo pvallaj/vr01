@@ -7,6 +7,10 @@ mat-drawer {
     height: 85px;
 }
 
+mat-drawer-container {
+    width: 100vw;
+}
+
 mat-drawer-content {
     background-color: lightgrey !important;
 }
@@ -28,4 +32,31 @@ mat-drawer {
 
 .pie {
     color: white;
+}
+
+.cajaRoja {
+    background-color: red;
+}
+
+.buscador {
+    position: absolute;
+    background-color: red!important;
+    top: 200px;
+    left: 1000px;
+    height: 65px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+mat-form-field {
+    width: 90%;
+    background-color: white;
+    margin: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    height: 60px;
+    border-radius: 10px;
 }

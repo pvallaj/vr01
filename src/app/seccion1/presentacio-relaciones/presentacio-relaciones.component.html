@@ -1,0 +1,67 @@
+<section id="content-int">
+    <div class="wrapper">
+        <div class="ubicacion">
+            <div id="migas"> Herramientas de investigación <img src="assets/img/migaSep.jpg" alt="separador de miga"> Relaciones de comedias </div>
+        </div>
+        <div class="detalle" fxLayout="row" fxLayoutGap="30px">
+            <div class="flex-justify contenido" fxFlex="25" fxLayout="column" fxLayoutAlign="start streach" fxLayoutGap="30px">
+                <img src="assets/img/relaciones-amor.jpg" alt="Relaciones de comedia imagen de amor" class="imgBorde">
+                <img src="assets/img/relaciones-pie.jpg" alt="Relaciones de comedia imagen de pie" class="imgBorde">
+            </div>
+            <div class="descripcion" fxFlex="70">
+                <h1>Relaciones de comedias en la Nueva España, siglos XVI al XVII</h1>
+                <p class="autor">Autor de la base de datos: Emiliano Gopar Osorio</p>
+                <p>Esta herramienta reúne fragmentos narrativos que constituyen el género discursivo conocido como relaciones de comedias, y consisten en breves relatos o narraciones que se insertan en el discurso dramático, es decir, entre los diálogos
+                    de una pieza teatral. Las relaciones reunidas en esta base de datos provienen de una selección de las obras dramáticas que se leían y representaban en la Nueva España durante los siglos XVI y XVII, y que fueron escritas por autores
+                    novohispanos y peninsulares.</p>
+                <p>Las relaciones constituían una parte muy importante de las representaciones teatrales de la época, porque aquel público disfrutaba de oír los relatos puestos en boca de los actores, que además podían lucirse al acompañar estas narraciones
+                    con movimientos, gestos y entonaciones de voz acordes con el tema tratado. Además, el verso utilizado por el dramaturgo en las relaciones exigía una recitación y un ritmo diferentes de los que adoptaban los personajes en el diálogo.
+                    Todo ello se conjugaba para que el embelesado espectador esperara con agrado en cada obra estos momentos de gran efecto emotivo; daba igual oír hazañas extraordinarias, sucesos alegres o grandes desgracias: todos los relatos causaban
+                    regocijo y admiración. En algún momento, incluso las imprentas hicieron negocio al vender pliegos sueltos que contenían exclusivamente relaciones de comedias.</p>
+                <p>La base de datos reúne y ordena estas breves narraciones para ponerlas a la disposición del usuario (especialistas y curiosos), que podrá acceder a ellas mediante las siguientes opciones de búsqueda:</p>
+                <ul class="bulletRojo">
+                    <li>
+                        Por <b>autor</b> y/o por <b>título</b> de la obra teatral.
+                    </li>
+                    <li>
+                        Por <b>tema</b> <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('tema')">
+                    </li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='tema'">
+                        agrupa las relaciones por los temas más comunes en el teatro áureo.
+                    </div>
+                    <li>Por <b>palabra</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro palabras" (click)="moAyuda('palabras')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='palabras'">
+                        permite hacer búsquedas ingresando cualquier palabra que esté presente en la relación.
+                    </div>
+                    <li>Por <b>motivo</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro motivo" (click)="moAyuda('motivo')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='motivo'">
+                        agrupa las relaciones por motivos literarios (nos basamos en los que estableció Stith Thompson en su Motif-index of folk-literature).
+                    </div>
+                    <li>Por tipo de <b>versificación</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro versificacion" (click)="moAyuda('versificaion')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='versificaion'">
+                        las agrupa de acuerdo con su forma métrica.
+                    </div>
+                    <li>Por la <b>ubicación temporal</b> de la relación con respecto a la acción dramática.<img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ubicación temporal" (click)="moAyuda('ubicacion')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='ubicacion'">
+                        agrupa las relaciones en seis categorías con base en un criterio temporal (por ejemplo, registra si una relación narra sucesos anteriores, o simultáneos, o posteriores a la virtual representación).
+                    </div>
+                    <li>Por <b>vínculos</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro vínculos" (click)="moAyuda('vinculo')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='vinculo'">
+                        ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.
+                    </div>
+                    <li>Por <b>contexto</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro contexto" (click)="moAyuda('contexto')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='contexto'">
+                        permite observar el contexto en el que la relación se inserta.
+                    </div>
+                    <li>Por <b>signos actorales</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro signos actorales" (click)="moAyuda('signos')"></li>
+                    <div class="descripcion-filtro" *ngIf="secVisible=='signos'">
+                        permite acceder a las relaciones a través de los gestos y signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la misma relación.
+                    </div>
+                </ul>
+
+                <a class="link_bloque centrar1" routerLink="/relaciones">Ir a la herramienta Relaciones de comedias</a>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,124 @@
+ .contenedor {
+     width: 100%;
+     padding: 5px;
+ }
+ 
+ .fondo {
+     padding: 10px;
+     border-radius: 10px;
+     background-color: rgba(93, 16, 19, .7);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ 
+ .submarco {
+     height: 750px;
+     color: black;
+     padding: 20px;
+     border-radius: 10px;
+     background-color: rgba(220, 194, 123, 1);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     overflow-y: scroll;
+ }
+ 
+ .titulo {
+     font-size: 25px;
+ }
+ 
+ .seccion {
+     font-weight: bold;
+     font-size: 18px;
+ }
+ 
+ .capitulo {
+     font-size: 18px;
+     padding-left: 20px;
+     color: blue;
+     cursor: pointer;
+ }
+ 
+ .imagen {
+     width: 100%;
+     height: auto;
+     border-radius: 10px;
+     border: 1px solid grey;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ /******************************************************************************/
+ 
+ .seccionLista {
+     padding: 10px;
+     background-color: rgba(93, 16, 19, .7);
+     border-radius: 10px;
+ }
+ 
+ .seccionDetalle {
+     padding: 20px;
+     background-color: rgba(220, 194, 123, .7);
+     border-radius: 10px;
+ }
+ 
+ .estructura,
+ .vprev,
+ .superior,
+ .inferior {
+     border: solid 1px red;
+     max-height: 100vh;
+     overflow: auto;
+ }
+ 
+ .contenedor-2 {
+     width: 99%;
+     position: relative;
+     margin-top: 10px;
+     margin-left: 10px;
+     margin-bottom: 50px;
+ }
+ 
+ .controles {
+     position: absolute;
+     right: 5px;
+     top: 5px;
+ }
+ 
+ .ctrl-regresar {
+     position: absolute;
+     right: 10px;
+     top: 5px;
+ }
+ 
+ .buscando {
+     width: 60%;
+     padding: 10px;
+     margin-top: 20px;
+     align-self: center;
+ }
+ 
+ .row-item .bi {
+     cursor: pointer;
+ }
+ /*tarjeta*/
+ 
+ .tarjetaresumen {
+     margin: 5px 0;
+ }
+ 
+ .tarjetaSeleccionada {
+     border: 5px solid lemonchiffon;
+     border-radius: 5px;
+ }
+ /**/
+ 
+ #style-3::-webkit-scrollbar-track {
+     -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+     background-color: #F5F5F5;
+ }
+ 
+ #style-3::-webkit-scrollbar {
+     width: 6px;
+     background-color: #F5F5F5;
+ }
+ 
+ #style-3::-webkit-scrollbar-thumb {
+     background-color: #5d1013;
+ }

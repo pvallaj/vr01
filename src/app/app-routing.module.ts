@@ -21,6 +21,9 @@ import { GRegAdmGuard } from './privado/g-reg-adm.guard';
 import { OEscritaV2Component } from './seccion3/oescrita-v2/oescrita-v2.component';
 import { DInteresComponent } from './seccion3/dinteres/dinteres.component';
 import { ContactosComponent } from './seccion3/contactos/contactos.component';
+import { OescritaV3Component } from './seccion3/oescrita-v3/oescrita-v3.component';
+import { PresentacioRelacionesComponent } from './seccion1/presentacio-relaciones/presentacio-relaciones.component';
+import { PresentacioSermonesComponent } from './seccion2/presentacio-sermones/presentacio-sermones.component';
 
 
 
@@ -29,6 +32,8 @@ import { ContactosComponent } from './seccion3/contactos/contactos.component';
 const routes: Routes = [
   {path: 'inicio',         component: InicioComponent},
   {path: 'relaciones',     component: ConsultaNarrativasComponent},
+  {path: 'PresentacionRelaciones',  component: PresentacioRelacionesComponent},
+  {path: 'PresentacionSermones',    component: PresentacioSermonesComponent},
   {path: 'sermones',       component: ConsSermonesComponent},
   {path: 'oesxvi',         component: OEscritaV2Component},
   {path: 'herramientas',   component: HerramientasComponent},

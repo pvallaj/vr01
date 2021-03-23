@@ -16,38 +16,6 @@ nav {
     height: 72px;
 }
 
-
-/*li {
-    margin: 2px;
-    padding: 5px 10px;
-}*/
-
-
-/*li:hover {
-    border: 1px solid darkblue;
-    color: white;
-    margin: 2px;
-    border-radius: 5px;
-    padding: 0 10px;
-}
-
-.activo {
-    background-color: gainsboro;
-    margin: 2px;
-    border-radius: 5px;
-    padding: 0 10px;
-}
-
-.activo a {
-    color: black;
-}
-
-.elemento-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}*/
-
 .buscador {
     margin-top: 15px;
     margin-left: 50px;
@@ -56,4 +24,32 @@ nav {
 .busq-exacta {
     font-size: 12px;
     margin-left: 20px;
+}
+
+nav li a:hover,
+nav li a:active,
+nav li a.offlinknav,
+nav li a:focus {
+    color: #fff;
+    background: #aa7d04;
+}
+
+#li-home {
+    font-size: 1.500rem/*24px*/
+    ;
+    line-height: 1;
+}
+
+nav li>ul {
+    display: none;
+}
+
+nav li:hover>ul {
+    display: block;
+    position: absolute;
+    top: 30px;
+    color: #fff;
+    background: #dcc27b;
+    width: 200px;
+    z-index: 1000;
 }

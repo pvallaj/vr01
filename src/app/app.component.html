@@ -17,58 +17,54 @@
         </div>
     </div>
 </header>
-<div id="bannerTop" *ngIf="r.url=='/inicio'">
-    <!------------------------------------------------------------------------------------------
-        sección del banner
-    ------------------------------------------------------------------------------------------->
-    <div class="wrapper flex-space">
-        <div id="logoHLM"></div>
-        <div id="search"></div>
+<div id="bannerTop">
+    <div id="video-banner">
+        <video autoplay="autoplay" loop="loop">
+        <source src="assets/misc/banner_baja.mp4" type="video/mp4">
+        <source src="assets/misc/banner_baja.webm">
+        <source src="assets/misc/banner_baja.ogv">
+    </video>
 
     </div>
+    <div id="logoBuscador" class="wrapper flex-center">
+        <div id="logoHLM">
+            <a href="index.html"><img src="assets/img/logo-hlm.png" alt="Historia de las Literaturas Mexicanas. Siglo XVI al XVIII" title="Historia de las Literaturas Mexicanas. Siglo XVI al XVIII"></a>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+    <div class="buscador">
+        <!--formulario buscador-->
+
+        <!--div class="busq-exacta">
+        <mat-checkbox [(ngModel)]="bexacta">busqueda <br> exacta</mat-checkbox>
+    </div-->
+
+
+        <mat-form-field class="my-form-field">
+            <mat-label>Escriba la(s) palabra(s) que busca...</mat-label>
+            <input matInput type="text" [(ngModel)]="txtbuscar" (keyup.enter)="buscarTermino($event)">
+            <button *ngIf="txtbuscar" mat-icon-button matSuffix (click)="txtbuscar=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <button mat-mini-fab color="primary" (click)="buscarTermino($event)">
+          <mat-icon>search</mat-icon>
+        </button>
+        <!--input id="cajaPalabras" size="50" name="request" value="" placeholder="Escriba la(s) palabra(s) que busca..." align="middle">
+        <input id="irBuscar" type="image" alt=" Go " src="/assets/img/lupa.png" border="0"-->
+    </div>
 </div>
-<mat-drawer-container [class.altura-inicial]="r.url=='/inicio'">
+
+<mat-drawer-container>
     <mat-drawer #drawer mode="side" color="primary">
         <app-opciones (navBarToggle)="drawer.toggle()"></app-opciones>
     </mat-drawer>
-    <mat-drawer-content [class.altura-inicial]="r.url=='/inicio'">
+    <mat-drawer-content>
         <app-encabezado (navBarToggle)="drawer.toggle()"></app-encabezado>
         <router-outlet></router-outlet>
     </mat-drawer-content>
-
 </mat-drawer-container>
-
-<section id="sec1" *ngIf="r.url=='/inicio'">
-    <div class="wrapper">
-        <h1>Publicaciones HLM</h1>
-        <div class="flex-justify">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-</section>
-
-
-<section id="sec2" *ngIf="r.url=='/inicio'">
-    <div class="wrapper">
-        <h1 class="h1white">Investigación</h1>
-    </div>
-</section>
-
-<section id="sec3" *ngIf="r.url=='/inicio'">
-    <h1>Multimedia</h1>
-    <div id="carrusel">
-
-    </div>
-</section>
-
-<app-dinteres *ngIf="r.url=='/inicio'"></app-dinteres>
-
-<footer *ngIf="r.url=='/inicio'">
-    <div class="pie" fxFlex fxFlexLayout="row" fxLayoutAlign="space-around">
-        <div class="izquierda">2020</div>
-        <div class="centro">UNAM, ...</div>
-        <div class="derecha">V 0.1.71</div>
-    </div>
-</footer>
