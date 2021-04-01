@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-presentacio-relaciones',
@@ -7,23 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PresentacioRelacionesComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('marca') 
+  inputMessageRef: ElementRef;
 
+  constructor() { }
+  
   ngOnInit(): void {
+    console.log("a la marca...");
+    document.querySelector('#marca').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   public secVisible='';
 
   public moAyuda(seccion){
-    console.log(this.secVisible);
-    console.log(seccion);
+    //console.log(this.secVisible);
+    //console.log(seccion);
     if(this.secVisible==seccion){
-      console.log('limpiando');
+      //console.log('limpiando');
       this.secVisible='';
     }else{
-      console.log('asignando');
+      //console.log('asignando');
       this.secVisible=seccion;
     }
-    console.log(this.secVisible);
+    //console.log(this.secVisible);
   }
 }

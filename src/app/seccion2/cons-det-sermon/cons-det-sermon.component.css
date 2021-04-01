@@ -30,7 +30,7 @@ mat-grid-list {
 .buscando {
     width: 80%;
     padding: 10px;
-    align-self: center;
+    margin-top: 50px;
 }
 
 .regresar {

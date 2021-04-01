@@ -44,14 +44,20 @@ export class BuscarComponent implements OnInit, OnDestroy {
         this.resultadoOE=data['resultado'].obraescrita;
         this.resultadoNarrativas=data['resultado'].narrativas;
         this.resultadoSermones=data['resultado'].sermones;
-
-        this.resultadoNarrativas.forEach((lmnt:any) => {
-          lmnt.narratioRecortado=this.recorta(this.termino, lmnt.narratio,200);
-        });
-
-        this.resultadoSermones.forEach((lmnt:any) => {
-          lmnt.sermonRecortado=this.recorta(this.termino, lmnt.titulo,200);
-        });
+        if(this.resultadoNarrativas){
+          this.resultadoNarrativas.forEach((lmnt:any) => {
+            lmnt.narratioRecortado=this.recorta(this.termino, lmnt.narratio,200);
+          });
+        }else{
+          this.resultadoNarrativas==null;
+        }
+        if(this.resultadoSermones){
+          this.resultadoSermones.forEach((lmnt:any) => {
+            lmnt.sermonRecortado=this.recorta(this.termino, lmnt.titulo,200);
+          });
+        }else{
+          this.resultadoSermones==null;
+        }
 
         this.estaCargando=false;
       },
@@ -64,14 +70,19 @@ export class BuscarComponent implements OnInit, OnDestroy {
   }
 
   public recorta(termino:string, texto: string, tm:number):string {
+    let original=texto;
+    texto=texto.toLowerCase();
+    termino=termino.toLowerCase().replace(/["]+/g,'');
+
     if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>tm){
       let pt=texto.indexOf(termino)
       let inicio=pt-tm/2+(texto.indexOf(' ', pt-tm/2)-(pt-tm/2));
       let fin=texto.indexOf(' ',inicio+tm);
+      //console.log(pt,inicio,fin);
       if(fin==-1){
-        return '...'+texto.substring(inicio)
+        return '...'+original.substring(inicio)
       }
-      return '...'+texto.substring(inicio, fin) + '...';
+      return '...'+original.substring(inicio, fin) + '...';
     }else{
       if (texto.length > tm) {
         return texto.substring(0, texto.indexOf(' ', tm)) + '...';

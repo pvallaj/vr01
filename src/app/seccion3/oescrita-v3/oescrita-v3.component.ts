@@ -30,6 +30,7 @@ export class OescritaV3Component implements OnInit {
     this.estaCargando=true;
     this.cnx.novohisp({tomo:'SXVI'}, 'consulta estructura x tomo').subscribe(
       (datos) => {
+        this.estaCargando=false;
         this.resultado=datos['resultado'].estructura;
         this.imagenes=datos['resultado'].imagenes;
     },(error) => {
@@ -39,19 +40,24 @@ export class OescritaV3Component implements OnInit {
   }
 
   public verCapitulo(etiquetas:string){
-    
+    this.regsCapitulo=null;
     let listae=etiquetas.split(",");
     listae=listae.filter(e=>e.trim()!='estructura');
     this.capituloSeleccionado=listae.join(",");
-
+    this.estaCargando=true;
     this.cnx.novohisp({capitulo:this.capituloSeleccionado}, 'consulta capitulo tomo').subscribe(
       (datos) => {
+        this.estaCargando=false;
         this.regsCapitulo=datos['resultado'].capitulo;
         this.elementoSeleccionado=this.regsCapitulo[0];
     },(error) => {
       console.log('error al cargar a los autores');
       console.log(error);
     });
+  }
+
+  public verTomo(){
+    this.capituloSeleccionado=null;
   }
 
   public regresar(){

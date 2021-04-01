@@ -3,7 +3,22 @@ p {
 }
 
 .tarjeta {
-    margin-top: 10px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;
+    overflow: hidden;
+}
+
+.encabezado {
+    background-color: #D50000;
+    color: white;
+    padding: 10px 5px 5px 5px;
+}
+
+.contenido {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .regresar {
@@ -11,28 +26,10 @@ p {
     align-self: center;
 }
 
-mat-card {
-    margin-top: 10px;
-}
-
-mat-card-content {
-    padding: 10px 0;
-}
-
-mat-card-header {
-    background-color: #5d1013;
-    border: 2px solid rgba(0, 0, 0, .3);
-    color: white;
-}
-
-mat-card-subtitle {
-    color: white;
-}
-
 .btnDetalle {
     width: 100% !important;
     height: 100%;
-    background-color: #5d1013;
+    background-color: #D50000;
 }
 
 .resultado {
@@ -40,6 +37,10 @@ mat-card-subtitle {
     height: 700px;
     padding: 5px;
     overflow-y: scroll;
+}
+
+.titulo {
+    font-weight: bold;
 }
 
 .elemento {

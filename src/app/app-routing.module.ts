@@ -36,6 +36,7 @@ const routes: Routes = [
   {path: 'PresentacionSermones',    component: PresentacioSermonesComponent},
   {path: 'sermones',       component: ConsSermonesComponent},
   {path: 'oesxvi',         component: OEscritaV2Component},
+  {path: 'oesxvii',         component: OescritaV3Component},
   {path: 'herramientas',   component: HerramientasComponent},
   {path: 'buscar',         component: BuscarComponent},
   {path: 'noticias',       component: NoticiasComponent},

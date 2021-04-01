@@ -153,23 +153,23 @@
         </mat-card-content>
     </mat-card>
     <div class="resultado" *ngIf="!estaCargando && listaResultado!=null" fxFill>
-        <h3 *ngIf="listaResultado!=null && listaResultado.length>0">Información encontrada en la base de datos de RELACIONES</h3>
+        <h3 *ngIf="listaResultado!=null && listaResultado.length>0">Información encontrada en la base de datos de RELACIONES (se muestran {{listaResultado.length}} de {{totalRegistros}} existentes.)</h3>
         <h3 *ngIf="listaResultado.length==0">No se encontró información con los parametros proporcionados. Intente con otros datos.</h3>
-        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-            <mat-card class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <mat-card-header>
-                    <mat-card-title>{{narrativa.autor }}</mat-card-title>
-                    <mat-card-subtitle>{{narrativa.obra+', '+narrativa.ubicacion}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
+        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start">
+            <div class="tarjeta" *ngFor="let narrativa of listaResultado; let i = index" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+                <div class="encabezado">
+                    <div class="titulo">{{narrativa.autor }}</div>
+                    <div class="subtitulo">{{narrativa.obra+', '+narrativa.ubicacion}}</div>
+                </div>
+                <div class="contenido" fxLayout="column" fxLayoutAlign="space-between">
                     <div [innerHTML]="narrativa.narratioRecortado | resaltaTexto:frm.value.textos"></div>
-                </mat-card-content>
-                <mat-card-actions>
+                </div>
+                <div>
                     <button class="btnDetalle" mat-flat-button color="primary" (click)="cambiar(narrativa)">
                         <mat-icon>article</mat-icon> Ver Detalle
                     </button>
-                </mat-card-actions>
-            </mat-card>
+                </div>
+            </div>
 
         </div>
     </div>

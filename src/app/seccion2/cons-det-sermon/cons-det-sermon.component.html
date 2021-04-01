@@ -1,4 +1,4 @@
-<div fxFlex="100" fxLayoutAlign="center space-around" *ngIf="estaCargando">
+<div fxFlex="100" fxLayoutAlign="center center" *ngIf="estaCargando">
     <mat-card class="buscando">
         <mat-card-content>
             <h2>Consultando base de datos</h2>
@@ -10,7 +10,7 @@
     </mat-card>
 </div>
 
-<mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'" *ngIf="!estaCargando && tipo==0">
+<!--mat-tab-group animationDuration="2000ms" [selectedIndex]="tabSeleccionado" (selectedIndexChange)="tabSeleccionado=$event" [backgroundColor]="'primary'" *ngIf="!estaCargando && tipo==0">
     <mat-tab label="Sermon" isActive>
         <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
             <div class="fila" fxLayout="row">
@@ -46,18 +46,11 @@
                 <div class="titulo" fxFlex="15">Año:</div>
                 <div class="valor">{{libro?.libro_anio}}</div>
             </div>
-            <div class="fila" fxLayout="row">
+            <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.thema)">
                 <div class="titulo" fxFlex="15">Thema:</div>
                 <div class="valor">{{sermon.thema}}</div>
             </div>
-            <!--div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Protesta de fe:</div>
-                <div class="valor">{{sermon.protesta_fe}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="15">Grabado:</div>
-                <div class="valor">{{grabados[0]?.grabado}}</div>
-            </div-->
+
         </div>
     </mat-tab>
     <mat-tab label="Referencias bibliográficas">
@@ -111,125 +104,138 @@
         </div>
 
     </mat-tab>
-</mat-tab-group>
+</mat-tab-group-->
 
-<div *ngIf="!estaCargando && tipo==1" fxFlex="100" class="secciones">
-    <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
-        <div class="titulo_seccion">
-            Sermón
-        </div>
-        <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Autor:</div>
-                <div class="valor" [innerHTML]="sermon.nombre | resaltaTexto:terminoConsulta"></div>
+<div *ngIf="!estaCargando && tipo==1" fxFlex="100" class="secciones" fxLayout="row">
+    <div fxFlex="50">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
+            <div class="titulo_seccion">
+                Sermón
             </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Titulo:</div>
-                <div class="valor" fxFlex="75" [innerHTML]="sermon.titulo | resaltaTexto:terminoConsulta"></div>
-            </div>
-            <div class="fila" fxLayout="row" *ngIf="libro?.libro_titulo">
-                <div class="titulo" fxFlex="25">En:</div>
-                <div class="valor" fxFlex="75">{{libro?.libro_titulo}}</div>
-            </div>
-            <div class="fila" fxLayout="row" *ngIf="libro?.autor">
-                <div class="titulo" fxFlex="25">Autor de la obra:</div>
-                <div class="valor" fxFlex="75">{{libro?.autor}}</div>
-            </div>
+            <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Autor:</div>
+                    <div class="valor" fxFlex [innerHTML]="sermon.nombre | resaltaTexto:terminoConsulta"></div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Titulo:</div>
+                    <div class="valor" fxFlex [innerHTML]="sermon.titulo | resaltaTexto:terminoConsulta"></div>
+                </div>
+                <div class="fila" fxLayout="row" *ngIf="libro?.libro_titulo">
+                    <div class="titulo" fxFlex="20">En:</div>
+                    <div class="valor" fxFlex>{{libro?.autor}}, {{libro?.libro_titulo}} </div>
+                </div>
+                <!--div class="fila" fxLayout="row" *ngIf="libro?.autor">
+                    <div class="titulo" fxFlex="25">Autor de la obra:</div>
+                    <div class="valor" fxFlex="75">{{libro?.autor}}</div>
+                </div-->
 
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Inicio:</div>
-                <div class="valor" fxFlex="75">{{sermon.inicio_sermon}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Ciudad:</div>
-                <div class="valor" fxFlex="75">{{sermon?.ciudad}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Impresor:</div>
-                <div class="valor" fxFlex="75">{{sermon?.impresor}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Año:</div>
-                <div class="valor" fxFlex="75">{{sermon?.anio}}</div>
-            </div>
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="25">Thema:</div>
-                <div class="valor" fxFlex="75">{{sermon.thema}}</div>
-            </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Incipit:</div>
+                    <div class="valor" fxFlex>{{sermon.inicio_sermon}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Ciudad:</div>
+                    <div class="valor" fxFlex>{{sermon?.ciudad}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Impresor:</div>
+                    <div class="valor" fxFlex>{{sermon?.impresor}}</div>
+                </div>
+                <div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Año:</div>
+                    <div class="valor" fxFlex>{{sermon?.anio}}</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.thema)">
+                    <div class="titulo" fxFlex="20">Thema:</div>
+                    <div class="valor" fxFlex>{{sermon.thema}}</div>
+                </div>
 
-        </div>
-    </div>
-
-    <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
-        <div class="titulo_seccion">
-            Referencias bibliográficas
-        </div>
-        <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
-                <div class="titulo" fxFlex="40">Número</div>
-            </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
-                <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}</div>
-                <div class="valor" fxFlex="40">{{elemento.numeracion}}</div>
             </div>
         </div>
     </div>
+    <div fxFlex="50">
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
+            <div class="titulo_seccion">
+                Referencias bibliográficas
+            </div>
+            <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
+                <!--div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
+                    <div class="titulo" fxFlex="40">Número</div>
+                </div-->
+                <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
+                    <div class="valor" fxFlex="60">{{elemento.catalogo_nombre}}: {{elemento.numeracion}}</div>
+                    <!--div class="valor" fxFlex="40">{{elemento.numeracion}}</div-->
+                </div>
+            </div>
+        </div>
 
-    <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
-        <div class="titulo_seccion">
-            Preliminares
-        </div>
-        <div class="resultado" fxLayout="column" *ngIf="preliminares?.length>0">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="20">Tipo</div>
-                <div class="titulo" fxFlex="55">Titulo</div>
-                <div class="titulo" fxFlex="25">Autor</div>
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando && preliminares?.length>0">
+            <div class="titulo_seccion">
+                Preliminares
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
-                <div class="valor" fxFlex="20">{{elemento.preliminar_tipo}}</div>
-                <div class="valor" fxFlex="55">{{elemento.preliminar_titulo}}</div>
-                <div class="valor" fxFlex="25">{{elemento.autor}}</div>
+            <div class="resultado" fxLayout="column" *ngIf="preliminares?.length>0">
+                <!--div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="20">Tipo</div>
+                    <div class="titulo" fxFlex="55">Titulo</div>
+                    <div class="titulo" fxFlex="25">Autor</div>
+                </div-->
+                <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
+                    <!--div class="valor" fxFlex="20">{{elemento.preliminar_tipo}}</div-->
+                    <div class="valor" fxFlex>{{elemento.preliminar_titulo}}</div>
+                    <!--div class="valor" fxFlex="25">{{elemento.autor}}</div-->
+                </div>
+            </div>
+
+            <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
+                <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.protesta_fe)">
+                    <div class="titulo" fxFlex="40">Protesta de fe:</div>
+                    <div class="valor">{{sermon.protesta_fe}}</div>
+                </div>
+                <div class="fila" fxLayout="row" *ngIf="grabados.length>0">
+                    <div class="titulo" fxFlex="40">Grabado:</div>
+                    <div class="valor">{{grabados[0]?.grabado}}</div>
+                </div>
             </div>
         </div>
 
-        <div class="resultado" fxLayout="column" *ngIf="sermon!=[]">
-            <div class="fila" fxLayout="row" *ngIf="sermon?.protesta_fe">
-                <div class="titulo" fxFlex="40">Protesta de fe:</div>
-                <div class="valor">{{sermon.protesta_fe}}</div>
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando && repositorios!=null">
+            <div class="titulo_seccion">
+                Repositorios
             </div>
-            <div class="fila" fxLayout="row" *ngIf="grabados[0]?.grabado">
-                <div class="titulo" fxFlex="40">Grabado:</div>
-                <div class="valor">{{grabados[0]?.grabado}}</div>
+            <div class="resultado" fxLayout="column">
+                <!--div class="fila" fxLayout="row">
+                    <div class="titulo" fxFlex="30">Repositorio</div>
+                    <div class="titulo" fxFlex="20">Clasificación</div>
+                    <div class="titulo" fxFlex="50">Digitalizado en</div>
+                </div-->
+                <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
+                    <div class="valor" fxFlex> {{elemento.repositorio_tipo}}: {{elemento.clasificacion}}</div>
+                    <!--div class="valor" fxFlex="20">{{elemento.clasificacion}}</div>
+                    <div class="valor" fxFlex="50">{{elemento.enlace_digitalizacion}}</div-->
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando">
-        <div class="titulo_seccion">
-            Repositorios
         </div>
-        <div class="resultado" fxLayout="column" *ngIf="repositorios!=null && tieneDatosDigitalizados">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="30">Repositorio</div>
-                <div class="titulo" fxFlex="20">Clasificación</div>
-                <div class="titulo" fxFlex="50">Digitalizado en</div>
+
+        <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="!estaCargando && (!estaVacio(sermon.digitalizado_en1) || !estaVacio(sermon.digitalizado_en2) || !estaVacio(sermon.digitalizado_en3))">
+            <div class="titulo_seccion">
+                Digitalizado
             </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
-                <div class="valor" fxFlex="30">{{elemento.repositorio_tipo}}</div>
-                <div class="valor" fxFlex="20">{{elemento.clasificacion}}</div>
-                <div class="valor" fxFlex="50">{{elemento.enlace_digitalizacion}}</div>
+            <div class="resultado" fxLayout="column">
+                <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.digitalizado_en1)">
+                    <div class="valor" fxFlex><a [attr.href]="referencia(sermon.digitalizado_en1) | seguro">{{sermon.digitalizado_en1}}</a></div>
+                </div>
+                <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.digitalizado_en2)">
+                    <div class="valor" fxFlex><a [attr.href]="referencia(sermon.digitalizado_en2) | seguro">{{sermon.digitalizado_en2}}</a></div>
+                </div>
+                <div class="fila" fxLayout="row" *ngIf="!estaVacio(sermon.digitalizado_en3)">
+                    <div class="valor" fxFlex><a [attr.href]="referencia(sermon.digitalizado_en3) | seguro">{{sermon.digitalizado_en3}}</a></div>
+                </div>
             </div>
+
         </div>
-        <div class="resultado" fxLayout="column" *ngIf="repositorios!=null && !tieneDatosDigitalizados">
-            <div class="fila" fxLayout="row">
-                <div class="titulo" fxFlex="45">Repositorio</div>
-                <div class="titulo" fxFlex="55">Clasificación</div>
-            </div>
-            <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
-                <div class="valor" fxFlex="45">{{elemento.repositorio_tipo}}</div>
-                <div class="valor" fxFlex="55">{{elemento.clasificacion}}</div>
-            </div>
-        </div>
+
     </div>
 </div>

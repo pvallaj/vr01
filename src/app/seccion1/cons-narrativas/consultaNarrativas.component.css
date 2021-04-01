@@ -50,22 +50,23 @@
     overflow-y: scroll;
 }
 
-mat-card {
-    margin-top: 10px;
+.tarjeta {
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;
+    overflow: hidden;
 }
 
-mat-card-content {
-    padding: 10px 0;
-}
-
-mat-card-header {
-    background-color: #5d1013;
-    border: 2px solid rgba(0, 0, 0, .3);
+.encabezado {
+    background-color: #D50000;
     color: white;
+    padding: 10px 5px 5px 5px;
 }
 
-mat-card-subtitle {
-    color: white;
+.contenido {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 h3 {
@@ -75,7 +76,7 @@ h3 {
 .btnDetalle {
     width: 100% !important;
     height: 100%;
-    background-color: #5d1013;
+    background-color: #D50000;
 }
 
 

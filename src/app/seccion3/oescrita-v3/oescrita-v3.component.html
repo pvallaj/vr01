@@ -1,29 +1,28 @@
-<div *ngIf="resultado!=null && capituloSeleccionado==null" class="contenedor">
-    <div class="fondo" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="2px" fxLayoutAlign="space-around" fxLayoutAlign.lt-lg="start center">
-        <div class="marco" fxFlex="33" fxLayout="column" fxLayoutAlign="start">
-            <div class="submarco" id="style-3">
-                <div class="titulo">Historia de las Literaturas en México. Siglo XVI</div>
-                <div class="descripcion">Descripción de la obra</div>
-                <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0}" *ngFor="let reg of resultado; let i=index;" (click)="verCapitulo(reg.etiquetas)">{{reg.etiquetas.indexOf('capitulo')>0?i+'.-':''}} {{reg.texto}}</div>
+<div *ngIf="resultado!=null" class="contenedor" fxLayout="row">
+    <div class="fondo" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="20px" fxLayoutAlign="space-around" fxLayoutAlign.lt-lg="start center">
+
+        <div class="tomo" fxFlex="30" id="style-3">
+            <div [ngClass]="{'titulo':capituloSeleccionado==null, 'tituloNoSeleccionado':capituloSeleccionado!=null}" (click)="verTomo()">Historia de las Literaturas en México. Siglo XVI</div>
+            <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0,'capitulo-seleccionado':reg.etiquetas.indexOf(capituloSeleccionado+',')>=0}" *ngFor="let reg of resultado; let i=index;" (click)="verCapitulo(reg.etiquetas)">{{reg.etiquetas.indexOf('capitulo')>0?i+'.-':''}} {{reg.texto}}</div>
+        </div>
+
+        <div fxFlex="70" fxLayout="row" fxLayoutGap="60px" fxLayout.lt-md="column">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" *ngIf="estaCargando">
+                <h2>Buscando información ...</h2>
+                <mat-progress-bar [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+                </mat-progress-bar>
+            </div>
+
+            <div class="seccionLista" fxFlex *ngIf="capituloSeleccionado!=null">
+                <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="33px" fxLayoutAlign="start">
+                    <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = index" (click)="elementoSeleccionado=elemento" fxFlex="0 0 calc(30% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%"></app-detalle-oe>
+                </div>
+            </div>
+            <div class="seccionPortada" fxFlex *ngIf="capituloSeleccionado==null">
+                <img fxFlex.lt-lg="100" class="imagen" src="{{el.referencia}}" *ngFor="let el of imagenes">
             </div>
         </div>
-        <img fxFlex.lt-lg="100" fxFlex="33" class="imagen" src="{{el.referencia}}" *ngFor="let el of imagenes">
-    </div>
-</div>
 
-<div class="contenedor-2" *ngIf="capituloSeleccionado!=null">
-    <div direction="vertical" fxLayout="row" fxLayoutGap="10px" fxLayout.lt-md="column">
-        <div class="seccionLista" fxFlex>
-            <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-                <app-detalle-oe class="tarjetaresumen" [ngClass]="{tarjetaSeleccionada:elemento==elementoSeleccionado}" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = index" (click)="elementoSeleccionado=elemento" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)"
-                    fxFlex.lt-sm="100%"></app-detalle-oe>
-            </div>
-        </div>
     </div>
-
-    <button class="ctrl-regresar" mat-raised-button color="primary" (click)="regresar()">
-        <mat-icon >keyboard_backspace</mat-icon>
-        Regresar
-    </button>
 
 </div>

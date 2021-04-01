@@ -19,13 +19,13 @@
 </header>
 <div id="bannerTop">
     <div id="video-banner">
-        <video autoplay="autoplay" loop="loop">
-        <source src="assets/misc/banner_baja.mp4" type="video/mp4">
-        <source src="assets/misc/banner_baja.webm">
-        <source src="assets/misc/banner_baja.ogv">
-    </video>
-
+        <video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
+            <source src="assets/misc/banner_baja.mp4" type="video/mp4">
+            <source src="assets/misc/banner_baja.webm">
+            <source src="assets/misc/banner_baja.ogv">
+        </video>
     </div>
+
     <div id="logoBuscador" class="wrapper flex-center">
         <div id="logoHLM">
             <a href="index.html"><img src="assets/img/logo-hlm.png" alt="Historia de las Literaturas Mexicanas. Siglo XVI al XVIII" title="Historia de las Literaturas Mexicanas. Siglo XVI al XVIII"></a>
@@ -35,7 +35,7 @@
 
         </div>
     </div>
-    <div class="buscador">
+    <div class="buscador" id="marca" #marca>
         <!--formulario buscador-->
 
         <!--div class="busq-exacta">

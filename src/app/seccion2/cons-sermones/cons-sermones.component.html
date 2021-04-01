@@ -25,7 +25,7 @@
             </mat-form-field>
 
             <mat-form-field class="anio" *ngIf="filtroActivo('Año')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <input matInput type="text" placeholder="Año de publicacion" formControlName="anio">
+                <input matInput type="text" placeholder="Año de publicacion (entre 1612 y 1700)" formControlName="anio">
             </mat-form-field>
 
             <mat-form-field class="anio" *ngIf="filtroActivo('Rango de años')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
@@ -137,24 +137,24 @@
             </section>
         </mat-card-content>
     </mat-card>
-    <div class="resultado" *ngIf="!estaCargando && listaResultado">
-        <div mat-subheader *ngIf="listaResultado.length>0" class="info">Información encontrada en la base de datos</div>
+    <div class="resultado" *ngIf="!estaCargando && listaResultado" fxFill>
+        <div mat-subheader *ngIf="listaResultado.length>0" class="info">Información encontrada en la base de datos (se muestran {{listaResultado.length}} de {{totalRegistros}} existentes.)</div>
         <div mat-subheader *ngIf="listaResultado.length==0" class="noinfo">NO se encontró información con los parametros proporcionados.</div>
-        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start">
-            <mat-card class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="space-between" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
-                <mat-card-header>
-                    <mat-card-title>{{sermon.id_sermon}} - {{sermon.autor_nombre}} {{sermon.autor_apellido}} {{(sermon.autor_orden && sermon.autor_orden.toUpperCase()!='SECULAR')? '('+sermon.autor_orden+')':''}}</mat-card-title>
-                    <mat-card-subtitle>{{sermon.ciudad+', '+sermon.anio}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">
+        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+            <div class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="space-between" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-lg="0 0 calc(40% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
+                <div class="encabezado">
+                    <div class="titulo">{{sermon.autor_nombre}} {{sermon.autor_apellido}} {{(sermon.autor_orden && sermon.autor_orden.toUpperCase()!='SECULAR')? '('+sermon.autor_orden+')':''}}</div>
+                    <div class="subtitulo">{{sermon.ciudad+', '+sermon.anio}}</div>
+                </div>
+                <div class="contenido">
                     <div matTooltip="{{sermon.titulo}}">{{recortaSermon(sermon.titulo)}}</div>
-                </mat-card-content>
-                <mat-card-actions>
+                </div>
+                <div>
                     <button class="btnDetalle" mat-flat-button color="primary" (click)="cambiar(sermon.id_sermon)">
                         <mat-icon>article</mat-icon> Ver Detalle
                     </button>
-                </mat-card-actions>
-            </mat-card>
+                </div>
+            </div>
 
         </div>
     </div>

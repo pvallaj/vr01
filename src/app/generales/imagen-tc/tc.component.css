@@ -16,14 +16,14 @@
 }
 
 .contenedor {
-    width: 90%;
+    width: 98%;
     height: 90%;
-    overflow: scroll;
+    overflow-y: auto;
     background-color: lightgray;
     border-radius: 20px;
     border: 2px solid black;
 }
 
 .accion {
-    width: 90%;
+    width: 98%;
 }

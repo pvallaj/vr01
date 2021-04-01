@@ -1,27 +1,31 @@
  .contenedor {
      width: 100%;
-     padding: 5px;
  }
  
  .fondo {
+     width: 100%;
      padding: 10px;
-     border-radius: 10px;
-     background-color: rgba(93, 16, 19, .7);
+     background-color: #f7f7f7;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  }
  
- .submarco {
-     height: 750px;
+ .tomo {
      color: black;
      padding: 20px;
-     border-radius: 10px;
-     background-color: rgba(220, 194, 123, 1);
+     /* background-color: rgba(220, 194, 123, 1);*/
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-     overflow-y: scroll;
  }
  
  .titulo {
      font-size: 25px;
+     font-weight: bold;
+ }
+ 
+ .tituloNoSeleccionado {
+     font-size: 25px;
+     color: blue;
+     cursor: pointer;
+     font-weight: bold;
  }
  
  .seccion {
@@ -36,8 +40,16 @@
      cursor: pointer;
  }
  
+ .capitulo-seleccionado {
+     font-size: 18px;
+     padding-left: 20px;
+     font-weight: bold;
+     color: red;
+     cursor: pointer;
+ }
+ 
  .imagen {
-     width: 100%;
+     width: 600px;
      height: auto;
      border-radius: 10px;
      border: 1px solid grey;
@@ -47,7 +59,6 @@
  
  .seccionLista {
      padding: 10px;
-     background-color: rgba(93, 16, 19, .7);
      border-radius: 10px;
  }
  
@@ -99,7 +110,7 @@
  /*tarjeta*/
  
  .tarjetaresumen {
-     margin: 5px 0;
+     margin: 20px 0;
  }
  
  .tarjetaSeleccionada {

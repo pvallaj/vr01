@@ -63,15 +63,10 @@ version 2
 </div-->
 
 <!--Tarjeta para resumen de IMAGEN-->
-<mat-card class="TarjetaIR" *ngIf="elemento?.tipo==2  && tipo==1">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <img class="imgprev" src="{{elemento.referencia}}">
-    </mat-card-content>
-</mat-card>
+<div class="TarjetaIR" *ngIf="elemento?.tipo==2  && tipo==1">
+    <div class="textoIR">{{elemento.descripcion}}</div>
+    <img class="imgprev" src="{{elemento.referencia}}">
+</div>
 
 <!--Tarjeta para detalle de IMAGEN-->
 <mat-card class="tarjeta" *ngIf="elemento?.tipo==2 && tipo==2">

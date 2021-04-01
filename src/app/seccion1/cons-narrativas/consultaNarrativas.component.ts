@@ -22,6 +22,7 @@ export class ConsultaNarrativasComponent implements OnInit {
   public listaResultadoSA:any[]=null;
   public listaResultadoV:any[]=null;
   public listaResultadoC:any[]=null;
+  public totalRegistros=0;
   //autocomplete
   public acAutores = new FormControl();
   public listaAutores:any[]=[];
@@ -107,6 +108,8 @@ export class ConsultaNarrativasComponent implements OnInit {
       console.log("error al cargar a los autores");
       console.log(error);
     })
+
+    this.consulta_inicial();
   }
 
   public autorSeleccionado(sel){
@@ -175,7 +178,8 @@ export class ConsultaNarrativasComponent implements OnInit {
       (data)=>{
         let idx=1;
         temp=data['resultado'];
-        this.listaResultado=data['resultado'];
+        this.listaResultado=data['resultado'].registros;
+        this.totalRegistros=data['resultado'].conteo[0].total;
         if(this.frm.value.textos){
           this.listaResultado=this.listaResultado.filter(lmnt =>this.filtraDistancia(lmnt.narratio));
         }
@@ -193,6 +197,56 @@ export class ConsultaNarrativasComponent implements OnInit {
       }
     )
   }
+
+  public consulta_inicial(){
+    this.estaCargando=true;
+
+    let p = {
+      autor:          '',
+      obra:           '',
+      clasificacion:  '',
+      tema:           '',
+      motivo:         '',
+      tipoVerso:      '',
+      tipoAccion:     '',
+      soporte:        '',
+      textos:         '',
+
+      desde:          this.pidx*this.ptam,
+      pagtam:         this.ptam
+    };
+    
+    
+    //console.log(p.textos);
+    let temp:any[]=[];
+    this.idxSeleccionado=0;
+
+    //console.log(p);
+    this.cnx.narrativas(p, 'consulta narrativas')
+    .subscribe(
+      (data)=>{
+        let idx=1;
+        temp=data['resultado'];
+        this.listaResultado=data['resultado'].registros;
+        this.totalRegistros=data['resultado'].conteo[0].total;
+        if(this.frm.value.textos){
+          this.listaResultado=this.listaResultado.filter(lmnt =>this.filtraDistancia(lmnt.narratio));
+        }
+        this.listaResultado.forEach(lmnt => {
+          let termino=this.frm.value.textos;
+
+          lmnt.narratioRecortado=this.recortaNarrativa(lmnt.narratio,termino,300);
+        });
+        this.estaCargando=false;
+      },
+    (error)=>{
+        console.log('No se logro la conexión');
+        console.error(error);
+        this.estaCargando=false;
+      }
+    )
+  }
+
   private filtraDistancia(texto:string):boolean{
     let r1=true;
     let r2=true;
@@ -235,6 +289,8 @@ export class ConsultaNarrativasComponent implements OnInit {
     }
     return false;
   }
+
+
   public cambiar(seleccionado){
     this.idNarrativaSel = seleccionado.id_texto;
     this.narrativaSeleccionada = seleccionado;

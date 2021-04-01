@@ -72,13 +72,6 @@
     text-overflow: ellipsis;
 }
 
-.pieTarjeta {
-    border-top: solid 1px black;
-    color: black;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, .5);
-}
-
 .seleccionado {
     background: lightblue;
 }
@@ -100,5 +93,40 @@ mat-card-content {
 }
 
 .tarjetaresumen {
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+.lista-resultado {
+    margin: 20px 10px;
+}
+
+
+/********************************************************/
+
+.tarjeta {
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;
+    overflow: hidden;
+}
+
+.encabezado {
+    background-color: #D50000;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px 5px 5px;
+}
+
+.contenido {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.pieTarjeta {
+    border-top: solid 1px black;
+    color: white;
+    background-color: #D50000;
+    padding: 2px 8px;
 }

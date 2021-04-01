@@ -17,6 +17,7 @@ import { BusqAvanzadaSComponent } from '../busq-avanzada-s/busq-avanzada-s.compo
 })
 export class ConsSermonesComponent implements OnInit {
   public listaResultado: any[] = null;
+  public totalRegistros:number=0;
   // autocomplete autores
   public acAutores = new FormControl();
   public listaAutores: string[] = [];
@@ -138,6 +139,64 @@ export class ConsSermonesComponent implements OnInit {
       console.log('error al cargar a los autores');
       console.log(error);
     });
+
+    //this.consulta_inicial();
+  }
+  public consulta_inicial() {
+    this.estaCargando = true;
+        
+    const p = {
+      autor:        '',
+      id_autor: -1,
+      titulo:       '',
+      anio:         0,
+      anio_ini:     1612,
+      anio_fin:     1700,
+      impresor:     '',
+
+      preliminar:   '',
+      id_preliminar: -1,
+
+      dedicatario:  '',
+      id_dedicatario: -1,
+
+      ciudad:       '',
+      tituloObra:   '',
+      orden:        '',
+      thema:        '',
+      grabado:      '',
+
+      desde:  this.pidx * this.ptam,
+      pagtam: this.ptam,
+    };
+
+    let temp: any[] = [];
+    
+    this.cnx.sermones(p, 'consulta sermones')
+    .subscribe(
+      (data) => {
+        let idx = 1;
+        temp = data['resultado'].registros;
+        this.totalRegistros=data['resultado'].conteo[0].total;
+        temp.forEach((el) => {
+          el.muestra = el.autor_apellido + ', ' +
+                    el.autor_nombre + ' y ' +
+                    (el.autor_particula ? ' ' : el.autor_particula) +
+                    ' ' + el.titulo + ', ' + el.ciudad + ', ' + el.anio + '.';
+          idx++;
+        });
+        this.listaResultado = temp;
+
+        this.idSermonSel = 0;
+        this.idxSeleccionado = -1;
+        this.estaCargando = false;
+      },
+    (error) => {
+        console.log('No se logro la conexión');
+        console.error(error);
+        this.estaCargando = false;
+      },
+    );
   }
 
   public consulta() {
@@ -150,7 +209,7 @@ export class ConsSermonesComponent implements OnInit {
       id_autor: -1,
 
       titulo:       this.filtroActivo('Titulo')?this.frm.value.titulo:'',
-      anio:         this.filtroActivo('Año')?this.frm.value.anio:0,
+      anio:         this.filtroActivo('Año')?this.frm.value.anio:1612,
       anio_ini:     this.filtroActivo('Rango de años')?this.frm.value.anio_ini:1612,
       anio_fin:     this.filtroActivo('Rango de años')?this.frm.value.anio_fin:1700,
       impresor:     this.filtroActivo('Impresor')?this.frm.value.impresor:'',
@@ -163,7 +222,7 @@ export class ConsSermonesComponent implements OnInit {
 
       ciudad:       this.filtroActivo('Ciudad')?this.frm.value.ciudad:'',
       tituloObra:   this.filtroActivo('Obra')?this.frm.value.tituloObra:'',
-      orden:        this.filtroActivo('Orden')?this.frm.value.orden:'',
+      orden:        this.filtroActivo('Orden')?this.frm.value.orden:'', 
       thema:        this.filtroActivo('Thema')?this.frm.value.thema:'',
       grabado:      this.filtroActivo('Grabado')?this.frm.value.grabado:'',
 
@@ -186,18 +245,19 @@ export class ConsSermonesComponent implements OnInit {
       }
     }
 
-    if(this.filtroActivo('Dedicatarios')){
+    /*if(this.filtroActivo('Dedicatarios')){
       const dedicatarioEncontrado = this.listaDedicatariosOriginal.find((el) => el.autor === this.acDedicatarios.value);
       if (dedicatarioEncontrado) {
         p.id_dedicatario = dedicatarioEncontrado.id_dedicatario;
       }
-    }
+    }*/
     
     this.cnx.sermones(p, 'consulta sermones')
     .subscribe(
       (data) => {
         let idx = 1;
-        temp = data['resultado'];
+        temp = data['resultado'].registros;
+        this.totalRegistros=data['resultado'].conteo[0].total;
         temp.forEach((el) => {
           el.muestra = el.autor_apellido + ', ' +
                     el.autor_nombre + ' y ' +
@@ -221,7 +281,7 @@ export class ConsSermonesComponent implements OnInit {
 
   public detalle() {
     const dialogRef = this.dialog.open(ConsDetSermonComponent, {
-      width: '95%',
+      width: '98%',
       data: {nombre: 'Hola', descripcion: 'Amigo'},
     });
   }
@@ -253,7 +313,7 @@ export class ConsSermonesComponent implements OnInit {
       // valor inicial, validaciones sincronas, validaciones asincronas
       autor:        ['', [ Validators.maxLength(300)]],
       titulo:       ['', [ Validators.maxLength(300)]],
-      anio:         ['1612', [ Validators.min(1612), Validators.max(1699)]],
+      anio:         ['', [ Validators.min(1612), Validators.max(1699)]],
       anio_ini:     ['1612', [ Validators.min(1612), Validators.max(1699)]],
       anio_fin:     ['1700', [ Validators.min(1613), Validators.max(1700)]],
       impresor:     ['' ],

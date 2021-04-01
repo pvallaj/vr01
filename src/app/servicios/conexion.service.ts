@@ -11,6 +11,7 @@ export class ConexionService {
   //urlBase:string='http://appsparatodos.com.mx/api';
   //urlBase:string='http://api.appsparatodos.com.mx';
   //urlBase:string='http://appsparatodos.com.mx/api';
+  
   //urlBase:string='/hlmnovohispana/api/index.php';
   urlBase:string='/api';
   public componente:"";

@@ -27,7 +27,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   public estaCargando:boolean=false;
   public tabSeleccionado=0;
   public terminoConsulta:string='';
-  public tieneDatosDigitalizados=false;
+
 
   constructor(
     private cnx:ConexionService,
@@ -69,11 +69,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.estaCargando=false;
         this.tabSeleccionado=0;
         if(this.sermon.protesta_fe!=null && this.sermon.protesta_fe.toLowerCase()=="nada") this.sermon.protesta_fe=null;
-        this.repositorios.forEach(element => {
-          if(element.enlace_digitalizacion!=null){
-            this.tieneDatosDigitalizados=true;
-          }
-        });
+        
       },
     (error)=>{
         //console.log('No se logro la conexión');
@@ -81,8 +77,25 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.estaCargando=false;
       }
     )
+    
+  }
+  
+  public estaVacio(dato):boolean{
+    if(dato==null) return true;
+    if(dato=="") return true;
+    if(dato.indexOf("[")>=0) return true;
+    return false;
+  }
 
-
+  public referencia(campo:string):string{
+    let idx=campo.indexOf(' ');
+    console.log(idx); 
+    if(idx==-1){
+      console.log(campo);
+      return campo;
+    } 
+    console.log(campo.substr(0,idx));
+    return campo.substr(0,idx);
   }
 }
 
