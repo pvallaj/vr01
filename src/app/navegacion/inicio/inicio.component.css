@@ -1,4 +1,4 @@
-.sec1,
+/*.sec1,
 .sec2 {
     width: 800px;
     margin-left: 100px;
@@ -11,4 +11,12 @@ h3 {
 
 p {
     margin-bottom: 0;
+}*/
+
+h1 {
+    font-size: 1.750rem/*28px*/
+    ;
+    padding-bottom: 20px;
+    background: url("/assets/img/pleka_h1.jpg") no-repeat bottom left;
+    font-weight: bold;
 }

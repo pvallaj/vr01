@@ -80,10 +80,23 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     
   }
   
-  public estaVacio(dato):boolean{
+  public estaVacio(dato:string):boolean{
     if(dato==null) return true;
     if(dato=="") return true;
-    if(dato.indexOf("[")>=0) return true;
+    let datomin=dato.toLowerCase();
+    if(datomin.indexOf("[nada]")>=0 
+        || datomin.indexOf("[nada.]")>=0
+        || datomin.indexOf("[desconocemos dato]")>=0) return true;
+    return false;
+  }
+
+  public estaEncomillado(texto:string):boolean{
+    /*console.log(texto.substr(0,1));
+    console.log(texto.substr(texto.length-1,1));*/
+    if(texto.substr(0,1)=='"' ){
+      console.log('Esta entre comillas');
+      return true;
+    } 
     return false;
   }
 

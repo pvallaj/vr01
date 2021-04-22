@@ -32,11 +32,11 @@
     color: white;
     background-color: #5d1013;
     font-size: 14px;
-    font-weight: bold;
 }
 
 .mat-column-narratio {
-    width: 250px !important;
+    width: 350px !important;
+    white-space: pre-wrap !important;
 }
 
 .mat-column-gestos_dramaticos,
@@ -44,8 +44,8 @@
 .mat-column-voz_dramaticos,
 .mat-column-vista_dramaticos {
     word-wrap: break-word !important;
-    white-space: unset !important;
-    width: 250px !important;
+    white-space: pre-wrap !important;
+    width: 350px !important;
     border-left: 1px dotted gray;
     background-color: azure;
     padding: 5px !important;
@@ -63,8 +63,8 @@
 .mat-column-voz_dramaticos_no,
 .mat-column-vista_dramaticos_no {
     word-wrap: break-word !important;
-    white-space: unset !important;
-    width: 250px !important;
+    white-space: pre-wrap !important;
+    width: 350px !important;
     border-left: 1px dotted gray;
     background-color: beige;
     padding: 5px !important;
@@ -75,6 +75,10 @@
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+}
+
+.verso>span {
+    display: inline
 }
 
 .tooltip {
@@ -99,4 +103,8 @@
     background-color: beige;
     font-weight: bold;
     text-align: center;
+}
+
+.narrativa {
+    white-space: pre-wrap;
 }

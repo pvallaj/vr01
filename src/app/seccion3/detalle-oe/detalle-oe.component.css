@@ -2,7 +2,7 @@
 
 .contenidoTarjeta {
     font-size: large;
-    text-align: center;
+    text-align: left;
 }
 
 .tituloTarjeta {
@@ -92,8 +92,11 @@
 }
 
 .imgprev {
-    width: 100%;
+    width: 99%;
     height: auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px 5px;
 }
 
 .textoIR {
@@ -123,4 +126,39 @@
     height: 50hv;
     overflow: hidden;
     scroll-behavior: auto;
+}
+
+
+/*******************************************/
+
+.tituloTarjeta-3 {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.TRContenidoTarjeta-3 {
+    padding: 5px;
+}
+
+.TarjetaIR-3 {
+    border-radius: 10px;
+    background-color: white;
+    height: 800px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 10px 5px 5px rgb(0 0 0 / 30%), 0 4px 4px;
+}
+
+.contimg-3 {
+    width: 98%;
+    height: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.imgprev-3 {
+    width: 100%;
+    height: auto;
 }

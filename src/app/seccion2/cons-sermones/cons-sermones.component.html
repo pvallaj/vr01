@@ -1,5 +1,5 @@
 <div class="marco" fxFlex fxLayout="column" fxLayoutAlign="center" fxFill fxLayoutAlign="space-around stretch">
-    <form [formGroup]="frm" class="consulta" fxfill fxLayout="row" fxLayout.lt-sm="column">
+    <form [formGroup]="frm" class="consulta" fxfill fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
         <div class="defconsulta" fxFlex="80" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
             <mat-form-field class="ac" *ngIf="filtroActivo('Autor')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <input type="text" placeholder="Selecciona un autor" aria-label="Number" matInput [formControl]="acAutores" [matAutocomplete]="auto" (change)="cambioAutor()">
@@ -77,11 +77,11 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtroActivo('Obra')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
+            <mat-form-field class="tituloObra" appearance="fill" *ngIf="filtroActivo('Obra')" fxFlex="0 0 calc(100% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
                 <mat-label>Titulo de la Obra</mat-label>
                 <mat-select formControlName="tituloObra">
                     <mat-option>Ninguno</mat-option>
-                    <mat-option *ngFor="let elemento of listaObras" [value]="elemento.id_libro" matTooltip="{{elemento.libro_titulo}}">
+                    <mat-option *ngFor="let elemento of listaObras" [value]="elemento.id_libro">
                         {{elemento.libro_titulo}}
                     </mat-option>
                 </mat-select>
@@ -98,7 +98,7 @@
             </mat-form-field>
 
             <mat-form-field class="tituloSermon" *ngIf="filtroActivo('Grabado')" fxFlex="0 0 calc(25% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%">
-                <input matInput type="text" placeholder="Palabras en el GRABADO del sermón" formControlName="grabado" name="thema" [(ngModel)]="vGrabado">
+                <input matInput type="text" placeholder="Descripción del grabado" formControlName="grabado" name="thema" [(ngModel)]="vGrabado">
                 <button mat-button matSuffix mat-icon-button (click)="vThema=''">
                   <mat-icon>close</mat-icon>
               </button>
@@ -140,20 +140,21 @@
     <div class="resultado" *ngIf="!estaCargando && listaResultado" fxFill>
         <div mat-subheader *ngIf="listaResultado.length>0" class="info">Información encontrada en la base de datos (se muestran {{listaResultado.length}} de {{totalRegistros}} existentes.)</div>
         <div mat-subheader *ngIf="listaResultado.length==0" class="noinfo">NO se encontró información con los parametros proporcionados.</div>
-        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
-            <div class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="space-between" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-lg="0 0 calc(40% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)">
+        <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start">
+            <div class="tarjeta" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="start" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-lg="0 0 calc(40% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)"
+                (click)="cambiar(sermon.id_sermon)">
                 <div class="encabezado">
-                    <div class="titulo">{{sermon.autor_nombre}} {{sermon.autor_apellido}} {{(sermon.autor_orden && sermon.autor_orden.toUpperCase()!='SECULAR')? '('+sermon.autor_orden+')':''}}</div>
+                    <div class="titulo">{{sermon.id_sermon}}.- {{sermon.autor_nombre}} {{sermon.autor_apellido}} {{(sermon.autor_orden && sermon.autor_orden.toUpperCase()!='SECULAR')? '('+sermon.autor_orden+')':''}}</div>
                     <div class="subtitulo">{{sermon.ciudad+', '+sermon.anio}}</div>
                 </div>
                 <div class="contenido">
-                    <div matTooltip="{{sermon.titulo}}">{{recortaSermon(sermon.titulo)}}</div>
+                    <div>{{recortaSermon(sermon.titulo)}}</div>
                 </div>
-                <div>
-                    <button class="btnDetalle" mat-flat-button color="primary" (click)="cambiar(sermon.id_sermon)">
+                <!--div>
+                    <button class="btnDetalle" mat-flat-button color="primary">
                         <mat-icon>article</mat-icon> Ver Detalle
                     </button>
-                </div>
+                </div-->
             </div>
 
         </div>

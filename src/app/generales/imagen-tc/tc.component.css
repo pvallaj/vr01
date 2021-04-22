@@ -1,7 +1,7 @@
 .espera {
     left: 0 !important;
     top: 0 !important;
-    z-index: 10000 !important;
+    z-index: 500 !important;
     width: 100% !important;
     height: 100% !important;
     position: fixed !important;
@@ -11,13 +11,14 @@
     align-items: center;
     justify-content: center;
     font-size: 200px !important;
-    padding-top: 110px;
-    padding-bottom: 30px;
+    padding-top: 70px;
+    padding-bottom: 20px;
 }
 
 .contenedor {
     width: 98%;
-    height: 90%;
+    height: 98%;
+    z-index: 501 !important;
     overflow-y: auto;
     background-color: lightgray;
     border-radius: 20px;

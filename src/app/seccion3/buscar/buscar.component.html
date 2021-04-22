@@ -4,33 +4,32 @@
 
 </app-tc>
 
-<div class="resultado" *ngIf="!estaCargando  && resultadoOE!=null">
-    <div mat-subheader>Información encontrada en la Obra Escrita, Siglo XVI &nbsp;&nbsp;<a routerLink="/oesxvi"> Ir a la sección Siglo XVI</a></div>
-    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+<div class="resultado" *ngIf="!estaCargando  && resultadoOE!=null && resultadoOE.length>0">
+    <div class="tituloSeccion">Información encontrada en la Obra Escrita, Siglo XVI &nbsp;&nbsp;<a routerLink="/oesxvi"> Ir a la sección Siglo XVI</a></div>
+    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start stretch">
         <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of resultadoOE; let i = index" (click)="verDetalle(elemento)" fxFlex="0 0 calc(23% - 10px)"></app-detalle-oe>
     </div>
 
 </div>
 
 
-<div *ngIf="!estaCargando && resultadoSermones!=null">
-    <div mat-subheader>Información encontrada en la base de datos de SERMONES &nbsp;&nbsp;<a routerLink="/sermones">Ir a la sección de SERMONES</a></div>
-    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
-        <div class="tarjeta" *ngFor="let sermon of resultadoSermones; let i = index" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(sermon)">
-            <div class="contenido" [ngClass]="{'seleccionado':(i+1)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="start stretch">
-                <!--p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido | resaltaTexto:'salazar'}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p-->
-                <div fxFlex class="tituloTarjeta" [innerHTML]="sermon.id_sermon+' - '+sermon.autor_nombre+' '+sermon.autor_apellido | resaltaTexto:termino"></div>
-                <div class="texto" [innerHTML]="sermon.sermonRecortado | resaltaTexto:termino"></div>
-                <div class="pieTarjeta" [innerHTML]="sermon.ciudad+', '+sermon.anio | resaltaTexto:termino"></div>
-            </div>
+<div *ngIf="!estaCargando && resultadoSermones!=null && resultadoSermones.length>0">
+    <div class="tituloSeccion">Información encontrada en la base de datos de SERMONES &nbsp;&nbsp;<a routerLink="/sermones">Ir a la sección de SERMONES</a></div>
+    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
+        <div class="tarjeta" *ngFor="let sermon of resultadoSermones; let i = index" fxLayout="column" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(sermon)">
+            <!--p fxFlex class="tituloTarjeta">{{sermon.id_sermon}} - {{sermon.autor_apellido | resaltaTexto:'salazar'}}, {{sermon.autor_nombre}} ({{sermon.autor_orden}})</p-->
+            <div fxFlex class="encabezado" [innerHTML]="sermon.id_sermon+' - '+sermon.autor_nombre+' '+sermon.autor_apellido | resaltaTexto:termino"></div>
+            <div class="contenido" [innerHTML]="sermon.sermonRecortado | resaltaTexto:termino"></div>
+            <div class="pieTarjeta" [innerHTML]="sermon.ciudad+', '+sermon.anio | resaltaTexto:termino"></div>
+
         </div>
     </div>
 </div>
 
 
-<div class="resultado" *ngIf="!estaCargando && resultadoNarrativas!=null">
-    <div mat-subheader>Información encontrada en la base de datos de Narrativas &nbsp;&nbsp;<a routerLink="/relaciones">Ir a la sección de RELACIONES</a></div>
-    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
+<div class="resultado" *ngIf="!estaCargando && resultadoNarrativas!=null && resultadoNarrativas.length>0">
+    <div class="tituloSeccion">Información encontrada en la base de datos de Narrativas &nbsp;&nbsp;<a routerLink="/relaciones">Ir a la sección de RELACIONES</a></div>
+    <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
         <div class="tarjeta" *ngFor="let narrativa of resultadoNarrativas; let i = index" fxLayout="column" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(narrativa)">
             <div class="encabezado" [innerHTML]="(i+1)+' - '+narrativa.autor | resaltaTexto:termino"></div>
             <div fxFlex class="contenido" [ngClass]="{'seleccionado':(narrativa.id_texto)==idxSeleccionado}" fxLayout="column" fxLayoutAlign="space-between">

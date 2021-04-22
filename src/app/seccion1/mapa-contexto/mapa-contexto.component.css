@@ -41,7 +41,8 @@
 }
 
 .mat-column-narratio {
-    width: 250px !important;
+    width: 350px !important;
+    white-space: pre-wrap !important;
 }
 
 .mat-column-argumento,
@@ -54,8 +55,8 @@
 .mat-column-tiempo,
 .mat-column-tiempo_referido {
     word-wrap: break-word !important;
-    white-space: unset !important;
-    width: 250px !important;
+    white-space: pre-wrap !important;
+    width: 350px !important;
     border-left: 1px dotted gray;
     padding: 5px !important;
     overflow-wrap: break-word;

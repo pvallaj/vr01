@@ -22,7 +22,9 @@
 ------------------------------------------------------------------------------------------->
 <mat-card class="tarjeta" *ngIf="elemento?.tipo==1 && tipo==2">
     <mat-card-content fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="space-around" fxLayoutGap="30px">
+
         <img class="imgprev" fxFlex="50" *ngIf="elemento.etiquetas.indexOf('portada')>=0" src="{{elemento.referencia}}">
+
         <div class="sectexto" fxLayout="column">
             <mat-card-header>
                 <mat-card-title class="tituloTarjeta">
@@ -79,7 +81,11 @@ version 2
             <!--div class="tituloTarjetaimg">
                 <p>{{elemento.capitulo}} </p>
             </div-->
-            <img class="imgprev" src="{{elemento.referencia}}">
+
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+                <img class="imgprev" src="{{elemento.referencia}}">
+            </a>
+            <img class="imgprev" *ngIf="elemento.referencia_2==null">
             <!--p class="pieTarjetaimg">{{elemento.descripcion}}</p-->
         </div>
     </mat-card-content>
@@ -131,3 +137,24 @@ version 2
         </div>
     </mat-card-content>
 </mat-card>
+
+
+
+
+
+
+<!--Tarjeta para resumen de Texto Para titulo de capitulo-->
+<div class="TarjetaIR-3" *ngIf="elemento?.tipo==1 && tipo==3" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="tituloTarjeta-3" [innerHTML]="elemento.capitulo | resaltaTexto:termino"></div>
+    <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
+    <div class="TRContenidoTarjeta-3" [innerHTML]="recorta(termino, elemento.texto, 150) | resaltaTexto:termino"></div>
+    <img class="imgprev-3" src="{{elemento.referencia}}">
+</div>
+
+<!--Tarjeta para resumen de IMAGEN -->
+<div class="TarjetaIR-3" *ngIf="elemento?.tipo==2  && tipo==3" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="textoIR">{{elemento.descripcion}}</div>
+    <div class="contimg-3">
+        <img class="imgprev-3" src="{{elemento.referencia}}">
+    </div>
+</div>

@@ -1,9 +1,11 @@
+<app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle()"></app-tc>
+
 <div *ngIf="resultado!=null" class="contenedor" fxLayout="row">
     <div class="fondo" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="20px" fxLayoutAlign="space-around" fxLayoutAlign.lt-lg="start center">
 
         <div class="tomo" fxFlex="30" id="style-3">
             <div [ngClass]="{'titulo':capituloSeleccionado==null, 'tituloNoSeleccionado':capituloSeleccionado!=null}" (click)="verTomo()">Historia de las Literaturas en México. Siglo XVI</div>
-            <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0,'capitulo-seleccionado':reg.etiquetas.indexOf(capituloSeleccionado+',')>=0}" *ngFor="let reg of resultado; let i=index;" (click)="verCapitulo(reg.etiquetas)">{{reg.etiquetas.indexOf('capitulo')>0?i+'.-':''}} {{reg.texto}}</div>
+            <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0,'capitulo-seleccionado':reg.etiquetas.indexOf(capituloSeleccionado+',')>=0}" *ngFor="let reg of resultado; let i=index;" (click)="verCapitulo(reg.etiquetas)">{{reg.texto}}</div>
         </div>
 
         <div fxFlex="70" fxLayout="row" fxLayoutGap="60px" fxLayout.lt-md="column">
@@ -14,8 +16,8 @@
             </div>
 
             <div class="seccionLista" fxFlex *ngIf="capituloSeleccionado!=null">
-                <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="33px" fxLayoutAlign="start">
-                    <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = index" (click)="elementoSeleccionado=elemento" fxFlex="0 0 calc(30% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%"></app-detalle-oe>
+                <div class="lista-resultado" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="-550px" fxLayoutAlign="start">
+                    <app-detalle-oe class="tarjetaresumen" [tipo]="3" [style.z-index]="indiceTarjeta(i)" [style.marginTop.px]="50" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = index" (click)="elementoSeleccionado=elemento" fxFlex.lt-sm="100%" (click)="verDetalle(elemento)"></app-detalle-oe>
                 </div>
             </div>
             <div class="seccionPortada" fxFlex *ngIf="capituloSeleccionado==null">

@@ -92,6 +92,10 @@ mat-card-content {
     font-size: 18px !important;
 }
 
+.tituloSeccion {
+    margin-left: 20px;
+}
+
 .tarjetaresumen {
     margin-top: 20px;
 }
@@ -104,7 +108,7 @@ mat-card-content {
 /********************************************************/
 
 .tarjeta {
-    margin-top: 40px;
+    margin-top: 10px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;

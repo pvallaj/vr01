@@ -19,7 +19,7 @@ export class AppComponent {
     console.log(r.url);
   }
 
-  public buscarTermino(e:any){
+  public buscarTermino(){
     /*****************************************************************************************
       Descripción
         El usuario ha presionado ENTER en la caja de buscar o ha dado  

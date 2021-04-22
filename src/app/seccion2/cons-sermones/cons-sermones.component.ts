@@ -209,7 +209,7 @@ export class ConsSermonesComponent implements OnInit {
       id_autor: -1,
 
       titulo:       this.filtroActivo('Titulo')?this.frm.value.titulo:'',
-      anio:         this.filtroActivo('Año')?this.frm.value.anio:1612,
+      anio:         this.filtroActivo('Año')?this.frm.value.anio:0,
       anio_ini:     this.filtroActivo('Rango de años')?this.frm.value.anio_ini:1612,
       anio_fin:     this.filtroActivo('Rango de años')?this.frm.value.anio_fin:1700,
       impresor:     this.filtroActivo('Impresor')?this.frm.value.impresor:'',

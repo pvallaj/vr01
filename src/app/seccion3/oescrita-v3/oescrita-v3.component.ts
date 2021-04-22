@@ -24,6 +24,9 @@ export class OescritaV3Component implements OnInit {
   public elementoSeleccionado:any;
   public capituloSeleccionado=null;
 
+  public tipoReferencia:string=null;
+  public referencia:string=null;
+
   constructor(private cnx:ConexionService) { }
 
   ngOnInit(): void {
@@ -50,6 +53,11 @@ export class OescritaV3Component implements OnInit {
         this.estaCargando=false;
         this.regsCapitulo=datos['resultado'].capitulo;
         this.elementoSeleccionado=this.regsCapitulo[0];
+        let orden=1;
+        this.regsCapitulo.forEach(element => {
+          element.orden=orden++;
+        });
+        console.log(this.regsCapitulo);
     },(error) => {
       console.log('error al cargar a los autores');
       console.log(error);
@@ -66,4 +74,38 @@ export class OescritaV3Component implements OnInit {
     this.regsCapitulo=null;
   }
 
+  
+  public verDetalle(e:any){
+    if(e.orden>1){
+      let p=this.regsCapitulo.indexOf(e)+1;
+      let pr=this.regsCapitulo.length-p+1;
+      let idx=1;
+      console.log(p, pr);
+
+      for(idx=1;idx<=this.regsCapitulo.length;idx++){
+        if(idx<p){   
+          this.regsCapitulo[idx-1].orden=pr+idx;
+        }else{
+          this.regsCapitulo[idx-1].orden=(idx-p+1);
+        }
+      }
+      console.log(this.regsCapitulo);
+      this.regsCapitulo=this.regsCapitulo.sort((n1,n2)=>n1.orden-n2.orden);
+      console.log(this.regsCapitulo);
+    }else{
+        this.tipoReferencia='buscar';
+        this.referencia="varios";
+        this.elementoSeleccionado=e;
+      }
+  }
+
+  public cerrarDetalle(){
+    this.tipoReferencia=null;
+      this.referencia=null;
+      this.elementoSeleccionado=null;
+  }
+
+  public indiceTarjeta(i:number):number{
+    return 200-i;
+  }
 }

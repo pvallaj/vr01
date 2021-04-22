@@ -434,9 +434,9 @@ export class ConsultaNarrativasComponent implements OnInit {
     )
   }
 
-  public recortaNarrativa(texto: string, termino:string, largo:number):string {
+  public recortaNarrativa(texto: string, termino:string, tm:number):string {
     //texto.normalize('NFD')
-    if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>largo){
+    /*if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>largo){
       let pt=texto.indexOf(termino)
       let inicio=pt-largo/2+(texto.indexOf(' ', pt-largo/2)-(pt-largo/2));
       let fin=texto.indexOf(' ',inicio+largo);
@@ -447,6 +447,26 @@ export class ConsultaNarrativasComponent implements OnInit {
     }else{
       if (texto.length > largo) {
         return texto.substring(0, texto.indexOf(' ', largo)) + '...';
+      }
+
+    }
+    return texto;*/
+    let original=texto;
+    texto=texto.toLowerCase();
+    termino=termino.toLowerCase().replace(/["]+/g,'');
+
+    if(texto.indexOf(termino)>=0 && texto.indexOf(termino)>tm){
+      let pt=texto.indexOf(termino)
+      let inicio=pt-tm/2+(texto.indexOf(' ', pt-tm/2)-(pt-tm/2));
+      let fin=texto.indexOf(' ',inicio+tm);
+      //console.log(pt,inicio,fin);
+      if(fin==-1){
+        return '...'+original.substring(inicio)
+      }
+      return '...'+original.substring(inicio, fin) + '...';
+    }else{
+      if (texto.length > tm) {
+        return texto.substring(0, texto.indexOf(' ', tm)) + '...';
       }
 
     }

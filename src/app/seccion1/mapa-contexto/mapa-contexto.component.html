@@ -38,7 +38,7 @@
 
     </div>
     <div class="marco-tabla">
-        <table mat-table [dataSource]="listaResultado" matSort [style.width.px]="(columnasV.length-4)*250+800">
+        <table mat-table [dataSource]="listaResultado" matSort [style.width.px]="(columnasV.length-4)*350+800">
             <ng-container matColumnDef="id" sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> ID </th>
                 <td mat-cell *matCellDef="let row"> {{row.id_texto}} </td>
