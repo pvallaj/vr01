@@ -13,8 +13,8 @@ export class PresentacioRelacionesComponent implements OnInit {
   constructor() { }
   
   ngOnInit(): void {
-    console.log("a la marca...");
-    document.querySelector('#marca').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    /*console.log("a la marca...");
+    document.querySelector('#marca').scrollIntoView({ behavior: 'smooth', block: 'center' });*/
   }
 
   public secVisible='';

@@ -158,3 +158,20 @@ version 2
         <img class="imgprev-3" src="{{elemento.referencia}}">
     </div>
 </div>
+
+
+<!--Tarjeta para resumen de Texto Para titulo de capitulo-->
+<div class="TarjetaIR-4" *ngIf="elemento?.tipo==1 && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="tituloTarjeta-4" [innerHTML]="elemento.capitulo | resaltaTexto:termino"></div>
+    <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
+    <div class="TRContenidoTarjeta-4" [innerHTML]="recorta(termino, elemento.texto, 150) | resaltaTexto:termino"></div>
+    <img class="imgprev-4" src="{{elemento.referencia}}">
+</div>
+
+<!--Tarjeta para resumen de IMAGEN -->
+<div class="TarjetaIR-4" *ngIf="elemento?.tipo==2  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="textoIR">{{elemento.descripcion}}</div>
+    <div class="contimg-4">
+        <img class="imgprev-4" src="{{elemento.referencia}}">
+    </div>
+</div>

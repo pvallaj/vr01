@@ -98,4 +98,19 @@ export class BusqAvanzadaComponent implements OnInit {
 
   }
 
+  public secVisible='';
+
+  public moAyuda(seccion){
+    //console.log(this.secVisible);
+    //console.log(seccion);
+    if(this.secVisible==seccion){
+      //console.log('limpiando');
+      this.secVisible='';
+    }else{
+      //console.log('asignando');
+      this.secVisible=seccion;
+    }
+    //console.log(this.secVisible);
+  }
+
 }

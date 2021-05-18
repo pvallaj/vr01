@@ -65,8 +65,17 @@
     hyphens: auto;
 }
 
-.tooltip {
-    color: blue;
+.tooltipC {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    padding: 20px !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    -ms-hyphens: auto !important;
+    -moz-hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    hyphens: auto !important;
 }
 
 .mat-header-cell {

@@ -80,6 +80,10 @@ import { OescritaV3Component } from './seccion3/oescrita-v3/oescrita-v3.componen
 import { PresentacioRelacionesComponent } from './seccion1/presentacio-relaciones/presentacio-relaciones.component';
 import { PresentacioSermonesComponent } from './seccion2/presentacio-sermones/presentacio-sermones.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NoticiasSLDComponent } from './seccion3/noticias-sld/noticias-sld.component';
+import { ImagenesSLDComponent } from './seccion3/imagenes-sld/imagenes-sld.component';
+import { OescritaV4Component } from './seccion3/oescrita-v4/oescrita-v4.component';
+import { ImgDetSldComponent } from './seccion3/img-det-sld/img-det-sld.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,6 +131,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     OescritaV3Component,
     PresentacioRelacionesComponent,
     PresentacioSermonesComponent,
+    NoticiasSLDComponent,
+    ImagenesSLDComponent,
+    OescritaV4Component,
+    ImgDetSldComponent,
     
   ],
   imports: [

@@ -1,0 +1,51 @@
+<app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle()"></app-tc>
+
+<div *ngIf="resultado!=null" class="contenedor" fxLayout="row">
+    <div class="fondo" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="20px" fxLayoutAlign="space-around" fxLayoutAlign.lt-lg="start center">
+
+        <div class="tomo" fxFlex="30" id="style-3">
+            <div [ngClass]="{'titulo':capituloSeleccionado==null, 'tituloNoSeleccionado':capituloSeleccionado!=null}" (click)="verTomo()">Historia de las Literaturas en México. Siglo XVI</div>
+            <div [ngClass]="{'seccion':reg.etiquetas.indexOf('seccion')>=0,'capitulo':reg.etiquetas.indexOf('seccion')<0,'capitulo-seleccionado':reg.etiquetas.indexOf(capituloSeleccionado+',')>=0}" *ngFor="let reg of resultado; let i=index;" (click)="verCapitulo(reg)">
+                {{reg.texto}}
+                <mat-icon *ngIf="reg.etiquetas.indexOf('seccion')>=0">expand_less</mat-icon>
+            </div>
+        </div>
+
+        <div fxFlex="70" fxLayout="row" fxLayoutGap="20px" fxLayout="column">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" *ngIf="estaCargando">
+                <h2>Buscando información ...</h2>
+                <mat-progress-bar [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+                </mat-progress-bar>
+            </div>
+            <div class="portadatitulo" *ngIf="capituloSeleccionado!=null" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="ctrlcapitulo" fxFlex="15" (click)="anterior()">
+                    <mat-icon>arrow_back_ios</mat-icon><b>Capitulo Anterior</b>
+                </div>
+                <h2 fxFlex>{{portada.capitulo}}</h2>
+                <div class="ctrlcapitulo" fxFlex="15" (click)="siguiente()">
+                    <b>Capitulo Siguiente</b>
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </div>
+            </div>
+            <div class="seccionLista" fxFlex *ngIf="capituloSeleccionado!=null ">
+                <div class="marcoprotada">
+                    <div class="secportada " fxLayout="row ">
+                        <img class="imgportada " [src]="portada.referencia " alt=" ">
+                        <div class="secportadadesc " fxLayout="column ">
+                            <div class="portadaparrafo " [innerHTML]="portada.texto "></div>
+                        </div>
+                    </div>
+                    <div class="secp-inferior"></div>
+                </div>
+                <div class="lista-resultado " fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="10px " fxLayoutAlign="start ">
+                    <app-detalle-oe class="tarjetaresumen " [tipo]="4 " [elemento]="elemento " *ngFor="let elemento of regsCapitulo; let i=i ndex " (click)="elementoSeleccionado=elemento " fxFlex="0 0 calc(24% - 10px) " (click)="verDetalle(elemento) "></app-detalle-oe>
+                </div>
+            </div>
+            <div class="seccionPortada " fxFlex *ngIf="capituloSeleccionado==null ">
+                <img fxFlex.lt-lg="100 " class="imagen " src="{{el.referencia}} " *ngFor="let el of imagenes ">
+            </div>
+        </div>
+
+    </div>
+
+</div>

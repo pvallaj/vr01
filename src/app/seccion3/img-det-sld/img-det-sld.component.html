@@ -1,0 +1,27 @@
+<!------------------------------------------------------------------------------------------
+Descripción:
+    muestra una ventana con el detalle de una de las imagenes del "slider" o cortina de 
+    imagenes.
+------------------------------------------------------------------------------------------->
+<div class="espera">
+    <div class="contenedor" fxLayout="row" fxLayoutAlign="start center">
+        <div class="contenedor-imagen" fxFlex="85">
+            <img class="imagen" [style.width.%]="imagenwidth" [src]="elemento.referencia" [alt]="elemento.descripcion">
+        </div>
+        <div class="info" fxFlex="15" fxLayout="column">
+            <div class="titulo" fxFlex="20">
+                {{elemento.descripcion}}
+            </div>
+            <div class="ligas" fxFlex>
+                <div class="l1">Liga 1</div>
+                <div class="l1">Liga 2</div>
+            </div>
+            <div fxFlex="20" class="acciones" fxLayout="column" fxLayoutAlign="start streach">
+                <mat-slider class="example-margin" [max]="200" [min]="0" [step]="10" [thumbLabel]="true" [(ngModel)]="imagenwidth">
+                </mat-slider>
+                <button class="accion" mat-raised-button color="primary" (click)="cerrar()"> Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

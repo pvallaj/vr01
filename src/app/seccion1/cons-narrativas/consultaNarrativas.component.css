@@ -1,3 +1,7 @@
+:host {
+    margin-bottom: 150px;
+}
+
 .consulta {
     margin: 10px;
     /*border: solid black 2px;*/
@@ -48,6 +52,7 @@
     height: 700px;
     padding: 5px;
     overflow-y: scroll;
+    margin-bottom: 50px;
 }
 
 .tarjeta {

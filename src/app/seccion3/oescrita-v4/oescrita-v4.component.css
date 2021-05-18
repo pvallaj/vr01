@@ -1,0 +1,194 @@
+.contenedor {
+    width: 100%;
+}
+
+.fondo {
+    width: 100%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tomo {
+    color: black;
+    padding: 20px;
+    /* background-color: rgba(220, 194, 123, 1);*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+.titulo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.tituloNoSeleccionado {
+    font-size: 25px;
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.seccion {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.capitulo {
+    font-size: 18px;
+    padding-left: 20px;
+    color: blue;
+    cursor: pointer;
+}
+
+.capitulo-seleccionado {
+    font-size: 18px;
+    padding-left: 20px;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+
+.imagen {
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/******************************************************************************/
+
+.seccionLista {
+    border-radius: 10px;
+}
+
+.seccionDetalle {
+    padding: 20px;
+    background-color: rgba(220, 194, 123, .7);
+    border-radius: 10px;
+}
+
+.estructura,
+.vprev,
+.superior,
+.inferior {
+    border: solid 1px red;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.contenedor-2 {
+    width: 99%;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
+
+.controles {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.ctrl-regresar {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.buscando {
+    width: 60%;
+    padding: 10px;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.row-item .bi {
+    cursor: pointer;
+}
+
+
+/*tarjeta*/
+
+.tarjetaresumen {
+    width: 600px;
+    margin-top: 1rem;
+}
+
+.tarjetaSeleccionada {
+    border: 5px solid lemonchiffon;
+    border-radius: 5px;
+}
+
+
+/**/
+
+#style-3::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    background-color: #5d1013;
+}
+
+
+/* estilos para la portada*/
+
+.secportada {
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.imgportada {
+    width: 100%;
+    height: fit-content;
+}
+
+.secportadadesc {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40%;
+    background-color: rgba(255, 255, 254, 0.70);
+    color: black;
+}
+
+.marcoprotada {
+    position: relative;
+}
+
+.secp-inferior {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    bottom: 0;
+    background: rgb(247, 247, 247);
+    background: linear-gradient(180deg, rgba(247, 247, 247, 0.1) 33%, rgba(247, 247, 247, 1) 70%);
+}
+
+.portadatitulo {
+    font-weight: bold;
+}
+
+.portadaparrafo {
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+.ctrlcapitulo {
+    color: blue;
+    cursor: pointer;
+}

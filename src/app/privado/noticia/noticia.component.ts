@@ -51,7 +51,7 @@ export class NoticiaComponent implements OnInit {
         imagenFuente: [  ]
       };
       if(this.cnl.elemento.imagen){
-        this.urlIMG='http://localhost:8000/img_noticias/'+this.cnl.elemento.id+'_'+this.cnl.elemento.imagen;
+        this.urlIMG='http://localhost:8000/img_noticias/'+this.cnl.elemento.imagen;
         console.log(this.urlIMG);
       }
     }else{
@@ -103,29 +103,22 @@ export class NoticiaComponent implements OnInit {
       //para actualización del usuario
       prms.id=this.cnl.elemento.id; 
       if(this.archivo){
-        let formData = new FormData();
-        prms.imagen=this.archivo.name;
-        formData.append('file', this.archivo, this.archivo.name);
-        formData.append('id','2');
-        formData.append('tz',new Date().toISOString())
-        formData.append('update','2')
-        formData.append('cn',JSON.stringify({accion:'actualizar Noticia', seccion:'noticias', parametros:prms}))
-        this.cnx.noticias_sa(formData,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+        prms.file=this.urlIMG;
+        prms.nombre_archivo=this.archivo.name;
+        this.cnx.noticias(prms,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
       }else{
         this.cnx.noticias(prms,'actualizar Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
       }
     }else{
       //para creación del registro
-      let formData = new FormData();
       if(this.archivo){
-        prms.imagen=this.archivo.name;
-        formData.append('file', this.archivo, this.archivo.name);
-        formData.append('id','2');
-        formData.append('tz',new Date().toISOString())
-        formData.append('update','2')
+        prms.file=this.urlIMG;
+        prms.nombre_archivo=this.archivo.name;
+        this.cnx.noticias(prms,'crear Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+      }else{
+        this.cnx.noticias(prms,'crear Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
       }
-      formData.append('cn',JSON.stringify({accion:'crear Noticia', seccion:'noticias', parametros:prms}))
-      this.cnx.noticias_sa(formData,'crear Noticia').subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+      
     }
   }
   registroExitoso(r){ 

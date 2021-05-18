@@ -14,7 +14,15 @@ export class MapaVinculosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  public tto = {
+    'placement': 'left', 
+    'max-width':'400', 
+    'theme':'dark',
+    'tooltip-class':'tooltipC'
+  }
+
   public listaResultado:MatTableDataSource<any>=null;
+
 
   //------------------------------
   public columnasV:string[]=['id','autor','obra',  'narratio',

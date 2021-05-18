@@ -1,0 +1,52 @@
+.espera {
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 500 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    visibility: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.contenedor {
+    width: 95%;
+    height: 90%;
+    z-index: 501 !important;
+    overflow-y: auto;
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+.contenedor-imagen {
+    overflow-y: auto;
+    height: 100%;
+    align-content: center;
+}
+
+.acciones {
+    width: 98%;
+}
+
+.accion {
+    width: 200px;
+}
+
+.imagen {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.info {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}

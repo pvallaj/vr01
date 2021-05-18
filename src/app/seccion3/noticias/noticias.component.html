@@ -1,26 +1,22 @@
-<app-espera *ngIf="estaCargando" [tipo]="2"></app-espera>
-<app-tc *ngIf="imgSel" [referencia]="imgSel" (quitar)="cerrarImagen()" [tipo]="'imagen noticia'"></app-tc>
-<div class="marco" fxLayout="column" fxLayoutAlign="start streatch">
-
-    <mat-card class="tNoticia" *ngFor="let elemento of listaNoticias">
-        <mat-card-header>
-            <div mat-card-avatar class="img_avatar"></div>
-            <mat-card-title>{{elemento.titulo}}</mat-card-title>
-            <mat-card-subtitle>vigencia: {{elemento.inicio}} al {{elemento.termino}}</mat-card-subtitle>
-        </mat-card-header>
-        <div class="contenedor-imagen" (click)="seleccionarImagen(elemento.id+'_'+elemento.imagen)">
-            <img class="imagen" src="http://localhost:8000/img_noticias/{{elemento.id}}_{{elemento.imagen}}">
-            <div class="overlay">
-                <div class="text">Click para aumentar</div>
+<div class="espera" fxLayout="column" fxLayoutAlign="start streatch">
+    <div class="tNoticia contenedor" fxLayout="column">
+        <div class="encabezado">
+            <div class="titulo">{{noticia.titulo}}</div>
+            <div>vigencia: {{noticia.inicio}} al {{noticia.termino}}</div>
+            <div class="liga" *ngIf="noticia.ligaExterna">Para mayor información:
+                <a [attr.href]="noticia.ligaExterna | seguro">{{noticia.ligaExterna}}</a>
+            </div>
+            <div class="cerrar" (click)="cerrar()">
+                <mat-icon>clear</mat-icon>
             </div>
         </div>
-        <mat-card-content>
-            <p class="texto">
-                {{elemento.texto}}
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <div class="liga" *ngIf="elemento.ligaExterna">Para mayor información: <a>{{elemento.ligaExterna}}</a></div>
-        </mat-card-actions>
-    </mat-card>
+        <div class="cuerpo" fxLayout="row" fxLayoutGap="20px">
+            <div class="contenedor-imagen" fxFlex="50" fxLayout="column" fxLayoutAlign="start streach">
+                <img class="imagen" src="http://localhost:8000/img_noticias/{{noticia.imagen}}">
+            </div>
+            <div class="texto" fxFlex="50">
+                {{noticia.texto}}
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Globales } from '../generales/globales';
 import { SesionUsuario } from './SesionUsuario.service';
 
 
@@ -12,11 +13,12 @@ export class ConexionService {
   //urlBase:string='http://api.appsparatodos.com.mx';
   //urlBase:string='http://appsparatodos.com.mx/api';
   
-  //urlBase:string='/hlmnovohispana/api/index.php';
-  urlBase:string='/api';
+  
+  urlBase:string="null";
   public componente:"";
 
   constructor(protected http: HttpClient) {
+    this.urlBase=Globales.servidor_api;
     let token=localStorage.getItem('tkn')
     this.headers = new HttpHeaders({ 'content':"application/json",
       'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});

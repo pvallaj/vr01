@@ -109,7 +109,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       console.log(error);
     })
 
-    this.consulta_inicial();
+    //this.consulta_inicial();
   }
 
   public autorSeleccionado(sel){

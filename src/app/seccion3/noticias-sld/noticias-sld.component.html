@@ -1,0 +1,34 @@
+<section id="sec3" fxLayout="column" *ngIf="listaNoticias!=null">
+    <h2>Noticias</h2>
+    <div class="contenedor" fxFlex fxLayout="column" fxLayoutGap="30px">
+        <div class="sup" fxFlex fxLayout="row">
+            <div class="btnIzq" fxFlex="8" fxLayout="column" fxLayoutAlign="center center">
+                <mat-icon class="flecha" aria-hidden="false" aria-label="Example home icon" (click)="anterior()">arrow_back_ios</mat-icon>
+            </div>
+            <div class="centro" fxFlex fxLayoutAlign="space-around">
+                <div class="imagen" fxFlex="45" fxLayout="column" fxLayoutAlign="center center">
+                    <img class="imagenNoticia" src="{{ruta}}/{{noticiaActiva.imagen}}">
+                </div>
+                <div class="noticia" fxFlex="45" fxLayout="column" fxLayoutAlign="center center">
+                    <div fxFlex="20" class="tituloNoticia">
+                        {{noticiaActiva.titulo}}
+                    </div>
+                    <div fxFlex class="noticia">
+                        <p>{{noticiaActiva.texto | recortaTexto:100}}</p>
+                    </div>
+                    <div fxFlex="15" fxLayout="row" fxLayoutAlign="center" class="btnNoticia">
+                        <a class="link_bloque" (click)="elemento=noticiaActiva">Ver más del evento</a>
+                    </div>
+                </div>
+            </div>
+            <div class="btnDer" fxFlex="8" fxLayout="column" fxLayoutAlign="center center">
+                <mat-icon class="flecha" aria-hidden="false" aria-label="Example home icon" (click)="siguiente()">arrow_forward_ios</mat-icon>
+            </div>
+        </div>
+        <div class="controles" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="30px">
+            <div class="btnA" [ngClass]="{'btnA': noticia.id==noticiaActiva.id,'btnI': noticia.id!=noticiaActiva.id}" *ngFor="let noticia of listaNoticias" (click)="seleccionarNoticia(noticia)"></div>
+        </div>
+    </div>
+</section>
+
+<app-noticias [noticia]="elemento" (cerrarNoticia)="elemento=null;" *ngIf="elemento!=null"></app-noticias>

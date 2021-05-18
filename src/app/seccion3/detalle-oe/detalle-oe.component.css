@@ -96,7 +96,7 @@
     height: auto;
     border: 1px solid lightgray;
     border-radius: 5px;
-    box-shadow: 0 10px 10px 5px;
+    /*box-shadow: 0 10px 10px 5px;*/
 }
 
 .textoIR {
@@ -161,4 +161,39 @@
 .imgprev-3 {
     width: 100%;
     height: auto;
+}
+
+
+/*******************************************/
+
+.tituloTarjeta-4 {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.TRContenidoTarjeta-4 {
+    padding: 5px;
+}
+
+.TarjetaIR-4 {
+    border-radius: 10px;
+    background-color: white;
+    height: 300px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 10px 5px 5px rgb(0 0 0 / 30%), 0 4px 4px;
+}
+
+.contimg-4 {
+    width: 98%;
+    height: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.imgprev-4 {
+    width: 100%;
+    height: 100%;
 }
