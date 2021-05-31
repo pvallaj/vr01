@@ -7,15 +7,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ImgDetSldComponent implements OnInit {
 
+  public ligas:string[]=null;
   @Input() elemento:any;
   
   @Output() quitar=new EventEmitter<string>();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+    
   }
 
+  ngOnInit(): void {
+    
+  }
+
+  
   public cerrar(){
     /*****************************************************************************************
       Descripción

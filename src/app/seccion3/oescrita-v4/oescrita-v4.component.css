@@ -1,23 +1,31 @@
 .contenedor {
-    width: 100%;
+    width: 90%;
+    margin: 0 5% 10% 5%;
 }
 
 .fondo {
     width: 100%;
     padding: 10px;
-    background-color: #f7f7f7;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*background-color: #f7f7f7;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
 .tomo {
+    position: relative;
     color: black;
     padding: 20px;
     /* background-color: rgba(220, 194, 123, 1);*/
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
+.isotipo {
+    position: absolute;
+    top: 40rem;
+    left: 5px;
+}
+
 .titulo {
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -28,32 +36,52 @@
     font-weight: bold;
 }
 
+.subrayado {
+    width: 20%;
+    border-bottom: 5px solid #b70306;
+    border-right: 90% transparent;
+}
+
 .seccion {
     font-weight: bold;
     font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 2px solid #b88214;
+    cursor: pointer;
 }
 
 .capitulo {
     font-size: 18px;
-    padding-left: 20px;
-    color: blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #b88214;
     cursor: pointer;
 }
 
-.capitulo-seleccionado {
+.seccion,
+.capitulo {
+    background-color: #f8f2f1;
+}
+
+.st {
+    background-color: #f8f2f1;
     font-size: 18px;
-    padding-left: 20px;
-    font-weight: bold;
-    color: red;
-    cursor: pointer;
+    border: 3px solid #e18f95;
+    height: 50px;
 }
 
-.imagen {
-    width: 600px;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid grey;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.st2 {
+    background-color: #f8f2f1;
+    font-size: 18px;
+    height: 50px;
+}
+
+.seleccionado {
+    background-color: #ba7f01;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
 }
 
 
@@ -141,28 +169,65 @@
 }
 
 
+/*Portad de obra*/
+
+.tituloObra {
+    color: #d70307;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.autorObra {
+    color: #8c8a8b;
+    text-align: right;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.descripcionObra {
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+.imagenObra {
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 /* estilos para la portada*/
 
 .secportada {
-    height: 400px;
-    overflow: hidden;
-    overflow-y: scroll;
     margin-bottom: 1rem;
     position: relative;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
 }
 
 .imgportada {
     width: 100%;
-    height: fit-content;
+    height: auto;
+    overflow: hidden;
+    cursor: pointer;
+    border: 5px solid #b70306;
 }
 
+.ampliar {
+    background-color: #b70306;
+    color: white;
+    text-align: center;
+    padding-top: auto;
+}
+
+
+/*Portada de capitulo*/
+
 .secportadadesc {
-    position: absolute;
     top: 0px;
     right: 0px;
     width: 40%;
-    background-color: rgba(255, 255, 254, 0.70);
     color: black;
 }
 
@@ -179,16 +244,31 @@
     background: linear-gradient(180deg, rgba(247, 247, 247, 0.1) 33%, rgba(247, 247, 247, 1) 70%);
 }
 
-.portadatitulo {
+.tituloCapitulo {
+    color: #d70307;
+    font-size: 1.5rem;
     font-weight: bold;
+}
+
+.autorCapitulo {
+    color: #8c8a8b;
+    text-align: right;
+    font-size: 1.3rem;
+    font-style: italic;
 }
 
 .portadaparrafo {
     margin: 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .ctrlcapitulo {
-    color: blue;
+    color: #dcc27b;
     cursor: pointer;
+}
+
+.portada_linea {
+    height: 30px;
+    border-bottom: 3px solid #dcc27b;
+    margin: 0px 20% 20px 20%;
 }

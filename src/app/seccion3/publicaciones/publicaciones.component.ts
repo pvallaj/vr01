@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
-  selector: 'app-oescrita-v4',
-  templateUrl: './oescrita-v4.component.html',
-  styleUrls: ['./oescrita-v4.component.css']
+  selector: 'app-publicaciones',
+  templateUrl: './publicaciones.component.html',
+  styleUrls: ['./publicaciones.component.css']
 })
-export class OescritaV4Component implements OnInit {
+export class PublicacionesComponent implements OnInit {
 
   public estaCargando=false;
   public resultado:any[]=null;
@@ -215,4 +215,5 @@ export class OescritaV4Component implements OnInit {
     if(reg.texto==this.capituloSel.texto) return 'seleccionado';
     return 'st2';
   }
+
 }

@@ -18,6 +18,7 @@
 
 .cuadro:hover>.datos {
     display: block;
+    border: 5px solid #dcc27b;
 }
 
 .datos {

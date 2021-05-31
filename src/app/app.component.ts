@@ -31,12 +31,13 @@ export class AppComponent {
     ******************************************************************************************/
     this.cc.terminoConsulta=this.txtbuscar;
     
-    console.log(this.txtbuscar);
-    if(this.bexacta){     
-      this.cc.sendMessage('"'+this.txtbuscar+'"');
-    }else{
+    /*console.log(this.txtbuscar);
+    if(this.bexacta){    
+      console.log("enviando busqueda exacta"); */
       this.cc.sendMessage(this.txtbuscar);
-    }
+    /*}else{
+      this.cc.sendMessage(this.txtbuscar);
+    }*/
     this.r.navigate(['/buscar']);
   }
 

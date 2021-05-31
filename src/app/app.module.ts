@@ -84,6 +84,7 @@ import { NoticiasSLDComponent } from './seccion3/noticias-sld/noticias-sld.compo
 import { ImagenesSLDComponent } from './seccion3/imagenes-sld/imagenes-sld.component';
 import { OescritaV4Component } from './seccion3/oescrita-v4/oescrita-v4.component';
 import { ImgDetSldComponent } from './seccion3/img-det-sld/img-det-sld.component';
+import { PublicacionesComponent } from './seccion3/publicaciones/publicaciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,6 +136,7 @@ import { ImgDetSldComponent } from './seccion3/img-det-sld/img-det-sld.component
     ImagenesSLDComponent,
     OescritaV4Component,
     ImgDetSldComponent,
+    PublicacionesComponent,
     
   ],
   imports: [

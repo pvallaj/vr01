@@ -2,6 +2,7 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { CanalService } from '../../servicios/canal.service';
 import { ConexionService } from '../../servicios/Conexion.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscar',
@@ -21,7 +22,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
   public elementoSeleccionado:any;
 
   public termino:string;
-  constructor(private cs:CanalService, private cnx:ConexionService) {
+  constructor(private cs:CanalService, private cnx:ConexionService, private r:Router) {
     this.escucha = this.cs.getMessage().subscribe(m => {
       if (m) {
         this.buscarTermino(m);
@@ -30,12 +31,15 @@ export class BuscarComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
-    console.log(this.cs.terminoConsulta);
+    //console.log(this.cs.terminoConsulta);
     this.buscarTermino({text:this.cs.terminoConsulta});
   }
 
   private buscarTermino(terminos:any){
-    if(!terminos || !terminos?.text) return;
+    if(!terminos || !terminos?.text){
+      this.r.navigate(['/inicio']);
+      return;
+    } 
     this.estaCargando=true;
     this.termino=terminos.text;
     this.cnx.novohisp({terminos:terminos.text}, 'buscar terminos')

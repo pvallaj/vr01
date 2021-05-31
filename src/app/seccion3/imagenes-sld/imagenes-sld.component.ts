@@ -56,6 +56,10 @@ export class ImagenesSLDComponent implements OnInit, OnDestroy {
 
   public seleccionar(e:any){
     this.elementoSel=e;
+    let ligas=(this.elementoSel.etiquetas as string).split(',');
+    ligas=ligas.filter(e=>e.indexOf('capitulo')>=0);
+    this.elementoSel.ligas=ligas;
+    console.log(ligas);
     clearInterval(this.intervalo);
   }
 

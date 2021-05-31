@@ -25,6 +25,7 @@ import { OescritaV3Component } from './seccion3/oescrita-v3/oescrita-v3.componen
 import { PresentacioRelacionesComponent } from './seccion1/presentacio-relaciones/presentacio-relaciones.component';
 import { PresentacioSermonesComponent } from './seccion2/presentacio-sermones/presentacio-sermones.component';
 import { OescritaV4Component } from './seccion3/oescrita-v4/oescrita-v4.component';
+import { PublicacionesComponent } from './seccion3/publicaciones/publicaciones.component';
 
 
 
@@ -36,8 +37,8 @@ const routes: Routes = [
   {path: 'PresentacionRelaciones',  component: PresentacioRelacionesComponent},
   {path: 'PresentacionSermones',    component: PresentacioSermonesComponent},
   {path: 'sermones',                component: ConsSermonesComponent},
-  {path: 'oesxvi',                  component: OescritaV4Component},
-  /*{path: 'oesxvii',                 component: OescritaV3Component},*/
+  {path: 'oesxvi/:siglo/:tomo',     component: OescritaV4Component},
+  {path: 'publicaciones/:siglo/:tomo',  component: PublicacionesComponent},
   {path: 'herramientas',            component: HerramientasComponent},
   {path: 'buscar',                  component: BuscarComponent},
   {path: 'noticias',                component: NoticiasComponent},

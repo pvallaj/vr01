@@ -13,8 +13,7 @@ Descripción:
                 {{elemento.descripcion}}
             </div>
             <div class="ligas" fxFlex>
-                <div class="l1">Liga 1</div>
-                <div class="l1">Liga 2</div>
+                <div class="l1" *ngFor="let l of elemento.ligas">{{l}}</div>
             </div>
             <div fxFlex="20" class="acciones" fxLayout="column" fxLayoutAlign="start streach">
                 <mat-slider class="example-margin" [max]="200" [min]="0" [step]="10" [thumbLabel]="true" [(ngModel)]="imagenwidth">

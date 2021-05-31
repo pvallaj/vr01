@@ -2,57 +2,50 @@
     <div class="wrapper">
         <div id="migas">
             Historia de las literaturas en México
-            <img src="../imgs/migaSep.jpg" alt="separador de miga" /> Siglo XVI
-            <img src="../imgs/migaSep.jpg" alt="separador de miga" /> Tomo 1
+            <img src="./assets/img/migaSep.jpg" alt="separador de miga" /> Siglo {{ siglo }}
+            <img src="./assets/img/migaSep.jpg" alt="separador de miga" /> {{tomo}}
         </div>
         <div id="titulo-botonSigloXVI">
             <h1>
                 Publicaciones: Historia de las literaturas en México. Siglos XVI al XVIII
             </h1>
             <div>
-                <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav">Tomo 1</a
-          ><a href="sigloxvi-tomo2.html" class="link_bloqueInverse">Tomo 2</a>
+                <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav">Tomo 1</a>
+                <a href="sigloxvi-tomo2.html" class="link_bloqueInverse">Tomo 2</a>
             </div>
         </div>
         <div class="flex-justify contenido">
             <!--Menu acordion Izquierdo Contenido Tomo -->
             <div id="menuIzqPublicaciones">
-                <h4 class="h4menuIzq">Siglo XVI - Tomo 1</h4>
+                <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
                 <div id="accordion1" role="tablist">
                     <div class="card">
                         <div class="card-header" role="tab" id="headingOne1">
                             <h5 class="mb-0 active">
                                 <a data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1" class="active">
-                    Introducción</a
-                  >
-                </h5>
-              </div>
-            </div>
-            <!--end card-->
-            <div class="card">
-              <div class="card-header" role="tab" id="headingTwo1">
-                <h5 class="mb-0">
-                  <a
-                    class="collapsed"
-                    data-toggle="collapse"
-                    href="#collapseTwo1"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo1"
-                  >
-                    Materialidades y soportes. El libro y la imprenta
-                  </a>
+                                  Introducción
+                                </a>
                             </h5>
                         </div>
-                        <div id="collapseTwo1" class="collapse show" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordion1">
-                            <div class="card-body">
-                                <a href="#">Imprenta y libro antiguo...</a>
-                            </div>
-                            <div class="card-body">
-                                <a href="#">Mercaderes de libros en la Nueva...</a>
-                            </div>
-                        </div>
                     </div>
+                    <!--end card-->
+                    <!--div class="card"-->
+                    <div class="card-header" id="headingTwo1">
+                        <h5 class="mb-0">
+                            <a class="collapsed" aria-expanded="false">
+                                Materialidades y soportes. El libro y la imprenta
+                              </a>
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+                        <a>Imprenta y libro antiguo...</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#">Mercaderes de libros en la Nueva...</a>
+                    </div>
+
+                    <!--/div-->
                     <!--end card-->
                     <div class="card">
                         <div class="card-header" role="tab" id="headingThree1">
@@ -127,10 +120,7 @@
             </div>
             <!--end card-->
         </div>
-        <!-- end acordion1-->
-        <script src="../js/jquery-3.4.1.min.js"></script>
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap-4.4.1.js"></script>
+
     </div>
     <!-- end menuIzq -->
 
@@ -152,9 +142,9 @@
         </p>
 
         <video autoplay muted id="videotomo">
-            <source src="../misc/animacion-tomo1.mp4" type="video/mp4" />
-            <source src="../misc/animacion-tomo1.webm" type="video/webm" />
-            <source src="../misc/animacion-tomo1.ogv" type="video/ogg" />
+            <source src="./assets/misc/animacion-tomo1.mp4" type="video/mp4" />
+            <source src="./assets/misc/animacion-tomo1.webm" type="video/webm" />
+            <source src="./assets/misc/animacion-tomo1.ogv" type="video/ogg" />
           </video>
 
         <div id="menuInferiorContenido">
