@@ -1,164 +1,79 @@
 <section id="content-int">
-    <div class="wrapper">
-        <div id="migas">
-            Historia de las literaturas en México
-            <img src="./assets/img/migaSep.jpg" alt="separador de miga" /> Siglo {{ siglo }}
-            <img src="./assets/img/migaSep.jpg" alt="separador de miga" /> {{tomo}}
-        </div>
-        <div id="titulo-botonSigloXVI">
-            <h1>
-                Publicaciones: Historia de las literaturas en México. Siglos XVI al XVIII
-            </h1>
-            <div>
-                <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav">Tomo 1</a>
-                <a href="sigloxvi-tomo2.html" class="link_bloqueInverse">Tomo 2</a>
-            </div>
-        </div>
-        <div class="flex-justify contenido">
-            <!--Menu acordion Izquierdo Contenido Tomo -->
-            <div id="menuIzqPublicaciones">
-                <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
-                <div id="accordion1" role="tablist">
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingOne1">
-                            <h5 class="mb-0 active">
-                                <a data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1" class="active">
-                                  Introducción
-                                </a>
-                            </h5>
-                        </div>
-                    </div>
-                    <!--end card-->
-                    <!--div class="card"-->
-                    <div class="card-header" id="headingTwo1">
-                        <h5 class="mb-0">
-                            <a class="collapsed" aria-expanded="false">
-                                Materialidades y soportes. El libro y la imprenta
-                              </a>
-                        </h5>
-                    </div>
-
-                    <div class="card-body">
-                        <a>Imprenta y libro antiguo...</a>
-                    </div>
-                    <div class="card-body">
-                        <a href="#">Mercaderes de libros en la Nueva...</a>
-                    </div>
-
-                    <!--/div-->
-                    <!--end card-->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingThree1">
-                            <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseThree1" role="button" aria-expanded="false" aria-controls="collapseThree1">
-                    A vista de pájaro. Panoramas literarios</a
-                  >
-                </h5>
-              </div>
-              <div
-                id="collapseThree1"
-                class="collapse"
-                role="tabpanel"
-                aria-labelledby="headingThree1"
-                data-parent="#accordion1"
-              >
-                <div class="card-body">
-                  <a href="#">Las letras nahuas...</a>
-                        </div>
-                        <div class="card-body">
-                            <a href="#">La literatura maya...</a>
-                        </div>
-                        <div class="card-body">
-                            <a href="#">La literatura neolatina...</a>
-                        </div>
-                        <div class="card-body">
-                            <a href="#">La poesía en el primer siglo...</a>
-                        </div>
-                        <div class="card-body">
-                            <a href="#">Teatro y dramaturgia...</a>
-                        </div>
-                        <div class="card-body">
-                            <a href="#">La prosa de la Nueva España...</a>
-                        </div>
-                    </div>
-                </div>
-                <!--end card-->
-
-                <div class="card">
-                    <div class="card-header" role="tab" id="headingFour1">
-                        <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseFour1" role="button" aria-expanded="false" aria-controls="collapseFour1">
-                    Confluencias. Las lenguas y las culturas del viejo y el
-                    Nuevo mundo</a
-                  >
-                </h5>
-              </div>
-              <div
-                id="collapseFour1"
-                class="collapse"
-                role="tabpanel"
-                aria-labelledby="headingThree1"
-                data-parent="#accordion1"
-              >
-                <div class="card-body">
-                  <a href="#">La salida de Chicomoztoc...</a>
-                    </div>
-                    <div class="card-body">
-                        <a href="#">Fray Bernardino de Sahagún</a>
-                    </div>
-                    <div class="card-body"><a href="#">El Códice Durán</a></div>
-                    <div class="card-body">
-                        <a href="#">Mujeres cronistas en la Nueva...</a>
-                    </div>
-                    <div class="card-body">
-                        <a href="#">Don Fernando de Alva...</a>
-                    </div>
-                    <div class="card-body">
-                        <a href="#">Teatro misionero...</a>
-                    </div>
-                </div>
-            </div>
-            <!--end card-->
-        </div>
-
+  <div class="wrapper">
+    <div id="migas">
+      Historia de las literaturas en México
+      <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> Siglo {{ siglo }}
+      <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> {{tomo}}
     </div>
-    <!-- end menuIzq -->
+    <div id="titulo-botonSigloXVI">
+      <h1>
+        Publicaciones: Historia de las literaturas en México. Siglos XVI al XVIII
+      </h1>
+      <div>
+        <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav ctrl-tomo">Tomo 1</a>
+        <a href="sigloxvi-tomo2.html" class="link_bloqueInverse ctrl-tomo" >Tomo 2</a>
+      </div>
+    </div>
+    <div class="flex-justify contenido">
+      <!--Menu acordion Izquierdo Contenido Tomo -->
+      <div id="menuIzqPublicaciones">
+        <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
+        <div id="accordion1" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne1">
+              <h5 class="mb-0 active">
+                <a data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1"
+                  class="active">
+                  Introducción
+                </a>
+              </h5>
+            </div>
+          </div>
+          <!--end card-->
+          <!--div class="card"-->
+          <div [ngClass]="{'card-header':!esCapitulo(reg),'card-body':esCapitulo(reg)}"
+            *ngFor="let reg of resultado; let i = index">
+            <h5 class="mb-0" *ngIf="!esCapitulo(reg)" class="seccion"  (click)="moSeccion(reg.etiquetas)" >
+              <a class="collapsed" aria-expanded="false">{{reg.texto}}</a>
+            </h5>
+            <a (click)="verCapitulo(reg)" *ngIf="esCapitulo(reg) && desplegarCapitulo(reg)" class="liga">{{reg.texto}}</a>
+          </div>
+        </div>
+      </div>
+      <!-- end menuIzq -->
 
-    <!-- Fin Menu acordion Izquierdo Contenido Tomo -->
+      <!-- Fin Menu acordion Izquierdo Contenido Tomo -->
 
-    <div id="txtHer">
+      <div id="txtHer">
         <h2 class="h2red">
-            El primer siglo de las letras novohispanas (1519-1623). Tomo 1
+          {{imagenes.capitulo}}
         </h2>
         <p class="autor">
-            Coordinares: Jessica C. Locke, Ana Castaño y Jorge Gutiérrez Reyna
+          {{imagenes.descripcion}}
         </p>
 
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent luctus magna velit, id sagittis arcu molestie sit amet. Praesent vel rhoncus mi, et rhoncus ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-            Donec eget nibh eget metus fringilla ultrices. Integer egestas varius leo ut viverra. Ut est leo, venenatis ac ex pretium, laoreet ultricies libero. Sed venenatis ligula justo, iaculis condimentum ante blandit vel. Ut quis sem vitae turpis
-            vehicula ultrices a vitae nisl. Quisque rhoncus odio in ex volutpat molestie. Nullam sit amet dictum erat, eu venenatis lorem. Proin eleifend, turpis ac faucibus finibus, sapien sapien gravida mi, ut vehicula justo eros non elit. Donec vitae
-            tincidunt ante. Aliquam egestas viverra posuere. Sed pellentesque cursus commodo.
+          {{imagenes.texto}}
         </p>
 
-        <video autoplay muted id="videotomo">
-            <source src="./assets/misc/animacion-tomo1.mp4" type="video/mp4" />
-            <source src="./assets/misc/animacion-tomo1.webm" type="video/webm" />
-            <source src="./assets/misc/animacion-tomo1.ogv" type="video/ogg" />
-          </video>
+        <video video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
+          <source src="{{imagenes.referencia}}.mp4" type="video/mp4" />
+          <source src="{{imagenes.referencia}}.webm" type="video/webm" />
+          <source src="{{imagenes.referencia}}.ogv" type="video/ogg" />
+        </video>
 
         <div id="menuInferiorContenido">
-            <a href="#" class="linkInferiorAnterior offlinkInferior">
-              Anterior
-            </a>
-            <a href="sigloxvi-tomo1-int.html" class="linkInferiorSiguiente">
-              Siguiente
-            </a>
+          <a href="#" class="linkInferiorAnterior offlinkInferior">
+            Anterior
+          </a>
+          <a href="sigloxvi-tomo1-int.html" class="linkInferiorSiguiente">
+            Siguiente
+          </a>
         </div>
-    </div>
-    <!--end txtHer-->
+      </div>
+      <!--end txtHer-->
     </div>
     <!--end contenido-->
-    </div>
-    <!--end wrapper-->
+  </div>
+  <!--end wrapper-->
 </section>
