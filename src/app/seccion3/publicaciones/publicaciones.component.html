@@ -1,79 +1,121 @@
 <section id="content-int">
-  <div class="wrapper">
-    <div id="migas">
-      Historia de las literaturas en México
-      <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> Siglo {{ siglo }}
-      <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> {{tomo}}
-    </div>
-    <div id="titulo-botonSigloXVI">
-      <h1>
-        Publicaciones: Historia de las literaturas en México. Siglos XVI al XVIII
-      </h1>
-      <div>
-        <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav ctrl-tomo">Tomo 1</a>
-        <a href="sigloxvi-tomo2.html" class="link_bloqueInverse ctrl-tomo" >Tomo 2</a>
-      </div>
-    </div>
-    <div class="flex-justify contenido">
-      <!--Menu acordion Izquierdo Contenido Tomo -->
-      <div id="menuIzqPublicaciones">
-        <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
-        <div id="accordion1" role="tablist">
-          <div class="card">
-            <div class="card-header" role="tab" id="headingOne1">
-              <h5 class="mb-0 active">
-                <a data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1"
-                  class="active">
+    <div class="wrapper">
+        <div id="migas">
+            Historia de las literaturas en México
+            <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> Siglo {{ siglo }}
+            <img src="./assets/imgs/migaSep.jpg" alt="separador de miga" /> {{tomo}}
+        </div>
+        <div id="titulo-botonSigloXVI">
+            <h1>
+                Publicaciones: Historia de las literaturas en México. Siglos XVI al XVIII
+            </h1>
+            <div>
+                <a href="sigloxvi-tomo1.html" class="link_bloqueInverse offlinknav ctrl-tomo">Tomo 1</a>
+                <a href="sigloxvi-tomo2.html" class="link_bloqueInverse ctrl-tomo">Tomo 2</a>
+            </div>
+        </div>
+        <div class="flex-justify contenido">
+            <!--Menu acordion Izquierdo Contenido Tomo -->
+            <div id="menuIzqPublicaciones">
+                <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
+                <div id="accordion1" role="tablist">
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <h5 class="mb-0 active">
+                                <a data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1" class="active">
                   Introducción
                 </a>
-              </h5>
+                            </h5>
+                        </div>
+                    </div>
+                    <!--end card-->
+                    <!--div class="card"-->
+                    <div [ngClass]="{'card-header':!esCapitulo(reg),'card-body':esCapitulo(reg)}" *ngFor="let reg of resultado; let i = index">
+                        <h5 class="mb-0" *ngIf="!esCapitulo(reg)" class="seccion" (click)="moSeccion(reg.etiquetas)">
+                            <a class="collapsed" aria-expanded="false">{{reg.texto}}</a>
+                        </h5>
+                        <a (click)="verCapitulo(reg)" *ngIf="esCapitulo(reg) && desplegarCapitulo(reg)" class="liga">{{reg.texto}}</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!--end card-->
-          <!--div class="card"-->
-          <div [ngClass]="{'card-header':!esCapitulo(reg),'card-body':esCapitulo(reg)}"
-            *ngFor="let reg of resultado; let i = index">
-            <h5 class="mb-0" *ngIf="!esCapitulo(reg)" class="seccion"  (click)="moSeccion(reg.etiquetas)" >
-              <a class="collapsed" aria-expanded="false">{{reg.texto}}</a>
-            </h5>
-            <a (click)="verCapitulo(reg)" *ngIf="esCapitulo(reg) && desplegarCapitulo(reg)" class="liga">{{reg.texto}}</a>
-          </div>
+            <!-- end menuIzq -->
+
+            <!-- Fin Menu acordion Izquierdo Contenido Tomo -->
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" *ngIf="estaCargando">
+                <h2>Buscando información ...</h2>
+                <mat-progress-bar [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+                </mat-progress-bar>
+            </div>
+            <div id="txtHer" *ngIf="capituloSel == null && imagenes != null">
+                <h2 class="h2red">
+                    {{imagenes.capitulo}}
+                </h2>
+                <p class="autor">
+                    {{imagenes.descripcion}}
+                </p>
+
+                <p>
+                    {{imagenes.texto}}
+                </p>
+
+                <video video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
+                  <source src="{{imagenes.referencia}}.mp4" type="video/mp4" />
+                  <source src="{{imagenes.referencia}}.webm" type="video/webm" />
+                  <source src="{{imagenes.referencia}}.ogv" type="video/ogg" />
+                </video>
+
+                <div id="menuInferiorContenido">
+                    <a href="#" class="linkInferiorAnterior offlinkInferior">Anterior</a>
+                    <a href="sigloxvi-tomo1-int.html" class="linkInferiorSiguiente">Siguiente</a>
+                </div>
+
+            </div>
+            <!--end txtHer-->
+            <div fxFlex="70" fxLayout="row" fxLayoutGap="20px" fxLayout="column" *ngIf="capituloSel != null && portada != null">
+                <div fxFlex="100" fxLayout="column" fxLayoutAlign="start start" *ngIf="estaCargando">
+                    <h2>Buscando información ...</h2>
+                    <mat-progress-bar [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
+                    </mat-progress-bar>
+                </div>
+                <div class="tituloCapitulo">
+                    {{ portada.capitulo }}
+                </div>
+                <div class="autorCapitulo" *ngIf="capituloSel != null && portada != null">
+                    Autor: {{ portada.descripcion }}
+                </div>
+                <div class="seccionLista" fxFlex *ngIf="capituloSel != null && portada != null">
+                    <div class="marcoprotada">
+                        <div class="secportada" fxLayout="row" fxLayoutAlign="space-between">
+                            <div fxFlex="70" class="secportadadesc" fxLayout="column ">
+                                <div class="portadaparrafo" [innerHTML]="portada.texto"></div>
+                            </div>
+                            <div class="imagenportada" fxFlex="20">
+                                <img class="imgportada" [src]="portada.referencia" alt=" " />
+                                <p class="ampliar">
+                                    Ampliar
+                                    <mat-icon>add_circle_outline</mat-icon>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portadaCtrls" *ngIf="capituloSel != null" fxLayout="row" fxLayoutAlign="space-between">
+                        <div class="ctrlcapitulo" (click)="anterior()">
+                            <mat-icon>arrow_back_ios</mat-icon><b>Anterior</b>
+                        </div>
+                        <div class="ctrlcapitulo" (click)="siguiente()">
+                            <b>Siguiente</b>
+                            <mat-icon>arrow_forward_ios</mat-icon>
+                        </div>
+                    </div>
+                    <div class="portada_linea"></div>
+                    <div class="lista-resultado" fxLayout="row wrap " fxLayout.lt-sm="column " fxLayoutGap="10px " fxLayoutAlign="start ">
+                        <app-detalle-oe class="tarjetaresumen" [tipo]="4" [elemento]="elemento" *ngFor="let elemento of regsCapitulo; let i = i; ndex" (click)="elementoSeleccionado = elemento" fxFlex="0 0 calc(24% - 10px) " (click)="verDetalle(elemento)"></app-detalle-oe>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-      <!-- end menuIzq -->
-
-      <!-- Fin Menu acordion Izquierdo Contenido Tomo -->
-
-      <div id="txtHer">
-        <h2 class="h2red">
-          {{imagenes.capitulo}}
-        </h2>
-        <p class="autor">
-          {{imagenes.descripcion}}
-        </p>
-
-        <p>
-          {{imagenes.texto}}
-        </p>
-
-        <video video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
-          <source src="{{imagenes.referencia}}.mp4" type="video/mp4" />
-          <source src="{{imagenes.referencia}}.webm" type="video/webm" />
-          <source src="{{imagenes.referencia}}.ogv" type="video/ogg" />
-        </video>
-
-        <div id="menuInferiorContenido">
-          <a href="#" class="linkInferiorAnterior offlinkInferior">
-            Anterior
-          </a>
-          <a href="sigloxvi-tomo1-int.html" class="linkInferiorSiguiente">
-            Siguiente
-          </a>
-        </div>
-      </div>
-      <!--end txtHer-->
+        <!--end contenido-->
     </div>
-    <!--end contenido-->
-  </div>
-  <!--end wrapper-->
+    <!--end wrapper-->
 </section>

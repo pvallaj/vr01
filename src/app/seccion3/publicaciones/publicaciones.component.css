@@ -1,15 +1,100 @@
-.liga{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
+.liga {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }
 
-.card-body{
-  padding: 0 !important;
-  min-height: 0;
+.card-body {
+    padding: 0 !important;
+    min-height: 0;
 }
-.ctrl-tomo{
-  width: 100% !important;
-  height: 100% !important;
+
+.ctrl-tomo {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* estilos para la portada*/
+
+.secportada {
+    margin-bottom: 1rem;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.imgportada {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    cursor: pointer;
+    border: 5px solid #b70306;
+}
+
+.ampliar {
+    background-color: #b70306;
+    color: white;
+    text-align: center;
+    padding-top: auto;
+}
+
+
+/*Portada de capitulo*/
+
+.secportadadesc {
+    top: 0px;
+    right: 0px;
+    width: 40%;
+    color: black;
+}
+
+.marcoprotada {
+    position: relative;
+}
+
+.secp-inferior {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    bottom: 0;
+    background: rgb(247, 247, 247);
+    background: linear-gradient(180deg, rgba(247, 247, 247, 0.1) 33%, rgba(247, 247, 247, 1) 70%);
+}
+
+.tituloCapitulo {
+    color: #d70307;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.autorCapitulo {
+    color: #8c8a8b;
+    text-align: right;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.portadaparrafo {
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+.ctrlcapitulo {
+    color: #dcc27b;
+    cursor: pointer;
+}
+
+.portada_linea {
+    height: 30px;
+    border-bottom: 3px solid #dcc27b;
+    margin: 0px 20% 20px 20%;
+}
+
+
+/*tarjeta*/
+
+.tarjetaresumen {
+    width: 600px;
+    margin-top: 1rem;
 }
