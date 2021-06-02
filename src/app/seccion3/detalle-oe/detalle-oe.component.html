@@ -170,8 +170,12 @@ version 2
 
 <!--Tarjeta para resumen de IMAGEN -->
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==2  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
-    <div class="textoIR">{{elemento.descripcion}}</div>
+    <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
         <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgrecurso" src="./assets/imgs/recurso-web.jpg" *ngIf="elemento.tipo==1">
+        <img class="imgrecurso" src="./assets/imgs/recurso-multimedia.jpg" *ngIf="elemento.tipo==2">
+        <img class="imgrecurso" src="./assets/imgs/recurso-grafico.jpg" *ngIf="elemento.tipo==3">
+        <img class="imgrecurso" src="./assets/imgs/recurso-pdf.jpg" *ngIf="elemento.tipo==4">
     </div>
 </div>

@@ -15,6 +15,13 @@
     height: 100% !important;
 }
 
+.seleccionado{
+  text-decoration: underline;
+  background: url("/assets/imgs/bullet-novoBco.png") no-repeat left #aa7d04;
+  background: #aa7d04 !important;
+  background-size: 20px;
+  color: #fff !important;
+}
 
 /* estilos para la portada*/
 

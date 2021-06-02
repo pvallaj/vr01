@@ -1,7 +1,7 @@
 export class Globales{
     //servidor
-    //public static servidor_api='https://www.iifl.unam.mx/hlmnovohispana/api/index.php'; //servidor HLM produccion
-    public static servidor_api='/api'; //servidor local
+    public static servidor_api='https://www.iifl.unam.mx/hlmnovohispana/api/index.php'; //servidor HLM produccion
+    //public static servidor_api='/api'; //servidor local
 
     //Ruta de imagenes de noticias
     //public static rutaImgNoticias='api/img_noticias'; //servidor

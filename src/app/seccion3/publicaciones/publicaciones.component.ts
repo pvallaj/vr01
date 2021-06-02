@@ -236,4 +236,8 @@ export class PublicacionesComponent implements OnInit {
     return 'st2';
   }
 
+  public cambiarTomo(tomo: string) {
+    this.tomo = tomo;
+  }
+
 }
