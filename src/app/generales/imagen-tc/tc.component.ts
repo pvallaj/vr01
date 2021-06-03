@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Globales } from '../globales';
 /*****************************************************************************************
   Descripción
     muestra una ventana con:
@@ -42,7 +43,12 @@ export class TCComponent implements OnInit {
   @Input() elemento:any;
   
   @Output() quitar=new EventEmitter<string>();
-  constructor() { }
+  
+  public rutaImgsNoticias:Globales=null;
+
+  constructor() { 
+    this.rutaImgsNoticias=Globales.rutaImgNoticias;
+  }
 
   ngOnInit(): void {
   }

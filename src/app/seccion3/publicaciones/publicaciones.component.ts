@@ -38,22 +38,31 @@ export class PublicacionesComponent implements OnInit {
 
   public siglo = '';
   public tomo = '';
+  public primerCapitulo:any=null;
+  public ultimoCapitulo:any=null;
 
   constructor(private cnx: ConexionService, private ar: ActivatedRoute) {
-    // console.log(this.ar.snapshot.params);
+     console.log(this.ar.snapshot.params);
     this.siglo = this.ar.snapshot.params.siglo;
     this.tomo = this.ar.snapshot.params.tomo;
   }
 
   public ngOnInit(): void {
-    this.estaCargando = true;
+    this.cargaDatosTomo();
+  }
 
+  private cargaDatosTomo(){
+    this.estaCargando = true;
     this.cnx.novohisp({tomo: this.siglo + '-' + this.tomo}, 'consulta estructura x tomo').subscribe(
       (datos) => {
         this.estaCargando = false;
         this.resultado = datos['resultado'].estructura;
         this.imagenes = datos['resultado'].imagenes[0];
         let seccionA = '';
+        this.primerCapitulo=this.resultado[1];
+        this.ultimoCapitulo=this.resultado[this.resultado.length-1];
+        console.log(this.primerCapitulo);
+        console.log(this.ultimoCapitulo);
         for (let index = 0; index < this.resultado.length; index++) {
           const element = this.resultado[index];
           if (element.etiquetas.indexOf('seccion-') >= 0) {
@@ -70,11 +79,18 @@ export class PublicacionesComponent implements OnInit {
   }
 
   public verCapitulo(elemento: any) {
-    if (elemento.etiquetas.indexOf('seccion') >= 0 && elemento.etiquetas.indexOf('capitulo') < 0) { return; }
+    console.log(elemento);
+    if (elemento.etiquetas.indexOf('seccion') >= 0 && elemento.etiquetas.indexOf('capitulo') < 0) { 
+      
+      return; 
+    }
     this.regsCapitulo = null;
     this.capituloSel = elemento;
     const etiquetas = elemento.etiquetas;
     let listae = etiquetas.split(',');
+    if(this.seccionesVisibles.indexOf(listae[listae.length-1])<0){
+      this.seccionesVisibles.push(listae[listae.length-1]);
+    }
     listae = listae.filter((e) => e.trim() != 'estructura');
     listae = listae.filter((e) => e.indexOf('seccion') < 0);
     const capituloSeleccionado = listae.join(',');
@@ -104,6 +120,14 @@ export class PublicacionesComponent implements OnInit {
   }
 
   public verDetalle(e: any) {
+     /*****************************************************************************************
+      Descripción
+        Abre la ventana que mostrará el detalle de la tarjeta seleccionada.
+      Parametros
+        cp. Capitulo
+      Resultado
+        true/false
+    ******************************************************************************************/
     if (e.orden > 1) {
       const p = this.regsCapitulo.indexOf(e) + 1;
       const pr = this.regsCapitulo.length - p + 1;
@@ -146,17 +170,24 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
+    if(this.capituloSel==null){
+      this.capituloSel=this.primerCapitulo;
+      this.verCapitulo(this.resultado[1]);
+      return;
+    }
+    
     const idxA = this.resultado.indexOf(this.capituloSel);
-    if (idxA < this.resultado.length - 1) {
-      const sig = this.resultado[idxA + 1];
-      if (sig.etiquetas.indexOf('seccion') >= 0) {
-        this.verCapitulo(this.resultado[idxA + 2]);
-      } else {
-        this.verCapitulo(this.resultado[idxA + 1]);
-      }
-    } else {
+    
+    const sig = this.resultado[idxA + 1];
+    if(sig==null){
       this.verTomo();
     }
+    if (sig.etiquetas.indexOf('seccion') >= 0 && sig.etiquetas.indexOf('capitulo') < 0) {
+      this.verCapitulo(this.resultado[idxA + 2]);
+    } else {
+      this.verCapitulo(this.resultado[idxA + 1]);
+    }
+    
   }
   public anterior() {
     /*****************************************************************************************
@@ -167,17 +198,19 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-        const idxA = this.resultado.indexOf(this.capituloSel);
-        if (idxA > 1) {
-          const ant = this.resultado[idxA - 1];
-          if (ant.etiquetas.indexOf('seccion') >= 0) {
-            this.verCapitulo(this.resultado[idxA - 2]);
-          } else {
-            this.verCapitulo(this.resultado[idxA - 1]);
-          }
-        } else {
-          this.verTomo();
-        }
+      if(this.capituloSel===this.primerCapitulo){
+        this.capituloSel=null;
+        return;
+      }
+
+      const idxA = this.resultado.indexOf(this.capituloSel);
+
+      const ant = this.resultado[idxA - 1];
+      if (ant.etiquetas.indexOf('seccion') >= 0  && ant.etiquetas.indexOf('capitulo') < 0) {
+        this.verCapitulo(this.resultado[idxA - 2]);
+      } else {
+        this.verCapitulo(this.resultado[idxA - 1]);
+      }
   }
   public esCapitulo(reg:any): boolean {
     /*****************************************************************************************
@@ -212,11 +245,29 @@ export class PublicacionesComponent implements OnInit {
       return false;
   }
   public estaExpandido(sec: string): boolean {
+    /*****************************************************************************************
+      Descripción
+        Dice si la sección esta expandida o no.
+      Parametros
+        sec. sección a evaluar
+      Resultado
+        true/false
+    ******************************************************************************************/
     const seccion = sec.split(',')[1];
     if (this.seccionesVisibles.indexOf(seccion) >= 0) {  return true; }
     return false;
   }
   public moSeccion(sec: string) {
+    /*****************************************************************************************
+      Descripción
+        Si la sección No esta expandida, la agrega a la lista de secciones que deben estar expandidas. de lo contrario la quita de la lista.
+        sirve como un switch para expandir o contrar las secciones.
+        Solo las secciones que estan en la lista, se muestran expandidas.
+      Parametros
+        sec. sección a expandir o contraer.
+      Resultado
+        true/false
+    ******************************************************************************************/
     // console.log('mostrar: '+sec);
     if (sec.indexOf('seccion') < 0) { return; }
     const capitulo = sec.split(',')[1];
@@ -229,15 +280,24 @@ export class PublicacionesComponent implements OnInit {
     }
 
   }
-  public obtEstiloEstructura(reg: any): string {
-    if (reg == null) { return 'st2'; }
-    if (this.capituloSel == null) { return 'st2'; }
-    if (reg.texto == this.capituloSel.texto) { return 'seleccionado'; }
-    return 'st2';
-  }
+
 
   public cambiarTomo(tomo: string) {
+    /*****************************************************************************************
+      Descripción
+        Cambia el tomo activo y carga los datos correspondientes.
+      Parametros
+        tomo. El nuevo tomo activo.
+      Resultado
+        true/false
+    ******************************************************************************************/
     this.tomo = tomo;
+    this.resultado=null;
+    this.regsCapitulo=null;
+    this.seccionesVisibles= [];
+    this.cargaDatosTomo();
   }
+
+
 
 }

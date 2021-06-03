@@ -82,10 +82,12 @@ version 2
                 <p>{{elemento.capitulo}} </p>
             </div-->
 
-            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+            <a [href]="elemento.referencia | seguro" target="_black" *ngIf="elemento.referencia != null">
                 <img class="imgprev" src="{{elemento.referencia}}">
             </a>
-            <img class="imgprev" *ngIf="elemento.referencia_2==null">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+                <img class="imgprev" src="{{elemento.referencia_2}}">
+            </a>
             <!--p class="pieTarjetaimg">{{elemento.descripcion}}</p-->
         </div>
     </mat-card-content>
@@ -165,7 +167,9 @@ version 2
     <div class="tituloTarjeta-4" [innerHTML]="elemento.capitulo | resaltaTexto:termino"></div>
     <div [innerHTML]="elemento.descripcion | resaltaTexto:termino"></div>
     <div class="TRContenidoTarjeta-4" [innerHTML]="recorta(termino, elemento.texto, 150) | resaltaTexto:termino"></div>
-    <img class="imgprev-4" src="{{elemento.referencia}}">
+    <div class="contimg-4">
+        <img class="imgprev-4" src="{{elemento.referencia}}">
+    </div>
 </div>
 
 <!--Tarjeta para resumen de IMAGEN -->
