@@ -1,11 +1,11 @@
 <section id="content-int">
     <div class="wrapper">
         <div class="ubicacion">
-            <div id="migas"> Herramientas de investigación <img src="assets/img/migaSep.jpg" alt="separador de miga"> Sermones impresos </div>
+            <div id="migas"> Herramientas de investigación <img src="assets/imgs/migaSep.jpg" alt="separador de miga"> Sermones impresos </div>
         </div>
         <div class="detalle" fxLayout="row" fxLayoutGap="30px">
             <div class="flex-justify contenido" fxFlex="25" fxLayout="column" fxLayoutAlign="start streach" fxLayoutGap="30px">
-                <div><img src="assets/img/sermones.jpg" alt="sermones" class="imgBorde"></div>
+                <div><img src="assets/imgs/sermones.jpg" alt="sermones" class="imgBorde"></div>
             </div>
             <div class="descripcion" fxFlex="70">
                 <h1>Sermones impresos durante el siglo XVII en la Nueva España</h1>
@@ -31,54 +31,54 @@
 
                 <ul class="bulletRojo">
                     <li>
-                        Por <b>autor</b>.<img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('autor')">
+                        Por <b>autor</b>.<img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('autor')">
                         <div class="descripcion-filtro" *ngIf="secVisible=='autor'" (click)="moAyuda('autor')">
                             Introduciendo el nombre del autor de un sermón se mostrarán las opciones coincidentes entre los autores de sermones.
                         </div>
                     </li>
                     <li>
-                        Por <b>titulo</b>. <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro titulo" (click)="moAyuda('titulo')">
+                        Por <b>titulo</b>. <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro titulo" (click)="moAyuda('titulo')">
                         <div class="descripcion-filtro" *ngIf="secVisible=='titulo'">
                             Escribiendo el título del sermón o bien una o varias palabras presentes en dicho título, se mostrarán los sermones que la(s) contiene(n).
                         </div>
                     </li>
                     <li>
-                        Por <strong>año de publicación </strong> <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro año de publicación" (click)="moAyuda('año')">
+                        Por <strong>año de publicación </strong> <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro año de publicación" (click)="moAyuda('año')">
                     </li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='año'">
                         Introduciendo un año específico, o bien un rango de años, se mostrarán los sermones impresos en ese lapso.
                     </div>
-                    <li>Por <strong>ciudad de impresión </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ciudad de imprecion" (click)="moAyuda('ciudad')"></li>
+                    <li>Por <strong>ciudad de impresión </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ciudad de imprecion" (click)="moAyuda('ciudad')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='ciudad'">
                         Esta opción permite visualizar los lugares de publicación del total de los sermones del corpus. Las opciones son: a) la Ciudad de México; b) la ciudad de Puebla de los Ángeles; y c) no consta la ciudad en el pie de imprenta.
                     </div>
-                    <li>Por <strong>impresor </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro impresor" (click)="moAyuda('impresor')"></li>
+                    <li>Por <strong>impresor </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro impresor" (click)="moAyuda('impresor')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='impresor'">
                         Seleccionando, entre un listado, el nombre de un impresor se mostrarán los sermones que sacó a la luz ese impresor.
                     </div>
-                    <li>Por <strong>pasaje bíblico (thema)</strong> o por su <strong>referencia bíblica </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro paseje bíblico" (click)="moAyuda('pasaje')"></li>
+                    <li>Por <strong>pasaje bíblico (thema)</strong> o por su <strong>referencia bíblica </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro paseje bíblico" (click)="moAyuda('pasaje')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='pasaje'">
                         Esta búsqueda tiene dos opciones: a) introduciendo el pasaje bíblico que encabeza un sermón (tema) o una o varias palabras presentes en dicho pasaje; o b) por la referencia del libro y el versículo bíblicos que corresponden al pasaje. Se mostrarán los
                         sermones construidos a partir de dicho tema. (Sólo se registran pasajes bíblicos en latín, con base en la Vulgata).
                     </div>
-                    <li>Por <strong>autor de los preliminares </strong>.<img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ubicación autor de preliminares" (click)="moAyuda('preliminares')"></li>
+                    <li>Por <strong>autor de los preliminares </strong>.<img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ubicación autor de preliminares" (click)="moAyuda('preliminares')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='preliminares'">
                         Introduciendo el nombre de un autor se mostrará el o los sermones que contengan textos preliminares (licencias, aprobaciones, censuras, pareceres, dedicatorias, prólogos, piezas poéticas, entre otros) escritos por dicho autor.
                     </div>
-                    <li>Por <strong>dedicatario </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro dedicatario" (click)="moAyuda('dedicatario')"></li>
+                    <li>Por <strong>dedicatario </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro dedicatario" (click)="moAyuda('dedicatario')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='dedicatario'">
                         Esta opción permite elegir, entre los nombres de una lista, a aquellos personajes a quienes uno o más sermones fueron dedicados.
                     </div>
-                    <li>Por <strong>título de la obra que contiene el sermón </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro titulo de la obra" (click)="moAyuda('obra')"></li>
+                    <li>Por <strong>título de la obra que contiene el sermón </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro titulo de la obra" (click)="moAyuda('obra')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='obra'">
                         Esta búsqueda permite elegir, entre un listado de títulos, la obra en que se encuentran incluidos uno o más sermones (se refiere a los casos en que uno o más sermones se encuentran contenidos dentro de otra obra, sea ésta un sermonario, una relación de
                         festejos u otro tipo de obra).
                     </div>
-                    <li>Por <strong>orden religiosa </strong> o <strong>cargo religioso </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro orden religiosa" (click)="moAyuda('orden')"></li>
+                    <li>Por <strong>orden religiosa </strong> o <strong>cargo religioso </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro orden religiosa" (click)="moAyuda('orden')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='orden'">
                         Seleccionando entre un listado, esta búsqueda permite encontrar todos los sermones que fueron predicados por los integrantes de una determinada orden religiosa, así como por los que tuvieron el cargo de obispo o arzobispo.
                     </div>
-                    <li>Por <strong>grabados </strong><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro signos grabados" (click)="moAyuda('grabados')"></li>
+                    <li>Por <strong>grabados </strong><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro signos grabados" (click)="moAyuda('grabados')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='grabados'">
                         Se puede hacer la búsqueda de los sermones que contengan un grabado específico eligiendo de un listado que se desplegará en esta opción
                     </div>

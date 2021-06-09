@@ -7,7 +7,7 @@
             <mat-checkbox [(ngModel)]="filtros.autor" [labelPosition]="'after'">
                 Consulte por <b>AUTOR</b>.
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('autor')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('autor')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='autor'" (click)="moAyuda('autor')">
             Introduciendo el nombre del autor de un sermón se mostrarán las opciones coincidentes entre los autores de sermones.
@@ -16,7 +16,7 @@
             <mat-checkbox [(ngModel)]="filtros.titulo" [labelPosition]="'after'">
                 Consulte por <b>TITULO</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('titulo')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('titulo')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='titulo'" (click)="moAyuda('titulo')">
             escribiendo el título del sermón o bien una o varias palabras presentes en dicho título, se mostrarán los sermones que la(s) contiene(n).
@@ -26,14 +26,14 @@
             <mat-radio-group [(ngModel)]="tipoAnios" fxLayout="column">
                 <div fxLayout="row">
                     <mat-radio-button value="anio" [disabled]="!fanios">Por <b>AÑO DE PUBLICACIÓN</b></mat-radio-button>
-                    <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('año')">
+                    <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('año')">
                 </div>
                 <div class="descripcion-filtro" *ngIf="secVisible=='año'" (click)="moAyuda('año')">
                     introduciendo un año específico se mostrarán los sermones impresos en ese año.
                 </div>
                 <div fxLayout="row">
                     <mat-radio-button value="anios" [disabled]="!fanios">Por un <b>RANGO DE AÑOS</b></mat-radio-button>
-                    <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('rango años')">
+                    <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('rango años')">
                 </div>
                 <div class="descripcion-filtro" *ngIf="secVisible=='rango años'" (click)="moAyuda('rango años')">
                     introduciendo un rango de años se mostrarán los sermones impresos en ese lapso.
@@ -45,7 +45,7 @@
             <mat-checkbox [(ngModel)]="filtros.ciudad" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                 Por <b>CIUDAD DE PUBLICACIÓN</b> en el pie de imprenta.
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('ciudad')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('ciudad')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='ciudad'" (click)="moAyuda('ciudad')">
             esta opción permite visualizar los lugares de publicación del total de los sermones del corpus. Las opciones son: a) la Ciudad de México; b) la ciudad de Puebla de los Ángeles; y c) no consta la ciudad
@@ -54,7 +54,7 @@
             <mat-checkbox [(ngModel)]="filtros.impresor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                 Por <b>IMPRESOR</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('impresor')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('impresor')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='impresor'" (click)="moAyuda('impresor')">
             seleccionando, entre un listado, el nombre de un impresor se mostrarán los sermones que sacó a la luz ese impresor.
@@ -64,7 +64,7 @@
             <mat-checkbox [(ngModel)]="filtros.thema" [labelPosition]="'after'">
                 Por pasaje <b>BÍBLICO (THEMA)</b> o por su <b>REFERENCIA BÍBLICA</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('thema')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('thema')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='thema'" (click)="moAyuda('thema')">
             esta búsqueda tiene dos opciones: a) introduciendo el pasaje bíblico que encabeza un sermón (tema) o una o varias palabras presentes en dicho pasaje; o b) por la referencia del libro y el versículo bíblicos que corresponden al pasaje. Se mostrarán los
@@ -74,7 +74,7 @@
             <mat-checkbox [(ngModel)]="filtros.preliminares" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                 Por <b>AUTOR DE LOS PRELIMINARES</b> escritos por dicho autor.
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('preliminares')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('preliminares')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='preliminares'" (click)="moAyuda('preliminares')">
             introduciendo el nombre de un autor se mostrará el o los sermones que contengan textos preliminares (licencias, aprobaciones, censuras, pareceres, dedicatorias, prólogos, piezas poéticas, entre otros)
@@ -83,7 +83,7 @@
             <mat-checkbox [(ngModel)]="filtros.dedicatarios" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                 Por <b>DEDICATARIOS</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('dedicatarios')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('dedicatarios')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='dedicatarios'" (click)="moAyuda('dedicatarios')">
             esta opción permite elegir, entre los nombres de una lista, a aquellos personajes a quienes uno o más sermones fueron dedicados.
@@ -92,7 +92,7 @@
             <mat-checkbox [(ngModel)]="filtros.obra" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                 Por título de la <b>OBRA QUE CONTIENE EL SERMÓN</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('titulo obra')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('titulo obra')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='titulo obra'" (click)="moAyuda('titulo obra')">
             esta búsqueda permite elegir, entre un listado de títulos, la obra en que se encuentran incluidos uno o más sermones (se refiere a los casos en que uno o más sermones se encuentran contenidos dentro de otra obra, sea ésta un sermonario, una relación de
@@ -102,7 +102,7 @@
             <mat-checkbox [(ngModel)]="filtros.orden" [labelPosition]="'after'">
                 Por <b>ORDEN RELIGIOSA </b>o<b>CARGO RELIGIOSO</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('orden')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('orden')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='orden'" (click)="moAyuda('orden')">
             seleccionando entre un listado, esta búsqueda permite encontrar todos los sermones que fueron predicados por los integrantes de una determinada orden religiosa, así como por los que tuvieron el cargo de obispo o arzobispo.
@@ -111,7 +111,7 @@
             <mat-checkbox [(ngModel)]="filtros.grabado" [labelPosition]="'after'">
                 Por <b>DESCRIPCIÓN EN EL GRABADO</b>
             </mat-checkbox>
-            <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('grabado')">
+            <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro autor" (click)="moAyuda('grabado')">
         </div>
         <div class="descripcion-filtro" *ngIf="secVisible=='grabado'" (click)="moAyuda('grabado')">
             escribiendo una o mas palabras, se mostrarán los sermones que en su grabado contengan las palabras especificadas.

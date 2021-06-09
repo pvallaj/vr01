@@ -8,7 +8,7 @@
                 <mat-checkbox [(ngModel)]="filtros.autor" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>AUTORES</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('autor')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('autor')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='autor'">
                 Consulte las <i>relaciones</i> de uno o más de los <b>AUTORES</b> disponibles, de la Epoca Novohispana.
@@ -17,7 +17,7 @@
                 <mat-checkbox [(ngModel)]="filtros.obra" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>OBRAS</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('obra')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('obra')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='obra'">
                 Consulte las <i>relaciones</i> de uno o más de las <b>OBRAS</b> disponibles, de la Epoca Novohispana.
@@ -30,7 +30,7 @@
                 <mat-checkbox [(ngModel)]="filtros.tema" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>TEMA</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('tema')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('tema')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='tema'">
                 agrupa las relaciones por los temas más comunes en el teatro áureo.
@@ -39,7 +39,7 @@
                 <mat-checkbox [(ngModel)]="filtros.texto" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>PALABRA</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('palabra')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('palabra')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='palabra'">
                 permite hacer búsquedas ingresando cualquier palabra que esté presente en la relación.
@@ -48,7 +48,7 @@
                 <mat-checkbox [(ngModel)]="filtros.motivo" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>MOTIVO</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('motivo')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('motivo')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='motivo'">
                 agrupa las relaciones por motivos literarios (nos basamos en los que estableció Stith Thompson en su Motif-index of folk-literature).
@@ -57,7 +57,7 @@
                 <mat-checkbox [(ngModel)]="filtros.tipoVerso" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por <b>TIPO DE VERSIFICACAIÓN</b>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('versificacion')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('versificacion')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='versificacion'">
                 las agrupa de acuerdo con su forma métrica.
@@ -66,7 +66,7 @@
                 <mat-checkbox [(ngModel)]="filtros.clasificacion" [labelPosition]="'after'" [disabled]="tipo!='individuales'">
                     Consulte por la <b>UBICACIÓN TEMPORAL</b> de la <i>relación</i>.
                 </mat-checkbox>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('temporal')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('temporal')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='temporal'">
                 con respecto a la acción dramática; agrupa las relaciones en seis categorías con base en un criterio temporal (por ejemplo, registra si una relación narra sucesos anteriores, o simultáneos, o posteriores a la virtual representación).
@@ -88,7 +88,7 @@
             <div fxLayout="row">
                 <mat-radio-button value="vinculos">Por <b>Vinculos</b>
                 </mat-radio-button>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('vinculos')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('vinculos')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='vinculos'">
                 Ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.
@@ -98,7 +98,7 @@
             <div fxLayout="row">
                 <mat-radio-button value="contexto">Por <b>Contexto</b>
                 </mat-radio-button>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('contexto')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('contexto')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='contexto'">
                 Permite observar el contexto en el que la relación se inserta.
@@ -108,7 +108,7 @@
             <div fxLayout="row">
                 <mat-radio-button value="signos">Por <b>Signos Actorales</b>
                 </mat-radio-button>
-                <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('signos')">
+                <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('signos')">
             </div>
             <div class="descripcion-filtro" *ngIf="secVisible=='signos'">
                 Permite acceder a las relaciones a través de los gestos y signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la misma relación.

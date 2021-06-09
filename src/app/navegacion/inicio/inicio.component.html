@@ -1,10 +1,18 @@
 <section id="sec6">
+    <div class="leermas">
+        <p>
+            Muy diversas variedades del maguey, con “su corazón alado a pencas” (según un verso del poeta barroco Francisco de Castro), ilustran nuestro campo y pueblan nuestros antiguos códices. A lo largo y ancho de nuestras letras vemos erguirse a los magueyes
+            como “misteriosas coronas de reyes” (diría Amado Nervo), o crisparse, en palabras de Octavio Paz, como “la mano de los hombres contra el cielo”. Nos parece que la variedad, la generosidad y el carácter de esta planta mexicana bien pueden simbolizar
+            los de nuestra literatura del período novohispano, raíz de toda su savia y floraciones posteriores.
+        </p>
+    </div>
     <div class="wrapper flex-space">
         <div id="acercaDe">
             <h1>HLM Novohispana.<br> Historia de las literaturas en México (siglos XVI-XVIII)</h1>
-            <p>Es una obra colectiva en tres volúmenes (ya publicados o en prensa) que busca ofrecer una visión renovada de las letras de nuestro virreinato. HLM Novohispana, el sitio web de esta obra, busca llevar la historia literaria más allá de la frontera
-                demarcada por la página de papel. Creemos que la literatura virreinal no puede comprenderse a cabalidad sin considerar su estrecha relación con otras disciplinas o manifestaciones artísticas del período; por esa razón, HLM Novohispana
-                ofrece, en primer lugar, contenido multimedia que complementa cada uno de los capítulos que conforman los volúmenes en papel: digitalizaciones de impresos y manuscritos antiguos, fotografías, vídeos, etcétera. </p>
+            <p>Nuestro imagotipo representa el metl o maguey, con raíz y flor, y se inspira en un dibujo recogido por el médico y humanista español Francisco Hernández en una de sus obras más importantes: la Historia Natural de la Nueva España, escrita en
+                el México del siglo xvi, con la colaboración de médicos herbolarios y pintores indígenas. En ella dice Hernández: “Innumerables son los usos de esta planta […] sola podría fácilmente proporcionar todo lo necesario para una vida frugal
+                y sencilla, pues no la dañan los temporales ni los rigores del clima, ni la marchita la sequía.”
+            </p>
             <a href="#" class="link_bloque">Leer más</a>
         </div>
         <div id="btnIsotipo">
@@ -18,19 +26,19 @@
         <h2>Publicaciones HLM</h2>
         <div class="flex-space" id="publicacionesHLM">
             <div>
-                <a routerLink="/oesxvi">
+                <a [routerLink]="['/publicaciones','XVI','Tomo1']">
                     <img src="assets/imgs/publicaciones-sigloxvi.jpg" alt="Publicaciones Siglo XVI" title="Publicaciones Siglo XVI">
                     <h3> Siglo XVI</h3>
                 </a>
             </div>
             <div>
-                <a routerLink="/oesxvii">
+                <a [routerLink]="['/publicaciones','XVII','Tomo1']">
                     <img src="assets/imgs/publicaciones-sigloxvii.jpg" alt="Publicaciones Siglo XVII" title="Publicaciones Siglo XVII">
                     <h3> Siglo XVII</h3>
                 </a>
             </div>
             <div>
-                <a routerLink="/oesxviii">
+                <a [routerLink]="['/publicaciones','XVIII','Tomo1']">
                     <img src="assets/imgs/publicaciones-sigloxviii.jpg" alt="Publicaciones Siglo XVIII" title="Publicaciones Siglo XVIII">
                     <h3> Siglo XVIII</h3>
                 </a>

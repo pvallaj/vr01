@@ -1,12 +1,12 @@
 <section id="content-int">
     <div class="wrapper">
         <div class="ubicacion">
-            <div id="migas"> Herramientas de investigación <img src="assets/img/migaSep.jpg" alt="separador de miga"> Relaciones de comedias </div>
+            <div id="migas"> Herramientas de investigación <img src="assets/imgs/migaSep.jpg" alt="separador de miga"> Relaciones de comedias </div>
         </div>
         <div class="detalle" fxLayout="row" fxLayoutGap="30px">
             <div class="flex-justify contenido" fxFlex="25" fxLayout="column" fxLayoutAlign="start streach" fxLayoutGap="30px">
-                <img src="assets/img/relaciones-amor.jpg" alt="Relaciones de comedia imagen de amor" class="imgBorde">
-                <img src="assets/img/relaciones-pie.jpg" alt="Relaciones de comedia imagen de pie" class="imgBorde">
+                <img src="assets/imgs/relaciones-amor.jpg" alt="Relaciones de comedia imagen de amor" class="imgBorde">
+                <img src="assets/imgs/relaciones-pie.jpg" alt="Relaciones de comedia imagen de pie" class="imgBorde">
             </div>
             <div class="descripcion" fxFlex="70">
                 <h1>Relaciones de comedias en la Nueva España, siglos XVI al XVII</h1>
@@ -24,36 +24,36 @@
                         Por <b>autor</b> y/o por <b>título</b> de la obra teatral.
                     </li>
                     <li>
-                        Por <b>tema</b> <img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('tema')">
+                        Por <b>tema</b> <img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro tema" (click)="moAyuda('tema')">
                     </li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='tema'">
                         agrupa las relaciones por los temas más comunes en el teatro áureo.
                     </div>
-                    <li>Por <b>palabra</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro palabras" (click)="moAyuda('palabras')"></li>
+                    <li>Por <b>palabra</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro palabras" (click)="moAyuda('palabras')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='palabras'">
                         permite hacer búsquedas ingresando cualquier palabra que esté presente en la relación.
                     </div>
-                    <li>Por <b>motivo</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro motivo" (click)="moAyuda('motivo')"></li>
+                    <li>Por <b>motivo</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro motivo" (click)="moAyuda('motivo')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='motivo'">
                         agrupa las relaciones por motivos literarios (nos basamos en los que estableció Stith Thompson en su Motif-index of folk-literature).
                     </div>
-                    <li>Por tipo de <b>versificación</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro versificacion" (click)="moAyuda('versificaion')"></li>
+                    <li>Por tipo de <b>versificación</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro versificacion" (click)="moAyuda('versificaion')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='versificaion'">
                         las agrupa de acuerdo con su forma métrica.
                     </div>
-                    <li>Por la <b>ubicación temporal</b> de la relación con respecto a la acción dramática.<img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ubicación temporal" (click)="moAyuda('ubicacion')"></li>
+                    <li>Por la <b>ubicación temporal</b> de la relación con respecto a la acción dramática.<img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro ubicación temporal" (click)="moAyuda('ubicacion')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='ubicacion'">
                         agrupa las relaciones en seis categorías con base en un criterio temporal por ejemplo, registra si una relación narra sucesos anteriores, simultáneos o posteriores a la virtual representación).
                     </div>
-                    <li>Por <b>vínculos</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro vínculos" (click)="moAyuda('vinculo')"></li>
+                    <li>Por <b>vínculos</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro vínculos" (click)="moAyuda('vinculo')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='vinculo'">
                         ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.
                     </div>
-                    <li>Por <b>contexto</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro contexto" (click)="moAyuda('contexto')"></li>
+                    <li>Por <b>contexto</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro contexto" (click)="moAyuda('contexto')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='contexto'">
                         permite observar el contexto en el que la relación se inserta.
                     </div>
-                    <li>Por <b>signos actorales</b><img src="assets/img/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro signos actorales" (click)="moAyuda('signos')"></li>
+                    <li>Por <b>signos actorales</b><img src="assets/imgs/btn_ayuda.jpg" class="ayuda" alt="ayuda filtro signos actorales" (click)="moAyuda('signos')"></li>
                     <div class="descripcion-filtro" *ngIf="secVisible=='signos'">
                         permite acceder a las relaciones a través de los gestos y signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la misma relación.
                     </div>

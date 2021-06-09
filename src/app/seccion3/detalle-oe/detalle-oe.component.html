@@ -94,7 +94,7 @@ version 2
 </mat-card>
 
 <!--Tarjeta para resumen de VIDEO-->
-<mat-card class="TRTarjeta" *ngIf="elemento?.tipo==3 && tipo==1">
+<!--mat-card class="TRTarjeta" *ngIf="elemento?.tipo==3 && tipo==1">
     <mat-card-header>
         <mat-card-title class="tituloTarjeta">{{elemento.descripcion}}</mat-card-title>
         <mat-card-subtitle>{{elemento.capitulo}}</mat-card-subtitle>
@@ -102,10 +102,10 @@ version 2
     <mat-card-content>
         <iframe class="video" [src]="elemento.referencia | seguro" frameborder="0" disabled></iframe>
     </mat-card-content>
-</mat-card>
+</mat-card-->
 
 <!--Tarjeta para DETALLE de VIDEO-->
-<mat-card class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="column" fxLayoutAlign="start stretch">
+<!---mat-card class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="column" fxLayoutAlign="start stretch">
     <mat-card-header>
         <mat-card-title class="tituloTarjeta">{{elemento.descripcion}}</mat-card-title>
         <mat-card-subtitle>{{elemento.capitulo}}</mat-card-subtitle>
@@ -113,7 +113,7 @@ version 2
     <mat-card-content fxFlex>
         <iframe fxFlex [src]="elemento.referencia | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </mat-card-content>
-</mat-card>
+</mat-card-->
 
 <!--Tarjeta para resumen de DOCUMENTO-->
 <mat-card class="TRTarjeta" *ngIf="elemento?.tipo==4 && tipo==1">
@@ -122,7 +122,7 @@ version 2
         <mat-card-subtitle>{{elemento.capitulo}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content fxLayoutAlign="center">
-        <img style="width: 100px; align-self:center" class="imgprev" src="/assets/img/pdf-p.png">
+        <img style="width: 100px; align-self:center" class="imgprev" src="/assets/imgs/pdf-p.png">
     </mat-card-content>
 </mat-card>
 
@@ -172,14 +172,86 @@ version 2
     </div>
 </div>
 
+
+
+
+
+
+
+<!--******************************************************************************************** -->
 <!--Tarjeta para resumen de IMAGEN -->
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==2  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
     <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
         <img class="imgprev-4" src="{{elemento.referencia}}">
-        <img class="imgrecurso" src="./assets/imgs/recurso-web.jpg" *ngIf="elemento.tipo==1">
-        <img class="imgrecurso" src="./assets/imgs/recurso-multimedia.jpg" *ngIf="elemento.tipo==2">
-        <img class="imgrecurso" src="./assets/imgs/recurso-grafico.jpg" *ngIf="elemento.tipo==3">
-        <img class="imgrecurso" src="./assets/imgs/recurso-pdf.jpg" *ngIf="elemento.tipo==4">
+        <img class="imgrecurso" src="./assets/imgs/recurso-grafico.jpg">
     </div>
 </div>
+<!--Tarjeta para resumen de VIDEO o MULTIMEDIA -->
+<div class="TarjetaIR-4" *ngIf="elemento?.tipo==3  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="textoIR-4">{{elemento.descripcion}}</div>
+    <div class="contimg-4">
+        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgrecurso" src="./assets/imgs/recurso-multimedia.jpg">
+    </div>
+</div>
+<!--Tarjeta para resumen de RECURSO WEB (liga) -->
+<div class="TarjetaIR-4" *ngIf="elemento?.tipo==5  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="textoIR-4">{{elemento.descripcion}}</div>
+    <div class="contimg-4">
+        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgrecurso" src="./assets/imgs/recurso-web.jpg">
+    </div>
+</div>
+<!--Tarjeta para resumen de PDF -->
+<div class="TarjetaIR-4" *ngIf="elemento?.tipo==6  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <div class="textoIR-4">{{elemento.descripcion}}</div>
+    <div class="contimg-4">
+        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgrecurso" src="./assets/imgs/recurso-pdf.jpg">
+    </div>
+</div>
+
+
+
+<!--Tarjeta para detalle de VIDEO -->
+<mat-card class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2">
+    <mat-card-header>
+        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
+        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
+
+        <iframe fxFlex [src]="elemento.referencia_2 | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </mat-card-content>
+</mat-card>
+
+<!--Tarjeta para detalle de Recurso en Linea -->
+<mat-card class="tarjeta" *ngIf="elemento?.tipo==5 && tipo==2">
+    <mat-card-header>
+        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
+        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
+        <div class="contenedorimg">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+                <img class="imgprev" src="{{elemento.referencia}}">
+            </a>
+        </div>
+    </mat-card-content>
+</mat-card>
+<!--Tarjeta para detalle de PDF -->
+<mat-card class="tarjeta" *ngIf="elemento?.tipo==6 && tipo==2">
+    <mat-card-header>
+        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
+        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
+        <div class="contenedorimg">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+                <img class="imgprev" src="{{elemento.referencia}}">
+            </a>
+        </div>
+    </mat-card-content>
+</mat-card>
