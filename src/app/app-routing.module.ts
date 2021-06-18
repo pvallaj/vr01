@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'PresentacionRelaciones',  component: PresentacioRelacionesComponent},
   {path: 'PresentacionSermones',    component: PresentacioSermonesComponent},
   {path: 'sermones',                component: ConsSermonesComponent},
-  {path: 'publicaciones/:siglo/:tomo',  component: PublicacionesComponent},
+  {path: 'publicaciones/:tomo/:siglo',  component: PublicacionesComponent},
   {path: 'herramientas',            component: HerramientasComponent},
   {path: 'buscar',                  component: BuscarComponent},
   {path: 'noticias',                component: NoticiasComponent},

@@ -1,4 +1,4 @@
-.bloqueado {
+.espera {
     left: 0 !important;
     top: 0 !important;
     z-index: 500 !important;
@@ -10,38 +10,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 70px;
-    padding-bottom: 20px;
+    padding-top: 10px;
 }
 
-.imgMaguey {
-    width: 100%;
-    height: auto;
-}
-
-.elemento {
-    height: 100%;
-}
-
-.leermas {
+.contenedor {
     width: 70%;
     height: 70%;
-    padding: 15px;
     z-index: 501 !important;
+    overflow-y: auto;
     background-color: white;
-    overflow-y: hidden;
+    border: 1px solid black;
+    padding: 15px;
 }
 
-.cerrar-leermas {
+.accion {
+    width: 98%;
+}
+
+.cerrar {
     color: #BB0207;
     cursor: pointer;
 }
 
-.expl-iso {
-    padding: 10px;
-    overflow-y: scroll;
+.titulo {
+    font-weight: bold;
+    background-color: #AA7D04;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 0;
 }
 
-.btn {
-    cursor: pointer;
+.dato {
+    padding-left: 30px;
+}
+
+p {
+    margin-bottom: 0;
 }

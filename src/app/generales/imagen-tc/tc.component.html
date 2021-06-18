@@ -7,6 +7,10 @@ Descripción:
        el detalle resultado de una consulta en la base de datos de sermones
 ------------------------------------------------------------------------------------------->
 <div class="espera" fxLayout="column" fxLayoutAlign="center center">
+    <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+        <mat-icon>close</mat-icon>
+        <p>cerrar</p>
+    </div>
     <div class="contenedor" *ngIf="tipo=='imagen noticia'">
         <!------------------------------------------------------------------------------------------
             La imagen en tamaño completo,
@@ -32,7 +36,5 @@ Descripción:
         <app-cons-det-sermon [id_sermon]="referencia" [tipo]="1" [textoBuscado]="textoBuscado"></app-cons-det-sermon>
     </div>
 
-    <button class="accion" mat-raised-button color="primary" (click)="cerrar()">
-        <!--mat-icon>delete</mat-icon--> Cerrar
-    </button>
+
 </div>

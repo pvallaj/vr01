@@ -70,28 +70,7 @@ version 2
     <img class="imgprev" src="{{elemento.referencia}}">
 </div>
 
-<!--Tarjeta para detalle de IMAGEN-->
-<mat-card class="tarjeta" *ngIf="elemento?.tipo==2 && tipo==2">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-        <div class="contenedorimg">
-            <!--div class="tituloTarjetaimg">
-                <p>{{elemento.capitulo}} </p>
-            </div-->
 
-            <a [href]="elemento.referencia | seguro" target="_black" *ngIf="elemento.referencia != null">
-                <img class="imgprev" src="{{elemento.referencia}}">
-            </a>
-            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
-                <img class="imgprev" src="{{elemento.referencia_2}}">
-            </a>
-            <!--p class="pieTarjetaimg">{{elemento.descripcion}}</p-->
-        </div>
-    </mat-card-content>
-</mat-card>
 
 <!--Tarjeta para resumen de VIDEO-->
 <!--mat-card class="TRTarjeta" *ngIf="elemento?.tipo==3 && tipo==1">
@@ -214,44 +193,87 @@ version 2
 
 
 
+
+<!--Tarjeta para detalle de IMAGEN-->
+<div class="tarjeta" *ngIf="elemento?.tipo==2 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
+    <div class="contenedorimg">
+        <img class="imgprev" src="{{elemento.referencia}}">
+        <!--a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+            <img class="imgprev" src="{{elemento.referencia_2}}">
+        </a-->
+    </div>
+    <div>
+        <div class="ficha">
+            <div class="etiqueta">TITULO</div>
+            <div class="datoTarjeta">Titulo del recurso</div>
+            <div class="etiqueta">AUTOR</div>
+            <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+            <div class="etiqueta">AÑO</div>
+            <div class="datoEtiqueta">9999</div>
+            <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+            <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+        </div>
+
+    </div>
+</div>
+
 <!--Tarjeta para detalle de VIDEO -->
-<mat-card class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-
+<div class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
+    <div class="contenedorimg">
         <iframe fxFlex [src]="elemento.referencia_2 | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-    </mat-card-content>
-</mat-card>
+    </div>
+    <div class="ficha">
+        <div class="etiqueta">TITULO</div>
+        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="etiqueta">AUTOR</div>
+        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="etiqueta">AÑO</div>
+        <div class="datoEtiqueta">9999</div>
+        <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
+        <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+    </div>
+</div>
 
 <!--Tarjeta para detalle de Recurso en Linea -->
-<mat-card class="tarjeta" *ngIf="elemento?.tipo==5 && tipo==2">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-        <div class="contenedorimg">
-            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
-                <img class="imgprev" src="{{elemento.referencia}}">
-            </a>
+<div class="tarjeta" *ngIf="elemento?.tipo==5 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
+    <div class="contenedorimg">
+        <img class="imgprev" src="{{elemento.referencia}}">
+    </div>
+    <div class="ficha">
+        <div class="etiqueta">TITULO</div>
+        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="etiqueta">AUTOR</div>
+        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="etiqueta">AÑO</div>
+        <div class="datoEtiqueta">9999</div>
+        <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
+        <div class="datoEtiqueta">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
-    </mat-card-content>
-</mat-card>
+        <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+    </div>
+</div>
 <!--Tarjeta para detalle de PDF -->
-<mat-card class="tarjeta" *ngIf="elemento?.tipo==6 && tipo==2">
-    <mat-card-header>
-        <mat-card-title class="tituloTarjeta">{{elemento.capitulo}}</mat-card-title>
-        <mat-card-subtitle>{{elemento.descripcion}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
-        <div class="contenedorimg">
-            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
-                <img class="imgprev" src="{{elemento.referencia}}">
-            </a>
+<div class="tarjeta" *ngIf="elemento?.tipo==6 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
+    <div class="contenedorimg">
+        <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
+            <img class="imgprev" src="{{elemento.referencia}}">
+        </a>
+    </div>
+    <div class="ficha">
+        <div class="etiqueta">TITULO</div>
+        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="etiqueta">AUTOR</div>
+        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="etiqueta">AÑO</div>
+        <div class="datoEtiqueta">9999</div>
+        <div class="etiqueta">Si desea ver el archivo PDF siga el siguiente link</div>
+        <div class="datoEtiqueta">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
-    </mat-card-content>
-</mat-card>
+        <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+    </div>
+</div>

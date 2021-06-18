@@ -84,9 +84,8 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     if(dato==null) return true;
     if(dato=="") return true;
     let datomin=dato.toLowerCase();
-    if(datomin.indexOf("[nada]")>=0 
-        || datomin.indexOf("[nada.]")>=0
-        || datomin.indexOf("[desconocemos dato]")>=0) return true;
+    if(datomin.indexOf("[")==0 &&
+        datomin.indexOf("]")>=0) return true;
     return false;
   }
 

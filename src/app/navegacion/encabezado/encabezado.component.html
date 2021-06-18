@@ -19,8 +19,8 @@ Descripción:
             <li routerLinkActive="activo"><a routerLink="/inicio" id="li-home"><span class="icon-home"></span></a></li>
             <li routerLinkActive="activo"><a>Siglo XVI</a>
                 <ul>
-                    <li><a [routerLink]="['/publicaciones','XVI','Tomo1']" routerLinkActive="active">Tomo 1</a></li>
-                    <li><a [routerLink]="['/publicaciones','XVI','Tomo2']" routerLinkActive="active">Tomo 2</a></li>
+                    <li><a [routerLink]="['/publicaciones','Tomo1','XVI']" routerLinkActive="active">Tomo 1</a></li>
+                    <li><a [routerLink]="['/publicaciones','Tomo2','XVI']" routerLinkActive="active">Tomo 2</a></li>
                 </ul>
             </li>
             <li routerLinkActive="activo"><a>Siglo XVII</a>
@@ -43,7 +43,7 @@ Descripción:
             </li>
             <li routerLinkActive="activo"><a routerLink="/linea">Línea de tiempo</a></li>
             <li routerLinkActive="activo"><a routerLink="/deinteres">Enlaces</a></li>
-            <li routerLinkActive="activo"><a routerLink="/contactos">Contactos</a></li>
+            <li routerLinkActive="activo"><a routerLink="/contactos">Contacto</a></li>
             <!--li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li-->
             <!--li routerLinkActive="activo">
                 <a routerLink="/sesion" *ngIf="!sus.role">

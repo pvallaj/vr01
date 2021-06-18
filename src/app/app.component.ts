@@ -14,7 +14,8 @@ export class AppComponent {
 
   public txtbuscar:string;
   public bexacta=true;
-
+  public vIsotipo=false;
+  public vCreditos=false;
   constructor(public r:Router, private cc:CanalService) { 
     console.log(r.url);
   }
@@ -40,5 +41,11 @@ export class AppComponent {
     }*/
     this.r.navigate(['/buscar']);
   }
+  public abrirIsotipo(){
+    this.vIsotipo=true;
+  }
 
+  public cerrarIsotipo(){
+    this.vIsotipo=false;
+  }
 }

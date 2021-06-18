@@ -146,7 +146,7 @@
                 </div>
                 <div class="fila" fxLayout="row">
                     <div class="titulo" fxFlex="25">Archivo digital:</div>
-                    <div class="valor" fxFlex="75">{{princeps.archivo_dig}}</div>
+                    <div class="valor" fxFlex><a target="_blank" [attr.href]="princeps.archivo_dig | seguro">{{princeps.archivo_dig}}</a></div>
                 </div>
             </div>
         </div>

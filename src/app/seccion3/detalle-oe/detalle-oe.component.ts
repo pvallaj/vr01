@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CanalService } from '../../servicios/canal.service';
+import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
   selector: 'app-detalle-oe',
@@ -10,14 +11,34 @@ export class DetalleOEComponent implements OnInit {
   @Input() elemento:any;
   @Input() tipo:number=1; //1.- Detalle completo, 2.- Detalle resumido
   public termino:string;
-  constructor(private cs:CanalService) { 
+  public estaCargando=false;
+  public referencias=null;
+  
+  constructor(private cs:CanalService, private cnx:ConexionService) { 
     if(cs.terminoConsulta){
       this.termino=cs.terminoConsulta;
     }
+    
   }
 
   ngOnInit(): void {
+    if(this.tipo==2){
+      //se obtienen las referencias de capitulos a los que pertenece el recurso.
+      this.estaCargando = true;
+      this.cnx.novohisp({id: this.elemento.id}, 'referencias recurso').subscribe(
+        (datos) => {
+          this.estaCargando = false;
+          this.referencias = datos['resultado'];
+      }, (error) => {
+        console.log('error al cargar a los autores');
+        console.log(error);
+      });
+    }
 
+    console.log('*************************************************************');
+    console.log(this.elemento);
+    console.log(this.tipo);
+    console.log('*************************************************************');
   }
 
   recorta(termino:string, texto:string, largo:number):string{

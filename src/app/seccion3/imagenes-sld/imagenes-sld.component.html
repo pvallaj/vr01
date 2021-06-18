@@ -2,17 +2,16 @@
     <div class="cuadro" fxFlex="20" *ngFor="let e of lista" (click)="seleccionar(e)">
         <img class="imagen" [src]="e.referencia" [alt]="e.descripcion">
         <div class="datos">
-            <div class="logo" fxLayoutAlign="space-around space-around">
-                <div>
-                    <mat-icon class="icono">smart_display</mat-icon>
-                </div>
-            </div>
             <p class="titulo">{{e.descripcion}}</p>
             <div fxLayoutAlign="center center">
-                <!---a class="accion" href="#" class="link_bloque">ver más...</a-->
-                <button mat-button color="primary">ver más</button>
+                <a (click)="seleccionar(e)">Ver más</a>
             </div>
+            <img class="imgrecurso" *ngIf="e.tipo==2" src="./assets/imgs/recurso-grafico.jpg">
+            <img class="imgrecurso" *ngIf="e.tipo==3" src="./assets/imgs/recurso-multimedia.jpg">
+            <img class="imgrecurso" *ngIf="e.tipo==5" src="./assets/imgs/recurso-web.jpg">
+            <img class="imgrecurso" *ngIf="e.tipo==6" src="./assets/imgs/recurso-pdf.jpg">
         </div>
     </div>
 </div>
-<app-img-det-sld [elemento]="elementoSel" *ngIf="elementoSel!=null" (quitar)="quitarSeleccion()"></app-img-det-sld>
+<app-tc *ngIf="elementoSel!=null" [referencia]="'varios'" [tipo]="'buscar'" [elemento]="elementoSel" (quitar)="quitarSeleccion()"></app-tc>
+<!--app-img-det-sld [elemento]="elementoSel" *ngIf="elementoSel!=null" (quitar)="quitarSeleccion()"></app-img-det-sld-->

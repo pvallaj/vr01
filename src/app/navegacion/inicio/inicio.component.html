@@ -1,22 +1,44 @@
 <section id="sec6">
-    <div class="leermas">
-        <p>
-            Muy diversas variedades del maguey, con “su corazón alado a pencas” (según un verso del poeta barroco Francisco de Castro), ilustran nuestro campo y pueblan nuestros antiguos códices. A lo largo y ancho de nuestras letras vemos erguirse a los magueyes
-            como “misteriosas coronas de reyes” (diría Amado Nervo), o crisparse, en palabras de Octavio Paz, como “la mano de los hombres contra el cielo”. Nos parece que la variedad, la generosidad y el carácter de esta planta mexicana bien pueden simbolizar
-            los de nuestra literatura del período novohispano, raíz de toda su savia y floraciones posteriores.
-        </p>
+    <div class="bloqueado" *ngIf="vIsotipo">
+        <div class="leermas" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="end">
+                <b class="cerrar" (click)="cerrarIsotipo()">Cerrar</b>
+            </div>
+            <div fxFlex fxLayout="row" fxLayoutGap="20px" class="elemento">
+                <div fxFlex="30" fxLayout="column" fxLayoutAlign="center">
+                    <img class="imgMaguey" src="assets/imgs/isotipoMaguey.png" alt="Explicación Isotipo de la Identidad Gráfica" title="Explicación Isotipo de la Identidad Gráfica">
+                </div>
+                <div fxFlex class="expl-iso">
+                    <h1>Isotipo de identidad gráfica.</h1>
+                    <p></p>
+                    <p>Nuestro isotipo representa el metl o maguey, con raíz y flor, y se inspira en un dibujo recogido por el médico y humanista español Francisco Hernández en una de sus obras más importantes: la Historia Natural de la Nueva España, escrita
+                        en el México del siglo XVI, con la colaboración de médicos herbolarios y pintores indígenas. En ella dice Hernández: “Innumerables son los usos de esta planta […] sola podría fácilmente proporcionar todo lo necesario para una vida
+                        frugal y sencilla, pues no la dañan los temporales ni los rigores del clima, ni la marchita la sequía.”
+                    </p>
+                    <p>
+                        Muy diversas variedades del maguey, con “su corazón alado a pencas” (según un verso del poeta barroco Francisco de Castro), ilustran nuestro campo y pueblan nuestros antiguos códices. A lo largo y ancho de nuestras letras vemos erguirse a los magueyes
+                        como “misteriosas coronas de reyes” (diría Amado Nervo), o crisparse, en palabras de Octavio Paz, como “la mano de los hombres contra el cielo”. Nos parece que la variedad, la generosidad y el carácter de esta planta mexicana bien
+                        pueden simbolizar los de nuestra literatura del período novohispano, raíz de toda su savia y floraciones posteriores.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="wrapper flex-space">
         <div id="acercaDe">
-            <h1>HLM Novohispana.<br> Historia de las literaturas en México (siglos XVI-XVIII)</h1>
-            <p>Nuestro imagotipo representa el metl o maguey, con raíz y flor, y se inspira en un dibujo recogido por el médico y humanista español Francisco Hernández en una de sus obras más importantes: la Historia Natural de la Nueva España, escrita en
-                el México del siglo xvi, con la colaboración de médicos herbolarios y pintores indígenas. En ella dice Hernández: “Innumerables son los usos de esta planta […] sola podría fácilmente proporcionar todo lo necesario para una vida frugal
-                y sencilla, pues no la dañan los temporales ni los rigores del clima, ni la marchita la sequía.”
+            <h1>HLM Novohispana.<br> Historia de las literaturas en México. Siglos XVI al XVIII</h1>
+            <p>Es una obra colectiva en tres volúmenes (ya publicados o en prensa) que busca ofrecer una visión renovada de las letras de nuestro virreinato. HLM Novohispana, el sitio web de esta obra, busca llevar la historia literaria más allá de la frontera
+                demarcada por la página de papel. Creemos que la literatura virreinal no puede comprenderse a cabalidad sin considerar su estrecha relación con otras disciplinas o manifestaciones artísticas del período; por esa razón, HLM Novohispana
+                ofrece, en primer lugar, contenido multimedia que complementa cada uno de los capítulos que conforman los volúmenes en papel: digitalizaciones de impresos y manuscritos antiguos, fotografías, vídeos, etcétera. </p>
+            <p *ngIf="vLeerMas">Las herramientas tecnológicas del presente nos permiten mirar con otros ojos obras escritas hace ya varios siglos; el usuario encontrará en este sitio, en segundo lugar, dos bases de datos —una en torno a todos los sermones que se imprimieron
+                en el siglo xvii mexicano y otra en torno a las relaciones en las comedias escritas durante los Siglos de Oro a ambos lados del Atlántico—, así como una línea del tiempo, tridimensional e interactiva, que registra los principales sucesos
+                de la época. Estamos convencidos de que, como decía Alfonso Reyes, “todo lo sabemos entre todos”; tiene el usuario a su alcance, en tercer lugar, un listado de enlaces de interés y una barra actualizada de noticias, secciones ambas destinadas
+                a tender puentes con otros proyectos dedicados al estudio y difusión de la cultura y la literatura, vastas y multiformes, de la Nueva España.
             </p>
-            <a href="#" class="link_bloque">Leer más</a>
+            <a class="link_bloque btn" (click)="acLeerMas()">{{tLeerMas}}</a>
         </div>
-        <div id="btnIsotipo">
-            <a href="#"><img src="assets/imgs/isotipoMaguey.png" alt="Explicación Isotipo de la Identidad Gráfica" title="Explicación Isotipo de la Identidad Gráfica"></a>
+        <div id="btnIsotipo" class="btn">
+            <a (click)="abrirIsotipo()"><img src="assets/imgs/isotipoMaguey.png" alt="Explicación Isotipo de la Identidad Gráfica" title="Explicación Isotipo de la Identidad Gráfica"></a>
         </div>
 
     </div>

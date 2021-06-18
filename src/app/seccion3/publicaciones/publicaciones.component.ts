@@ -128,7 +128,7 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         true/false
     ******************************************************************************************/
-    if (e.orden > 1) {
+    /*if (e.orden > 1) {
       const p = this.regsCapitulo.indexOf(e) + 1;
       const pr = this.regsCapitulo.length - p + 1;
       let idx = 1;
@@ -144,11 +144,13 @@ export class PublicacionesComponent implements OnInit {
       console.log(this.regsCapitulo);
       this.regsCapitulo = this.regsCapitulo.sort((n1, n2) => n1.orden - n2.orden);
       console.log(this.regsCapitulo);
-    } else {
+    } else {*/
         this.tipoReferencia = 'buscar';
-        this.referencia = 'varios';
         this.elementoSeleccionado = e;
-      }
+        /*console.log('****');
+        console.log(e);*/
+        this.referencia = 'varios';
+     /* }*/
   }
 
   public cerrarDetalle() {
@@ -295,6 +297,7 @@ export class PublicacionesComponent implements OnInit {
     this.resultado=null;
     this.regsCapitulo=null;
     this.seccionesVisibles= [];
+    this.imagenes=null;
     this.cargaDatosTomo();
   }
 

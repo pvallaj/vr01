@@ -131,7 +131,7 @@
                     <div class="valor" fxFlex="75">{{libro?.autor}}</div>
                 </div-->
 
-                <div class="fila" fxLayout="row">
+                <div class="fila" fxLayout="row" *ngIf="sermon.inicio_sermon!=null">
                     <div class="titulo" fxFlex="20">Incipit:</div>
                     <div class="valor" fxFlex>{{sermon.inicio_sermon}}</div>
                 </div>

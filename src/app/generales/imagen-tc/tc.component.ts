@@ -49,8 +49,13 @@ export class TCComponent implements OnInit {
   constructor() { 
     this.rutaImgsNoticias=Globales.rutaImgNoticias;
   }
-
+  
   ngOnInit(): void {
+    console.log('--------------------------------');
+    console.log(this.referencia);
+    console.log(this.tipo);
+    console.log(this.elemento);
+    console.log('--------------------------------');
   }
   public cerrar(){
     /*****************************************************************************************

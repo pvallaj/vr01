@@ -85,6 +85,7 @@ import { ImagenesSLDComponent } from './seccion3/imagenes-sld/imagenes-sld.compo
 import { OescritaV4Component } from './seccion3/oescrita-v4/oescrita-v4.component';
 import { ImgDetSldComponent } from './seccion3/img-det-sld/img-det-sld.component';
 import { PublicacionesComponent } from './seccion3/publicaciones/publicaciones.component';
+import { CreditosComponent } from './seccion3/creditos/creditos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,6 +138,7 @@ import { PublicacionesComponent } from './seccion3/publicaciones/publicaciones.c
     OescritaV4Component,
     ImgDetSldComponent,
     PublicacionesComponent,
+    CreditosComponent,
     
   ],
   imports: [
