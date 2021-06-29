@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CanalService } from '../../servicios/canal.service';
 import { ConexionService } from '../../servicios/Conexion.service';
 
@@ -10,6 +10,9 @@ import { ConexionService } from '../../servicios/Conexion.service';
 export class DetalleOEComponent implements OnInit {
   @Input() elemento:any;
   @Input() tipo:number=1; //1.- Detalle completo, 2.- Detalle resumido
+
+  @Output() seleccionarCapitulo=new EventEmitter<number>();
+
   public termino:string;
   public estaCargando=false;
   public referencias=null;
@@ -63,4 +66,9 @@ export class DetalleOEComponent implements OnInit {
   ocultarTexto(){
     this.mostrarTexto=!this.mostrarTexto;
   }
+
+  public seleccionar(idc:number){
+    this.seleccionarCapitulo.emit(idc);
+  }
+
 }

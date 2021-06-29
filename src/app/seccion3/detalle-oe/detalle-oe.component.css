@@ -191,6 +191,7 @@
     height: 300px;
     overflow: hidden;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .contimg-4 {
@@ -231,6 +232,17 @@
     font-weight: bold;
 }
 
+.datoFicha {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .ficha {
     min-width: 500px;
+    font-size: 14px;
+}
+
+.liga {
+    cursor: pointer;
+    color: blue;
 }

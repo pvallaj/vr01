@@ -7,7 +7,7 @@
 <div class="resultado" *ngIf="!estaCargando  && resultadoOE!=null && resultadoOE.length>0">
     <div class="tituloSeccion">Información encontrada en la Obra Escrita, Siglo XVI &nbsp;&nbsp;<a routerLink="/oesxvi"> Ir a la sección Siglo XVI</a></div>
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start stretch">
-        <app-detalle-oe class="tarjetaresumen" [elemento]="elemento" *ngFor="let elemento of resultadoOE; let i = index" (click)="verDetalle(elemento)" fxFlex="0 0 calc(23% - 10px)"></app-detalle-oe>
+        <app-detalle-oe class="tarjetaresumen" [tipo]="4" [elemento]="elemento" *ngFor="let elemento of resultadoOE; let i = index" (click)="verDetalle(elemento)" fxFlex="0 0 calc(23% - 10px)"></app-detalle-oe>
     </div>
 
 </div>

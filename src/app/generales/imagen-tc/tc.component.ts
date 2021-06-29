@@ -42,7 +42,7 @@ export class TCComponent implements OnInit {
   @Input() textoBuscado:string="";
   @Input() elemento:any;
   
-  @Output() quitar=new EventEmitter<string>();
+  @Output() quitar=new EventEmitter<number>();
   
   public rutaImgsNoticias:Globales=null;
 
@@ -67,6 +67,19 @@ export class TCComponent implements OnInit {
         Ninguno
     ******************************************************************************************/
     console.log("cerrar ..");
-    this.quitar.emit('cerrar');
+    this.quitar.emit(0);
+  }
+
+  public abrirCapitulo(idc:number){
+    /*****************************************************************************************
+      Descripción
+        cierra la ventana construida por este componente y abre el capitulo seleccionado por el usuario.
+      Parametros
+        Ninguno
+      Resultado
+        Ninguno
+    ******************************************************************************************/
+    console.log("cerrar con capitulo");
+    this.quitar.emit(idc);
   }
 }

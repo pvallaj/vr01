@@ -42,13 +42,21 @@ export class PublicacionesComponent implements OnInit {
   public ultimoCapitulo:any=null;
 
   constructor(private cnx: ConexionService, private ar: ActivatedRoute) {
-     console.log(this.ar.snapshot.params);
-    this.siglo = this.ar.snapshot.params.siglo;
-    this.tomo = this.ar.snapshot.params.tomo;
+     //console.log(this.ar.snapshot.params);
+    
   }
 
   public ngOnInit(): void {
-    this.cargaDatosTomo();
+    this.ar.paramMap.subscribe(params => {
+      this.siglo = this.ar.snapshot.params.siglo;
+      this.tomo = this.ar.snapshot.params.tomo;
+      this.resultado=null;
+      this.regsCapitulo=null;
+      this.seccionesVisibles= [];
+      this.imagenes=null;
+      this.cargaDatosTomo();
+      this.cargaDatosTomo();
+    })
   }
 
   private cargaDatosTomo(){
@@ -81,7 +89,6 @@ export class PublicacionesComponent implements OnInit {
   public verCapitulo(elemento: any) {
     console.log(elemento);
     if (elemento.etiquetas.indexOf('seccion') >= 0 && elemento.etiquetas.indexOf('capitulo') < 0) { 
-      
       return; 
     }
     this.regsCapitulo = null;
@@ -96,18 +103,13 @@ export class PublicacionesComponent implements OnInit {
     const capituloSeleccionado = listae.join(',');
 
     this.estaCargando = true;
-    this.cnx.novohisp({capitulo: capituloSeleccionado}, 'consulta capitulo tomo').subscribe(
+    this.cnx.novohisp({capitulo: capituloSeleccionado, idc:elemento.id}, 'consulta capitulo tomo').subscribe(
       (datos) => {
         this.estaCargando = false;
         this.regsCapitulo = datos['resultado'].capitulo;
         this.portada = {...this.regsCapitulo[0]};
         this.regsCapitulo.splice(0, 1);
         console.log(this.resultado);
-        /*this.elementoSeleccionado=this.regsCapitulo[0];
-        let orden=1;
-        this.regsCapitulo.forEach(element => {
-          element.orden=orden++;
-        });*/
 
     }, (error) => {
       console.log('error al cargar a los autores');
@@ -119,6 +121,20 @@ export class PublicacionesComponent implements OnInit {
     this.capituloSel = null;
   }
 
+  public mostrarPortada(e:any){
+    /*****************************************************************************************
+      Descripción
+        Abre la ventana que mostrará la portada en tamaño completo.
+      Parametros
+        cp. Capitulo
+      Resultado
+        true/false
+    ******************************************************************************************/
+
+        this.tipoReferencia = 'Portada';
+        this.elementoSeleccionado = e;
+        this.referencia = e.referencia;
+  }
   public verDetalle(e: any) {
      /*****************************************************************************************
       Descripción
@@ -128,35 +144,28 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         true/false
     ******************************************************************************************/
-    /*if (e.orden > 1) {
-      const p = this.regsCapitulo.indexOf(e) + 1;
-      const pr = this.regsCapitulo.length - p + 1;
-      let idx = 1;
-      console.log(p, pr);
 
-      for (idx = 1; idx <= this.regsCapitulo.length; idx++) {
-        if (idx < p) {
-          this.regsCapitulo[idx - 1].orden = pr + idx;
-        } else {
-          this.regsCapitulo[idx - 1].orden = (idx - p + 1);
-        }
-      }
-      console.log(this.regsCapitulo);
-      this.regsCapitulo = this.regsCapitulo.sort((n1, n2) => n1.orden - n2.orden);
-      console.log(this.regsCapitulo);
-    } else {*/
         this.tipoReferencia = 'buscar';
         this.elementoSeleccionado = e;
-        /*console.log('****');
-        console.log(e);*/
         this.referencia = 'varios';
-     /* }*/
+
   }
 
-  public cerrarDetalle() {
+  public cerrarDetalle(idc:number) {
+    /*****************************************************************************************
+      Descripción
+        Cierra la ventana de detalle.
+        En caso de que el parametro sea mayor que 0, implica abir el capitulo con dicho id
+      Parametros
+        idc. Capitulo a abrir, 0 para no abrir capitulo.
+      Resultado
+        Ninguno
+    ******************************************************************************************/
     this.tipoReferencia = null;
     this.referencia = null;
     this.elementoSeleccionado = null;
+    if(idc===0) return;
+    this.verCapitulo({etiquetas:'XVI-Tomo1, capitulo-0, estructura',id:idc});
   }
 
   public indiceTarjeta(i: number): number {

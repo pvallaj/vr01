@@ -7,29 +7,52 @@ Descripción:
        el detalle resultado de una consulta en la base de datos de sermones
 ------------------------------------------------------------------------------------------->
 <div class="espera" fxLayout="column" fxLayoutAlign="center center">
-    <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
-        <mat-icon>close</mat-icon>
-        <p>cerrar</p>
-    </div>
+
     <div class="contenedor" *ngIf="tipo=='imagen noticia'">
+        <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <p>cerrar</p>
+        </div>
         <!------------------------------------------------------------------------------------------
             La imagen en tamaño completo,
         ------------------------------------------------------------------------------------------->
         <img class="imagen" mat-card-image src="{{rutaImgsNoticias}}{{referencia}}">
     </div>
+    <div class="contenedorPortada" *ngIf="tipo=='Portada'">
+        <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <p>cerrar</p>
+        </div>
+        <!------------------------------------------------------------------------------------------
+            La imagen en tamaño completo,
+        ------------------------------------------------------------------------------------------->
+        <img class="imagenportada" src="{{referencia}}">
+    </div>
     <div class="contenedor" *ngIf="tipo=='buscar'">
+        <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <p>cerrar</p>
+        </div>
         <!------------------------------------------------------------------------------------------
             el detalle de una tarjeta de detalle de una consulta de la obra escrita
         ------------------------------------------------------------------------------------------->
-        <app-detalle-oe [elemento]="elemento" [tipo]="2"></app-detalle-oe>
+        <app-detalle-oe [elemento]="elemento" [tipo]="2" (seleccionarCapitulo)="abrirCapitulo($event)"></app-detalle-oe>
     </div>
     <div class="contenedor" *ngIf="tipo=='relacion'">
+        <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <p>cerrar</p>
+        </div>
         <!------------------------------------------------------------------------------------------
             el detalle resultado de una consulta en la base de datos de relaciones
         ------------------------------------------------------------------------------------------->
         <app-cons-det-narrativa [idTexto]="+referencia" [textoBuscado]="textoBuscado"></app-cons-det-narrativa>
     </div>
     <div class="contenedor" *ngIf="tipo=='sermon'">
+        <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <p>cerrar</p>
+        </div>
         <!------------------------------------------------------------------------------------------
             el detalle resultado de una consulta en la base de datos de sermones
         ------------------------------------------------------------------------------------------->

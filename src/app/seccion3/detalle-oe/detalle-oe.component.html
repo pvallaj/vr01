@@ -205,13 +205,18 @@ version 2
     <div>
         <div class="ficha">
             <div class="etiqueta">TITULO</div>
-            <div class="datoTarjeta">Titulo del recurso</div>
+            <div class="datoFicha">{{elemento.titulo}}</div>
             <div class="etiqueta">AUTOR</div>
-            <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+            <div class="datoFicha">{{elemento.autor}}</div>
             <div class="etiqueta">AÑO</div>
-            <div class="datoEtiqueta">9999</div>
+            <div class="datoFicha">{{elemento.fecha}}</div>
             <div class="etiqueta">Este recursos también aparece en los capítulos</div>
-            <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+
+            <ul class="bulletRojo">
+                <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
+                    {{i.capitulo}}
+                </li>
+            </ul>
         </div>
 
     </div>
@@ -224,14 +229,19 @@ version 2
     </div>
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
-        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="datoTarjeta">{{elemento.titulo}}</div>
         <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="datoEtiqueta">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
-        <div class="datoEtiqueta">9999</div>
+        <div class="datoEtiqueta">{{elemento.fecha}}</div>
         <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
         <div class="etiqueta">Este recursos también aparece en los capítulos</div>
         <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+        <ul class="bulletRojo">
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
+                {{i.capitulo}}
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -242,17 +252,21 @@ version 2
     </div>
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
-        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="datoTarjeta">{{elemento.titulo}}</div>
         <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="datoEtiqueta">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
-        <div class="datoEtiqueta">9999</div>
+        <div class="datoEtiqueta">{{elemento.fecha}}</div>
         <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
         <div class="datoEtiqueta">
             <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
         <div class="etiqueta">Este recursos también aparece en los capítulos</div>
-        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+        <ul class="bulletRojo">
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
+                {{i.capitulo}}
+            </li>
+        </ul>
     </div>
 </div>
 <!--Tarjeta para detalle de PDF -->
@@ -264,16 +278,20 @@ version 2
     </div>
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
-        <div class="datoTarjeta">Titulo del recurso</div>
+        <div class="datoTarjeta">{{elemento.titulo}}</div>
         <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.descripcion}}</div>
+        <div class="datoEtiqueta">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
-        <div class="datoEtiqueta">9999</div>
+        <div class="datoEtiqueta">{{elemento.fecha}}</div>
         <div class="etiqueta">Si desea ver el archivo PDF siga el siguiente link</div>
         <div class="datoEtiqueta">
             <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
         <div class="etiqueta">Este recursos también aparece en los capítulos</div>
-        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+        <ul class="bulletRojo">
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
+                {{i.capitulo}}
+            </li>
+        </ul>
     </div>
 </div>

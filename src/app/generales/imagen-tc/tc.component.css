@@ -22,7 +22,6 @@
     border-right: 2px solid #AA7D04;
     padding: 5px 20px;
     color: red;
-    width: 98%;
     cursor: pointer;
 }
 
@@ -32,6 +31,17 @@
     z-index: 501 !important;
     overflow-y: auto;
     background-color: lightgray;
+    border-bottom: 2px solid #AA7D04;
+    border-left: 2px solid #AA7D04;
+    border-right: 2px solid #AA7D04;
+}
+
+.contenedorPortada {
+    width: 600px;
+    height: 800px;
+    z-index: 501 !important;
+    overflow-y: auto;
+    background-color: white;
     border-bottom: 2px solid #AA7D04;
     border-left: 2px solid #AA7D04;
     border-right: 2px solid #AA7D04;

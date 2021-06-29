@@ -1,4 +1,4 @@
-<app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle()"></app-tc>
+<app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle($event)"></app-tc>
 <section id="content-int">
     <div class="wrapper">
         <div id="migas">
@@ -90,7 +90,7 @@
                             <div fxFlex="70" class="secportadadesc" fxLayout="column ">
                                 <div class="portadaparrafo" [innerHTML]="portada.texto"></div>
                             </div>
-                            <div class="imagenportada" fxFlex="20">
+                            <div class="imagenportada" fxFlex="20" (click)="mostrarPortada(portada)">
                                 <img class="imgportada" [src]="portada.referencia" alt=" " />
                                 <p class="ampliar">
                                     Ampliar
