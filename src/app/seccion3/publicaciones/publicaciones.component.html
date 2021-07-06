@@ -1,4 +1,7 @@
 <app-tc *ngIf="referencia" [referencia]="referencia" [tipo]="tipoReferencia" [elemento]="elementoSeleccionado" (quitar)="cerrarDetalle($event)"></app-tc>
+<app-isotipo *ngIf="vIsotipo" (cerrar)="vIsotipo=false;"></app-isotipo>
+<div class="btnIsotipo" (click)="vIsotipo=true;"></div>
+
 <section id="content-int">
     <div class="wrapper">
         <div id="migas">
@@ -20,12 +23,12 @@
             <div id="menuIzqPublicaciones">
                 <h4 class="h4menuIzq">Siglo {{ siglo }} - {{tomo}}</h4>
                 <div id="accordion1" role="tablist">
-                    <div class="card">
+                    <div class="card" *ngIf="tomo=='Tomo1'">
                         <div class="card-header" role="tab" id="headingOne1">
                             <h5 class="mb-0 active">
                                 <a (click)="verTomo()" data-toggle="collapse" href="#collapseOne1" role="button" aria-controls="collapseOne1" [ngClass]="{'active': capituloSel===null, 'liga': capituloSel!=null }">
-                  Introducción
-                </a>
+                                    Introducción
+                                </a>
                             </h5>
                         </div>
                     </div>

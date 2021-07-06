@@ -41,11 +41,5 @@ export class AppComponent {
     }*/
     this.r.navigate(['/buscar']);
   }
-  public abrirIsotipo(){
-    this.vIsotipo=true;
-  }
 
-  public cerrarIsotipo(){
-    this.vIsotipo=false;
-  }
 }

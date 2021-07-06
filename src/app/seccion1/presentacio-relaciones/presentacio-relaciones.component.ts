@@ -10,6 +10,9 @@ export class PresentacioRelacionesComponent implements OnInit {
   @ViewChild('marca') 
   inputMessageRef: ElementRef;
 
+  public secVisible='';
+  public vIsotipo=false;
+  
   constructor() { }
   
   ngOnInit(): void {
@@ -17,8 +20,7 @@ export class PresentacioRelacionesComponent implements OnInit {
     document.querySelector('#marca').scrollIntoView({ behavior: 'smooth', block: 'center' });*/
   }
 
-  public secVisible='';
-
+  
   public moAyuda(seccion){
     //console.log(this.secVisible);
     //console.log(seccion);

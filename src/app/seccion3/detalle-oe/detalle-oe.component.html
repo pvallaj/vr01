@@ -162,7 +162,7 @@ version 2
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==2  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
     <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
-        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgprev-4" src="{{elemento.referencia_mini}}">
         <img class="imgrecurso" src="./assets/imgs/recurso-grafico.jpg">
     </div>
 </div>
@@ -170,7 +170,7 @@ version 2
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==3  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
     <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
-        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgprev-4" src="{{elemento.referencia_mini}}">
         <img class="imgrecurso" src="./assets/imgs/recurso-multimedia.jpg">
     </div>
 </div>
@@ -178,7 +178,7 @@ version 2
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==5  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
     <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
-        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgprev-4" src="{{elemento.referencia_mini}}">
         <img class="imgrecurso" src="./assets/imgs/recurso-web.jpg">
     </div>
 </div>
@@ -186,7 +186,7 @@ version 2
 <div class="TarjetaIR-4" *ngIf="elemento?.tipo==6  && tipo==4" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5px">
     <div class="textoIR-4">{{elemento.descripcion}}</div>
     <div class="contimg-4">
-        <img class="imgprev-4" src="{{elemento.referencia}}">
+        <img class="imgprev-4" src="{{elemento.referencia_mini}}">
         <img class="imgrecurso" src="./assets/imgs/recurso-pdf.jpg">
     </div>
 </div>
@@ -206,8 +206,8 @@ version 2
         <div class="ficha">
             <div class="etiqueta">TITULO</div>
             <div class="datoFicha">{{elemento.titulo}}</div>
-            <div class="etiqueta">AUTOR</div>
-            <div class="datoFicha">{{elemento.autor}}</div>
+            <div class="etiqueta" *ngIf="elemento.autor">AUTOR</div>
+            <div class="datoFicha" *ngIf="elemento.autor">{{elemento.autor}}</div>
             <div class="etiqueta">AÑO</div>
             <div class="datoFicha">{{elemento.fecha}}</div>
             <div class="etiqueta">Este recursos también aparece en los capítulos</div>
@@ -225,16 +225,20 @@ version 2
 <!--Tarjeta para detalle de VIDEO -->
 <div class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
     <div class="contenedorimg">
-        <iframe fxFlex [src]="elemento.referencia_2 | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe *ngIf="elemento.referencia_2.indexOf('youtube.com/embed')>=0" fxFlex [src]="elemento.referencia_2 | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <img *ngIf="elemento.referencia_2.indexOf('youtube.com/embed')<0" class="imgprev" src="{{elemento.referencia}}">
     </div>
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
         <div class="datoTarjeta">{{elemento.titulo}}</div>
-        <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.autor}}</div>
+        <div class="etiqueta" *ngIf="elemento.autor">AUTOR</div>
+        <div class="datoEtiqueta" *ngIf="elemento.autor">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
         <div class="datoEtiqueta">{{elemento.fecha}}</div>
         <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
+        <div class="datoEtiqueta">
+            <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
+        </div>
         <div class="etiqueta">Este recursos también aparece en los capítulos</div>
         <div *ngFor="let i of referencias">{{i.capitulo}}</div>
         <ul class="bulletRojo">
@@ -253,11 +257,11 @@ version 2
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
         <div class="datoTarjeta">{{elemento.titulo}}</div>
-        <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.autor}}</div>
+        <div class="etiqueta" *ngIf="elemento.autor">AUTOR</div>
+        <div class="datoEtiqueta" *ngIf="elemento.autor">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
         <div class="datoEtiqueta">{{elemento.fecha}}</div>
-        <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente link</div>
+        <div class="etiqueta">Si desea visitar el sitio de este recurso siga el siguiente enlace</div>
         <div class="datoEtiqueta">
             <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
@@ -279,8 +283,8 @@ version 2
     <div class="ficha">
         <div class="etiqueta">TITULO</div>
         <div class="datoTarjeta">{{elemento.titulo}}</div>
-        <div class="etiqueta">AUTOR</div>
-        <div class="datoEtiqueta">{{elemento.autor}}</div>
+        <div class="etiqueta" *ngIf="elemento.autor">AUTOR</div>
+        <div class="datoEtiqueta" *ngIf="elemento.autor">{{elemento.autor}}</div>
         <div class="etiqueta">AÑO</div>
         <div class="datoEtiqueta">{{elemento.fecha}}</div>
         <div class="etiqueta">Si desea ver el archivo PDF siga el siguiente link</div>

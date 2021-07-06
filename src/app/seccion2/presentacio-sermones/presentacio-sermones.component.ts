@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PresentacioSermonesComponent implements OnInit {
 
+  public secVisible='';
+  public vIsotipo=false;
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public secVisible='';
-
+  
   public moAyuda(seccion){
     console.log(this.secVisible);
     console.log(seccion);

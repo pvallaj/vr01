@@ -1,6 +1,6 @@
 <div class="contenedor" *ngIf="lista!=null" fxLayout="row" fxLayoutAlign="start streach" fxLayoutGap="0">
     <div class="cuadro" fxFlex="20" *ngFor="let e of lista" (click)="seleccionar(e)">
-        <img class="imagen" [src]="e.referencia" [alt]="e.descripcion">
+        <img class="imagen" [src]="e.referencia_mini" [alt]="e.descripcion">
         <div class="datos">
             <p class="titulo">{{e.descripcion}}</p>
             <div fxLayoutAlign="center center">

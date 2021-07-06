@@ -40,6 +40,7 @@ export class PublicacionesComponent implements OnInit {
   public tomo = '';
   public primerCapitulo:any=null;
   public ultimoCapitulo:any=null;
+  public vIsotipo=false;
 
   constructor(private cnx: ConexionService, private ar: ActivatedRoute) {
      //console.log(this.ar.snapshot.params);
