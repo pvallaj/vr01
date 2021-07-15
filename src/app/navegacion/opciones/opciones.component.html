@@ -1,8 +1,6 @@
 <mat-list>
-    <div mat-subheader>Opciones</div>
-    <a mat-list-item routerLink="/oesxvi" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Siglo XVI</div>
+    <!--div mat-subheader>Opciones</div>
+    <a mat-list-item routerLink="/inicio"  id="li-home" (click)="onToggleNV()">
     </a>
     <a mat-list-item routerLink="/oesxvii" (click)="onToggleNV()">
         <mat-icon mat-list-icon>star_border</mat-icon>
@@ -42,6 +40,36 @@
 
     <a mat-list-item routerLink="/sesion" *ngIf="!su.role" (click)="onToggleNV()">
         <mat-icon mat-list-icon>person</mat-icon>
-    </a>
-
+    </a-->
+    <div class="menu">
+        <ul>
+            <li routerLinkActive="activo"><a routerLink="/inicio" id="li-home"><span class="icon-home"></span></a></li>
+            <li routerLinkActive="activo"><a>Siglo XVI</a>
+                <ul>
+                    <li class="opcion"><a [routerLink]="['/publicaciones','XVI','Tomo1']" routerLinkActive="active" (click)="onToggleNV()">Tomo 1</a></li>
+                    <li class="opcion"><a [routerLink]="['/publicaciones','XVI','Tomo2']" routerLinkActive="active" (click)="onToggleNV()">Tomo 2</a></li>
+                </ul>
+            </li>
+            <li routerLinkActive="activo"><a>Siglo XVII</a>
+            </li>
+            <li routerLinkActive="activo"><a>Siglo XVIII</a>
+            </li>
+            <li routerLinkActive="activo"><a>Herramientas</a>
+                <ul>
+                    <li class="opcion"><a routerLink="/PresentacionRelaciones" (click)="onToggleNV()">Relaciones de comedia</a></li>
+                    <li class="opcion"><a routerLink="/PresentacionSermones" (click)="onToggleNV()">Sermones</a></li>
+                </ul>
+            </li>
+            <li class="opcion" routerLinkActive="activo"><a routerLink="/linea" (click)="onToggleNV()">Línea de tiempo</a></li>
+            <li class="opcion" routerLinkActive="activo"><a routerLink="/deinteres" (click)="onToggleNV()">Enlaces</a></li>
+            <li class="opcion" routerLinkActive="activo"><a routerLink="/contactos" (click)="onToggleNV()">Contacto</a></li>
+            <li class="opcion" routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar" (click)="onToggleNV()">Publicar Noticias</a></li>
+            <li class="opcion" routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios" (click)="onToggleNV()">Adm. Usuarios</a></li>
+            <li class="opcion" routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">
+                <button mat-icon-button (click)="salir()">
+                <mat-icon>exit_to_app</mat-icon> Salir
+            </button>
+            </li>
+        </ul>
+    </div>
 </mat-list>

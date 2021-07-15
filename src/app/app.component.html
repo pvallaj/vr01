@@ -4,20 +4,22 @@
     ------------------------------------------------------------------------------------------->
     <div class="wrapper">
         <div id="logos">
-            <a href="https://www.unam.mx" target="_blank">
+            <a href="https://www.unam.mx" target="_blank" id="logoUNAM">
                 <img src="assets/imgs/logo_unam.png" alt="Logo Universidad Nacional Autónoma de México" title="Universidad Nacional Autónoma de México">
             </a>
-            <a href="https://www.unam.mx" target="_blank">
+            <a href="https://www.unam.mx" target="_blank" id="leyendaUNAM">
                 <img src="assets/imgs/leyenda_unam.png" alt="Leyenda Universidad Nacional Autónoma de México" title="Universidad Nacional Autónoma de México">
             </a> &nbsp;
-            <a href="https://www.iifilologicas.unam.mx/" target="_blank">
+            <a href="https://www.iifilologicas.unam.mx/" target="_blank" id="logoFilologicas">
                 <img src="assets/imgs/logo_iif.png" alt="Logo Instituto de Investigaciones Filológicas" title="Instituto de Investigaciones Filológicas">
             </a>
             <a href="index.html" target="_blank" id="logoHLM-phone">
                 <img src="assets/imgs/logo_hlm_phone.png" alt="Inicio de Historia de las Literaturas en México. Siglo XVI al XVIII" title="Historia de las Literaturas en México. Siglo XVI al XVIII">
             </a>
+
         </div>
-        <div id="menuHamburgesa"><span class="icon-menu"></span></div>
+
+        <div id="menuHamburguesa" (click)="drawer.toggle()"><span class="icon-menu"></span></div>
     </div>
 </header>
 <app-isotipo *ngIf="vIsotipo" (cerrar)="vIsotipo=false;"></app-isotipo>
@@ -49,8 +51,8 @@
 
 </div>
 
-<mat-drawer-container>
-    <mat-drawer #drawer mode="side" color="primary">
+<mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer #drawer mode="over" color="primary">
         <app-opciones (navBarToggle)="drawer.toggle()"></app-opciones>
     </mat-drawer>
     <mat-drawer-content>

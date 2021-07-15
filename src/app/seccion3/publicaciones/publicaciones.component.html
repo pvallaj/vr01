@@ -36,9 +36,9 @@
                     <!--div class="card"-->
                     <div [ngClass]="{'card-header':!esCapitulo(reg),'card-body':esCapitulo(reg)}" *ngFor="let reg of resultado; let i = index">
                         <h5 class="mb-0" *ngIf="!esCapitulo(reg)" class="seccion" (click)="moSeccion(reg.etiquetas)">
-                            <a class="collapsed" aria-expanded="false">{{reg.texto}}</a>
+                            <a class="collapsed" aria-expanded="false" [innerHTML]="reg.texto"></a>
                         </h5>
-                        <a (click)="verCapitulo(reg)" *ngIf="esCapitulo(reg) && desplegarCapitulo(reg)" [ngClass]="{'seleccionado': reg.id===capituloSel?.id, 'liga': reg.id!=capituloSel?.id }">{{reg.texto}}</a>
+                        <a (click)="verCapitulo(reg)" *ngIf="esCapitulo(reg) && desplegarCapitulo(reg)" [ngClass]="{'seleccionado': reg.id===capituloSel?.id, 'liga': reg.id!=capituloSel?.id }" [innerHTML]="reg.texto"></a>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,7 @@
                     <mat-progress-bar [color]="'primary'" [mode]="'indeterminate'" [value]="50" [bufferValue]="100">
                     </mat-progress-bar>
                 </div>
-                <div class="tituloCapitulo">
-                    {{ portada.capitulo }}
+                <div class="tituloCapitulo" [innerHTML]="portada.capitulo">
                 </div>
                 <div class="autorCapitulo" *ngIf="capituloSel != null && portada != null">
                     Autor: {{ portada.descripcion }}

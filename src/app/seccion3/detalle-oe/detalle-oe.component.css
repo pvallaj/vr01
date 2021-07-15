@@ -192,6 +192,7 @@
     overflow: hidden;
     cursor: pointer;
     font-size: 14px;
+    position: relative;
 }
 
 .contimg-4 {
@@ -199,6 +200,7 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    margin-bottom: 0 !important;
 }
 
 .imgprev-4 {
@@ -218,12 +220,15 @@
 }
 
 .textoIR-4 {
-    margin: 2px;
-    padding: 0 5px 0 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 0 5px 5px 5px;
     width: 100%;
+    background-color: rgba(186, 127, 1, .9);
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .etiqueta {

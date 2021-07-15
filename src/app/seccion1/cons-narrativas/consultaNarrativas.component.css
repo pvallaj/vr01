@@ -1,5 +1,6 @@
 :host {
     margin-bottom: 150px;
+    margin-left: 25px;
 }
 
 .consulta {
@@ -61,6 +62,7 @@
     background-color: white;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .encabezado {
@@ -69,9 +71,14 @@
     padding: 10px 5px 5px 5px;
 }
 
+.titulo {
+    font-weight: bold;
+}
+
 .contenido {
     padding-left: 10px;
     padding-right: 10px;
+    white-space: pre-wrap;
 }
 
 h3 {

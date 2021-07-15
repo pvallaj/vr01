@@ -1,13 +1,13 @@
 .contenedor {
     width: 100%;
-    height: 350px;
+    min-height: 350px;
     margin-bottom: 5px;
-    overflow: hidden;
 }
 
 .imagen {
     height: 100%;
     width: 100%;
+    min-width: 300px;
 }
 
 .cuadro {

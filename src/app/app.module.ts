@@ -42,6 +42,7 @@ import { ConsDetSermonComponent } from './seccion2/cons-det-sermon/cons-det-serm
 
 //pipes
 import { SeguroPipe } from './pipes/seguro.pipe';
+import { HtmlSeguroPipe } from './pipes/htmlSeguro.pipe';
 import { ResaltaTextoPipe } from './pipes/ResaltaTexto.pipe';
 import { RecortaTextoPipe } from './pipes/recorta.pipe';
 //
@@ -106,6 +107,7 @@ import { IsotipoComponent } from './seccion3/isotipo/isotipo.component';
     SeguroPipe,
     ResaltaTextoPipe,
     RecortaTextoPipe,
+    HtmlSeguroPipe,
     //otros
     LtsNoticiasComponent,
     RegistroUsuarioComponent,

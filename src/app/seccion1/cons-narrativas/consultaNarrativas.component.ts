@@ -17,6 +17,7 @@ import { BusqAvanzadaComponent } from '../busq-avanzada/busq-avanzada.component'
 })
 export class ConsultaNarrativasComponent implements OnInit {
   
+  @ViewChild('marcaNarrativas') mNarrativa: any;
 
   public listaResultado:any[]=null;
   public listaResultadoSA:any[]=null;
@@ -110,6 +111,8 @@ export class ConsultaNarrativasComponent implements OnInit {
     })
 
     //this.consulta_inicial();
+
+    this.mNarrativa.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"}); 
   }
 
   public autorSeleccionado(sel){

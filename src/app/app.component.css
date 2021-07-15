@@ -4,8 +4,12 @@ mat-drawer-container {
 }
 
 mat-drawer {
-    width: 250px;
+    width: 90%;
     background-color: white;
+}
+
+#menuHamburguesa {
+    cursor: pointer;
 }
 
 .bloqueado {

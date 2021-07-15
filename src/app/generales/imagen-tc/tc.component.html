@@ -26,7 +26,15 @@ Descripción:
         <!------------------------------------------------------------------------------------------
             La imagen en tamaño completo,
         ------------------------------------------------------------------------------------------->
-        <img class="imagenportada" src="{{referencia}}">
+        <div class="marco_portada" fxLayout="row">
+            <img class="imagenportada" src="{{referencia}}">
+            <div class="ref_portada" fxLayout="column">
+                <div class="titulo">
+                    REFERENCIA DE PORTADA
+                </div>
+                <div class="referencia" [innerHTML]="elemento.referencia_portada | HtmlSeguro"></div>
+            </div>
+        </div>
     </div>
     <div class="contenedor" *ngIf="tipo=='buscar'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">

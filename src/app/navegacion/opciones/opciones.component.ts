@@ -10,17 +10,18 @@ import { Router } from '@angular/router';
 export class OpcionesComponent implements OnInit {
   @Output() navBarToggle = new EventEmitter<void>();
   constructor(
-    public su:SesionUsuario,
+    public sus:SesionUsuario,
     private r:Router) { }
 
   ngOnInit(): void {
   }
+  
   onToggleNV(){
     this.navBarToggle.emit();
   }
 
   salir(){
-    this.su.cerrarSesion();
+    this.sus.cerrarSesion();
     this.navBarToggle.emit();
     this.r.navigate(['inicio']);
   }

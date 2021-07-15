@@ -6,16 +6,16 @@
 
             <div id="txtHer">
                 <!--ancla proyectos-->
-                <a id="proyectos"></a>
+                <a id="proyectos" #proyectos></a>
 
                 <h1>Enlaces de interés</h1>
 
                 <ul id="submenuEnlaces">
-                    <li><a href="#proyectos">Proyectos y grupos de investigación</a></li>
-                    <li><a href="#bibliotecas">Bibliotecas y catálogos digitales</a></li>
-                    <li><a href="#revistas">Revistas</a></li>
-                    <li><a href="#artes">Artes</a></li>
-                    <li><a href="#diccionarios">Diccionarios y corpus documentales</a></li>
+                    <li><a style="cursor: pointer;" (click)="irA('proyectos')">Proyectos y grupos de investigación</a></li>
+                    <li><a style="cursor: pointer;" (click)="irA('bibliotecas')">Bibliotecas y catálogos digitales</a></li>
+                    <li><a style="cursor: pointer;" (click)="irA('revistas')">Revistas</a></li>
+                    <li><a style="cursor: pointer;" (click)="irA('artes')">Artes</a></li>
+                    <li><a style="cursor: pointer;" (click)="irA('diccionario')">Diccionarios y corpus documentales</a></li>
 
                 </ul>
                 <div id="brujulaEnlaces"><img src="./assets/imgs/brujulaEnlaces.gif" alt="enlaces de interés"></div>
@@ -30,7 +30,7 @@
                     <li><a href="http://web.uaemex.mx/iesu/PNovohispano/index.html" target="_blank">Seminario Permanente de Pensamiento Novohispano </a></li>
                     <li><a href="https://sermonesenmexicano.unam.mx/proyecto.html" target="_blank">Sermones en Mexicano </a></li>
                     <!--ancla bibliotecas-->
-                    <a id="bibliotecas"></a>
+                    <a id="bibliotecas" #bibliotecas></a>
                     <li><a href="https://www.unav.edu/web/griso/presentacion" target="_blank">Grupo de Investigación Siglo de Oro </a></li>
                     <li><a href="https://www.bieses.net" target="_blank">Bieses. Bibliografía de Escritoras Españolas </a></li>
                 </ul>
@@ -56,7 +56,7 @@
                     <li><a href="http://primeroslibros.org/" target="_blank">Primeros Libros de las Américas. Impresos Americanos del Siglo xvi en las Bibliotecas del Mundo </a></li>
                     <li><a href="https://sibila.iib.unam.mx/" target="_blank">SIBILA (Sistema Bibliográfico de la Literatura Novohispana) </a></li>
                     <!--ancla revistas-->
-                    <a id="revistas"></a>
+                    <a id="revistas" #revistas></a>
                     <li><a href="http://bd.iib.unam.mx/sibisor/index.html" target="_blank">SiBiSor. Sistema Bibliográfico Sor Juana Inés de la Cruz </a></li>
                 </ul>
 
@@ -70,7 +70,7 @@
                     <li><a href="https://americasinnombre.ua.es/index" target="_blank">América Sin Nombre, Universidad de Alicante </a></li>
                     <li><a href="https://bibliographica.iib.unam.mx/index.php/RB" target="_blank">Bibliographica, Universidad Nacional Autónoma de México </a></li>
                     <!--ancla artes-->
-                    <a id="artes"></a>
+                    <a id="artes" #artes></a>
                     <li><a href="http://revistaselclaustro.mx/index.php/prolijamemoria2e" target="_blank">Prolija Memoria, Universidad del Claustro de Sor Juana </a></li>
                 </ul>
                 <br>
@@ -87,7 +87,7 @@
                     <li><a href="http://munal.emuseum.com/collections/14056/Principal;jsessionid=2976C1413BC2C558A66D65A4F7327969/objects" target="_blank">Museo Nacional de Arte, México </a></li>
                     <li><a href="https://virreinato.inah.gob.mx/" target="_blank">Museo Nacional del Virreinato, México </a></li>
                     <!--ancla diccionarios-->
-                    <a id="diccionarios"></a>
+                    <a id="diccionarios" #diccionario></a>
                     <li><a href="http://musicat.unam.mx/" target="_blank">Seminario de Música en la Nueva España y el México Independiente </a></li>
                 </ul>
                 <br>

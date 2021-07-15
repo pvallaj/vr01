@@ -24,16 +24,8 @@ Descripción:
                 </ul>
             </li>
             <li routerLinkActive="activo"><a>Siglo XVII</a>
-                <!--ul>
-                    <li><a routerLink="/publicaciones/XVII/Tomo1">Tomo 1</a></li>
-                    <li><a routerLink="/publicaciones/XVII/Tomo2">Tomo 2</a></li>
-                </ul-->
             </li>
             <li routerLinkActive="activo"><a>Siglo XVIII</a>
-                <!--ul>
-                    <li><a routerLink="/publicaciones/XVIII/Tomo1">Tomo 1</a></li>
-                    <li><a routerLink="/publicaciones/XVIII/Tomo2">Tomo 2</a></li>
-                </ul-->
             </li>
             <li routerLinkActive="activo"><a>Herramientas</a>
                 <ul>
@@ -44,12 +36,6 @@ Descripción:
             <li routerLinkActive="activo"><a routerLink="/linea">Línea de tiempo</a></li>
             <li routerLinkActive="activo"><a routerLink="/deinteres">Enlaces</a></li>
             <li routerLinkActive="activo"><a routerLink="/contactos">Contacto</a></li>
-            <!--li routerLinkActive="activo"><a routerLink="/noticias">Noticias</a></li-->
-            <!--li routerLinkActive="activo">
-                <a routerLink="/sesion" *ngIf="!sus.role">
-                    <mat-icon>person</mat-icon>
-                </a>
-            </li-->
             <li routerLinkActive="activo" *ngIf="sus.role=='publicar' || sus.role=='admin'"><a routerLink="/publicar">Publicar Noticias</a></li>
             <li routerLinkActive="activo" *ngIf="sus.role=='admin' "><a routerLink="/usuarios">Adm. Usuarios</a></li>
             <li routerLinkActive="activo" *ngIf="sus.estadoSesion=='conectado'">

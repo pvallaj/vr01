@@ -37,7 +37,7 @@
 }
 
 .contenedorPortada {
-    width: 600px;
+    width: auto;
     height: 800px;
     z-index: 501 !important;
     overflow-y: auto;
@@ -49,4 +49,20 @@
 
 .accion {
     width: 98%;
+}
+
+.ref_portada {
+    padding: 0 10px 0 10px;
+}
+
+.titulo {
+    font-weight: bold;
+}
+
+.ref_portada {
+    width: 250px;
+}
+
+.referencia {
+    margin-top: 20px;
 }
