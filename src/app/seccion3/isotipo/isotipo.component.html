@@ -1,14 +1,14 @@
-<div class="bloqueado">
-    <div class="leermas" fxLayout="column">
+<div class="bloqueado" fxFlexLayout="row">
+    <div class="marco" fxLayout="column" fxFlex="80" fxFlex.lt-sm="95">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrarv()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>
         </div>
-        <div fxFlex fxLayout="row" fxLayoutGap="20px" class="elemento">
-            <div fxFlex="30" fxLayout="column" fxLayoutAlign="center">
-                <img class="imgMaguey" src="assets/imgs/isotipoMaguey.png" alt="Explicación Isotipo de la Identidad Gráfica" title="Explicación Isotipo de la Identidad Gráfica">
+        <div fxFlex fxLayout="row" fxLayoutGap="20px" fxLayout.lt-md="column" fxLayoutGap.lt-md="20px">
+            <div fxFlex="35" fxFlex.lt-md="80" fxLayoutAlign="center">
+                <img class="imgMaguey" ngClass.lt-md="imgMagueySM" src="assets/imgs/isotipoMaguey.png" alt="Explicación Isotipo de la Identidad Gráfica" title="Explicación Isotipo de la Identidad Gráfica">
             </div>
-            <div fxFlex class="expl-iso">
+            <div fxFlex="65" class="expl-iso" ngClass.lt-md="expl-iso-SM">
                 <h1>Isotipo de identidad gráfica.</h1>
                 <p></p>
                 <p>Nuestro isotipo representa el metl o maguey, con raíz y flor, y se inspira en un dibujo recogido por el médico y humanista español Francisco Hernández en una de sus obras más importantes: la Historia Natural de la Nueva España, escrita

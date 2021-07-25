@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConexionService } from '../../servicios/Conexion.service';
 
@@ -6,6 +6,7 @@ import { ConexionService } from '../../servicios/Conexion.service';
   selector: 'app-publicaciones',
   templateUrl: './publicaciones.component.html',
   styleUrls: ['./publicaciones.component.css'],
+  encapsulation : ViewEncapsulation.None, 
 })
 export class PublicacionesComponent implements OnInit {
 

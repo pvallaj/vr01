@@ -195,8 +195,8 @@ version 2
 
 
 <!--Tarjeta para detalle de IMAGEN-->
-<div class="tarjeta" *ngIf="elemento?.tipo==2 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
-    <div class="contenedorimg">
+<div class="tarjeta" *ngIf="elemento?.tipo==2 && tipo==2" fxLayout="row" fxLayoutAlign="space-around" fxLayout.lt-md="column" fxLayoutGap.lt-md="20px">
+    <div class="contenedorimg" ngClass.lt-md="contenedorimgSM">
         <img class="imgprev" src="{{elemento.referencia}}">
         <!--a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
             <img class="imgprev" src="{{elemento.referencia_2}}">
@@ -223,8 +223,8 @@ version 2
 </div>
 
 <!--Tarjeta para detalle de VIDEO -->
-<div class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
-    <div class="contenedorimg">
+<div class="tarjeta" *ngIf="elemento?.tipo==3 && tipo==2" fxLayout="row" fxLayoutAlign="space-around" fxLayout.lt-md="column" fxLayoutGap.lt-md="20px">
+    <div class="contenedorimg" ngClass.lt-md="contenedorimgSM">
         <iframe *ngIf="elemento.referencia_2.indexOf('youtube.com/embed')>=0" fxFlex [src]="elemento.referencia_2 | seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <img *ngIf="elemento.referencia_2.indexOf('youtube.com/embed')<0" class="imgprev" src="{{elemento.referencia}}">
     </div>
@@ -250,8 +250,8 @@ version 2
 </div>
 
 <!--Tarjeta para detalle de Recurso en Linea -->
-<div class="tarjeta" *ngIf="elemento?.tipo==5 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
-    <div class="contenedorimg">
+<div class="tarjeta" *ngIf="elemento?.tipo==5 && tipo==2" fxLayout="row" fxLayoutAlign="space-around" fxLayout.lt-md="column" fxLayoutGap.lt-md="20px">
+    <div class="contenedorimg" ngClass.lt-md="contenedorimgSM">
         <img class="imgprev" src="{{elemento.referencia}}">
     </div>
     <div class="ficha">
@@ -274,8 +274,8 @@ version 2
     </div>
 </div>
 <!--Tarjeta para detalle de PDF -->
-<div class="tarjeta" *ngIf="elemento?.tipo==6 && tipo==2" fxLayout="row" fxLayoutAlign="space-around">
-    <div class="contenedorimg">
+<div class="tarjeta" *ngIf="elemento?.tipo==6 && tipo==2" fxLayout="row" fxLayoutAlign="space-around" fxLayout.lt-md="column" fxLayoutGap.lt-md="20px">
+    <div class="contenedorimg" ngClass.lt-md="contenedorimgSM">
         <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">
             <img class="imgprev" src="{{elemento.referencia}}">
         </a>

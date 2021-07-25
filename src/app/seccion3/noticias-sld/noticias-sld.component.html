@@ -1,28 +1,28 @@
 <section id="sec3" fxLayout="column" *ngIf="listaNoticias!=null">
     <h2>Noticias</h2>
-    <div class="contenedor" fxFlex fxLayout="column" fxLayoutGap="30px">
+    <div class="contenedor" fxFlex fxLayout="column" fxLayoutGap="5px">
         <div class="sup" fxFlex fxLayout="row">
-            <div class="btnIzq" fxFlex="8" fxLayout="column" fxLayoutAlign="center center">
-                <mat-icon class="flecha" aria-hidden="false" aria-label="Example home icon" (click)="anterior()">arrow_back_ios</mat-icon>
+            <div class="btnIzq" fxFlex="5" fxLayout="column" fxLayoutAlign="center center">
+                <mat-icon class="flecha" ngClass.lt-md="flecha-md" aria-hidden="false" aria-label="Example home icon" (click)="anterior()">arrow_back_ios</mat-icon>
             </div>
-            <div class="centro" fxFlex fxLayoutAlign="space-around">
+            <div class="centro" fxFlex="80" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
                 <div class="imagen" fxFlex="45" fxLayout="column" fxLayoutAlign="center center">
                     <img class="imagenNoticia" src="{{ruta}}/{{noticiaActiva.imagen}}">
                 </div>
-                <div class="noticia" fxFlex="45" fxLayout="column" fxLayoutAlign="center center">
-                    <div fxFlex="20" class="tituloNoticia">
+                <div class="noticia" fxFlex="45" fxFlex.lt-md fxLayout="column" fxLayoutAlign="center stretch">
+                    <div fxFlex="nogrow" class="tituloNoticia">
                         {{noticiaActiva.titulo}}
                     </div>
-                    <div fxFlex class="noticia">
+                    <div fxFlex="55" class="noticia">
                         <p>{{noticiaActiva.texto | recortaTexto:100}}</p>
                     </div>
                     <div fxFlex="15" fxLayout="row" fxLayoutAlign="center" class="btnNoticia">
-                        <a class="link_bloque" (click)="elemento=noticiaActiva">Ver más del evento</a>
+                        <a class="link_bloque" style="cursor:pointer" (click)="elemento=noticiaActiva">Ver más del evento</a>
                     </div>
                 </div>
             </div>
-            <div class="btnDer" fxFlex="8" fxLayout="column" fxLayoutAlign="center center">
-                <mat-icon class="flecha" aria-hidden="false" aria-label="Example home icon" (click)="siguiente()">arrow_forward_ios</mat-icon>
+            <div class="btnDer" fxFlex="5" fxLayout="column" fxLayoutAlign="center center">
+                <mat-icon class="flecha" ngClass.lt-md="flecha-md" aria-hidden="false" aria-label="Example home icon" (click)="siguiente()">arrow_forward_ios</mat-icon>
             </div>
         </div>
         <div class="controles" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="30px">

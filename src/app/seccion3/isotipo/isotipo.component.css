@@ -14,32 +14,34 @@
     padding-bottom: 20px;
 }
 
-.imgMaguey {
-    width: 100%;
-    height: auto;
-}
-
-.elemento {
-    height: 100%;
-}
-
-.leermas {
-    width: 70%;
-    height: 70%;
+.marco {
+    max-height: 80%;
     padding: 15px;
     z-index: 501 !important;
     background-color: white;
-    overflow-y: hidden;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 }
 
-.cerrar-leermas {
-    color: #BB0207;
-    cursor: pointer;
+.imgMaguey {
+    width: 279px;
+    height: 369px;
+}
+
+.imgMagueySM {
+    width: auto;
+    height: 200px;
 }
 
 .expl-iso {
     padding: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.expl-iso-SM {
+    padding: 10px;
+    min-height: 700px;
+    overflow-y: auto;
 }
 
 .btn {

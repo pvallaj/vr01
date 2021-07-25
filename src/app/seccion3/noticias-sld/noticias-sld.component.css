@@ -14,13 +14,18 @@ h2 {
 }
 
 .contenedor {
-    height: 350px;
     width: 100%;
     margin-top: 20px;
 }
 
 .flecha {
     font-size: 7rem;
+    color: #aa7d04;
+    cursor: pointer;
+}
+
+.flecha-md {
+    font-size: 5rem;
     color: #aa7d04;
     cursor: pointer;
 }
@@ -67,6 +72,7 @@ h2 {
 .tituloNoticia {
     font-weight: bold;
     font-size: 2rem;
+    text-align: center;
     border-bottom: 8px solid rgb(157, 8, 13);
 }
 
