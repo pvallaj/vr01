@@ -1,5 +1,6 @@
 .contenedor {
     margin-top: 50px;
+    min-height: 450px;
 }
 
 .seleccionado {
