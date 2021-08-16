@@ -27,6 +27,9 @@ export class DetalleOEComponent implements OnInit {
   ngOnInit(): void {
     if(this.tipo==2){
       //se obtienen las referencias de capitulos a los que pertenece el recurso.
+      console.log('***************************************');
+      console.log(this.elemento);
+      console.log('***************************************');
       this.estaCargando = true;
       this.cnx.novohisp({id: this.elemento.id}, 'referencias recurso').subscribe(
         (datos) => {

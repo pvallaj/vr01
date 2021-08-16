@@ -85,7 +85,7 @@
                     <div class="titulo" fxFlex="40">Protesta de fe:</div>
                     <div class="valor">{{sermon.protesta_fe}}</div>
                 </div>
-                <div class="fila" fxLayout="row" *ngIf="grabados.length>0">
+                <div class="fila" fxLayout="row" *ngIf="grabados.length>0 && !estaVacio(grabados[0].grabado)">
                     <div class="titulo" fxFlex="40">Grabado:</div>
                     <div class="valor">{{grabados[0]?.grabado}}</div>
                 </div>

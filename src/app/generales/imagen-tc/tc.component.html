@@ -6,7 +6,7 @@ Descripción:
        el detalle resultado de una consulta en la base de datos de relaciones o 
        el detalle resultado de una consulta en la base de datos de sermones
 ------------------------------------------------------------------------------------------->
-<div class="espera" fxLayout="column" fxLayoutAlign="center center">
+<div [ngClass]="{'esperaSermon':tipo=='sermon', 'espera': tipo!='sermon'}" fxLayout="column" fxLayoutAlign="center center">
 
     <div class="contenedor" *ngIf="tipo=='imagen noticia'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
@@ -56,7 +56,7 @@ Descripción:
         ------------------------------------------------------------------------------------------->
         <app-cons-det-narrativa [idTexto]="+referencia" [textoBuscado]="textoBuscado"></app-cons-det-narrativa>
     </div>
-    <div class="contenedor" *ngIf="tipo=='sermon'">
+    <div class="contenedorSermon" *ngIf="tipo=='sermon'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>
