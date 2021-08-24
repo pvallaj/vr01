@@ -8,6 +8,7 @@ import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeComponent } from '../../generales/mensaje/mensaje.component';
 import { UtilS } from '../../servicios/Util.service';
+import { Globales } from '../../generales/globales';
 
 @Component({
   selector: 'app-noticia',
@@ -31,8 +32,8 @@ export class NoticiaComponent implements OnInit {
     private ru:Router,
     private us:UtilS
     ) { 
-    
-    this.crearForma();
+ 
+      this.crearForma();
   }
   crearForma(){
     let vals=null;
@@ -51,8 +52,8 @@ export class NoticiaComponent implements OnInit {
         imagenFuente: [  ]
       };
       if(this.cnl.elemento.imagen){
-        this.urlIMG='http://localhost:8000/img_noticias/'+this.cnl.elemento.imagen;
-        console.log(this.urlIMG);
+        this.urlIMG = Globales.rutaImgNoticias + '/' + this.cnl.elemento.imagen;
+        console.log( ">>>" + this.urlIMG);
       }
     }else{
       this.fechaMin=new Date((new Date()).getTime()-(1000 * 60 * 60 * 24));

@@ -8,7 +8,7 @@ Descripción:
 ------------------------------------------------------------------------------------------->
 <div [ngClass]="{'esperaSermon':tipo=='sermon', 'espera': tipo!='sermon'}" fxLayout="column" fxLayoutAlign="center center">
 
-    <div class="contenedor" *ngIf="tipo=='imagen noticia'">
+    <div class="contenedorTC" *ngIf="tipo=='imagen noticia'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>
@@ -36,7 +36,7 @@ Descripción:
             </div>
         </div>
     </div>
-    <div class="contenedor" *ngIf="tipo=='buscar'">
+    <div class="contenedorTC" *ngIf="tipo=='buscar'" fxLayout="column">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>
@@ -46,7 +46,7 @@ Descripción:
         ------------------------------------------------------------------------------------------->
         <app-detalle-oe [elemento]="elemento" [tipo]="2" (seleccionarCapitulo)="abrirCapitulo($event)"></app-detalle-oe>
     </div>
-    <div class="contenedor" *ngIf="tipo=='relacion'">
+    <div class="contenedorTC" *ngIf="tipo=='relacion'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>

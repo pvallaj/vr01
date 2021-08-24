@@ -309,6 +309,7 @@ export class PublicacionesComponent implements OnInit {
     this.regsCapitulo=null;
     this.seccionesVisibles= [];
     this.imagenes=null;
+    this.capituloSel=null;
     this.cargaDatosTomo();
   }
 

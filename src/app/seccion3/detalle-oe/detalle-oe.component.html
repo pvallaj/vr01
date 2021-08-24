@@ -210,7 +210,7 @@ version 2
             <div class="datoFicha" *ngIf="elemento.autor">{{elemento.autor}}</div>
             <div class="etiqueta">AÑO</div>
             <div class="datoFicha">{{elemento.fecha}}</div>
-            <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+            <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
 
             <ul class="bulletRojo">
                 <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
@@ -239,8 +239,8 @@ version 2
         <div class="datoEtiqueta">
             <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
-        <div class="etiqueta">Este recursos también aparece en los capítulos</div>
-        <div *ngFor="let i of referencias">{{i.capitulo}}</div>
+
+        <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
         <ul class="bulletRojo">
             <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
                 {{i.capitulo}}
@@ -265,7 +265,7 @@ version 2
         <div class="datoEtiqueta">
             <a [href]="elemento.referencia_2 | seguro" target="_black" *ngIf="elemento.referencia_2!=null">Enlace</a>
         </div>
-        <div class="etiqueta">Este recursos también aparece en los capítulos</div>
+        <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
         <ul class="bulletRojo">
             <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
                 {{i.capitulo}}

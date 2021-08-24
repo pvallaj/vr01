@@ -36,15 +36,15 @@
 
 .cerrar {
     background-color: white;
-    border-top: 2px solid #AA7D04;
-    border-left: 2px solid #AA7D04;
-    border-right: 2px solid #AA7D04;
+    border-top: 1px solid #AA7D04;
+    border-left: 1px solid #AA7D04;
+    border-right: 1px solid #AA7D04;
     padding: 5px 20px;
     color: red;
     cursor: pointer;
 }
 
-.contenedor {
+.contenedorTC {
     width: 98%;
     height: 98%;
     z-index: 1000 !important;

@@ -5,7 +5,7 @@
 </app-tc>
 
 <div class="resultado" *ngIf="!estaCargando  && resultadoOE!=null && resultadoOE.length>0">
-    <div class="tituloSeccion">Información encontrada en la Obra Escrita, Siglo XVI &nbsp;&nbsp;<a routerLink="/oesxvi"> Ir a la sección Siglo XVI</a></div>
+    <div class="tituloSeccion">Información encontrada en la Obra Escrita, Siglo XVI &nbsp;&nbsp;<a [routerLink]="['/publicaciones','XVI','Tomo1']"> Ir a la sección Siglo XVI</a></div>
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start stretch">
         <app-detalle-oe class="tarjetaresumen" [tipo]="4" [elemento]="elemento" *ngFor="let elemento of resultadoOE; let i = index" (click)="verDetalle(elemento)" fxFlex="0 0 calc(23% - 10px)"></app-detalle-oe>
     </div>
@@ -28,7 +28,7 @@
 
 
 <div class="resultado" *ngIf="!estaCargando && resultadoNarrativas!=null && resultadoNarrativas.length>0">
-    <div class="tituloSeccion">Información encontrada en la base de datos de Narrativas &nbsp;&nbsp;<a routerLink="/relaciones">Ir a la sección de RELACIONES</a></div>
+    <div class="tituloSeccion">Información encontrada en la base de datos de RELACIONES &nbsp;&nbsp;<a routerLink="/relaciones">Ir a la sección de RELACIONES</a></div>
     <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="start stretch">
         <div class="tarjeta" *ngFor="let narrativa of resultadoNarrativas; let i = index" fxLayout="column" fxFlex="0 0 calc(20% - 10px)" fxFlex.lt-lg="0 0 calc(33% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="verDetalle(narrativa)">
             <div class="encabezado" [innerHTML]="(i+1)+' - '+narrativa.autor | resaltaTexto:termino"></div>
