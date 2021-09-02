@@ -146,7 +146,7 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         true/false
     ******************************************************************************************/
-
+  
         this.tipoReferencia = 'buscar';
         this.elementoSeleccionado = e;
         this.referencia = 'varios';

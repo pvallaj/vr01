@@ -213,8 +213,7 @@ version 2
             <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
 
             <ul class="bulletRojo">
-                <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
-                    {{i.capitulo}}
+                <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias" [innerHTML]="i.capitulo">
                 </li>
             </ul>
         </div>
@@ -242,8 +241,7 @@ version 2
 
         <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
         <ul class="bulletRojo">
-            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
-                {{i.capitulo}}
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias" [innerHTML]="i.capitulo">
             </li>
         </ul>
     </div>
@@ -267,8 +265,7 @@ version 2
         </div>
         <div class="etiqueta" *ngIf="referencias!=null && referencias.length>0">Este recurso se asocia a los capítulos:</div>
         <ul class="bulletRojo">
-            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
-                {{i.capitulo}}
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias" [innerHTML]="i.capitulo">
             </li>
         </ul>
     </div>
@@ -293,8 +290,7 @@ version 2
         </div>
         <div class="etiqueta">Este recursos también aparece en los capítulos</div>
         <ul class="bulletRojo">
-            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias">
-                {{i.capitulo}}
+            <li class="liga" (click)="seleccionar(i.id)" *ngFor="let i of referencias" [innerHTML]="i.capitulo">
             </li>
         </ul>
     </div>

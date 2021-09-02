@@ -6,6 +6,10 @@ p {
     white-space: pre-wrap
 }
 
+.marco_sermones {
+    margin: 0 20px;
+}
+
 .tarjeta {
     margin-top: 40px;
     border-radius: 10px;

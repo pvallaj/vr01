@@ -17,7 +17,7 @@
 .mat-column-id {
     word-wrap: break-word !important;
     white-space: unset !important;
-    width: 50px !important;
+    width: 60px !important;
     flex: 0 0 50px !important;
     color: white;
     background-color: #5d1013;
@@ -35,7 +35,7 @@
 .mat-column-ubicacion,
 .mat-column-narratio {
     width: 150px !important;
-    border-left: 1px dotted gray;
+    border: 5px solid white !important;
     color: white;
     background-color: #5d1013;
 }
@@ -43,6 +43,7 @@
 .mat-column-narratio {
     width: 350px !important;
     white-space: pre-wrap !important;
+    border: 5px solid white !important;
 }
 
 .mat-column-visuales,

@@ -21,8 +21,8 @@ export class MapaVinculosComponent implements OnInit {
     'tooltip-class':'tooltipC'
   }
 
-  public listaResultado:MatTableDataSource<any>=null;
-
+  public listaResultado: MatTableDataSource<any>=null;
+  public idNarrativaSel = 0;
 
   //------------------------------
   public columnasV:string[]=['id','autor','obra',  'narratio',
@@ -68,5 +68,9 @@ export class MapaVinculosComponent implements OnInit {
     if (this.listaResultado.paginator) {
       this.listaResultado.paginator.firstPage();
     }
+  }
+
+  public cerrarDetalle(){
+    this.idNarrativaSel = 0 ;
   }
 }

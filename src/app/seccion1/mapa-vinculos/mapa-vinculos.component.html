@@ -55,7 +55,9 @@
 
             <ng-container matColumnDef="narratio" sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="relacion"> RELACIÓN </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.narratio | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.narratio | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="visuales">
@@ -64,7 +66,9 @@
                         <mat-icon>close</mat-icon>
                     </button>VISUALES
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.visuales}}" [options]="tto"> {{row.visuales | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.visuales | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="auditivos">
@@ -73,7 +77,9 @@
                         <mat-icon>close</mat-icon>
                     </button>AUDITIVOS
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.auditivos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.auditivos | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.auditivos | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="presente_accion">
@@ -82,7 +88,9 @@
                         <mat-icon>close</mat-icon>
                     </button>EXPRESIONES QUE REFLEJAN EL IMPACTO EMOCIONAL DE LA RELACIÓN
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.presente_accion}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.presente_accion | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.presente_accion | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="ref_discurso">
@@ -91,7 +99,9 @@
                         <mat-icon>close</mat-icon>
                     </button>REFERENCIAS AL METADISCURSO
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.ref_discurso}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.ref_discurso | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.ref_discurso | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="apltvo_recep">
@@ -100,7 +110,9 @@
                         <mat-icon>close</mat-icon>
                     </button>APELATIVOS AL RECEPTOR DE LA RELACIÓN
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.apltvo_recep}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.apltvo_recep | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.apltvo_recep | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="apltvo_espect">
@@ -109,11 +121,13 @@
                         <mat-icon>close</mat-icon>
                     </button>APELATIVOS AL ESPECTADOR
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.apltvo_espect}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.apltvo_espect | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.apltvo_espect | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="columnasV"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnasV;"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasV;" (click)="idNarrativaSel=row.id_texto"></tr>
 
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
@@ -124,3 +138,7 @@
 
     <mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
 </div>
+
+<app-tc *ngIf="idNarrativaSel!=0" [referencia]="idNarrativaSel" [tipo]="'relacion'" (quitar)="cerrarDetalle()">
+
+</app-tc>
