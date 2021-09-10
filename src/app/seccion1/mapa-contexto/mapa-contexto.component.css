@@ -1,4 +1,4 @@
-.marco {
+.marco_mapa {
     margin: 20px;
 }
 
@@ -43,6 +43,7 @@
 .mat-column-narratio {
     width: 350px !important;
     white-space: pre-wrap !important;
+    padding: 5px !important;
 }
 
 .mat-column-argumento,

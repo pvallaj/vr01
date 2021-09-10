@@ -1,4 +1,4 @@
-<div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+<div class="marco-mapa" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="titulo">
         <h3>Signos Actorales</h3>
         <p>Permite acceder a las relaciones a través de los gestos y los signos que, según el texto dramático, realizan los actores al enunciarlas, y también a través de los gestos y signos que realizan personajes referidos en la misma relación</p>
@@ -61,81 +61,74 @@
 
             <ng-container matColumnDef="narratio" sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2" class="relacion"> RELACIÓN </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.narratio}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}">
-                    {{row.narratio | recortaTexto:200}}
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.narratio | recortaTexto:200"></div>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="gestos_dramaticos">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos">GESTOS
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarGD($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.gestos_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.gestos_dramaticos | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.gestos_dramaticos | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="movimientos_dramaticos">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MOVIMIENTOS CORPORALES
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarMD($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.movimientos_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.movimientos_dramaticos | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.movimientos_dramaticos | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="voz_dramaticos">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MODULACIÓN DE VOZ
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarVoD($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.voz_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.voz_dramaticos | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.voz_dramaticos | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="vista_dramaticos">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="explicitos"> MOVIMIENTOS EN LA MIRADA DE LOS ACTORES
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarViD($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.vista_dramaticos}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.vista_dramaticos | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.vista_dramaticos | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="gestos_dramaticos_no">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> GESTOS
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarGDn($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.gestos_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.gestos_dramaticos_no | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.gestos_dramaticos_no | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="movimientos_dramaticos_no">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS CORPORALES
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarMDn($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.movimientos_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.movimientos_dramaticos_no | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.movimientos_dramaticos_no | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="voz_dramaticos_no">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MODULACIÓN DE VOZ
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarVoDn($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.voz_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.voz_dramaticos_no | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.voz_dramaticos_no | recortaTexto:200"></div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="vista_dramaticos_no">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="implicitos"> MOVIMIENTOS EXPLÍCITOS EN LA MIRADA DE LOS ACTORES
-                    <!--button mat-button matSuffix mat-icon-button (click)="cambiarViDn($event)">
-                        <mat-icon>close</mat-icon>
-                    </button-->
                 </th>
-                <td mat-cell *matCellDef="let row" tooltip="{{row.vista_dramaticos_no}}" [options]="{placement: 'left', 'max-width':400, theme:'light'}"> {{row.vista_dramaticos_no | recortaTexto:200}} </td>
+                <td mat-cell *matCellDef="let row">
+                    <div [innerHTML]="row.voz_dramaticos_no | recortaTexto:200"></div>
+                    {{row.vista_dramaticos_no | recortaTexto:200}}
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="g1" sticky>
@@ -152,7 +145,7 @@
 
             <tr mat-header-row *matHeaderRowDef="columnasSAT1"></tr>
             <tr mat-header-row *matHeaderRowDef="columnasSAT2"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnasSA;"></tr>
+            <tr mat-row style="cursor: pointer;" *matRowDef="let row; columns: columnasSA;" (click)="idNarrativaSel=row.id_texto"></tr>
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No se encontraron coincidencias "{{input.value}}"</td>
@@ -162,3 +155,7 @@
 
     <mat-paginator [pageSizeOptions]="[2, 5, 10, 25, 100]"></mat-paginator>
 </div>
+
+<app-tc *ngIf="idNarrativaSel!=0" [referencia]="idNarrativaSel" [tipo]="'relacion'" (quitar)="idNarrativaSel=0;">
+
+</app-tc>

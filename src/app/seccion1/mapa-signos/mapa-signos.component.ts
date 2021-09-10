@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -39,6 +39,8 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   public moVoDn=true;
   public moViDn=true;
 
+  public idNarrativaSel=0;
+
   //------------------------------
   public columnasSA:string[]=['id_texto','autor','obra', 'narratio',
   'gestos_dramaticos', 'movimientos_dramaticos','voz_dramaticos',
@@ -49,7 +51,11 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
     'gestos_dramaticos', 'movimientos_dramaticos','voz_dramaticos',
     'gestos_dramaticos_no', 'movimientos_dramaticos_no','voz_dramaticos_no'];
 
-  constructor() { }
+    constructor(private paginatorConf: MatPaginatorIntl) { 
+      this.paginatorConf.itemsPerPageLabel = 'Elementos por página';
+      this.paginatorConf.nextPageLabel = 'Siguiente página';
+      this.paginatorConf.previousPageLabel = 'Página Anterior';
+    }
 
   ngOnInit(): void {
     this.listaResultadoSA=new MatTableDataSource<Signos>(this.datos)

@@ -1,4 +1,4 @@
-<div class="marco" fxLayout="column" fxLayoutAlign="start stretch">
+<div class="marco_mapa" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="titulo">
         <h3>Vinculos</h3>
         <p>Ofrece la posibilidad de explorar todos los elementos que sirven de puente para enlazar la relación con la acción dramática.</p>
@@ -127,7 +127,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="columnasV"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnasV;" (click)="idNarrativaSel=row.id_texto"></tr>
+            <tr mat-row style="cursor: pointer;" *matRowDef="let row; columns: columnasV;" (click)="idNarrativaSel=row.id_texto"></tr>
 
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>

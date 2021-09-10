@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -16,14 +16,18 @@ export class MapaContextoComponent implements OnInit {
   public listaResultado:MatTableDataSource<any>=null;
 
 
-  //------------------------------
+  // ------------------------------
   public columnasV:string[]=['id','autor','obra', 'narratio',
   'argumento','accion_dramatica', 'marco_anterior','marco_posterior','formula_apertura',
   'formula_cierre','tiempo','tiempo_referido'];
 
-  public columnasO:string[]=[];
-
-  constructor() { }
+  public columnasO: string[] = [];
+  public idNarrativaSel = 0;
+  constructor(private paginatorConf: MatPaginatorIntl) { 
+    this.paginatorConf.itemsPerPageLabel = 'Elementos por página';
+    this.paginatorConf.nextPageLabel = 'Siguiente página';
+    this.paginatorConf.previousPageLabel = 'Página Anterior';
+  }
 
   ngOnInit(): void {
     this.listaResultado=new MatTableDataSource<any>(this.datos)

@@ -1,4 +1,4 @@
-.marco {
+.marco_mapa {
     margin: 20px;
 }
 
@@ -44,6 +44,7 @@
     width: 350px !important;
     white-space: pre-wrap !important;
     border: 5px solid white !important;
+    padding: 5px !important;
 }
 
 .mat-column-visuales,
