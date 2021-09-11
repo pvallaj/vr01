@@ -11,7 +11,7 @@ export class HerramientasComponent implements OnInit {
   constructor(private r:Router) { }
 
   ngOnInit(): void {
-    console.log(this.r.url);
+
   }
 
   public irASermones(){

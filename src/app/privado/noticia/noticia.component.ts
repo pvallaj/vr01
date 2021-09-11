@@ -53,7 +53,7 @@ export class NoticiaComponent implements OnInit {
       };
       if(this.cnl.elemento.imagen){
         this.urlIMG = Globales.rutaImgNoticias + '/' + this.cnl.elemento.imagen;
-        console.log( ">>>" + this.urlIMG);
+
       }
     }else{
       this.fechaMin=new Date((new Date()).getTime()-(1000 * 60 * 60 * 24));
@@ -70,7 +70,7 @@ export class NoticiaComponent implements OnInit {
       };
     }
     this.frm=this.fb.group(vals);
-    console.log(this.frm.value);
+
   }
   ngOnInit(): void {
   }
@@ -83,7 +83,7 @@ export class NoticiaComponent implements OnInit {
  
     var mimeType = this.archivo.type;
     if (mimeType.match(/image\/*/) == null) {
-      console.log( "Only images are supported.");
+
       return;
     }
  
@@ -99,7 +99,7 @@ export class NoticiaComponent implements OnInit {
     let prms={...this.frm.value};
     prms.inicio=this.us.DateACadenaSQL(prms.inicio);
     prms.termino=this.us.DateACadenaSQL(prms.termino);
-    console.log(this.cnl.elemento);
+
     if(this.cnl.elemento!=null){
       //para actualización del usuario
       prms.id=this.cnl.elemento.id; 
@@ -137,11 +137,11 @@ export class NoticiaComponent implements OnInit {
     this.estaProcesando=false;
   }
   registroError(e){
-    console.log("error en el registro");
+
     this.dlg.open(MensajeComponent, {data:{titulo: 'Registro de noticia', mensaje: 'Error: '+e.message}});
     this.estaProcesando=false;
   }
   cambio(){
-    console.log(this.frm.value);
+   
   }
 }

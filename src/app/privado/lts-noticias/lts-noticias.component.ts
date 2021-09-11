@@ -36,7 +36,6 @@ export class LtsNoticiasComponent implements OnInit {
 
     },
     (error) => {
-      console.log('error al cargar a las noticias');
       console.log(error);
     });
   }
@@ -52,7 +51,7 @@ export class LtsNoticiasComponent implements OnInit {
   }
   public eliminar(e:any){
     this.seleccionado=e;
-    console.log(e);
+
     if(this.seleccionado===undefined){
       const dialogRef = this.dialog.open(MensajeComponent, {
         data: {
@@ -91,7 +90,7 @@ export class LtsNoticiasComponent implements OnInit {
           this.estaProcesando=false;
         },
       (error)=>{
-          console.log('No se logro la conexión');
+
           console.error(error);
           this.estaProcesando=false;
         }

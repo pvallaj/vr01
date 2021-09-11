@@ -51,11 +51,7 @@ export class TCComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log('--------------------------------');
-    console.log(this.referencia);
-    console.log(this.tipo);
-    console.log(this.elemento);
-    console.log('--------------------------------');
+
   }
   public cerrar(){
     /*****************************************************************************************
@@ -66,7 +62,7 @@ export class TCComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-    console.log("cerrar ..");
+
     this.quitar.emit(0);
   }
 
@@ -79,7 +75,7 @@ export class TCComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-    console.log("cerrar con capitulo");
+
     this.quitar.emit(idc);
   }
 }

@@ -37,7 +37,7 @@ export class RegistroUsuarioComponent implements OnInit {
     private dlg: MatDialog,
     public canal:CanalService
     ) {
-      console.log("llegamos al registro");
+
       this.crearForma();
   }
   guardar() { 
@@ -68,7 +68,6 @@ export class RegistroUsuarioComponent implements OnInit {
       }
       
     } else{
-        console.log(r);
         this.dlg.open(MensajeComponent, {data:{titulo: 'Registro de nuevo usuario', mensaje: 'Error: '+r.message}});
     }
 
@@ -77,8 +76,7 @@ export class RegistroUsuarioComponent implements OnInit {
     console.log("error en el registro");
   }
   cancelar() { 
-    //console.log(this.frm);
-    //this.su.registrarUsuario(dts.usuario, dts.password).subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+    
   }
  
   crearForma(){

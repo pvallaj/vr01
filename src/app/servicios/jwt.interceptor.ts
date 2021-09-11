@@ -8,7 +8,7 @@ export class APIInterceptor implements HttpInterceptor {
         let token=localStorage.getItem('tkn');
         let authReq;
         if(token!=null){
-        console.log('El TOKEN: '+token);
+
         authReq = req.clone({
             headers: new HttpHeaders({
                 'content':"application/json",
@@ -24,7 +24,7 @@ export class APIInterceptor implements HttpInterceptor {
                 })
             });
         }
-        console.log('Intercepted HTTP call', authReq);
+
         return next.handle(authReq);
     }
 }

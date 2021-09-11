@@ -20,15 +20,15 @@ export class BusqAvanzadaComponent implements OnInit {
     texto:false,
     signos:false
   }
-  public tipo:string='individuales';
+  public tipo = 'individuales';
+  public secVisible = '';
 
   constructor(public dialogRef: MatDialogRef<BusqAvanzadaComponent>,
     @Inject(MAT_DIALOG_DATA) public datos: any) { }
 
   ngOnInit(): void {
-    console.log(this.datos);
+
     let fa=this.datos.filtros.value;
-    console.log(fa.indexOf('Autor'));
     if(fa.indexOf('Signos Actorales')>=0){
       this.tipo='signos';
       this.filtros.autor=false;
@@ -98,19 +98,16 @@ export class BusqAvanzadaComponent implements OnInit {
 
   }
 
-  public secVisible='';
+  
 
   public moAyuda(seccion){
-    //console.log(this.secVisible);
-    //console.log(seccion);
-    if(this.secVisible==seccion){
-      //console.log('limpiando');
-      this.secVisible='';
+
+    if(this.secVisible == seccion){
+      this.secVisible = '';
     }else{
-      //console.log('asignando');
-      this.secVisible=seccion;
+      this.secVisible = seccion;
     }
-    //console.log(this.secVisible);
+
   }
 
 }

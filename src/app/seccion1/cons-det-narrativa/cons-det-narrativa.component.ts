@@ -56,10 +56,9 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   }
   
   ngOnChanges(changes) {
-    console.log('Cambio de narrativa');
-    console.log(changes);
+
     if(this.idTexto === 0 ) {
-      console.log("Regresando a valores iniciales");
+
       this.bibliografia = [];
       return;
     }
@@ -70,7 +69,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
     .subscribe(
       (data) => {
         const temp = data['resultado'];
-        console.log(temp);
+  
 
         this.bibliografia =   temp.bibliograficos[0] || null;
         this.princeps =       temp.princeps[0] || null;
@@ -94,7 +93,7 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
       },
     (error) => {
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando = false;
       },

@@ -22,7 +22,7 @@ export class CreditosComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-    console.log("cerrar ..");
+
     this.cerrar.emit('cerrar');
   }
 

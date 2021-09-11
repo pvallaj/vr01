@@ -37,7 +37,7 @@ export class NoticiasSLDComponent implements OnInit, OnDestroy {
         }*/
     },
     (error) => {
-        console.log('error al cargar a las noticias');
+
         console.log(error);
         this.estaCargando=false;
         this.listaNoticias=null;

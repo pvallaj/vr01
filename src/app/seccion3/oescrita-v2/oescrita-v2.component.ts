@@ -38,7 +38,7 @@ export class OEscritaV2Component implements OnInit {
         this.resultado=datos['resultado'].estructura;
         this.imagenes=datos['resultado'].imagenes;
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -54,7 +54,7 @@ export class OEscritaV2Component implements OnInit {
         this.regsCapitulo=datos['resultado'].capitulo;
         this.elementoSeleccionado=this.regsCapitulo[0];
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }

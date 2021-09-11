@@ -21,7 +21,7 @@ export class IsotipoComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-    console.log("cerrar ventana");
+
     this.cerrar.emit(0);
   }
 }

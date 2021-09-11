@@ -27,24 +27,19 @@ export class DetalleOEComponent implements OnInit {
   ngOnInit(): void {
     if(this.tipo==2){
       //se obtienen las referencias de capitulos a los que pertenece el recurso.
-      console.log('***************************************');
-      console.log(this.elemento);
-      console.log('***************************************');
+
       this.estaCargando = true;
       this.cnx.novohisp({id: this.elemento.id}, 'referencias recurso').subscribe(
         (datos) => {
           this.estaCargando = false;
           this.referencias = datos['resultado'];
       }, (error) => {
-        console.log('error al cargar a los autores');
+
         console.log(error);
       });
     }
 
-    console.log('*************************************************************');
-    console.log(this.elemento);
-    console.log(this.tipo);
-    console.log('*************************************************************');
+
   }
 
   recorta(termino:string, texto:string, largo:number):string{

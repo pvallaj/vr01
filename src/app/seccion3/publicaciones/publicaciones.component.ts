@@ -44,7 +44,7 @@ export class PublicacionesComponent implements OnInit {
   public vIsotipo=false;
 
   constructor(private cnx: ConexionService, private ar: ActivatedRoute) {
-     //console.log(this.ar.snapshot.params);
+
     
   }
 
@@ -71,8 +71,7 @@ export class PublicacionesComponent implements OnInit {
         let seccionA = '';
         this.primerCapitulo=this.resultado[1];
         this.ultimoCapitulo=this.resultado[this.resultado.length-1];
-        console.log(this.primerCapitulo);
-        console.log(this.ultimoCapitulo);
+
         for (let index = 0; index < this.resultado.length; index++) {
           const element = this.resultado[index];
           if (element.etiquetas.indexOf('seccion-') >= 0) {
@@ -81,15 +80,15 @@ export class PublicacionesComponent implements OnInit {
             element.etiquetas = element.etiquetas + ', ' + seccionA;
           }
         }
-        console.log(this.resultado);
+
     }, (error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
 
   public verCapitulo(elemento: any) {
-    console.log(elemento);
+
     if (elemento.etiquetas.indexOf('seccion') >= 0 && elemento.etiquetas.indexOf('capitulo') < 0) { 
       return; 
     }
@@ -111,10 +110,10 @@ export class PublicacionesComponent implements OnInit {
         this.regsCapitulo = datos['resultado'].capitulo;
         this.portada = {...this.regsCapitulo[0]};
         this.regsCapitulo.splice(0, 1);
-        console.log(this.resultado);
+
 
     }, (error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -281,7 +280,7 @@ export class PublicacionesComponent implements OnInit {
       Resultado
         true/false
     ******************************************************************************************/
-    // console.log('mostrar: '+sec);
+
     if (sec.indexOf('seccion') < 0) { return; }
     const capitulo = sec.split(',')[1];
     if (this.seccionesVisibles.indexOf(capitulo) >= 0) {

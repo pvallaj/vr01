@@ -20,7 +20,7 @@ export class ResaltaTextoPipe implements PipeTransform {
       });
       resultado=texto;
     }else{
-      //console.log(">>"+args.trim().replace(/['"]+/g,'')+"<<");
+
       var re = new RegExp(args.trim().replace(/['"]+/g,''), 'gi'); 
       resultado=texto.replace(re, '<mark style="padding: .2em;color: white;background-color: #f30303;text-decoration-line: underline;font-style: italic;border-radius: 5px;">$&</mark>');
     }

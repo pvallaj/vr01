@@ -131,8 +131,7 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   }
   public aplicarFiltro(e){
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
-    console.log( filterValue.trim().toLowerCase());
+
     this.listaResultadoSA.filter = filterValue.trim().toLowerCase();
 
     if (this.listaResultadoSA.paginator) {

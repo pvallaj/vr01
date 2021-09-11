@@ -17,7 +17,7 @@ export class AppComponent {
   public vIsotipo=false;
   public vCreditos=false;
   constructor(public r:Router, private cc:CanalService) { 
-    console.log(r.url);
+    
   }
 
   public buscarTermino(){
@@ -32,13 +32,9 @@ export class AppComponent {
     ******************************************************************************************/
     this.cc.terminoConsulta=this.txtbuscar;
     
-    /*console.log(this.txtbuscar);
-    if(this.bexacta){    
-      console.log("enviando busqueda exacta"); */
+
       this.cc.sendMessage(this.txtbuscar);
-    /*}else{
-      this.cc.sendMessage(this.txtbuscar);
-    }*/
+
     this.r.navigate(['/buscar']);
   }
 

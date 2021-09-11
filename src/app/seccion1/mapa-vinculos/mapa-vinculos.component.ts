@@ -53,8 +53,7 @@ export class MapaVinculosComponent implements OnInit {
       this.columnasV=this.columnasV.filter(el=>el!=e);
       this.columnasO.push(e);
     }
-    console.log(this.columnasO);
-    console.log(this.columnasV);
+
   }
 
   public estaVisible(c:string):boolean{
@@ -65,8 +64,6 @@ export class MapaVinculosComponent implements OnInit {
 
   public aplicarFiltro(e){
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
-    console.log( filterValue.trim().toLowerCase());
     this.listaResultado.filter = filterValue.trim().toLowerCase();
 
     if (this.listaResultado.paginator) {

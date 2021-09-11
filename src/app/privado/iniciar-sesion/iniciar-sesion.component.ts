@@ -43,7 +43,7 @@ export class IniciarSesionComponent implements OnInit {
     }
   }
   registroError(e){
-    console.log(e);
+
     this.dlg.open(MensajeComponent, {data:{titulo: 'Error fatal', mensaje: 'Error: '+e}});
   }
   

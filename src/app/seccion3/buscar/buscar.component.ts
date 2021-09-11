@@ -31,7 +31,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
-    //console.log(this.cs.terminoConsulta);
+
     this.buscarTermino({text:this.cs.terminoConsulta});
   }
 
@@ -66,7 +66,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
         this.estaCargando=false;
       },
     (error) => {
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando = false;
       },
@@ -82,7 +82,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
       let pt=texto.indexOf(termino)
       let inicio=pt-tm/2+(texto.indexOf(' ', pt-tm/2)-(pt-tm/2));
       let fin=texto.indexOf(' ',inicio+tm);
-      //console.log(pt,inicio,fin);
+  
       if(fin==-1){
         return '...'+original.substring(inicio)
       }
@@ -98,15 +98,15 @@ export class BuscarComponent implements OnInit, OnDestroy {
 
 
   public verDetalle(e:any){
-    console.log(e);
+
     if(e.id_sermon){
-      console.log('-->Sermon');
+
       this.tipoReferencia='sermon';
       this.referencia=e.id_sermon;
       return;
     }
     if(e.id_texto){
-      console.log('-->Relación');
+  
       this.tipoReferencia='relacion';
       this.referencia=e.id_texto;
       return;

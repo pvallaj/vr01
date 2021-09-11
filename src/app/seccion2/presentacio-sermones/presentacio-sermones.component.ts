@@ -17,16 +17,15 @@ export class PresentacioSermonesComponent implements OnInit {
 
   
   public moAyuda(seccion){
-    console.log(this.secVisible);
-    console.log(seccion);
+
     if(this.secVisible==seccion){
-      console.log('limpiando');
+
       this.secVisible='';
     }else{
-      console.log('asignando');
+
       this.secVisible=seccion;
     }
-    console.log(this.secVisible);
+
   }
   
 }

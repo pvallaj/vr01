@@ -37,7 +37,7 @@ export class OescritaV3Component implements OnInit {
         this.resultado=datos['resultado'].estructura;
         this.imagenes=datos['resultado'].imagenes;
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -57,9 +57,9 @@ export class OescritaV3Component implements OnInit {
         this.regsCapitulo.forEach(element => {
           element.orden=orden++;
         });
-        console.log(this.regsCapitulo);
+
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -80,7 +80,7 @@ export class OescritaV3Component implements OnInit {
       let p=this.regsCapitulo.indexOf(e)+1;
       let pr=this.regsCapitulo.length-p+1;
       let idx=1;
-      console.log(p, pr);
+
 
       for(idx=1;idx<=this.regsCapitulo.length;idx++){
         if(idx<p){   
@@ -89,9 +89,9 @@ export class OescritaV3Component implements OnInit {
           this.regsCapitulo[idx-1].orden=(idx-p+1);
         }
       }
-      console.log(this.regsCapitulo);
+
       this.regsCapitulo=this.regsCapitulo.sort((n1,n2)=>n1.orden-n2.orden);
-      console.log(this.regsCapitulo);
+
     }else{
         this.tipoReferencia='buscar';
         this.referencia="varios";

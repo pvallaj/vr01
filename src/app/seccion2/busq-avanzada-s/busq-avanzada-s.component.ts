@@ -30,9 +30,9 @@ export class BusqAvanzadaSComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public datos: any) { }
 
   ngOnInit(): void {
-    console.log(this.datos);
+
     let fa=this.datos.filtros.value;
-    console.log(fa.indexOf('Autor'));
+
     
       this.tipo='individuales';
       this.filtros.autor=           fa.indexOf('Autor')>=0?true:false;
@@ -82,16 +82,15 @@ export class BusqAvanzadaSComponent implements OnInit {
   public secVisible='';
 
   public moAyuda(seccion){
-    console.log(this.secVisible);
-    console.log(seccion);
+
     if(this.secVisible==seccion){
-      console.log('limpiando');
+
       this.secVisible='';
     }else{
-      console.log('asignando');
+
       this.secVisible=seccion;
     }
-    console.log(this.secVisible);
+
   }
   
 }

@@ -47,10 +47,10 @@ export class ConexionService {
   public noticias(parametros, accion){
     let token=localStorage.getItem('tkn') 
     if(token){
-      console.log("el token es: "+token);
+
       this.headers.set('Authorization',token) 
     }
-    console.log(this.headers);
+
     const cuerpo =  JSON.stringify({cn:{accion, seccion:'noticias', parametros} });
     return this.http.post(this.urlBase, cuerpo,  {headers:this.headers });
   }

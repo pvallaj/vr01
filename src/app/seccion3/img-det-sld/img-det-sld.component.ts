@@ -30,7 +30,7 @@ export class ImgDetSldComponent implements OnInit {
       Resultado
         Ninguno
     ******************************************************************************************/
-    console.log("cerrar ..");
+
     this.quitar.emit('cerrar');
   }
   public imagenwidth=100;

@@ -41,32 +41,32 @@ export class OEscritaSXVIComponent implements OnInit {
 
   ngOnInit(): void {
     //this.items=this.service.getBooks();
-    console.log('iniciando consulta de estructura');
+
     this.estaCargando=true;
     this.cnx.novohisp(null, 'consulta estructura').subscribe(
       (datos) => {
         this.items=[new TreeviewItem(JSON.parse(datos['resultado'][0].valor))]; 
         setTimeout(()=>{
           this.estaCargando=false;
-          console.log('Se terminaron los 3 segundos');
+
         }, 3000);
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
   onFilterChange(value: string): void {
-    console.log('filter:', value);
+
   }
   onSelectedChange(value: string[]): void {
-    console.log('change:', value.join(', '));
+
     this.estaCargandoDetalle=true;
     this.cnx.novohisp({terminos:value.join(', ')}, 'consulta obra escrita').subscribe(
       (datos) => {
        this.resultado=datos['resultado'];
        this.estaCargandoDetalle=false;
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }

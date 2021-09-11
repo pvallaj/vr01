@@ -31,7 +31,7 @@ export class OescritaV4Component implements OnInit {
   public tomo:string="";
 
   constructor(private cnx:ConexionService, private ar:ActivatedRoute) {
-    //console.log(this.ar.snapshot.params);
+
     this.siglo=this.ar.snapshot.params.siglo;
     this.tomo=this.ar.snapshot.params.tomo;;
   }
@@ -53,9 +53,9 @@ export class OescritaV4Component implements OnInit {
             element.etiquetas=element.etiquetas+', '+seccionA;
           }
         }
-        console.log(this.resultado);
+
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -77,7 +77,7 @@ export class OescritaV4Component implements OnInit {
         this.regsCapitulo=datos['resultado'].capitulo;
         this.portada={...this.regsCapitulo[0]}
         this.regsCapitulo.splice(0,1);
-        console.log(this.resultado);
+
         /*this.elementoSeleccionado=this.regsCapitulo[0];
         let orden=1;
         this.regsCapitulo.forEach(element => {
@@ -85,7 +85,7 @@ export class OescritaV4Component implements OnInit {
         });*/
 
     },(error) => {
-      console.log('error al cargar a los autores');
+
       console.log(error);
     });
   }
@@ -100,7 +100,7 @@ export class OescritaV4Component implements OnInit {
       let p=this.regsCapitulo.indexOf(e)+1;
       let pr=this.regsCapitulo.length-p+1;
       let idx=1;
-      console.log(p, pr);
+
 
       for(idx=1;idx<=this.regsCapitulo.length;idx++){
         if(idx<p){   
@@ -109,9 +109,9 @@ export class OescritaV4Component implements OnInit {
           this.regsCapitulo[idx-1].orden=(idx-p+1);
         }
       }
-      console.log(this.regsCapitulo);
+
       this.regsCapitulo=this.regsCapitulo.sort((n1,n2)=>n1.orden-n2.orden);
-      console.log(this.regsCapitulo);
+
     }else{
         this.tipoReferencia='buscar';
         this.referencia="varios";
@@ -197,7 +197,7 @@ export class OescritaV4Component implements OnInit {
     return false;
   }
   public moSeccion(sec:string){
-    //console.log('mostrar: '+sec);
+
     if(sec.indexOf('seccion')<0) return;
     let capitulo=sec.split(",")[1];
     if(this.seccionesVisibles.indexOf(capitulo)>=0){

@@ -42,7 +42,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     
     if (this.id_sermon <= 0) {
-      console.log("Regresando a valores iniciales");
+
       this.sermon=null;
       this.libro=[];
       this.preliminares=[];
@@ -65,15 +65,14 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
         this.catalogos=temp.catalogos;
         this.grabados=temp.grabados;
         this.repositorios=temp.repositorios;
-        //console.log(temp);
+
         this.estaCargando=false;
         this.tabSeleccionado=0;
         if(this.sermon.protesta_fe!=null && this.sermon.protesta_fe.toLowerCase()=="nada") this.sermon.protesta_fe=null;
         
       },
     (error)=>{
-        //console.log('No se logro la conexión');
-        //console.error(error);
+
         this.estaCargando=false;
       }
     )
@@ -90,10 +89,9 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   }
 
   public estaEncomillado(texto:string):boolean{
-    /*console.log(texto.substr(0,1));
-    console.log(texto.substr(texto.length-1,1));*/
+
     if(texto.substr(0,1)=='"' ){
-      console.log('Esta entre comillas');
+
       return true;
     } 
     return false;
@@ -101,12 +99,12 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
 
   public referencia(campo:string):string{
     let idx=campo.indexOf(' ');
-    console.log(idx); 
+
     if(idx==-1){
-      console.log(campo);
+
       return campo;
     } 
-    console.log(campo.substr(0,idx));
+
     return campo.substr(0,idx);
   }
 }

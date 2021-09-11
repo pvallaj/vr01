@@ -32,10 +32,10 @@ export class DetalleCatalogoComponent implements OnInit, AfterViewInit {
   seleccionarDetalle(f){
     this.fSelDet=f.id;
     this.expandedElement = this.expandedElement === f ? null : f;
-    console.log(this.expandedElement);
+
   }
   abrirDetalle(fila){
-    console.log(fila);
+
     const dialogRef = this.dialog.open(MnsjDetalleComponent, {
       width: '70%',
       data: {nombre:fila.nombre, descripcion:fila.narratio}
@@ -61,7 +61,7 @@ export class DetalleCatalogoComponent implements OnInit, AfterViewInit {
         this.detCatalogo.paginator = this.paginator;
       },
     (error)=>{
-        console.log('No se logro la conexión');
+
         console.error(error);
       }
     )

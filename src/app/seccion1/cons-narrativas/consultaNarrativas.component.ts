@@ -106,7 +106,7 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.listaObras = this.listaAutoresObras;
     },
     (error)=>{
-      console.log("error al cargar a los autores");
+
       console.log(error);
     })
 
@@ -116,7 +116,7 @@ export class ConsultaNarrativasComponent implements OnInit {
   }
 
   public autorSeleccionado(sel){
-    console.log("seleccionado: ");
+
     if ( sel.value === undefined) {
       this.listaObras = this.listaAutoresObras;
     } else {
@@ -172,10 +172,10 @@ export class ConsultaNarrativasComponent implements OnInit {
     }
     var re = /\+/gi; 
     p.textos=p.textos.replace(re, "$"); 
-    //console.log(p.textos);
+
     let temp:any[]=[];
     this.idxSeleccionado=0;
-    //console.log(p);
+
     this.cnx.narrativas(p, 'consulta narrativas')
     .subscribe(
       (data)=>{
@@ -194,7 +194,6 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.estaCargando=false;
       },
     (error)=>{
-        console.log('No se logro la conexión');
         console.error(error);
         this.estaCargando=false;
       }
@@ -220,11 +219,11 @@ export class ConsultaNarrativasComponent implements OnInit {
     };
     
     
-    //console.log(p.textos);
+
     let temp:any[]=[];
     this.idxSeleccionado=0;
 
-    //console.log(p);
+
     this.cnx.narrativas(p, 'consulta narrativas')
     .subscribe(
       (data)=>{
@@ -243,7 +242,6 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.estaCargando=false;
       },
     (error)=>{
-        console.log('No se logro la conexión');
         console.error(error);
         this.estaCargando=false;
       }
@@ -282,7 +280,6 @@ export class ConsultaNarrativasComponent implements OnInit {
         else{
           ss=texto.substr(up2+palabra2.length,up1-up2).split(' ');
         }
-        console.log(ss.length);
         if(ss.length<=distancia){
           return true;
         }
@@ -297,7 +294,7 @@ export class ConsultaNarrativasComponent implements OnInit {
   public cambiar(seleccionado){
     this.idNarrativaSel = seleccionado.id_texto;
     this.narrativaSeleccionada = seleccionado;
-    console.log(this.idNarrativaSel);
+
     /*this.desplegarDetalle=!this.desplegarDetalle;
 
     if (this.desplegarDetalle) {
@@ -328,22 +325,22 @@ export class ConsultaNarrativasComponent implements OnInit {
       distancia: [0 ],
     });
     this.frm.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       this.listaResultado=null;
       if(this.filtroActivo("Autor")) {
         this.listaObras = this.listaAutoresObras;
       };
     });
     this.fcAutores.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       this.listaResultado=null;
     });
     this.fcObras.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       this.listaResultado=null;
     });
     this.filtrosActivos.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       if(this.filtroActivo('Signos Actorales')){
         
         this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
@@ -396,7 +393,7 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.estaCargando=false;
       },
     (error)=>{
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando=false;
       }
@@ -413,7 +410,7 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.estaCargando=false;
       },
     (error)=>{
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando=false;
       }
@@ -430,7 +427,7 @@ export class ConsultaNarrativasComponent implements OnInit {
         this.estaCargando=false;
       },
     (error)=>{
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando=false;
       }
@@ -462,7 +459,7 @@ export class ConsultaNarrativasComponent implements OnInit {
       let pt=texto.indexOf(termino)
       let inicio=pt-tm/2+(texto.indexOf(' ', pt-tm/2)-(pt-tm/2));
       let fin=texto.indexOf(' ',inicio+tm);
-      //console.log(pt,inicio,fin);
+
       if(fin==-1){
         return '...'+original.substring(inicio)
       }

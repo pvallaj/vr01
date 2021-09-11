@@ -27,7 +27,7 @@ export class ImagenesSLDComponent implements OnInit, OnDestroy {
    
     },
     (error) => {
-        console.log('error al cargar a las noticias');
+
         console.log(error);
         this.estaCargando=false;
         this.lista=null;
@@ -42,7 +42,7 @@ export class ImagenesSLDComponent implements OnInit, OnDestroy {
      
       },
       (error) => {
-          console.log('error al cargar a las noticias');
+
           console.log(error);
           this.estaCargando=false;
           this.lista=null;
@@ -59,7 +59,7 @@ export class ImagenesSLDComponent implements OnInit, OnDestroy {
     let ligas=(this.elementoSel.etiquetas as string).split(',');
     ligas=ligas.filter(e=>e.indexOf('capitulo')>=0);
     this.elementoSel.ligas=ligas;
-    console.log(ligas);
+
     clearInterval(this.intervalo);
   }
 
@@ -74,7 +74,7 @@ export class ImagenesSLDComponent implements OnInit, OnDestroy {
      
       },
       (error) => {
-          console.log('error al cargar a las noticias');
+
           console.log(error);
           this.estaCargando=false;
           this.lista=null;

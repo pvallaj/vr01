@@ -29,7 +29,7 @@ export class SesionUsuario{
 			this._nombreUsuario=null;
 			this._role=null;
 		}
-		console.log('sus:'+this._nombreUsuario);
+
 	}
 
 	accesoUsuario(datos:any){
@@ -56,11 +56,10 @@ export class SesionUsuario{
 			accion:'validarSesion'
 		}).subscribe(
 			(resp:any)=>{
-				console.log('autenticado');
 				return true;
 			},
 			(ru:any)=>{
-				console.log('Error de autenticacion');
+
 			});
 	}
 

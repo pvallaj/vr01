@@ -136,7 +136,6 @@ export class ConsSermonesComponent implements OnInit {
 
     },
     (error) => {
-      console.log('error al cargar a los autores');
       console.log(error);
     });
 
@@ -192,7 +191,6 @@ export class ConsSermonesComponent implements OnInit {
         this.estaCargando = false;
       },
     (error) => {
-        console.log('No se logro la conexión');
         console.error(error);
         this.estaCargando = false;
       },
@@ -201,8 +199,7 @@ export class ConsSermonesComponent implements OnInit {
 
   public consulta() {
     this.estaCargando = true;
-    console.log(this.filtrosActivos);
-    console.log(this.filtroActivo('Dedicatarios'));
+
     
     const p = {
       autor:        this.filtroActivo('Autor')? this.acAutores.value:'',
@@ -272,7 +269,7 @@ export class ConsSermonesComponent implements OnInit {
         this.estaCargando = false;
       },
     (error) => {
-        console.log('No se logro la conexión');
+
         console.error(error);
         this.estaCargando = false;
       },
@@ -326,12 +323,12 @@ export class ConsSermonesComponent implements OnInit {
       grabado:      ['' , [ Validators.maxLength(30)]],
     });
     this.frm.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       this.listaResultado=null;
     });
     
     this.filtrosActivos.valueChanges.subscribe((v)=>{
-      console.log(v);
+
       if(this.filtroActivo('Signos Actorales')){
         
         this.filtrosActivos.setValue(['Signos Actorales'],{emitEvent:false})        
@@ -353,7 +350,7 @@ export class ConsSermonesComponent implements OnInit {
   }
 
   public cambioFiltros(e) {
-    console.log(e);
+
 
   }
   public recortaSermon(sermon: string) {

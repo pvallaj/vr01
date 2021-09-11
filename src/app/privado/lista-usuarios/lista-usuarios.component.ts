@@ -33,8 +33,7 @@ export class ListaUsuariosComponent implements OnInit {
         this.usuarios=datos['resultado'];
       },
     (error)=>{
-        console.log('No se logro la conexión');
-        console.error(error);
+
         this.estaCargando=false;
       }
     )
@@ -79,7 +78,6 @@ export class ListaUsuariosComponent implements OnInit {
           this.estaProcesando=false;
         },
       (error)=>{
-          console.log('No se logro la conexión');
           console.error(error);
           this.estaProcesando=false;
         }
@@ -119,11 +117,9 @@ export class ListaUsuariosComponent implements OnInit {
           
           this.seleccionado.role=this.seleccionado.role.toUpperCase()=='USUARIO'?'PUBLICAR':'USUARIO';
 
-          console.log(this.seleccionado);
           this.estaProcesando=false;
         },
       (error)=>{
-          console.log('No se logro la conexión');
           console.error(error);
           this.estaProcesando=false;
         }
