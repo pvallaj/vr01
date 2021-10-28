@@ -51,12 +51,6 @@
     display: block;
 }
 
-.tarjeta {
-    margin-top: 10px;
-    max-height: 250px;
-    cursor: pointer;
-}
-
 .tituloTarjeta {
     font-size: medium;
     font-weight: bold;
@@ -107,8 +101,10 @@ mat-card-content {
 
 /********************************************************/
 
-.tarjeta {
+.tarjeta-bsc {
     margin-top: 10px;
+    max-height: 250px;
+    cursor: pointer;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3), 0 5px 5px;

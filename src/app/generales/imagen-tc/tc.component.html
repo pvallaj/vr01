@@ -26,9 +26,9 @@ Descripción:
         <!------------------------------------------------------------------------------------------
             La imagen en tamaño completo,
         ------------------------------------------------------------------------------------------->
-        <div class="marco_portada" fxLayout="row">
-            <img class="imagenportada" src="{{referencia}}">
-            <div class="ref_portada" fxLayout="column">
+        <div fxLayout="row">
+            <img class="imagenportada-capitulo" src="{{referencia}}" fxFlex="70">
+            <div class="ref_portada-capitulo" fxLayout="column" fxFlex="30">
                 <div class="titulo">
                     REFERENCIA DE PORTADA
                 </div>
@@ -46,7 +46,7 @@ Descripción:
         ------------------------------------------------------------------------------------------->
         <app-detalle-oe [elemento]="elemento" [tipo]="2" (seleccionarCapitulo)="abrirCapitulo($event)"></app-detalle-oe>
     </div>
-    <div class="contenedorTC" *ngIf="tipo=='relacion'">
+    <div class="contenedorRelacion" *ngIf="tipo=='relacion'">
         <div class="cerrar" fxLayout="row" fxLayoutAlign="end" (click)="cerrar()">
             <mat-icon>close</mat-icon>
             <p>cerrar</p>

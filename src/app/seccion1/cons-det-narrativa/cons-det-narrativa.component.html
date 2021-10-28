@@ -7,8 +7,8 @@
         </section>
     </mat-card-content>
 </mat-card>
-<div class="contenedor" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px" fxLayoutAlign="space-around">
-    <div class="secciones" fxFlex="50" fxFlex.lt-lg="100%">
+<div class="contenedor-relaciones" *ngIf="!estaCargando" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px" fxLayoutAlign="space-around">
+    <div class="secciones-relaciones" fxFlex="50" fxFlex.lt-lg="100%">
         <div class="seccion" fxLayoutAlign="start streatch" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
                 Relación
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="secciones" fxFlex="50" *ngIf="!estaCargando" fxLayout="column" fxLayoutAlign="start">
+    <div class="secciones-relaciones" fxFlex="50" *ngIf="!estaCargando" fxLayout="column" fxLayoutAlign="start">
         <div class="seccion" fxLayout="column" *ngIf="bibliografia!=null">
             <div class="titulo_seccion">
                 Bibliografia
