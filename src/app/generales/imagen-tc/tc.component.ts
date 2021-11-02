@@ -3,16 +3,16 @@ import { Globales } from '../globales';
 /*****************************************************************************************
   Descripción
     muestra una ventana con:
-       La imagen en tamaño completo, 
-       el detalle de una tarjeta de detalle de una consulta de la obra escrita 
-       el detalle resultado de una consulta en la base de datos de relaciones o 
+       La imagen en tamaño completo,
+       el detalle de una tarjeta de detalle de una consulta de la obra escrita
+       el detalle resultado de una consulta en la base de datos de relaciones o
        el detalle resultado de una consulta en la base de datos de sermones
   Parametros
-    referencia: 
+    referencia:
         cuando el tipo es 'imagen noticia' Es la dirección URL para el caso de que sea una imagen.
         cuando el tipo es 'relacion' es el ID de la relación
         cuando el tipo es 'relacion' es el ID del sermon,
-    tipo: 
+    tipo:
         'imagen noticia' si queremos presentar una imagen
         'buscar' si queremos presentar el resultado de una busqueda en la obra escrita.
         'relacion' si se quiere presentar el detalle de una relación.
@@ -20,7 +20,7 @@ import { Globales } from '../globales';
     textoBuscado
         es la palabra buscada y se usa para resaltar los textos buscados.
     elemento:
-        cuanto el parametro tipo='buscar', elemento es objeto contenido en la tarjeta 
+        cuanto el parametro tipo='buscar', elemento es objeto contenido en la tarjeta
         que selecciono el usuario.
 
   Eventos
@@ -41,15 +41,15 @@ export class TCComponent implements OnInit {
   @Input() tipo:string;
   @Input() textoBuscado:string="";
   @Input() elemento:any;
-  
+
   @Output() quitar=new EventEmitter<number>();
-  
+
   public rutaImgsNoticias:Globales=null;
 
-  constructor() { 
+  constructor() {
     this.rutaImgsNoticias=Globales.rutaImgNoticias;
   }
-  
+
   ngOnInit(): void {
 
   }
@@ -69,7 +69,7 @@ export class TCComponent implements OnInit {
   public abrirCapitulo(idc:number){
     /*****************************************************************************************
       Descripción
-        cierra la ventana construida por este componente y abre el capitulo seleccionado por el usuario.
+        cierra la ventana construida por este componente y abre el capítulo seleccionado por el usuario.
       Parametros
         Ninguno
       Resultado
