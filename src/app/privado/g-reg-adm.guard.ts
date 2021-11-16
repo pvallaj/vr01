@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 import { SesionUsuario } from '../servicios/SesionUsuario.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GRegAdmGuard implements CanActivate {
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Valida si el usuario es un administrador.
+  ******************************************************************************************/
   constructor(private us: SesionUsuario, private router: Router) { }
-  canActivate() {
-    if(this.us.role=="admin"){
+  public canActivate() {
+    if (this.us.role === 'admin') {
       return true;
     }
     return false;
   }
-  
+
 }

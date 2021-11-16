@@ -1,84 +1,99 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { ConexionService } from '../../servicios/Conexion.service';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Globales } from '../../generales/globales';
+import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
   selector: 'app-noticias-sld',
-  templateUrl: './noticias-sld.component.html',
   styleUrls: ['./noticias-sld.component.css'],
+  templateUrl: './noticias-sld.component.html',
 })
 export class NoticiasSLDComponent implements OnInit, OnDestroy {
-
-  public imgSel="";
-  public listaNoticias:any[]=null;
-  public estaCargando=false;
-  public noticiaActiva=null;
-  public elemento=null;
-  public ruta:string=null;
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Crea un carrusel con las noticias existentes.
+  ******************************************************************************************/
+  public imgSel = '';
+  public listaNoticias: any[] = null;
+  public estaCargando = false;
+  public noticiaActiva = null;
+  public elemento = null;
+  public ruta: string = null;
   private intervalo;
 
-  constructor(private cnx:ConexionService) { 
-    this.ruta=Globales.rutaImgNoticias;
+  constructor(private cnx: ConexionService) {
+    this.ruta = Globales.rutaImgNoticias;
   }
 
-  ngOnInit(): void {
-    this.estaCargando=true;
+  public ngOnInit(): void {
+    this.estaCargando = true;
     this.cnx.noticias(null, 'obtener todas las noticias activas').subscribe(
       (datos) => {
         this.listaNoticias = datos['resultado'];
-        if(this.listaNoticias.length==0){
-          this.listaNoticias=null;
+        if (this.listaNoticias.length === 0) {
+          this.listaNoticias = null;
           return;
-        } 
-        this.estaCargando=false;
-        this.noticiaActiva=this.listaNoticias?this.listaNoticias[0]:null;      
-        /*if(this.listaNoticias.length>0){
-          this.intervalo=setInterval(()=>this.siguiente(),5000);
-        }*/
+        }
+        this.estaCargando = false;
+        this.noticiaActiva = this.listaNoticias ? this.listaNoticias[0] : null;
     },
     (error) => {
 
         console.log(error);
-        this.estaCargando=false;
-        this.listaNoticias=null;
+        this.estaCargando = false;
+        this.listaNoticias = null;
     });
 
   }
 
-  ngOnDestroy():void{
+  public ngOnDestroy(): void {
     clearInterval(this.intervalo);
   }
 
-  public seleccionarImagen(img){
-    this.imgSel=img;
+  public seleccionarImagen(img) {
+    this.imgSel = img;
   }
 
-  public cerrarImagen(){
-    this.imgSel="";
+  public cerrarImagen() {
+    this.imgSel = '';
   }
 
-  public seleccionarNoticia(ntca:any){
-    this.noticiaActiva=ntca;
+  public seleccionarNoticia(ntca: any) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Selecciona la noticia para mostrar el detalle de la misma.
+    PARAMETROS:
+      ntca. objeto que contiene la información de la noticia.
+    ******************************************************************************************/
+    this.noticiaActiva = ntca;
   }
 
-
-  public siguiente(){
-    let idx=this.listaNoticias.indexOf(this.noticiaActiva);
-    if(idx==this.listaNoticias.length-1){
-      this.noticiaActiva=this.listaNoticias[0];
-    }else{
+  public siguiente() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Avanza a la siguiente noticia disponible. En caso de estar en la última noticia disponoble,
+      se pasa la primera noticia de la lista.
+    ******************************************************************************************/
+    let idx = this.listaNoticias.indexOf(this.noticiaActiva);
+    if (idx === this.listaNoticias.length - 1) {
+      this.noticiaActiva = this.listaNoticias[0];
+    } else {
       idx++;
-      this.noticiaActiva=this.listaNoticias[idx];
+      this.noticiaActiva = this.listaNoticias[idx];
     }
   }
 
-  public anterior(){
-    let idx=this.listaNoticias.indexOf(this.noticiaActiva);
-    if(idx==0){
-      this.noticiaActiva=this.listaNoticias[this.listaNoticias.length-1];
-    }else{
+  public anterior() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Tetrocede a la siguiente noticia disponible. En caso de estar en la primera noticia disponoble,
+      se pasa la última noticia de la lista.
+    ******************************************************************************************/
+    let idx = this.listaNoticias.indexOf(this.noticiaActiva);
+    if (idx === 0) {
+      this.noticiaActiva = this.listaNoticias[this.listaNoticias.length - 1];
+    } else {
       idx--;
-      this.noticiaActiva=this.listaNoticias[idx];
+      this.noticiaActiva = this.listaNoticias[idx];
     }
   }
 

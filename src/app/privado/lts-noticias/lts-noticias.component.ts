@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { subscribeOn } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-import { SesionUsuario } from '../../servicios/SesionUsuario.service';
-import { ConexionService } from '../../servicios/Conexion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeComponent } from '../../generales/mensaje/mensaje.component';
 import { CanalService } from '../../servicios/canal.service';
+import { ConexionService } from '../../servicios/Conexion.service';
+import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 
 @Component({
   selector: 'app-lts-noticias',
+  styleUrls: ['./lts-noticias.component.css'],
   templateUrl: './lts-noticias.component.html',
-  styleUrls: ['./lts-noticias.component.css']
 })
 export class LtsNoticiasComponent implements OnInit {
-  public listaNoticias:any=[];
-  public estaProcesando=false;
-  public columnasVisibles=['id', 'titulo', 'inicio', 'termino','acciones'];
-  public seleccionado:any=null;
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Muestra una noticia y las acciones que se puede hacer con ellas: agregar, editar y eliminar.
+  ******************************************************************************************/
+  public listaNoticias: any = [];
+  public estaProcesando = false;
+  public columnasVisibles = ['id', 'titulo', 'inicio', 'termino', 'acciones'];
+  public seleccionado: any = null;
 
-  constructor(private sus:SesionUsuario, 
-    private ru:Router,
-    private cnx:ConexionService,
-    public  dialog: MatDialog,
-    public  cnl:CanalService) { }
+  constructor(private sus: SesionUsuario,
+              private ru: Router,
+              private cnx: ConexionService,
+              public  dialog: MatDialog,
+              public  cnl: CanalService) { }
 
-  ngOnInit(): void {
-    if(this.sus.estadoSesion=='desconectado'){
+  public ngOnInit(): void {
+    if (this.sus.estadoSesion === 'desconectado') {
       this.ru.navigate(['sesion']);
     }
 
@@ -40,65 +43,80 @@ export class LtsNoticiasComponent implements OnInit {
     });
   }
 
-  public agregar(){
-    this.cnl.elemento=null;
+  public agregar() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Cambia a la opciòn de AGREGAR una noticia.
+    ******************************************************************************************/
+    this.cnl.elemento = null;
     this.ru.navigate(['crearNoticia']);
   }
 
-  public actualizar(e:any){
-    this.cnl.elemento=e;
+  public actualizar(e: any) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Cambia a la opciòn de MODIFICAR una noticia.
+    ******************************************************************************************/
+    this.cnl.elemento = e;
     this.ru.navigate(['modifNoticia']);
   }
-  public eliminar(e:any){
-    this.seleccionado=e;
+  public eliminar(e: any) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Permite eliminar una noticia.
+    ******************************************************************************************/
+    this.seleccionado = e;
 
-    if(this.seleccionado===undefined){
-      const dialogRef = this.dialog.open(MensajeComponent, {
+    if (this.seleccionado === undefined) {
+      const dRef = this.dialog.open(MensajeComponent, {
         data: {
-          titulo:'Eliminar Noticia', 
-          mensaje:'Debe seleccionar la Noticia que desea eliminar dando un CLICK sobre el registro',
-          tipo:1}
+          mensaje: 'Debe seleccionar la Noticia que desea eliminar dando un CLICK sobre el registro',
+          tipo: 1,
+          titulo: 'Eliminar Noticia',
+        },
       });
-      return;  
+      return;
     }
 
     const dialogRef = this.dialog.open(MensajeComponent, {
-      data: {titulo:'Eliminar Noticia',
-        mensaje:'La Noticia:\n\n  '
-      +this.seleccionado.id+' -  '
-      +this.seleccionado.titulo?.toUpperCase()+
-      '\n\n  Será eliminada de forma definitiva. ¿Desea continuar?', tipo:2}
+      data: {
+        mensaje: 'La Noticia:\n\n  '
+        + this.seleccionado.id + ' -  '
+        + this.seleccionado.titulo?.toUpperCase() +
+        '\n\n  Será eliminada de forma definitiva. ¿Desea continuar?',
+        tipo: 2,
+        titulo: 'Eliminar Noticia',
+      },
     });
 
-    dialogRef.afterClosed().subscribe(resultado => {
-      if(resultado==='no') return;
+    dialogRef.afterClosed().subscribe((resultado) => {
+      if (resultado === 'no') { return; }
       this.estaProcesando = true;
-      this.cnx.noticias({id:this.seleccionado.id},'eliminar Noticia')
+      this.cnx.noticias({id: this.seleccionado.id}, 'eliminar Noticia')
       .subscribe(
-        (datos)=>{
-          const dialogRef = this.dialog.open(MensajeComponent, {
+        (datos) => {
+          const dRef = this.dialog.open(MensajeComponent, {
             data: {
-              titulo:datos['ok']?'Eliminar Noticia':'¡ ERROR !', 
-              mensaje:datos['message'], 
-              tipo:1
-            }
+              mensaje: datos['message'],
+              tipo: 1,
+              titulo: datos['ok'] ? 'Eliminar Noticia' : '¡ ERROR !',
+            },
           });
-          if(datos['ok']){
-            this.listaNoticias=this.listaNoticias.filter(reg=>reg.id!=this.seleccionado.id);
-            this.seleccionado==null;
+          if (datos['ok']) {
+            this.listaNoticias = this.listaNoticias.filter((reg) => reg.id !== this.seleccionado.id);
+            this.seleccionado = null;
           }
-          this.estaProcesando=false;
+          this.estaProcesando = false;
         },
-      (error)=>{
-
+      (error) => {
           console.error(error);
-          this.estaProcesando=false;
-        }
-      )
+          this.estaProcesando = false;
+        },
+      );
     });
   }
-  public seleccionar(e:any){
-    this.seleccionado=e;
+  public seleccionar(e: any) {
+    this.seleccionado = e;
   }
 
 }

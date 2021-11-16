@@ -3,43 +3,55 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dinteres',
+  styleUrls: ['./dinteres.component.css'],
   templateUrl: './dinteres.component.html',
-  styleUrls: ['./dinteres.component.css']
 })
 export class DInteresComponent implements OnInit {
-  @Input() tipo:string='detalle';
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Muestra la secciòn de enlaces de interes.
+  ******************************************************************************************/
+  @Input() public tipo = 'detalle';
 
-  @ViewChild('diccionario') diccionario: any;
-  @ViewChild('proyectos') proyectos: any;
-  @ViewChild('bibliotecas') biblioteca: any;
-  @ViewChild('revistas') revistas: any;
-  @ViewChild('artes') artes: any;
+  @ViewChild('diccionario') public diccionario: any;
+  @ViewChild('proyectos') public proyectos: any;
+  @ViewChild('bibliotecas') public biblioteca: any;
+  @ViewChild('revistas') public revistas: any;
+  @ViewChild('artes') public artes: any;
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
-  public irA(lugar){
+  public irA(lugar) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      hace un salta a la sección indicada
+    PARAMETROS:
+      lugar. Es el punto de la pagina a la que se desea saltar.
+    RESULTADO:
+      Ninguno.
+    ******************************************************************************************/
     console.log(lugar);
     switch (lugar) {
       case 'diccionario':
-        this.diccionario.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});    
+        this.diccionario.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         break;
       case 'proyectos':
-        this.proyectos.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});    
+        this.proyectos.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         break;
       case 'bibliotecas':
-        this.biblioteca.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});    
+        this.biblioteca.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         break;
       case 'revistas':
-        this.revistas.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});    
+        this.revistas.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         break;
       case 'artes':
-        this.artes.nativeElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});    
+        this.artes.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         break;
       default:
         break;
     }
-    
+
   }
 }

@@ -1,52 +1,71 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { Router } from '@angular/router';
-import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MensajeComponent } from '../../generales/mensaje/mensaje.component';
-
+import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
+  styleUrls: ['./iniciar-sesion.component.css'],
   templateUrl: './iniciar-sesion.component.html',
-  styleUrls: ['./iniciar-sesion.component.css']
 })
-export class IniciarSesionComponent implements OnInit {
+export class IniciarSesionComponent  {
+  /******************************************************************************************
+  DESCRIPCIÓN:
+   Permite que un usuairo se registre mediante las credenciales de correo y contraseña.
+  ******************************************************************************************/
+  @Input() public tipo: string;
 
+  public submitted =    false;
+  public ruteador: Router;
+  public closeResult: string;
+  public usuario = '';
+  public password = '';
 
-
-  ngOnInit(): void {
-  }
-
-  @Input() tipo:string;
-
-  submitted =    false;
-  ruteador :     Router;
-  closeResult:   string;
-  usuario:string="";
-  password:string="";
-
-  constructor( private ru:Router, 
-    private su:SesionUsuario,
-    private dlg: MatDialog 
+  constructor( private ru: Router,
+               private su: SesionUsuario,
+               private dlg: MatDialog,
     ) {
   }
-  registrarUsuario(dts) { 
-    this.su.accesoUsuario({usuario:dts.usuario, contrasena:dts.password}).subscribe(data=>this.registroExitoso(data), err=>this.registroError(err));
+
+  public registrarUsuario(dts) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Hace la solicitud de inicio de seción.
+    PARAMETROS:
+      dts. Contiene las credenciales del usuario: el correo y su contraseña
+    ******************************************************************************************/
+    this.su.accesoUsuario({
+      contrasena: dts.password,
+      usuario: dts.usuario,
+    })
+      .subscribe((data) => this.registroExitoso(data), (err) => this.registroError(err));
   }
-  registroExitoso(r){
-    if(r.ok=='true'){
+
+  public registroExitoso(r) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Es procedimiento se ejecuta en caso de que el proceso de solicitus de inicio de seción
+      haya sido exitoso.
+    PARAMETROS:
+      r. Contiene el resultado del proceso de solicitud de inicio de sesón
+    ******************************************************************************************/
+    if (r.ok === 'true') {
       this.ru.navigate(['publicaciones']);
-    }else{
-      this.dlg.open(MensajeComponent, {data:{titulo: 'Inicio de sesion', mensaje: 'Error: '+r.message}});
+    } else {
+      this.dlg.open(MensajeComponent, {data: {titulo: 'Inicio de sesion', mensaje: 'Error: ' + r.message}});
     }
   }
-  registroError(e){
-
-    this.dlg.open(MensajeComponent, {data:{titulo: 'Error fatal', mensaje: 'Error: '+e}});
+  public registroError(e) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Este proceso se ejecuta en caso de que el proceso de inicio de sesión haya fallado.
+    PARAMETROS:
+      e. contiene el resultado del proceso
+    ******************************************************************************************/
+    this.dlg.open(MensajeComponent, {data: {titulo: 'Error fatal', mensaje: 'Error: ' + e}});
   }
-  
- 
 
 }

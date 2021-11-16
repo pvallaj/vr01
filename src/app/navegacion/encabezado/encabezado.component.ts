@@ -1,7 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { SesionUsuario } from "../../servicios/SesionUsuario.service";
-import { CanalService } from "../../servicios/canal.service";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 /*****************************************************************************************
   Descripción
     muestra la barra de navegación en la parte superior de la pantalla.
@@ -15,8 +14,10 @@ import { Router } from '@angular/router';
     7. Liena de Tiempo. Muestra la linea de tiempo.
     8. Noticias. Muestra la sección de noticias.
     9. login. Es un icono de una persona, se muestra solo cuando no hay una sesión activa y permite ir a la opción de registro de acceso.
-    10. Publicar. Solo aparece si hay una sesión activa y el usuario tiene el perfil de 'publicar' o 'admin', permite ir a la sección de publicar noticias.
-    11. usuario. Solo aparece si hay una sesión activa y el usuairo tiene el perfil de 'admin'. Permite ir a la sección de administración de usuarios.
+    10. Publicar. Solo aparece si hay una sesión activa y el usuario tiene el perfil de 'publicar' o 'admin',
+        permite ir a la sección de publicar noticias.
+    11. usuario. Solo aparece si hay una sesión activa y el usuairo tiene el perfil de 'admin'. Permite ir a la
+        sección de administración de usuarios.
     12. Salir. Solo aparece si existe una sesión activa. Permite terminar la seción.
   Parametros
       ninguno
@@ -29,38 +30,35 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encabezado',
+  styleUrls: ['./encabezado.component.css'],
   templateUrl: './encabezado.component.html',
-  styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent implements OnInit {
-  @Output() navBarToggle = new EventEmitter<void>();
-  constructor(public sus:SesionUsuario, public r:Router) { }
+  @Output() public navBarToggle = new EventEmitter<void>();
+  constructor(public sus: SesionUsuario, public r: Router) { }
 
-  
-  
+  public ngOnInit(): void {
 
-  ngOnInit(): void {
-    
   }
 
-  onToggleNV(){
+  public onToggleNV() {
     /*****************************************************************************************
       Descripción
         el usuario ha tocado el el boton de menú, para indicar que se debe mostrar o ocultar
       Parametros
-        ninguno  
+        ninguno
       Resultado
         ninguno
     ******************************************************************************************/
     this.navBarToggle.emit();
   }
 
-  salir(){
+  public salir() {
     /*****************************************************************************************
       Descripción
         Esta opción indica que el usuario quiere terminar la sesión
       Parametros
-        ninguno  
+        ninguno
       Resultado
         ninguno
     ******************************************************************************************/
@@ -68,6 +66,6 @@ export class EncabezadoComponent implements OnInit {
     this.r.navigate(['inicio']);
   }
 
- 
+
 
 }

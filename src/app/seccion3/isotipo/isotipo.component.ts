@@ -1,18 +1,21 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-isotipo',
+  styleUrls: ['./isotipo.component.css'],
   templateUrl: './isotipo.component.html',
-  styleUrls: ['./isotipo.component.css']
 })
 export class IsotipoComponent implements OnInit {
-
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Crea una ventana que muestra el ISOTIPO y su descripción.
+  ******************************************************************************************/
   constructor() { }
-  @Output() cerrar=new EventEmitter<number>();
-  ngOnInit(): void {
+  @Output() public cerrar = new EventEmitter<number>();
+  public ngOnInit(): void {
   }
 
-  public cerrarv(){
+  public cerrarv() {
     /*****************************************************************************************
       Descripción
         cierra la ventana construida por este componente

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-herramientas',
+  styleUrls: ['./herramientas.component.css'],
   templateUrl: './herramientas.component.html',
-  styleUrls: ['./herramientas.component.css']
 })
 export class HerramientasComponent implements OnInit {
   /******************************************************************************************
@@ -17,13 +17,13 @@ export class HerramientasComponent implements OnInit {
   Este componente no requiere parámetros y no tiene eventos ni procedimientos.
 
   ******************************************************************************************/
-  constructor(private r:Router) { }
+  constructor(private r: Router) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
   }
 
-  public irASermones(){
+  public irASermones() {
     /******************************************************************************************
     DESCRIPCIÓN:
       Liga de la página de presentación a la herramienta de sermones
@@ -33,7 +33,7 @@ export class HerramientasComponent implements OnInit {
     this.r.navigate(['sermones']);
   }
 
-  public irARelaciones(){
+  public irARelaciones() {
     /******************************************************************************************
     DESCRIPCIÓN:
       Liga de la página de presentación a la herramienta de relaciones.

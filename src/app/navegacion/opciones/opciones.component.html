@@ -1,46 +1,5 @@
 <mat-list>
-    <!--div mat-subheader>Opciones</div>
-    <a mat-list-item routerLink="/inicio"  id="li-home" (click)="onToggleNV()">
-    </a>
-    <a mat-list-item routerLink="/oesxvii" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Siglo XVII</div>
-    </a>
-    <a mat-list-item routerLink="/oesxviii" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Siglo XVIII</div>
-    </a>
-    <a mat-list-item routerLink="/herramientas" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Herramientas</div>
-    </a>
-    <a mat-list-item routerLink="/linea" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Linea de tiempo</div>
-    </a>
-    <a mat-list-item routerLink="/noticias" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>star_border</mat-icon>
-        <div mat-line>Noticias</div>
-    </a>
 
-    <a mat-list-item routerLink="/publicar" *ngIf="su.role=='publicar' || su.role=='admin'" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>vpn_key</mat-icon>
-        <div mat-line>Publicar Noticias</div>
-    </a>
-
-    <a mat-list-item routerLink="/usuarios" *ngIf="su.role=='admin'" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>vpn_key</mat-icon>
-        <div mat-line>Administrar Usuarios</div>
-    </a>
-
-    <a mat-list-item routerLink="/privado" *ngIf="su.estadoSesion=='conectado'" (click)="salir()">
-        <mat-icon mat-list-icon>exit_to_app</mat-icon>
-        <div mat-line>Salir</div>
-    </a>
-
-    <a mat-list-item routerLink="/sesion" *ngIf="!su.role" (click)="onToggleNV()">
-        <mat-icon mat-list-icon>person</mat-icon>
-    </a-->
     <div class="menu">
         <ul>
             <li routerLinkActive="activo"><a routerLink="/inicio" id="li-home"><span class="icon-home"></span></a></li>

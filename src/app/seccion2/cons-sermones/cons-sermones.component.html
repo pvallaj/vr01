@@ -141,7 +141,7 @@
         <div mat-subheader *ngIf="listaResultado.length>0" class="info">Información encontrada en la base de datos (se muestran {{listaResultado.length}} de {{totalRegistros}} existentes.)</div>
         <div mat-subheader *ngIf="listaResultado.length==0" class="noinfo">NO se encontró información con los parametros proporcionados.</div>
         <div class="lista-resultado" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="start">
-            <div class="tarjeta-srmn" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="start" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-lg="0 0 calc(40% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%" (click)="idxSeleccionado=(i+1)"
+            <div class="tarjeta-srmn" *ngFor="let sermon of listaResultado; let i = index" fxLayout="column" fxLayoutAlign="start" fxFlex="0 0 calc(24% - 10px)" fxFlex.lt-lg="0 0 calc(40% - 10px)" fxFlex.lt-md="0 0 calc(50% - 10px)" fxFlex.lt-sm="100%"
                 (click)="cambiar(sermon.id_sermon)">
                 <div class="encabezado">
                     <div class="titulo">{{sermon.id_sermon}}.- {{sermon.autor_nombre}} {{sermon.autor_apellido}} {{(sermon.autor_orden && sermon.autor_orden.toUpperCase()!='SECULAR')? '('+sermon.autor_orden+')':''}}</div>
@@ -150,22 +150,13 @@
                 <div class="contenido">
                     <div>{{recortaSermon(sermon.titulo)}}</div>
                 </div>
-                <!--div>
-                    <button class="btnDetalle" mat-flat-button color="primary">
-                        <mat-icon>article</mat-icon> Ver Detalle
-                    </button>
-                </div-->
+
             </div>
 
         </div>
     </div>
 </div>
-<!--div fxFlex *ngIf="desplegarDetalle">
-    <button mat-flat-button color="primary" class="regresar" (click)="cambiar(0)">
-        <mat-icon>arrow_back_ios</mat-icon> <mat-icon>arrow_back_ios</mat-icon> Regresar
-    </button>
-    <app-cons-det-sermon [id_sermon]="idSermonSel" [tipo]="1" #detsermon></app-cons-det-sermon>
-</div-->
+
 
 <app-tc class="ventana" *ngIf="idSermonSel!=0" [referencia]="idSermonSel" [tipo]="'sermon'" (quitar)="cerrarDetalle()">
 

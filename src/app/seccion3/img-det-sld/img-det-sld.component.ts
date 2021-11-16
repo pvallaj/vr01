@@ -1,27 +1,31 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-img-det-sld',
+  styleUrls: ['./img-det-sld.component.css'],
   templateUrl: './img-det-sld.component.html',
-  styleUrls: ['./img-det-sld.component.css']
 })
 export class ImgDetSldComponent implements OnInit {
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Muestra una mentana emergente con el detalle de la imagen seleccionada, dentro del carrusel
+  de imagenes.
+  ******************************************************************************************/
+  public imagenwidth = 100;
+  public ligas: string[] = null;
+  @Input() public elemento: any;
 
-  public ligas:string[]=null;
-  @Input() elemento:any;
-  
-  @Output() quitar=new EventEmitter<string>();
+  @Output() public quitar = new EventEmitter<string>();
 
-  constructor() { 
-    
+  constructor() {
+
   }
 
-  ngOnInit(): void {
-    
+  public ngOnInit(): void {
+
   }
 
-  
-  public cerrar(){
+  public cerrar() {
     /*****************************************************************************************
       Descripción
         cierra la ventana construida por este componente
@@ -33,11 +37,10 @@ export class ImgDetSldComponent implements OnInit {
 
     this.quitar.emit('cerrar');
   }
-  public imagenwidth=100;
-  public aumentar(){
-    this.imagenwidth+=10;
+  public aumentar() {
+    this.imagenwidth += 10;
   }
-  public disminuir(){
-    this.imagenwidth-=10;
+  public disminuir() {
+    this.imagenwidth -= 10;
   }
 }

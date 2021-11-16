@@ -30,10 +30,6 @@
                     <div class="valor" fxFlex *ngIf="!estaVacio(libro.autor)">{{libro?.autor}}, <i>{{libro?.libro_titulo}}</i> </div>
                     <div class="valor" fxFlex *ngIf="estaVacio(libro.autor)"><i>{{libro?.libro_titulo}}</i></div>
                 </div>
-                <!--div class="fila" fxLayout="row" *ngIf="libro?.autor">
-                    <div class="titulo" fxFlex="25">Autor de la obra:</div>
-                    <div class="valor" fxFlex="75">{{libro?.autor}}</div>
-                </div-->
 
                 <div class="fila" fxLayout="row" *ngIf="sermon.inicio_sermon!=null">
                     <div class="titulo" fxFlex="20">Incipit:</div>
@@ -68,15 +64,8 @@
                 Preliminares
             </div>
             <div class="resultado" fxLayout="column" *ngIf="preliminares?.length>0">
-                <!--div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="20">Tipo</div>
-                    <div class="titulo" fxFlex="55">Titulo</div>
-                    <div class="titulo" fxFlex="25">Autor</div>
-                </div-->
                 <div class="fila" fxLayout="row" *ngFor="let elemento of preliminares">
-                    <!--div class="valor" fxFlex="20">{{elemento.preliminar_tipo}}</div-->
                     <div class="valor" fxFlex>{{elemento.preliminar_titulo}}</div>
-                    <!--div class="valor" fxFlex="25">{{elemento.autor}}</div-->
                 </div>
             </div>
 
@@ -97,14 +86,9 @@
                 Referencias bibliográficas
             </div>
             <div class="resultado" fxLayout="column" *ngIf="catalogos!=[]">
-                <!--div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="60">Nombre de Catálogo</div>
-                    <div class="titulo" fxFlex="40">Número</div>
-                </div-->
                 <div class="titulo" fxFlex>Catálogo</div>
                 <div class="fila" fxLayout="row" *ngFor="let elemento of catalogos">
                     <div class="valor" fxFlex="60"><i>{{elemento.catalogo_nombre}}</i>: {{elemento.numeracion}}</div>
-                    <!--div class="valor" fxFlex="40">{{elemento.numeracion}}</div-->
                 </div>
             </div>
         </div>
@@ -116,15 +100,8 @@
                 Repositorios
             </div>
             <div class="resultado" fxLayout="column">
-                <!--div class="fila" fxLayout="row">
-                    <div class="titulo" fxFlex="30">Repositorio</div>
-                    <div class="titulo" fxFlex="20">Clasificación</div>
-                    <div class="titulo" fxFlex="50">Digitalizado en</div>
-                </div-->
                 <div class="fila" fxLayout="row" *ngFor="let elemento of repositorios">
                     <div class="valor" fxFlex> {{elemento.repositorio_tipo}}: {{elemento.clasificacion}}</div>
-                    <!--div class="valor" fxFlex="20">{{elemento.clasificacion}}</div>
-                    <div class="valor" fxFlex="50">{{elemento.enlace_digitalizacion}}</div-->
                 </div>
             </div>
 

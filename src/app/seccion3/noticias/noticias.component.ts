@@ -1,30 +1,34 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ConexionService } from '../../servicios/Conexion.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Globales } from '../../generales/globales';
+import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
   selector: 'app-noticias',
+  styleUrls: ['./noticias.component.css'],
   templateUrl: './noticias.component.html',
-  styleUrls: ['./noticias.component.css']
 })
-export class NoticiasComponent implements OnInit {
+export class NoticiasComponent  {
+  /******************************************************************************************
+  DESCRIPCIÓN:
+  Muestra una ventana con los detalles de una noticia.
+  ******************************************************************************************/
+  @Input() public noticia: any;
 
-  @Input() noticia: any;
-
-  @Output() cerrarNoticia = new EventEmitter<string>();
+  @Output() public cerrarNoticia = new EventEmitter<string>();
 
   public imgSel = '';
   public listaNoticias: any = [];
   public estaCargando = false;
   public ruta = '';
-  constructor(private cnx: ConexionService) { 
+  constructor(private cnx: ConexionService) {
     this.ruta = Globales.rutaImgNoticias;
   }
 
-  ngOnInit(): void {
-
-  }
-  cerrar(){
+  public cerrar() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Cierra la ventana creada por este componente.
+    ******************************************************************************************/
     this.cerrarNoticia.emit('cerrar');
   }
 

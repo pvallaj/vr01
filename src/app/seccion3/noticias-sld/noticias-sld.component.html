@@ -1,4 +1,8 @@
 <section id="sec3" fxLayout="column" *ngIf="listaNoticias!=null">
+    <!-- -------------------------------------------------------------------------------------
+    DESCRIPCIÓN:
+    muestra un carrusel con las noticias disponibles.
+    ------------------------------------------------------------------------------------- -->
     <h2>Noticias</h2>
     <div class="contenedor" fxFlex fxLayout="column" fxLayoutGap="5px">
         <div class="sup" fxFlex fxLayout="row">
@@ -30,5 +34,8 @@
         </div>
     </div>
 </section>
-
+<!-- -------------------------------------------------------------------------------------
+DESCRIPCIÓN:
+Esta sección muestra el detalle de la noticia seleccionada.
+------------------------------------------------------------------------------------- -->
 <app-noticias [noticia]="elemento" (cerrarNoticia)="elemento=null;" *ngIf="elemento!=null"></app-noticias>
