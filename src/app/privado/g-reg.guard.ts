@@ -7,8 +7,15 @@ import { SesionUsuario } from '../servicios/SesionUsuario.service';
 })
 export class GRegGuard implements CanActivate {
   /******************************************************************************************
-  DESCRIPCIÓN:
-  Valida si existe un usuario con permisos.
+  DESCRIPCIÓN
+  Verifica si hay una sesión activa.
+
+  PARAMETROS
+  us. Objeto que contiene los datos de la sesión.
+
+  RESULTADO
+  True si el usuario existe y tiene un rol, false si no.
+
   ******************************************************************************************/
   constructor(private us: SesionUsuario, private router: Router) { }
   public canActivate() {

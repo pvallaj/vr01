@@ -43,7 +43,6 @@ import { ConsDetNarrativaComponent } from './seccion1/cons-det-narrativa/cons-de
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { EsperaComponent } from './generales/espera/espera.component';
 import { TCComponent } from './generales/imagen-tc/tc.component';
-import { HerramientasComponent } from './navegacion/herramientas/herramientas.component';
 import { NoticiaComponent } from './privado/noticia/noticia.component';
 import { BusqAvanzadaComponent } from './seccion1/busq-avanzada/busq-avanzada.component';
 import { MapaContextoComponent } from './seccion1/mapa-contexto/mapa-contexto.component';
@@ -88,7 +87,6 @@ import { UtilS } from './servicios/Util.service';
     ConsDetNarrativaComponent,
     ConsultaNarrativasComponent,
     BuscarComponent,
-    HerramientasComponent,
     DetalleOEComponent,
     NoticiasComponent,
     EsperaComponent,

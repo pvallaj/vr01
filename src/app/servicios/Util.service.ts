@@ -7,7 +7,7 @@ export class UtilS {
   public fechaACadena(f): string {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Combierte un objeto de tipo fecha a una cadena con el formato yyyy-mm-dd.
+      Convierte un objeto de tipo fecha a una cadena con el formato yyyy-mm-dd.
       Este cambio se realiza para que las funciones de base de datos la puedan interpretar directamente.
     PARAMETROS:
       f. Es el objeto de tipo fecha.
@@ -20,7 +20,7 @@ export class UtilS {
   public DateACadena(f: Date): string {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Combierte un objeto de tipo Date a una cadena con el formato dd-mm-yyyy.
+      Convierte un objeto de tipo Date a una cadena con el formato dd-mm-yyyy.
       Este cambio se realiza para que las funciones de base de datos la puedan interpretar directamente.
     PARAMETROS:
       f. Es el objeto de tipo fecha.
@@ -41,7 +41,7 @@ export class UtilS {
   public DateACadenaSQL(f: Date): string {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Combierte un objeto de tipo fecha a una cadena con el formato yyyy-mm-dd.
+      Convierte un objeto de tipo fecha a una cadena con el formato yyyy-mm-dd.
       Este cambio se realiza para que las funciones de base de datos la puedan interpretar directamente.
     PARAMETROS:
       f. Es el objeto de tipo fecha.

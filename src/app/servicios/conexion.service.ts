@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Globales } from '../generales/globales';
-import { SesionUsuario } from './SesionUsuario.service';
+
 
 
 @Injectable({
@@ -18,7 +18,7 @@ export class ConexionService {
   public componente:"";
 
   constructor(protected http: HttpClient) {
-    this.urlBase=Globales.servidor_api;
+    this.urlBase=Globales.servidor;
     let token=localStorage.getItem('tkn')
     this.headers = new HttpHeaders({ 'content':"application/json",
       'content-type':"application/x-www-form-urlencoded; charset=UTF-8"});
@@ -72,7 +72,7 @@ export class ConexionService {
     /******************************************************************************************
     DESCRIPCIÓN:
       Hace las solicitudes relacionadas a los usuarios, es decir, registro, actualización y eliminación
-      de usurios de esta aplicación.
+      de usuarios de esta aplicación.
       Estos procesos requieren de un token de autorización
     PARAMETROS:
       parametros. Lista de parametros de la solicitud.

@@ -18,6 +18,9 @@ export class MapaContextoComponent implements OnInit {
   Seleccion de campos. El usuario puede quitar las columnas que se muestran y agregarlas nuevamente.
   Paginación. Permite mostrar N registros por pagina, asi como cambiar entre las paginas, al mismo
               tiempo, permite determinar el numero de elementos por pagina.
+
+  PARAMETROS
+  datos. Contiene la información con la que se construirá la tabla o mapa.
   ******************************************************************************************/
   @Input() public datos: any;
   @ViewChild(MatPaginator) public paginator: MatPaginator;
@@ -50,6 +53,7 @@ export class MapaContextoComponent implements OnInit {
     /******************************************************************************************
     DESCRIPCIÓN:
     Permite ocultar o mostrar la columna especificada. En caso de que este visible se oculta y viseversa.
+
     PARAMETROS:
     e. es el nombre de la columna.
     p. es el indice que indica la posición de la columna.
@@ -68,6 +72,9 @@ export class MapaContextoComponent implements OnInit {
     /******************************************************************************************
     DESCRIPCIÓN:
     Determina si la columna especificada esta visible o no.
+
+    PARAMETROS:
+    c. es el nombre de la columna a evaluar.
     ******************************************************************************************/
     if (this.columnasV.indexOf(c) === -1) {
     return false;
@@ -79,6 +86,11 @@ export class MapaContextoComponent implements OnInit {
     /******************************************************************************************
     DESCRIPCIÓN:
     Filtra los registros que contienen el texto especificado por el usuario.
+    Se dispara cada vez que el usuario teclea algo en la caja de texto de filtro
+    y automáticamente va dejando solo los registros que contienen el texto escrito.
+
+    PARAMETROS.
+    event. Contiene el texto tecleado por el usuario.
     ******************************************************************************************/
     const filterValue = (event.target as HTMLInputElement).value;
 

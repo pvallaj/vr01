@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ImgDetSldComponent implements OnInit {
   /******************************************************************************************
   DESCRIPCIÓN:
-  Muestra una mentana emergente con el detalle de la imagen seleccionada, dentro del carrusel
+  Muestra una ventana emergente con el detalle de la imagen seleccionada, dentro del carrusel
   de imagenes.
   ******************************************************************************************/
   public imagenwidth = 100;
@@ -28,7 +28,7 @@ export class ImgDetSldComponent implements OnInit {
   public cerrar() {
     /*****************************************************************************************
       Descripción
-        cierra la ventana construida por este componente
+        Cierra la ventana construida por este componente
       Parametros
         Ninguno
       Resultado

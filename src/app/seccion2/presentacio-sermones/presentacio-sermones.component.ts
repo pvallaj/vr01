@@ -21,8 +21,8 @@ export class PresentacioSermonesComponent implements OnInit {
   public moAyuda(seccion) {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Oculta y muestra la descrpición del filtro especificado por el nombre de la sección.
-      En caso de que la descripción este oculta se mostrará y viseversa.
+      Oculta y muestra la descripción del filtro especificado por el nombre de la sección.
+      En caso de que la descripción este oculta se mostrará y viceversa.
     PARAMETROS:
       seccion. es la sección de la cual se mostrara la ayuda.
     ******************************************************************************************/

@@ -36,7 +36,7 @@ export class SesionUsuario {
     /******************************************************************************************
     DESCRIPCIÓN:
       Hace la solicitud para el inicio de sesión de un usuario.
-      En caso de que la solicitud sea exitosa, se obtienen los datos de seción del usuario.
+      En caso de que la solicitud sea exitosa, se obtienen los datos de sesión del usuario.
     PARAMETROS:
       datos: contiene las credenciales del usuario: correo y contraseña.
     RESULTADO:
@@ -79,7 +79,7 @@ export class SesionUsuario {
     /******************************************************************************************
     DESCRIPCIÓN:
       Elimina una sesión de usuario. Esto implica eliminar los datos de sesión del navegador
-      desde el acual se invoca el procedimiento.
+      desde el cual se invoca el procedimiento.
     PARAMETROS:
       Ninguno
     RESULTADO:

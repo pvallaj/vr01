@@ -1,4 +1,4 @@
-import { Component, OnDestroy,OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CanalService } from '../../servicios/canal.service';
@@ -6,13 +6,13 @@ import { ConexionService } from '../../servicios/Conexion.service';
 
 @Component({
   selector: 'app-buscar',
-  templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.css'],
+  templateUrl: './buscar.component.html',
 })
 export class BuscarComponent implements OnInit, OnDestroy {
   /******************************************************************************************
   DESCRIPCIÓN:
-    Muestra el resultado de la consulta heca por el usuario, desde el buscador en el encabezado
+    Muestra el resultado de la consulta hecha por el usuario, desde el buscador en el encabezado
     de la página.
   ******************************************************************************************/
   private escucha: Subscription;
@@ -38,7 +38,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     /******************************************************************************************
     DESCRIPCIÓN:
-    Siempre que se invoque este componente se realizará la consulta con el texto que el suaurio
+    Siempre que se invoque este componente se realizará la consulta con el texto que el usuario
     haya escrito en el buscador.
     ******************************************************************************************/
     this.buscarTermino({text: this.cs.terminoConsulta});
@@ -72,14 +72,14 @@ export class BuscarComponent implements OnInit, OnDestroy {
             lmnt.narratioRecortado = this.recorta(this.termino, lmnt.narratio, 200);
           });
         } else {
-          this.resultadoNarrativas == null;
+          this.resultadoNarrativas = null;
         }
         if (this.resultadoSermones) {
           this.resultadoSermones.forEach((lmnt: any) => {
             lmnt.sermonRecortado = this.recorta(this.termino, lmnt.titulo, 200);
           });
         } else {
-          this.resultadoSermones == null;
+          this.resultadoSermones = null;
         }
 
         this.estaCargando = false;
@@ -128,7 +128,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
   public verDetalle(e: any) {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Muestra una venbtana con el detalle del elemento seleccionado. Esto implica abrir una venta que
+      Muestra una ventana con el detalle del elemento seleccionado. Esto implica abrir una venta que
       muestra todos los datos del sermon seleccionado, o la relacion seleccionada o el elemento de
       obra escrita seleccionada.
     PARAMETROS:
@@ -151,7 +151,7 @@ export class BuscarComponent implements OnInit, OnDestroy {
 
     if (e.tipo) {
       this.tipoReferencia = 'buscar';
-      this.referencia ='varios';
+      this.referencia = 'varios';
       this.elementoSeleccionado = e;
       return;
     }

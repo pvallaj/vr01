@@ -46,7 +46,7 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
     DESCRIPCIÓN:
       Detecta los cambios en la sección del usuario y actualiza los datos i cambia el sermon seleccionado.
     PARAMETROS:
-      changes. objeto que contiene la información del eveto de cambio.
+      changes. objeto que contiene la información del eveto de cambio. El dato de interés es el identificador del sermón.
     ******************************************************************************************/
     if (this.idSermon <= 0) {
 
@@ -89,9 +89,9 @@ export class ConsDetSermonComponent implements OnInit, OnChanges {
   public estaVacio(dato: string): boolean {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Cuando un campo contiene los caracteres "[" y "]" se considera un campo vacio, ya que el texto
+      Cuando un campo contiene los caracteres "[" y "]" se considera un campo vacío, ya que el texto
       contenido entre estos caracteres es solo un comentario, del mismo modo, se considera un campos
-      vacio cuando no contiene texto.
+      vacío cuando no contiene texto.
       Esto permite ocultar el campo cuando no contiene información
     PARAMETROS:
       dato. campo a evaluar.

@@ -17,7 +17,7 @@ import { ConsDetSermonComponent } from '../cons-det-sermon/cons-det-sermon.compo
 export class ConsSermonesComponent implements OnInit {
   /******************************************************************************************
   DESCRIPCIÓN:
-  Tomas los parametros determinados por el usuario y hace la solciitud de los registros coincidentes
+  Tomas los parámetros determinados por el usuario y hace la solicitud de los registros coincidentes
   en la base de datos de sermones.
   ******************************************************************************************/
   public listaResultado: any[] = null;
@@ -97,6 +97,12 @@ export class ConsSermonesComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Prepara la forma que permite al usuario seleccionar los filtros que desea usar para
+    la consulta de los sermones.
+    Realiza la consulta, en la base de datos, de los catálogos que se usaran es esta forma.
+    ******************************************************************************************/
     this.crearForma();
     // autocomplete autor
     this.listaFiltrada = this.acAutores.valueChanges
@@ -304,8 +310,8 @@ export class ConsSermonesComponent implements OnInit {
   private _filter(value: string): string[] {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Realiza el filtrado de los autores que coinciden con el texto que el usuario esta tecleando.
-      es decir, porpociona la funcionalidad de la lista auto completar de autoeres.
+      Realiza el filtrado de los autores que coinciden con el texto que el usuario está tecleando,
+      es decir, proporciona la funcionalidad de la lista auto completar de autores.
     PARAMETROS:
       values. es el texto tecleado por el usuario.
     ******************************************************************************************/
@@ -382,7 +388,7 @@ export class ConsSermonesComponent implements OnInit {
     PARAMETROS
     f. es el nombre del filtro que se desea evaluar.
     RESULTADO
-      true si el filtro está activo y false en otro caso.
+    true si el filtro está activo y false en otro caso.
     ******************************************************************************************/
     if (this.filtrosActivos.value.indexOf(f) === -1) { return false; }
     return true;
@@ -412,7 +418,7 @@ export class ConsSermonesComponent implements OnInit {
     DESCRIPCIÓN:
       Recorta el sermón a un tamaño máximo de 250 caracteres.
     PARAMETROS:
-      sermon. es el sermon a recorcar.
+      sermon. es el sermón a recortar.
     RESULTADO:
       Es el sermón recortado a un tamaño de 250 caracteres.
     ******************************************************************************************/

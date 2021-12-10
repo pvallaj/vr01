@@ -1,9 +1,9 @@
 <!------------------------------------------------------------------------------------------
 Descripción:
     muestra una ventana con:
-       La imagen en tamaño completo, 
-       el detalle de una tarjeta de detalle de una consulta de la obra escrita 
-       el detalle resultado de una consulta en la base de datos de relaciones o 
+       La imagen en tamaño completo,
+       el detalle de una tarjeta de detalle de una consulta de la obra escrita
+       el detalle resultado de una consulta en la base de datos de relaciones o
        el detalle resultado de una consulta en la base de datos de sermones
 ------------------------------------------------------------------------------------------->
 <div [ngClass]="{'esperaSermon':tipo=='sermon', 'espera': tipo!='sermon'}" fxLayout="column" fxLayoutAlign="center center">
@@ -64,7 +64,7 @@ Descripción:
         <!------------------------------------------------------------------------------------------
             el detalle resultado de una consulta en la base de datos de sermones
         ------------------------------------------------------------------------------------------->
-        <app-cons-det-sermon [id_sermon]="referencia" [tipo]="1" [textoBuscado]="textoBuscado"></app-cons-det-sermon>
+        <app-cons-det-sermon [idSermon]="referencia" [tipo]="1" [textoBuscado]="textoBuscado"></app-cons-det-sermon>
     </div>
 
 

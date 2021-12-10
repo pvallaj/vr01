@@ -12,6 +12,14 @@ export class DetalleOEComponent implements OnInit {
   DESCRIPCIÓN:
   Abre una ventana que muestra los detalles de un elemento seleccionado, el elemento puede ser
   una imagen, una liga a un sitio web, un archivo PDF, o un video.
+
+  PARÁMETROS
+  elemento. Es el elemento seleccionado por el usuario y del cual se mostrará el detalle.
+  tipo. 1 para mostrar el detalle del elemento o 2 para mostrar solo un resumen.
+
+  EVENTOS.
+  seleccionarCapitulo. Se dispara cuando el usuario selecciona uno de los capitulos listados como
+  referencias del elemento seleccionado.
   ******************************************************************************************/
   @Input() public elemento: any;
   @Input() public tipo = 1; // 1.- Detalle completo, 2.- Detalle resumido
@@ -30,6 +38,11 @@ export class DetalleOEComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Al iniciar este componente, se realiza una consulta para obtener la informaciòn faltante
+    del elemento seleccionado.
+    ******************************************************************************************/
     if (this.tipo === 2) {
       // se obtienen las referencias de capitulos a los que pertenece el recurso.
       this.estaCargando = true;
@@ -48,13 +61,15 @@ export class DetalleOEComponent implements OnInit {
   public recorta(termino: string, texto: string, largo: number): string {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Recorta un texto al tamaño especifido y asegurando que en el recorte se encuentra el termino.
-    PARAMETROS:
+      Recorta un texto al tamaño especifico y asegurando que en el recorte se encuentra el término.
+
+      PARAMETROS:
       termino. es el texto que debe estar incluido en el recorte.
       tm. es el tamaño del recorte.
       texto. Es el texto a recortar.
+
     RESULTADO:
-      un texto de tamaño maximo "tm" y que contiene el termino.
+      un texto de tamaño máximo "tm" y que contiene el término.
     ******************************************************************************************/
     if (texto.indexOf(termino) >= 0 && texto.indexOf(termino) > largo) {
       const pt = texto.indexOf(termino);
@@ -78,6 +93,11 @@ export class DetalleOEComponent implements OnInit {
   }
 
   public seleccionar(idc: number) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Se ejecuta cuando el usuairo seleciona uno de los capitulos mostrados como referencia,
+    dispara la notificación para que se muestre el capitulo seleccionado.
+    ******************************************************************************************/
     this.seleccionarCapitulo.emit(idc);
   }
 

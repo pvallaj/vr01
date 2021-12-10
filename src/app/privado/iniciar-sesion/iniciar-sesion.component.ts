@@ -14,7 +14,7 @@ import { SesionUsuario } from '../../servicios/SesionUsuario.service';
 export class IniciarSesionComponent  {
   /******************************************************************************************
   DESCRIPCIÓN:
-   Permite que un usuairo se registre mediante las credenciales de correo y contraseña.
+   Permite que un usuario se registre mediante las credenciales de correo y contraseña.
   ******************************************************************************************/
   @Input() public tipo: string;
 
@@ -33,7 +33,7 @@ export class IniciarSesionComponent  {
   public registrarUsuario(dts) {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Hace la solicitud de inicio de seción.
+      Hace la solicitud de inicio de sesión.
     PARAMETROS:
       dts. Contiene las credenciales del usuario: el correo y su contraseña
     ******************************************************************************************/
@@ -47,10 +47,10 @@ export class IniciarSesionComponent  {
   public registroExitoso(r) {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Es procedimiento se ejecuta en caso de que el proceso de solicitus de inicio de seción
+      Es procedimiento se ejecuta en caso de que el proceso de solicitus de inicio de sesión
       haya sido exitoso.
     PARAMETROS:
-      r. Contiene el resultado del proceso de solicitud de inicio de sesón
+      r. Contiene el resultado del proceso de solicitud de inicio de sesión
     ******************************************************************************************/
     if (r.ok === 'true') {
       this.ru.navigate(['publicaciones']);

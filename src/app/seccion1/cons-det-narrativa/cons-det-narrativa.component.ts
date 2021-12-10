@@ -25,6 +25,12 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   /******************************************************************************************
   DESCRIPCIÓN:
   Consulta y muestra el detalle de la narrativa especificada.
+
+  PARAMETROS.
+  idTexto. es el identificador de la "relación".
+  narrativa. es la narrativa seleccionada. contiene los datos basicos de una relación.
+  textoBuscado. Cuando esta ventana se abre como resultado de una busqueda hecha por el
+  usuario fuera de la herramienta de relaciones.
   ******************************************************************************************/
   @Input() public idTexto = 0;
   @Input() public narrativa: INarrativa = null;
@@ -59,7 +65,14 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes) {
-
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Realiza la consulta de los detalles de la relación seleccionada.
+    Se dispara cada vez que algun dato de este componente tiene un cambio,
+    en este caso el valor que es de interes es el idTexto, cuando este valor
+    cambia significa que el usuario ha seleccionado otra "relación" y se debe
+    realizar otra consulta de detalles.
+    ******************************************************************************************/
     if (this.idTexto === 0 ) {
 
       this.bibliografia = [];
@@ -87,11 +100,21 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
         this.tabSeleccionado = 0;
         this.estaCargando = false;
-        this.tipoAccion.length === 0 ? this.tipoAccion = null : null;
-        this.motivos.length === 0 ? this.motivos = null : null;
-        this.tema.length === 0 ? this.tema = null : null;
-        this.versificacion.length === 0 ? this.versificacion = null : null;
-        this.soporte.length === 0 ? this.soporte = null : null;
+        if (this.tipoAccion.length === 0) {
+          this.tipoAccion = null;
+        }
+        if (this.motivos.length === 0) {
+          this.motivos = null;
+        }
+        if (this.tema.length === 0) {
+          this.tema = null;
+        }
+        if (this.versificacion.length === 0) {
+          this.versificacion = null;
+        }
+        if (this.soporte.length === 0) {
+          this.soporte = null;
+        }
 
       },
     (error) => {
@@ -104,8 +127,11 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
 
   public crearTextoBiliografia(elmt: any) {
     /******************************************************************************************
-    DESCRIPCIÓN:
-    Agrega textos descripcitvos a los datos de la relación.
+    DESCRIPCIÓN
+    Crea un texto estructurado con la información de la relación.
+
+    PARAMETROS
+    Elmt. Objeto que contiene los datos de la relación y con la cual se armará el texto estructurado.
     ******************************************************************************************/
     // , {{}}, {{elmt.}}, {{elmt.editor}}, {{elmt.editor}}, {{elmt.anio}} , {{elmt.obra_anfitrio}}
 
@@ -145,7 +171,11 @@ export class ConsDetNarrativaComponent implements OnInit, OnChanges {
   public resalta(texto: string, args: string) {
     /******************************************************************************************
     DESCRIPCIÓN:
-    Crea una marca en el texto que se desea resaltar.
+    Agrega una marca al texto para resaltarlo del resto del texto.
+
+    PARAMETROS
+    texto. Texto donde se encuentra la palabra o frase a resaltar.
+    args. Palabra a resaltar.
     ******************************************************************************************/
     if (!args || args === '' || !texto || texto === '') { return texto; }
 

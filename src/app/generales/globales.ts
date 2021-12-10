@@ -1,4 +1,4 @@
-export class Globales{
+export class Globales {
     /*****************************************************************************************
     Define variables globales, hasta el momento, se definen las siguientes:
 
@@ -10,10 +10,10 @@ export class Globales{
 
 ******************************************************************************************/
     // Producción
-    // public static servidor_api = 'https://www.iifl.unam.mx/hlmnovohispana/api/index.php'; // servidor HLM produccion
+    // public static servidor = 'https://www.iifl.unam.mx/hlmnovohispana/api/index.php'; // servidor HLM produccion
     // public static rutaImgNoticias = 'api/img_noticias'; // servidor
 
     // Desarrollo
-     public static servidor_api='/api';
-     public static rutaImgNoticias='http://localhost:8000/img_noticias/';
+     public static servidor = '/api';
+     public static rutaImgNoticias = 'http://localhost:8000/img_noticias/';
 }

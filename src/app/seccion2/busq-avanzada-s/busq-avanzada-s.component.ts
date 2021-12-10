@@ -68,7 +68,7 @@ export class BusqAvanzadaSComponent implements OnInit {
       /******************************************************************************************
       DESCRIPCIÓN:
       Aplica los filtros seleccionados por el usuario, en este caso, implica que se muestren
-      los campos de los filtros, en la pantalla de sonulta de relaciones.
+      los campos de los filtros, en la pantalla de consulta de relaciones.
       ******************************************************************************************/
       this.datos.filtros.value = [];
       if (this.filtros.autor) {          this.datos.filtros.value.push('Autor'); }
@@ -96,7 +96,7 @@ export class BusqAvanzadaSComponent implements OnInit {
     DESCRIPCIÓN:
       Muestra y oculta el texto descriptivo de los filtros existentes en esta sección.
     PARAMETROS:
-      seccion. Es el nombre de la sección que se muestra si esta oculta y viseversa.
+      seccion. Es el nombre de la sección que se muestra si esta oculta y viceversa.
     ******************************************************************************************/
     if (this.secVisible === seccion) {
 

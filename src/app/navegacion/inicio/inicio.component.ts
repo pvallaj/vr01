@@ -20,15 +20,45 @@ export class InicioComponent implements OnInit {
   }
 
   public acLeerMas() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Expande y contrae el cuadro de descripción de la página.
+
+    PARAMETROS
+    Ninguno.
+
+    RESULTADO
+    Ninguno.
+    ******************************************************************************************/
     this.vLeerMas = !this.vLeerMas;
     this.tLeerMas = this.vLeerMas ? 'Leer menos' : 'Leer más';
   }
 
   public abrirIsotipo() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Abre la ventana que muestra la descripción del isotipo.
+
+    PARAMETROS
+    Ninguno.
+
+    RESULTADO
+    Ninguno.
+    ******************************************************************************************/
     this.vIsotipo = true;
   }
 
   public cerrarIsotipo() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+      Cierra la ventana que muestra la descripción del isotipo.
+
+    PARAMETROS
+    Ninguno.
+
+    RESULTADO
+    Ninguno.
+    ******************************************************************************************/
     this.vIsotipo = false;
   }
 }

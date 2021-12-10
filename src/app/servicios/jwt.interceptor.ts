@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class APIInterceptor implements HttpInterceptor {
   /******************************************************************************************
     DESCRIPCIÓN:
-      Proceso de intercepción de peticiones. toma todas la peticiones realizadas por esta
+      Proceso de intercepción de peticiones. toma todas las peticiones realizadas por esta
       aplicación y las modifica con un token. Esto permite habilitar una sesión de usuario
       para los servicios que requieren de autenticación.
     ******************************************************************************************/

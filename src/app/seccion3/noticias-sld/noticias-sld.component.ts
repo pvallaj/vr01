@@ -70,7 +70,7 @@ export class NoticiasSLDComponent implements OnInit, OnDestroy {
   public siguiente() {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Avanza a la siguiente noticia disponible. En caso de estar en la última noticia disponoble,
+      Avanza a la siguiente noticia disponible. En caso de estar en la última noticia disponible,
       se pasa la primera noticia de la lista.
     ******************************************************************************************/
     let idx = this.listaNoticias.indexOf(this.noticiaActiva);
@@ -85,7 +85,7 @@ export class NoticiasSLDComponent implements OnInit, OnDestroy {
   public anterior() {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Tetrocede a la siguiente noticia disponible. En caso de estar en la primera noticia disponoble,
+      Retrocede a la siguiente noticia disponible. En caso de estar en la primera noticia disponoble,
       se pasa la última noticia de la lista.
     ******************************************************************************************/
     let idx = this.listaNoticias.indexOf(this.noticiaActiva);

@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 /*****************************************************************************************
   Descripción
@@ -9,29 +9,29 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     mensaje: Es el mensaje que se presentará en la ventana modal.
     tipo:
         1 para que la ventana muestre solo la opción "cerrar"
-        2 para que la centana muestre las opciones "cancelar" y "aceptar"
-      
+        2 para que la ventana muestre las opciones "cancelar" y "aceptar"
+
   Version: 1.0
   Fecha de liberación: 28/02/2021
   Registro de cambios:
 ******************************************************************************************/
-export interface DialogDatos {
-  titulo:   string;
-  mensaje:  string;
-  tipo:     number
+export interface IDialogDatos{
+  titulo: string;
+  mensaje: string;
+  tipo: number;
 }
 
 @Component({
   selector: 'app-mensaje',
+  styleUrls: ['./mensaje.component.css'],
   templateUrl: './mensaje.component.html',
-  styleUrls: ['./mensaje.component.css']
 })
 export class MensajeComponent  {
 
   constructor(
     public dialogRef: MatDialogRef<MensajeComponent>,
-    @Inject(MAT_DIALOG_DATA) public datos: DialogDatos) {
-      
+    @Inject(MAT_DIALOG_DATA) public datos: IDialogDatos) {
+
     }
 
 }

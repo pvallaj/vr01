@@ -30,8 +30,8 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   Construye una lista con las relaciones y sus signos.
   Este mapa incluye la siguiente funcionalidad:
   A. Filtro, permite filtrar los registros que contienen el termino escrito por el usuario.
-  B. Ordenar las columnas en forma ascendente o desendente. Cuando el usuario da click en el
-     Encabezado de las columnas, el donde cambia de ascendente a desendente y viseversa.
+  B. Ordenar las columnas en forma ascendente o descendente. Cuando el usuario da click en el
+     Encabezado de las columnas, cambia de ascendente a descendente y viceversa.
   ******************************************************************************************/
   @Input() public datos: any;
   @ViewChild(MatPaginator) public paginator: MatPaginator;
@@ -51,6 +51,7 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   public idNarrativaSel = 0;
 
   // ------------------------------
+  // TODO: ortografia de dramática
   public columnasSA: string[] = ['id_texto', 'autor', 'obra', 'narratio',
   'gestos_dramaticos', 'movimientos_dramaticos', 'voz_dramaticos',
   'gestos_dramaticos_no', 'movimientos_dramaticos_no', 'voz_dramaticos_no'];
@@ -89,7 +90,7 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
   public cambiarGDn(e) {
     /******************************************************************************************
     DESCRIPCIÓN:
-    Oculta o muestra la columna de "Gestos dramaticos" en la sección de "Signos en los pesonajes de la relación"
+    Oculta o muestra la columna de "Gestos dramaticos" en la sección de "Signos en los personajes de la relación"
     ******************************************************************************************/
     if (!this.moGDn) {
       this.columnasSA.splice(8, 0, 'gestos_dramaticos_no');
@@ -171,6 +172,15 @@ export class MapaSignosComponent implements OnInit, AfterViewInit {
     this.moViDn = !this.moViDn;
   }
   public aplicarFiltro(event) {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Filtra los registros que contienen el texto especificado por el usuario.
+    Se dispara cada vez que el usuario teclea algo en la caja de texto de filtro
+    y automáticamente va dejando solo los registros que contienen el texto escrito.
+
+    PARAMETROS.
+    event. Contiene el texto tecleado por el usuario.
+    ******************************************************************************************/
     const filterValue = (event.target as HTMLInputElement).value;
 
     this.listaResultadoSA.filter = filterValue.trim().toLowerCase();

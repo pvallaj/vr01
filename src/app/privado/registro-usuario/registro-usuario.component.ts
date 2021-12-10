@@ -67,8 +67,8 @@ export class RegistroUsuarioComponent {
     /******************************************************************************************
     DESCRIPCIÓN:
       Se ejecuta si el proceso de guardar los datos del usuario fue exitosa.
-      En caso de que el alta haya sido por un administrador, se direcciona a la lista de usuairos.
-      Si el registro No lo realiza un administrador, se dirige a la opción de inicio de seción.
+      En caso de que el alta haya sido por un administrador, se direcciona a la lista de usuarios.
+      Si el registro No lo realiza un administrador, se dirige a la opción de inicio de sesión.
     ******************************************************************************************/
     if (r.ok === 'true') {
       if (this.canal.elemento != null) {
@@ -107,7 +107,7 @@ export class RegistroUsuarioComponent {
   public crearForma() {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Construye la forma que obtendra los datos del usuario.
+      Construye la forma que obtendra los datos capturados por usuario.
     ******************************************************************************************/
     const vals = {
       // valor inicial, validaciones sincronas, validaciones asincronas

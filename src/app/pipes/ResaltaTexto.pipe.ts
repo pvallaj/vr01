@@ -11,6 +11,17 @@ export class ResaltaTextoPipe implements PipeTransform {
   ******************************************************************************************/
   constructor(protected sanitizer: DomSanitizer) {}
   public transform(texto: string, args: string) {
+    /******************************************************************************************
+    DESCRIPCIÓN
+    Agrega código html a las palabras especificadas, para hacer que se resalten del resto del texto.
+
+    PARAMETROS
+    texto. Es el texto a recortar.
+    args. es la cadena a resaltar dentro del texto.
+
+    RESULTADO
+    Una nueva cadena con los textos resaltados.
+    ******************************************************************************************/
     if (!args || args === '' || !texto || texto === '') { return texto; }
     let resultado = '';
 

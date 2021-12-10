@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Globales } from '../globales';
 /*****************************************************************************************
   Descripción
@@ -33,27 +33,27 @@ import { Globales } from '../globales';
 ******************************************************************************************/
 @Component({
   selector: 'app-tc',
+  styleUrls: ['./tc.component.css'],
   templateUrl: './tc.component.html',
-  styleUrls: ['./tc.component.css']
 })
 export class TCComponent implements OnInit {
-  @Input() referencia:string;
-  @Input() tipo:string;
-  @Input() textoBuscado:string="";
-  @Input() elemento:any;
+  @Input() public referencia: string;
+  @Input() public tipo: string;
+  @Input() public textoBuscado = '';
+  @Input() public elemento: any;
 
-  @Output() quitar=new EventEmitter<number>();
+  @Output() public quitar = new EventEmitter<number>();
 
-  public rutaImgsNoticias:Globales=null;
+  public rutaImgsNoticias: Globales = null;
 
   constructor() {
-    this.rutaImgsNoticias=Globales.rutaImgNoticias;
+    this.rutaImgsNoticias = Globales.rutaImgNoticias;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
   }
-  public cerrar(){
+  public cerrar() {
     /*****************************************************************************************
       Descripción
         cierra la ventana construida por este componente
@@ -66,7 +66,7 @@ export class TCComponent implements OnInit {
     this.quitar.emit(0);
   }
 
-  public abrirCapitulo(idc:number){
+  public abrirCapitulo(idc: number) {
     /*****************************************************************************************
       Descripción
         cierra la ventana construida por este componente y abre el capítulo seleccionado por el usuario.

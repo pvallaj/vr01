@@ -7,8 +7,15 @@ import { SesionUsuario } from '../servicios/SesionUsuario.service';
 })
 export class GRegAdmGuard implements CanActivate {
   /******************************************************************************************
-  DESCRIPCIÓN:
-  Valida si el usuario es un administrador.
+  DESCRIPCIÓN
+  Verifica si el usuario con la sesión actual es un administrador.
+
+  PARAMETROS
+  us. Objeto que contiene los datos de la sesión.
+
+  RESULTADO
+  True si el usuario es administración, false si no.
+
   ******************************************************************************************/
   constructor(private us: SesionUsuario, private router: Router) { }
   public canActivate() {

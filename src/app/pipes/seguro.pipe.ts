@@ -12,6 +12,16 @@ export class SeguroPipe implements PipeTransform {
   ******************************************************************************************/
   constructor(private sanitizer: DomSanitizer) {}
   public transform(url): SafeHtml {
+    /******************************************************************************************
+    DESCRIPCIÓN
+    Realiza el proceso de validación.
+
+    PARAMETROS
+    url. Es dirección URL a verificar.
+
+    RESULTADO
+    La dirección URL si es valida o un texto sin las dirección URL.
+    ******************************************************************************************/
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 

@@ -7,12 +7,22 @@ import { DomSanitizer, SafeHtml} from '@angular/platform-browser';
 export class HtmlSeguroPipe implements PipeTransform {
   /******************************************************************************************
   DESCRIPCIÓN:
-  permite saniltizar las direcciones html. esto ayuda a que no exista codigo malicioso dentro de
-  las direcciones url que se url utilizadas en este sitio.
+  Permite verificar que código HTML es seguro, es decir, que no contiene código considerado malicioso.
+  Esta validación es requerida por ANGULAR.
   ******************************************************************************************/
   constructor(private sanitizer: DomSanitizer) {}
-  public transform(url): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(url);
+  public transform(codigo): SafeHtml {
+    /******************************************************************************************
+    DESCRIPCIÓN
+    Realiza el proceso de validación.
+
+    PARAMETROS
+    Codigo. Es el segmento de código HTML a verificar.
+
+    RESULTADO
+    El segmento de código sin las partes consideradas como riesgosas.
+    ******************************************************************************************/
+    return this.sanitizer.bypassSecurityTrustHtml(codigo);
   }
 
 }

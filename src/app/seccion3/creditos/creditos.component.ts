@@ -1,9 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-creditos',
+  styleUrls: ['./creditos.component.css'],
   templateUrl: './creditos.component.html',
-  styleUrls: ['./creditos.component.css']
 })
 export class CreditosComponent implements OnInit {
   /******************************************************************************************
@@ -11,13 +11,13 @@ export class CreditosComponent implements OnInit {
     muestra una ventana con la información de los créditos de este proyecto, es decir, los
     participantes del proyecto.
   ******************************************************************************************/
-  @Output() cerrar=new EventEmitter<string>();
+  @Output() public cerrar = new EventEmitter<string>();
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  public cerrarv(){
+  public cerrarv() {
     /*****************************************************************************************
       Descripción
         cierra la ventana construida por este componente

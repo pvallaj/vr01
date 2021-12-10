@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-contactos',
+  styleUrls: ['./contactos.component.css'],
   templateUrl: './contactos.component.html',
-  styleUrls: ['./contactos.component.css']
 })
-export class ContactosComponent implements OnInit {
+export class ContactosComponent {
   /******************************************************************************************
   DESCRIPCIÓN:
-  Este compoenente muestra la sección de contactos.
+  Este componente muestra la sección de contactos.
   ******************************************************************************************/
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

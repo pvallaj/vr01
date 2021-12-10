@@ -60,7 +60,7 @@ export class PublicacionesComponent implements OnInit {
       this.seccionesVisibles = [];
       this.imagenes = null;
       this.cargaDatosTomo();
-      this.cargaDatosTomo();
+      //this.cargaDatosTomo();
     });
   }
 
@@ -100,9 +100,9 @@ export class PublicacionesComponent implements OnInit {
   public verCapitulo(elemento: any) {
     /******************************************************************************************
     DESCRIPCIÓN:
-      Carga los recursos asociados al capitulo selecionado.
+      Carga los recursos asociados al capítulo seleccionado.
     PARAMETROS:
-      elemento. Es el capitulo seleccionado por el usuario.
+      elemento. Es el capítulo seleccionado por el usuario.
     ******************************************************************************************/
     if (elemento.etiquetas.indexOf('seccion') >= 0 && elemento.etiquetas.indexOf('capitulo') < 0) {
       return;
@@ -155,7 +155,7 @@ export class PublicacionesComponent implements OnInit {
       Descripción
         Abre la ventana que mostrará el detalle de la tarjeta seleccionada.
       Parametros
-        cp. Capitulo
+        e. tarjeta seleccionada
       Resultado
         true/false
     ******************************************************************************************/
@@ -243,7 +243,7 @@ export class PublicacionesComponent implements OnInit {
       Descripción
         determina si es un capitulo (regresa true), en caso contrario es una sección.
       Parametros
-        cp. Capitulo
+        reg. Elemento de la estructura de la obra, el cual puede ser un capitulo o una sección.
       Resultado
         true/false
     ******************************************************************************************/
@@ -254,7 +254,8 @@ export class PublicacionesComponent implements OnInit {
   public desplegarCapitulo(cp: any) {
     /*****************************************************************************************
       Descripción
-        determina si el capitulo se despliega en la barra lateral o no.
+        Determina si el capitulo se despliega en la barra lateral o no.
+        Este valor permite dar el efecto de acordeón en la estructura de la obra.
       Parametros
         cp. Capitulo
       Resultado
@@ -273,7 +274,7 @@ export class PublicacionesComponent implements OnInit {
   public estaExpandido(sec: string): boolean {
     /*****************************************************************************************
       Descripción
-        Dice si la sección esta expandida o no.
+        Dice si el capítulo está esta expandida o no.
       Parametros
         sec. sección a evaluar
       Resultado
@@ -292,7 +293,7 @@ export class PublicacionesComponent implements OnInit {
       Parametros
         sec. sección a expandir o contraer.
       Resultado
-        true/false
+        Ninguno
     ******************************************************************************************/
 
     if (sec.indexOf('seccion') < 0) { return; }
@@ -314,7 +315,7 @@ export class PublicacionesComponent implements OnInit {
       Parametros
         tomo. El nuevo tomo activo.
       Resultado
-        true/false
+        Ninguno
     ******************************************************************************************/
     this.tomo = tomo;
     this.resultado = null;

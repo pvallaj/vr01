@@ -44,7 +44,7 @@ export class EncabezadoComponent implements OnInit {
   public onToggleNV() {
     /*****************************************************************************************
       Descripción
-        el usuario ha tocado el el boton de menú, para indicar que se debe mostrar o ocultar
+        el usuario ha tocado el boton de menú, para indicar que se debe mostrar o ocultar
       Parametros
         ninguno
       Resultado

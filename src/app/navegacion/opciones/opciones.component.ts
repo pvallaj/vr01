@@ -29,6 +29,10 @@ export class OpcionesComponent implements OnInit {
   }
 
   public salir() {
+    /******************************************************************************************
+    DESCRIPCIÓN:
+    Cierra la cessión de usuario.
+    ******************************************************************************************/
     this.sus.cerrarSesion();
     this.navBarToggle.emit();
     this.r.navigate(['inicio']);
